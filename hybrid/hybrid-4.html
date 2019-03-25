@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<script language="JavaScript" src="ieHover.js"></script>
+	<style type="text/css" media="all">
+
+	#divNav {
+		background: transparent url(bk-nav.jpg) no-repeat top left;
+		margin: 0;
+		padding: 0;
+		height: 80px;
+		width: 800px;
+	}
+
+	#nav {
+		position: relative;
+		top: 55px;
+		height: 80px;
+		width: 800px;
+	}
+
+	#nav li ul, #nav li ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	#nav a {
+		text-decoration: none;
+	}
+
+	#nav li { /*float the main list items*/
+		margin: 0;
+		float: left;
+		display: block;
+		padding-right: 15px;
+	}
+
+	#nav li ul {
+		display: none;
+	}
+
+	#nav li.off ul, #nav li.on ul  { /*put the subnav below*/
+		position: absolute;
+		top: 25px;
+		left: 0;
+		padding-top: 15px;
+		background: #224d6f;
+		height: 28px;
+		width: 740px;
+		padding-left: 60px;
+	}
+
+	#nav li.on ul {
+		background: #f90;
+	}
+
+	#nav li.on:hover ul, #nav li.over ul { /*for ie*/
+		background: #224d6f;
+	}
+
+	#nav li a {
+		color: #224d6f;
+		font-weight: bold;
+		display: block;
+		width: 93px;
+		padding: 0;
+	}
+
+	#nav li.on a {
+		color: #f90;
+	}
+
+	#nav li.on ul a, #nav li.off ul a {
+		border: 0;
+		float: left; /*ie doesn't inherit the float*/
+		color: #f90;
+		width: auto;
+		margin-right: 15px;
+	}
+
+	#nav li.on:hover ul a, #nav li.over ul li a { /*for ie - the specificity is necessary*/
+		background: #224d6f;
+	}
+
+	#nav li.on ul {
+		display: block;
+	}
+
+	#nav li.off:hover ul, #nav li.over ul {
+		display: block;
+		z-index: 6000;
+	}
+
+	#nav li.off a:hover, #nav li.on a:hover { 
+		color: #f90;
+	}
+
+	/*do the image replacement*/
+
+	#nav li span {
+		position: absolute;
+		left: -9384px;
+	}
+
+	#liRenaissance a, #liArtNouveau a, #liModern a, #liPostModern a, #liDigital a {
+		display: block;
+		position: relative;
+		height: 26px;
+		background: url(bk-dropdownMap.gif) no-repeat; /*contains all hover states*/
+	}
+
+/*first, put the initial states in place*/
+
+#liRenaissance a {
+	background-position: 0 0;
+}
+
+#liArtNouveau a {
+	background-position: -102px 0;
+}
+
+#liModern a {
+	background-position: -204px 0;
+}
+
+#liPostModern a {
+	background-position: -306px 0;
+}
+
+#liDigital a {
+	background-position: -408px 0;
+}
+
+/*active area - for this demo - the code could be based on a body class, and probably work better.*/
+
+ #liModern.on a {
+ 	background-position: -204px -37px;
+ } /*add selectors for the other li's and background-positions*/
+
+/*hover states*/
+
+#liRenaissance a:hover, #liRenaissance:hover a, #liRenaissance.over a {
+	background-position: 0 -73px;
+}
+
+#liArtNouveau a:hover, #liArtNouveau:hover a, #liArtNouveau.over a {
+	background-position: -102px -73px;
+}
+
+#liModern a:hover, #liModern:hover a, #liModern.over a {
+	background-position: -204px -73px;
+}
+
+#liPostModern a:hover, #liPostModern:hover a, #liPostModern.over a {
+	background-position: -306px -73px;
+}
+
+#liDigital a:hover, #liDigital:hover a, #liDigital.over a {
+	background-position: -408px -73px;
+}
+
+/*subnav formatting*/
+
+#nav li.off ul a, #nav li.on ul a {
+	display: block;
+	background: #224d6f;
+	color: #fff;
+	font-family: arial, verdana, sans-serif;
+	font-size: small;
+}		
+
+#nav li.on ul a {
+	background: #f90;
+}
+	
+
+	</style>
+</head>
+
+
+
+
+
+<body>
+<div id="divNav">
+	<ul id="nav">
+	<li id="liRenaissance" class="off"><a href="#"><span>Renaissance</span></a>
+	<ul>
+		<li><a href="#">Brunelleschi</a></li>
+		<li><a href="#">Alberti</a></li>
+		<li><a href="#">Palladio</a></li>
+		<li><a href="#">Michelangelo</a></li>
+		<li><a href="#">Bramante</a></li>
+	</ul></li>
+	<li id="liArtNouveau" class="off"><a href="#"><span>Art Nouveau</span></a>
+	<ul>
+		<li><a href="#">Mackintosh</a></li>
+		<li><a href="#">Guimard</a></li>
+		<li><a href="#">Horta</a></li>
+		<li><a href="#">van de Velde</a></li>
+	</ul></li>
+	<li id="liModern" class="on"><a href="#"><span>Modern</span></a>
+	<ul>
+		<li><a href="#">Sullivan</a></li>
+		<li><a href="#">Le Corbusier</a></li>
+		<li><a href="#">Mies</a></li>
+		<li><a href="#">Gropius</a></li>
+		<li><a href="#">Yamasaki</a></li>
+	</ul></li>
+	<li id="liPostModern" class="off"><a href="#"><span>Postmodern</span></a>
+	<ul>
+		<li><a href="#">Venturi</a></li>
+		<li><a href="#">Eisenman</a></li>
+		<li><a href="#">Stern</a></li>
+		<li><a href="#">Graves</a></li>
+		<li><a href="#">Gehry</a></li>
+	</ul></li>
+	<li id="liDigital" class="off"><a href="#"><span>Digital</span></a>
+	<ul>
+		<li><a href="#">Xenakis</a></li>
+		<li><a href="#">Lynn</a></li>
+		<li><a href="#">Diller+Scofidio</a></li>
+		<li><a href="#">Zellner</a></li>
+		<li><a href="#">Hadid</a></li>
+	</ul></li>
+</ul></div>
+</body>
+</html>

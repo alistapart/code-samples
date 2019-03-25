@@ -1,0 +1,129 @@
+<head>
+
+	<style type="text/css" media="all">
+
+	
+	#nav {
+		margin: 0;
+		padding: 0;
+	}
+
+	#nav li.on ul, #nav li.off ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	#nav a {
+		text-decoration: none;
+	}
+
+	#nav li { /*float the main list items*/
+		margin: 0;
+		float: left;
+		display: block;
+		padding-right: 15px;
+	}
+
+	#nav li ul {
+		display: none;
+	}
+
+	#nav li.off ul, #nav li.on ul { /*put the subnav below*/
+		position: absolute;
+		top: 33px;
+		*top: 44px;
+		left: 5px;
+		padding-top: 10px;
+		background: #d6e3b0;
+		height: 28px;
+		width: 640px;
+	}
+
+	#nav li a {
+		color: #d6e3b0;
+		font-weight: bold;
+		display: block;
+		height: 15px;
+		width: 100px;
+		border: 2px solid #d6e3b0;
+		padding: 5px;
+	}
+
+	#nav li.on a {
+		border: 2px solid #7a8566;
+		color: #7a8566;
+	}
+
+	#nav li.on ul a, #nav li.off ul a {
+		float: left; /*ie doesn't inherit the float*/
+		border: 0;
+		color: #7a8566;
+		width: auto;
+		margin-right: 15px;
+	}
+
+	#nav li.on ul {
+		display: block;
+	}
+
+	#nav li.off:hover ul {
+		display: block;
+		z-index: 6000;
+				}
+
+	#nav li.off a:hover, #nav li:hover a {
+		background: #d6e3b0;
+		color: #7a8566;
+	}
+
+		
+	</style>
+</head>
+
+
+
+
+
+<body>
+	<ul id="nav">
+	<li class="off"><a href="#">Renaissance</a>
+	<ul>
+		<li><a href="#">Brunelleschi</a></li>
+		<li><a href="#">Alberti</a></li>
+		<li><a href="#">Palladio</a></li>
+		<li><a href="#">Michelangelo</a></li>
+		<li><a href="#">Bramante</a></li>
+	</ul></li>
+	<li class="off"><a href="#">Art Nouveau</a>
+	<ul>
+		<li><a href="#">Mackintosh</a></li>
+		<li><a href="#">Guimard</a></li>
+		<li><a href="#">Horta</a></li>
+		<li><a href="#">van de Velde</a></li>
+	</ul></li>
+	<li class="on"><a href="#">Modern</a>
+	<ul>
+		<li><a href="#">Sullivan</a></li>
+		<li><a href="#">Le Corbusier</a></li>
+		<li><a href="#">Mies</a></li>
+		<li><a href="#">Gropius</a></li>
+		<li><a href="#">Yamasaki</a></li>
+	</ul></li>
+	<li class="off"><a href="#">Postmodern</a>
+	<ul>
+		<li><a href="#">Venturi</a></li>
+		<li><a href="#">Eisenman</a></li>
+		<li><a href="#">Stern</a></li>
+		<li><a href="#">Graves</a></li>
+		<li><a href="#">Gehry</a></li>
+	</ul></li>
+	<li class="off"><a href="#">Digital</a>
+	<ul>
+		<li><a href="#">Xenakis</a></li>
+		<li><a href="#">Lynn</a></li>
+		<li><a href="#">Diller+Scofidio</a></li>
+		<li><a href="#">Zellner</a></li>
+		<li><a href="#">Hadid</a></li>
+	</ul></li>
+</ul>
+</body>
