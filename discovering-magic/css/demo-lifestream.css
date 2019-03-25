@@ -1,0 +1,91 @@
+﻿	
+			
+	ul {
+		list-style: none;
+		margin: 2em 1em 2em 0 ;
+		padding: 0;
+	}
+	
+	li {
+		margin-top: 0.2em;
+	}
+	
+	li img {
+		border: none;
+		margin-right: 0.2em;
+		vertical-align: middle;
+	}
+	
+	li a {
+		text-decoration: none;
+		font-weight: bold;
+		color: #000;
+	}
+	
+	.username {
+		color: #aaa;
+	}
+	
+	.profile {
+		margin-top: 2em;
+		margin-right: 2em;
+			    margin-bottom: 6em;
+		border-left: solid 1px #ddd;
+		padding-left: 2em;
+		width: 20em;
+	 float : left; 
+	}
+		
+	.photo {
+		border: 3px double #CCCCCC;
+		margin-bottom: 1em;
+	}
+	
+	.url, .adr {
+	    margin-top: 1em;
+	}
+	
+	
+	.title-group {
+		font-weight: bold;
+		margin-bottom: 1em;
+	}
+	
+    #results{
+	    width: 34em; 
+	    float: left; 
+	    margin-top: 2em;
+	    margin-right: 2em;
+	    margin-bottom: 6em;
+	    padding: 1em;
+
+    }
+    
+    .item{
+	    border-bottom: 1px solid #eee;
+	    margin-bottom: 1em;
+	    padding-bottom: 1em;
+	}
+	
+	.entry-title{
+	    font-weight: bold;
+	}
+	
+	
+	.status .entry-title{
+	    font-weight: normal;
+	}
+	
+   .status .entry-title a, .bookmark .entry-title a{
+	    font-weight: bold;
+	}
+	
+	
+	
+	.published{
+	    color: #aaa;
+	}
+	
+	#refresh{
+	    margin-bottom: 1em;
+	}

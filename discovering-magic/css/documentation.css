@@ -1,0 +1,135 @@
+﻿	body
+	{
+		font-family:Calibri;
+		font-size: 0.95em;
+	}
+	
+	input
+	{
+		font-family:Calibri;
+		font-size: 1em;
+	}
+	
+	
+	#content
+	{
+		margin: 4em;
+	}
+
+	h1 {
+		border-bottom:1px dashed #B2B2B2;
+		font-family:Georgia,Times,serif;
+		font-size:1.66em;
+		font-size-adjust:none;
+		font-stretch:normal;
+		font-style:normal;
+		font-variant:normal;
+		font-weight:normal;
+		line-height:normal;
+		margin:0.5em 0;
+		padding-bottom:0.75em;
+	}
+
+    
+    h2 {
+		font-family:Georgia,"Times New Roman",serif;
+		font-size:1.5em;
+		font-size-adjust:none;
+		font-stretch:normal;
+		font-style:normal;
+		font-variant:normal;
+		font-weight:normal;
+		letter-spacing:1px;
+		line-height:normal;
+		margin: 1.8em 0 0;
+	}
+	
+	#no-javascript-error{
+		font-weight:bold;
+		font-style:red;
+	}
+
+    
+    #results{
+    	padding-top: 2em; padding-bottom: 2em;
+    }
+    
+    .example-text{
+    	display: block; color: #999
+    }
+    
+    .spinner{
+    	vertical-align:middle;
+    }
+    
+    #selection-details{
+		display: none;
+	}
+	
+	.form-text{
+		width: 540px;
+	}
+	
+	.notes{
+		margin-top: 8em;
+		color:  #999;
+		width: 540px;
+		font-weight: normal;
+	}
+
+
+    .floatclear {
+    	overflow:hidden;
+    }
+    
+    * html .floatclear {
+    	height:1%;
+    }
+    
+    a{
+        text-decoration:none;
+        font-weight: bold;
+    }
+    
+    a:hover{
+        text-decoration:underline;
+    }
+
+  
+    .footer a{
+        text-decoration:none;
+        color:#999;
+    }
+    
+    .footer a:hover{
+        text-decoration:underline;
+        color:#999;
+    }
+    
+    .footer{
+        margin-top: 4em;
+        clear: both;
+        color: #999;
+    }
+    
+    .tablecell{
+		background-color: #E8E8E3;
+	}
+	
+	pre {
+		background-color:#E8E8E3;
+		border:1px solid gainsboro;
+		color:black;
+		padding:10px;
+		margin-left: 10px;
+	}
+
+
+    #domains1, #domains2{
+        padding-top: 1em; 
+        padding-bottom: 1em; 
+        float: left; 
+        width: 20em;
+    }
+    
+ 

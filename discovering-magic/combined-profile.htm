@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Ident Engine - Combined Profile</title>
+
+<link rel="stylesheet" href="css/demos.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/demo-profiles.css" type="text/css" media="all" />
+
+<script language="javascript" type="text/javascript" src="ident/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-profile-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-ufxtract-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-twitter-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/web-address.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+
+     /*
+     *  Copyright 2009, Glenn Jones
+     *  Licensed under the MIT license.
+     *  http://identengine.com/license/
+     *  More information: http://identengine.com/
+     */
+     
+    
+    // Page functions
+    // -------------------------------------------------
+
+    // Adds click event to form when page loads
+    var doc = jQuery(document);
+    
+    doc.ready(function () {
+    
+        // Wire update notice to re-render content
+        doc.bind('ident:update', renderProfile);
+        doc.bind('ident:update', statusUpdate);
+        doc.bind('ident:error', displayError);	        
+        
+        webAddress.elt = "#webaddress";
+        webAddress.startAnimate();
+        
+        // Adds onclick event to form button
+        jQuery("#subbutton").click(function () {
+        	startDemo()            
+        });
+        
+        // Add on enter keyup event
+        jQuery("#urlinput").keyup(function(e) {
+			if(e.keyCode == 13) {
+				startDemo();
+			}
+		}); 
+
+     });  
+     
+
+	function startDemo(){
+  	 	resetContent(); 
+ 		resetProfiles(); 
+ 		webAddress.stopAnimate();
+ 		ident.reset();      
+ 		
+ 		jQuery('<h2 id="search-heading">Searching for your details</h2>').appendTo('#results');
+    	jQuery('<div id="searching"><img class="spinner" src="images/ajax-loader.gif" /> Looking across the web to find your details...</div>').appendTo('#results');
+
+        var url = jQuery("#urlinput").attr("value");
+        ident.search(url);
+	}
+    
+    
+     function renderProfile(e){
+     
+        resetProfiles();
+          
+        // Sort array of object in order by domain name
+        ident.profiles.sort(ident.sortByDomain);
+        
+        
+        // -----------------------------------    
+            
+        var hCard = ident.combinedProfile;
+
+        var profile = jQuery('<div class="profile"></div>').appendTo('#profiles');
+        var titlegroup = jQuery('<div class="title-group"></div>').appendTo(profile); 
+          
+        // Use top username
+        if(ident.topFormattedName() != '')
+            jQuery('<div class="fn">' + ident.topFormattedName() +  '</div>').appendTo(titlegroup);
+        else
+            if(hCard.fn.value != '' &&  hCard.fn.value != undefined)
+                jQuery('<div class="fn">' + hCard.fn.value +  '</div>').appendTo(titlegroup); 
+                        
+        if( hCard.title ) 
+           if(hCard.title.length > 0 )
+                jQuery('<div class="title">' + hCard.title[0].value +  '</div>').appendTo(titlegroup); 
+            
+        if( hCard.role )
+            jQuery('<div class="role">' + hCard.role +  '</div>').appendTo(titlegroup); 
+            
+        if( hCard.org ) 
+            if(hCard.org.length > 0 )
+                if(hCard.org[0]['organization-name'])
+                    jQuery('<div class="organization-name">' + hCard.org[0]['organization-name'] +  '</div>').appendTo(titlegroup); 
+
+
+        // Render first array item of note - only first 5 sentences of that item    
+        if( hCard.note ){  
+          if( hCard.note.length > 0 ){
+               jQuery('<div class="note">' + ident.sentenceTruncate(hCard.note[0].value,5) +  '</div>').appendTo(profile);  
+          }
+        }
+          
+        if( hCard.adr ) 
+        {               
+         for (var x = 0; x < hCard.adr.length; x++) {
+            var address = hCard.adr[x];
+            var adr = jQuery('<div class="adr"></div>').appendTo(profile); 
+            if( address['extended-address'] )
+                renderArray(adr,address['extended-address'],'','extended-address');
+                
+            if( address['street-address'] )
+                renderArray(adr,address['street-address'],'','street-address');
+                
+            if( address.locality )
+                jQuery('<div class="locality">' + address.locality +  '</div>').appendTo(adr); 
+                
+            if( address.region )
+                jQuery('<div class="region">' + address.region +  '</div>').appendTo(adr); 
+                
+            if( address['postal-code'] )
+                jQuery('<div class="postal-code">' + address['postal-code'] +  '</div>').appendTo(adr); 
+                
+            if( address['country-name'] )
+                jQuery('<div class="country-name">' + address['country-name'] +  '</div>').appendTo(adr);                  
+         }
+        }  
+              
+   
+        if( hCard.tel )
+            renderItemArray(profile,hCard.tel,'','tel');   
+                       
+        if( hCard.email )
+            renderItemArray(profile,hCard.email,'','email'); 
+              
+        if(ident.topDeclaredProfileUrl() != '')
+            jQuery('<div class="url">' + ident.topDeclaredProfileUrl() +  '</div>').appendTo(profile); 
+        else 
+            renderItemArray(profile,hCard.url,'','url');
+                      
+        if( hCard.photo ) 
+            if(hCard.photo.length > 0 )
+                renderPhoto(profile,hCard.photo[0].value); 
+                
+                
+                
+                
+       // Write table        
+       // ------------------------------------- 
+       
+       
+       
+       var table = jQuery('<table class="profile-table"></table>').appendTo('#profiles');
+       var tr = jQuery('<tr></tr>').appendTo(table);
+       jQuery('<td colspan="2"><h2 class="data-sources">Data sources:</h2></span>').appendTo(tr);
+        
+        
+       if(ident.topFormattedName() != '')
+            addRow(ident.topFormattedName(), 'Most common name across sites', '', table );
+       else 
+            if( hCard.fn )          
+                addRow(hCard.fn.value, hCard.fn.domain, hCard.fn.sourceUrl, table );
+       
+       if( hCard.title)
+            if(hCard.title.length > 0 )
+                addRow(hCard.title[0].value, hCard.title[0].domain, hCard.title[0].sourceUrl, table);   
+            
+       if( hCard.role.domain )
+            addRow(hCard.role, hCard.role.domain, hCard.role.sourceUrl, table);   
+            
+       if( hCard.org ) 
+           if(hCard.org.length > 0 )
+                if(hCard.org[0]['organization-name'])
+                    addRow( hCard.org[0]['organization-name'], hCard.org[0].domain, hCard.org[0].sourceUrl, table); 
+
+       if( hCard.note ){  
+          if( hCard.note.length > 0 ){
+               addRow( ident.sentenceTruncate(hCard.note[0].value,5), hCard.note[0].domain, hCard.note[0].sourceUrl, table);  
+          }
+       }  
+       
+       if(hCard.adr[0])
+       {
+           if( hCard.adr[0].domain ){
+              var address = hCard.adr[0];
+              var strAddress ='';
+              
+              if( address['extended-address'] )
+                  for (var x = 0; x < address['extended-address'].length; x++) 
+                        strAddress += address['extended-address'][x] + '<br />'; 
+                        
+              if( address['street-address'] )
+                  for (var x = 0; x < address['street-address'].length; x++) 
+                        strAddress += address['street-address'][x] + '<br />'; 
+               
+                    
+                if( address.locality )
+                    strAddress += address.locality + '<br />'; 
+                    
+                if( address.region )
+                    strAddress += address.region + '<br />'; 
+                    
+                if( address['postal-code'])
+                    strAddress += address['postal-code'] + '<br />'; 
+                    
+                if( address['country-name'])
+                    strAddress += address['country-name'] + '<br />';  
+                    
+                addRow(strAddress, address.domain, address.sourceUrl, table);  
+                                   
+             }
+         }
+         
+       if( hCard.tel ){
+            for (var x = 0; x < hCard.tel.length; x++) {
+                var type = '';
+                if(hCard.tel[x].type != '')
+                    type = ' (' + hCard.tel[x].type + ')';
+                addRow( hCard.tel[x].value + type, hCard.tel[x].domain, hCard.tel[x].sourceUrl, table);  
+            }
+       }  
+                
+       if( hCard.email ){
+            for (var x = 0; x < hCard.email.length; x++) {
+                var type = '';
+                if(hCard.email[x].type != '')
+                    type = ' (' + hCard.email[x].type + ')';
+                addRow( hCard.email[x].value + type, hCard.email[x].domain, hCard.email[x].sourceUrl, table);
+            }
+       } 
+       
+       
+       if(ident.topDeclaredProfileUrl() != ''){
+            addRow( ident.topDeclaredProfileUrl(), 'Most common url across all sites', '', table);
+       }else{         
+            if( hCard.url )
+                for (var x = 0; x < hCard.url.length; x++) 
+                    addRow( hCard.url[x].value, hCard.url[x].domain, hCard.url[x].sourceUrl, table);
+       }
+              
+                       
+        if( hCard.photo )
+            if( hCard.photo.length > 0)
+                addRow('<div><img class="photo2" src="' + hCard.photo[0].value +  '" /></div>', hCard.photo[0].domain, hCard.photo[0].sourceUrl, table);            
+         
+     }
+     
+     
+     function addRow(value1,linktext,url,table){
+        var row = jQuery('<tr></tr>').appendTo(table);    
+        jQuery('<td>' + value1 + '</td>').appendTo(row);
+        if(url != '')    
+            jQuery('<td><a href="' + url  + '">' + linktext + '</a></td>').appendTo(row);  
+        else 
+            jQuery('<td>' + linktext + '</td>').appendTo(row);   
+     }
+     
+     
+     function renderArray( element, array, prefix, classname ){
+        if(ident.isArray(array)){
+            for (var i = 0; i < array.length; i++) {
+                if( prefix )
+                    jQuery('<div class="' + classname +'">' + prefix + ': ' + array[i] +  '</div>').appendTo(element); 
+                else
+                    jQuery('<div class="' + classname +'">' + array[i] +  '</div>').appendTo(element);   
+            }
+        }
+     }
+     
+     function renderItemArray( element, array, prefix, classname ){
+        for (var i = 0; i < array.length; i++) {
+            var type = '';
+            if(array[i].type != '')
+                type = ' (' + array[i].type + ')';
+            
+            if( prefix )
+                jQuery('<div class="' + classname +'">' + prefix + ': ' + array[i].value  + type + '</div>').appendTo(element); 
+            else
+                jQuery('<div class="' + classname +'">' + array[i].value + type + '</div>').appendTo(element);   
+        }
+     }
+     
+    function renderPhoto( element, url ){
+        jQuery('<div><img class="photo" src="' + url +  '" /></div>').appendTo(element); 
+        
+     }
+     
+    
+    
+    var alertTimerId;
+     
+     
+    function statusUpdate(e, type){
+        clearTimeout (alertTimerId);
+        alertTimerId = setTimeout ("delayedStatusUpdate()", 500);      
+    }
+    
+    function delayedStatusUpdate(){
+        if(ident.isSearching()){
+           jQuery('#searching').html('<img class="spinner" src="images/ajax-loader.gif" /> Looking across the web to find your details...');
+        }else{
+           jQuery('#searching').css({'display' : 'none'});
+           jQuery('#search-heading').css({'display' : 'none'});
+        }  
+    }
+    
+    function displayError(e, type){
+        resetProfiles();
+        jQuery('#searching').html('<h2 class="error">' + type + '</h2>');
+        jQuery('#searching').css({'display' : 'block'});
+        jQuery('#search-heading').css({'display' : 'none'});
+     }
+
+
+    // Clears the all contents
+    function resetContent(){
+   		 jQuery('#results').html('');
+    }
+    
+    // Clears profiles
+    function resetProfiles(){
+    	jQuery('#profiles').html('');
+    }
+
+
+
+
+</script>
+
+</head>
+
+<body>
+
+	<div class="content">
+		<div class="centered">
+			
+		<h1>Ident Engine - Combined Profile Demo</h1>
+		
+		<noscript id="no-javascript-error"><h2 class="error">Sorry but you need to have JavaScript running to use this demo</h2></noscript>
+
+		<p class="form-text">Please enter the web address of a profile page. This could be on Twitter, 
+		FriendsFeed, Flickr, Digg or any other web profile page.</p>
+		
+		<div>
+			<label for="urlinput">Web address </label>&nbsp;<input id="urlinput" name="url" value="http://friendfeed.com/glennjones" size=50 type="text" />&nbsp;
+				<input type="button" value="Find"  id="subbutton" class="button"/> 
+			<div id="webaddress"></div>
+		</div>
+
+		<div id="results"></div>
+		<div class="floatclear" style="clear:both" id="profiles"></div>
+		
+		</div>
+	</div>
+	
+	
+	<div class="notes"> 
+		<p>Notes:<br />The interface uses the <a href="http://identengine.com/">Ident Engine JavaScript library</a>. It in turn makes call's 
+		to Google’s Social Graph API, Yahoo’s YQL API and UfXtract microformats parser API. The content is parsed from micoformats, RSS and Atom feeds.</p>
+		<p>The nature of this type of technique means you will get the odd false relationship link. This can ripple through the data collection and bring back information for someone completely different.</p>
+	</div>
+
+    <div class="footer">
+		<div class="centered">
+			<div class="copyright">© Copyright Glenn Jones 2009. All Rights Reserved.</div>
+		</div>
+	</div>
+
+</body>
+</html>

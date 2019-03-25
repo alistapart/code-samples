@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Ident Engine - Profiles</title>
+
+<link rel="stylesheet" href="css/demos.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/demo-profiles.css" type="text/css" media="all" />	
+
+<script language="javascript" type="text/javascript" src="ident/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-profile-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-ufxtract-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-twitter-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/web-address.js"></script>
+
+
+<script language="javascript" type="text/javascript">
+
+     /*
+     *  Copyright 2009, Glenn Jones
+     *  Licensed under the MIT license.
+     *  http://identengine.com/license/
+     *  More information: http://identengine.com/
+     */
+    
+    // Page functions
+    // -------------------------------------------------
+
+    // Adds click event to form when page loads
+    var doc = jQuery(document);
+    doc.ready(function () {
+    
+         // Wire update notice to re-render content
+        doc.bind('ident:update', renderProfile);
+        doc.bind('ident:update', statusUpdate);
+        doc.bind('ident:error', displayError);
+        
+        webAddress.elt = "#webaddress";
+        webAddress.startAnimate();
+
+         // Adds onclick event to form button
+        jQuery("#subbutton").click(function () {
+        	startDemo()            
+        });
+        
+        // Add on enter keyup event
+        jQuery("#urlinput").keyup(function(e) {
+			if(e.keyCode == 13) {
+				startDemo();
+			}
+		}); 
+
+     });  
+     
+     
+        function startDemo(){
+            resetContent();
+            webAddress.stopAnimate();    
+                 
+          	jQuery('<h2 id="search-heading">Searching for your profiles</h2>').appendTo('#results');
+        	jQuery('<div id="searching"><img class="spinner" src="images/ajax-loader.gif" /> Looking across the web to find your profiles.</div>').appendTo('#results');
+
+        
+            var url = jQuery("#urlinput").attr("value");
+            ident.search(url);
+
+	}
+
+    
+     function renderProfile(e){
+
+         
+         resetProfiles();
+         
+         // Sort array of object in order by domain name
+         ident.profiles.sort(ident.sortByDomain);
+        
+		if(ident.profiles.length > 0)
+			jQuery('#search-heading').html("Searching for your profiles - Found " + ident.profiles.length);
+
+         var half = 0;
+         if(ident.profiles.length > 0)
+            half = ident.profiles.length/2;
+              
+         
+         for (var i = 0; i < ident.profiles.length; i++) {
+              var hCard = ident.profiles[i];
+         
+              // Break into 2 columns
+              var profile;
+              if( i < half )
+                    profile = jQuery('<div class="profile"></div>').appendTo('#result-column1');
+              else
+                    profile = jQuery('<div class="profile"></div>').appendTo('#result-column2');  
+                    
+              var titlegroup = jQuery('<div class="title-group"></div>').appendTo(profile); 
+              jQuery('<div class="domain"><img class="icon" src="ident/icons/' + hCard.name.replace(/\s/g, '').replace('.','').replace('-','')  +  '.png" /> <a href="' + hCard.sourceUrl + '">' + hCard.name +  '</a></div>').appendTo(titlegroup); 
+              jQuery('<div class="fn">' + hCard.fn +  '</div>').appendTo(titlegroup); 
+                                    
+
+              if( hCard.title )
+                    renderArray(titlegroup,hCard.title, '', 'title');
+                    
+              if( hCard.role )
+                    renderArray(titlegroup,hCard.role, '', 'role');
+                    
+              if( hCard.org ) 
+              {  
+                 for (var x = 0; x < hCard.org.length; x++) {
+                    if( hCard.org[x]['organization-name'] ){
+                        jQuery('<div class="organization-name">' + hCard.org[x]['organization-name'] +  '</div>').appendTo(titlegroup); 
+                        if(hCard.org[x]['organization-unit']){
+                            for (var y = 0; y < hCard.org[x]['organization-unit'].length; y++) {
+                                jQuery('<div class="organization-unit">' + hCard.org[x]['organization-unit'][y] +  '</div>').appendTo(titlegroup); 
+                            }
+                        }
+                    }
+                 } 
+              }     
+              
+              // Render first array item of note - only first 5 sentences of that item    
+              if( hCard.note ){  
+                  if( hCard.note.length > 0 ){
+                       jQuery('<div class="note">' + ident.sentenceTruncate(hCard.note[0],5) +  '</div>').appendTo(profile);  
+                  }
+              }
+          
+              if( hCard.adr ) 
+              {               
+                 for (var x = 0; x < hCard.adr.length; x++) {
+                    var address = hCard.adr[x];
+                    if( address['extended-address'] )
+                        renderArray(profile,address['extended-address'], '', 'extended-address');
+                        
+                    if( address['street-address'] )
+                        renderArray(profile,address['street-address'], '', 'street-address');
+                        
+                    if( address.locality )
+                        jQuery('<div class="locality">' + address.locality +  '</div>').appendTo(profile); 
+                        
+                    if( address.region )
+                        jQuery('<div class="region">' + address.region +  '</div>').appendTo(profile); 
+                        
+                    if( address['postal-code'] )
+                        jQuery('<div class="postal-code">' + address['postal-code'] +  '</div>').appendTo(profile); 
+                        
+                    if( address['country-name'] )
+                        jQuery('<div class="country-name">' + address['country-name'] +  '</div>').appendTo(profile);                  
+                 }
+              }  
+              
+              if( hCard.url )
+                    renderArray(profile,hCard.url, '', 'url');
+                    
+              if( hCard.email )
+                    renderItemArray(profile ,hCard.email , '', 'email');
+      
+              if( hCard.tel )
+                    renderItemArray(profile, hCard.tel, '', 'tel');
+                              
+                              
+              if( hCard.photo )
+                    renderPhotoArray(profile,hCard.photo);    
+                    
+              if( hCard.logo )
+                    renderPhotoArray(profile,hCard.logo);   
+              
+         }
+     }
+     
+     function renderArray( element, array, prefix, classname ){
+        for (var i = 0; i < array.length; i++) {
+            if( prefix )
+                jQuery('<div class="' + classname +'">' + prefix + ': ' + array[i] +  '</div>').appendTo(element); 
+            else
+                jQuery('<div class="' + classname +'">' + array[i]+  '</div>').appendTo(element);   
+        }
+     }
+     
+     function renderItemArray( element, array, prefix, classname ){
+        for (var i = 0; i < array.length; i++) {
+            if( prefix )
+                jQuery('<div class="' + classname +'">' + prefix + ': ' + array[i].value + ' (' + array[i].type + ')</div>').appendTo(element); 
+            else
+                jQuery('<div class="' + classname +'">' + array[i].value + '(' + array[i].type + ')</div>').appendTo(element);   
+        }
+     }
+     
+     function renderPhotoArray( element, array ){
+        for (var i = 0; i < array.length; i++) {
+            jQuery('<div><img width="48" hieght="48" class="photo" src="' + array[i] +  '" /></div>').appendTo(element); 
+        }
+     }
+     
+    
+    var alertTimerId;
+     
+    function statusUpdate(e, type){
+        if(type != null){
+            if(type == 'error')
+                jQuery('#searching').html('Sorry there was a problem with your request.');
+        }
+        clearTimeout (alertTimerId);
+        alertTimerId = setTimeout ("delayedStatusUpdate()", 500);
+               
+    }
+    
+    function delayedStatusUpdate(){
+        if(ident.isSearching()){
+            jQuery('#searching').html('<img class="spinner" src="images/ajax-loader.gif" /> Looking across the web to find your profiles...');
+        }else{
+           jQuery('#searching').css({'display' : 'none'});
+           jQuery('#search-heading').css({'display' : 'none'});
+
+        }
+          
+    }
+    
+    
+    function displayError(e, type){
+        resetContent();
+        jQuery('<h2 id="search-heading"></h2>').appendTo('#results');
+        jQuery('<div id="searching"></div>').appendTo('#results');
+        
+        jQuery('#searching').html('<h2 class="error">' + type + '</h2>');
+        jQuery('#searching').css({'display' : 'block'});
+        jQuery('#search-heading').css({'display' : 'none'});
+     }
+
+
+    // Clears the all contents
+    function resetContent(){
+   		 jQuery('#results').html('');
+    }
+    
+    // Clears profiles
+    function resetProfiles(){
+        jQuery('#result-column1').html('');
+        jQuery('#result-column2').html('');
+
+    }
+
+</script>
+
+</head>
+
+<body>
+
+
+	<div class="content">
+		<div class="centered">
+
+		<h1>Profiles Discovery Demo</h1>
+		
+		<noscript id="no-javascript-error"><h2 class="error">Sorry but you need to have JavaScript running to use this demo</h2></noscript>
+
+		<p class="form-text">Please enter the web address of a profile page. This could be on Twitter, 
+		FriendsFeed, Flickr, Digg or any other web profile page.</p>
+		
+		<div>
+			<label for="urlinput">Web address</label>&nbsp;<input id="urlinput" name="url" value="http://www.flickr.com/people/glennjonesnet/" size=50 type="text" />&nbsp;
+				<input type="button" value="Find"  id="subbutton" class="button"/>
+			<div id="webaddress"></div>
+		</div>
+		
+		
+		<div id="results"></div>
+		<div class="columns floatclear">
+		    <div id="result-column1"></div>
+		    <div id="result-column2"></div>
+		</div>
+		
+				
+		</div>
+	</div>
+	
+	<div class="notes"> 
+		<p>Notes:<br />The interface uses the <a href="http://identengine.com/">Ident Engine JavaScript library</a>. It in turn makes call's 
+		to Google’s Social Graph API, Yahoo’s YQL API and UfXtract microformats parser API. The content is parsed from micoformats, RSS and Atom feeds.</p>
+		<p>The nature of this type of technique means you will get the odd false relationship link. This can ripple through the data collection and bring back information for someone completely different.</p>
+	</div>
+
+
+    <div class="footer">
+		<div class="centered">
+			<div class="copyright">© Copyright Glenn Jones 2009. All Rights Reserved.</div>
+		</div>
+	</div>
+
+</body>
+</html>

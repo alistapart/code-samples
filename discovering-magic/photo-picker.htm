@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Ident Engine - Photo Selector</title>
+
+<link rel="stylesheet" href="css/demos.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/demo-photo-picker.css" type="text/css" media="all" />
+
+<script language="javascript" type="text/javascript" src="ident/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-profile-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-ufxtract-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-twitter-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/web-address.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+     /*
+     *  Copyright 2009, Glenn Jones
+     *  Licensed under the MIT license.
+     *  http://identengine.com/license/
+     *  More information: http://identengine.com/
+     */
+    
+    // Page functions
+    // -------------------------------------------------
+    var hasSelected = false;
+    var imageNumber = 0;
+    var photoCollection = new Array();
+
+    // Adds click event to form when page loads
+    var doc = jQuery(document);
+    doc.ready(function () {
+    
+  		// Wire page level rendering functions
+        doc.bind('ident:update', renderProfile);
+        doc.bind('ident:update', statusUpdate);
+        doc.bind('ident:error', displayError);
+        
+        webAddress.elt = "#webaddress";
+        webAddress.startAnimate();
+
+           
+        // Adds onclick event to form button
+        jQuery("#subbutton").click(function () {
+        	startDemo()            
+        });
+        
+        // Add on enter keyup event
+        jQuery("#urlinput").keyup(function(e) {
+			if(e.keyCode == 13) {
+				startDemo();
+			}
+		}); 
+
+     });  
+     
+     
+     
+    function startDemo(){
+      resetAllContent();
+            webAddress.stopAnimate();    
+        
+        	if( document.getElementById("#searching") == null){
+	            jQuery('<h2 id="search-heading">Searching for your photos</h2>').appendTo('#results');
+	            jQuery('<div id="searching"><img class="spinner" src="images/ajax-loader.gif" /> Looking across the web for photos of you...</div>').appendTo('#results');
+            }
+            
+            var foundPhotos = jQuery('<div id="found-photos" class="floatclear"></div>').appendTo('#results');
+            jQuery('<p id="selection-details">Selected photo url: <span id="photourl"></span></p>').appendTo('#results'); 
+               
+            var url = jQuery("#urlinput").attr("value");
+            ident.search(url);
+	}
+
+     
+     
+    
+     function renderProfile(e){
+     
+        if(hasSelected == false)
+        {
+             resetContent();
+             
+             // Sort array of object in order by domain name
+             ident.profiles.sort(ident.sortByDomain);
+
+             
+             // Loop through collection of found hCards
+             for (var i = 0; i < ident.profiles.length; i++) {
+                var hCard = ident.profiles[i];
+             
+                
+                if( hCard.photo || hCard.logo ){
+                
+                       var foundPhoto = findPhotoInCollection(hCard.sourceURL);
+                       
+                       if(foundPhoto == null){
+                             
+	                       // Find photo and create an img element 
+	                       if(hCard.photo){      
+	                           if( hCard.photo.length){  
+	                               for (var x = 0; x < hCard.photo.length; x++) { 
+	                               		imageNumber ++;
+	                               		foundPhoto = jQuery('<div class="found-photo"></div>');
+	                               		foundPhoto.sourceUrl = hCard.sourceUrl;
+	                                   	jQuery('<div><img class="photo" title="Photo from ' + hCard.domain + '" width="48" height="48"  src="' + hCard.photo[x] +  '" /></div>').appendTo(foundPhoto);
+	                               }
+	                           }
+	                       }
+	                       
+	                       // Find logo and create an img element - some site misuse this property for a photo  
+	                       if(hCard.logo){
+	                           if(hCard.logo.length){
+	                               for (var x = 0; x < hCard.logo.length; x++) { 
+	                               		imageNumber ++;
+	                               		foundPhoto = jQuery('<div class="found-photo"></div>');
+	                               		foundPhoto.sourceUrl = hCard.sourceUrl;
+	                                   	jQuery('<div><img class="photo" title="Logo from ' + hCard.domain + '" width="48" height="48"  src="' + hCard.logo[x] +  '" /></div>').appendTo(foundPhoto);
+	                               }
+	                           }
+	                       }
+	                       
+	                       if(foundPhoto != null){
+		                       // Add to collection of photo nodes
+	                       		photoCollection[photoCollection.length] = foundPhoto;
+	                       		jQuery(foundPhoto).appendTo('#found-photos');  	
+	                       		
+	                       
+		                        // Add the icon for the domain
+		                        jQuery('<img class="icon" title="Photo from ' + hCard.domain + '" src="ident/icons/' + hCard.name.replace(/\s/g, '').replace('.','').replace('-','')  +  '.png" />').appendTo(foundPhoto); 
+		                                
+		                       
+		                       // Add rollover background colour change
+		                       jQuery(foundPhoto).hover(
+		                          function () {
+		                            jQuery(this).css({'background-color' : '#666'});
+		                            //jQuery(this).fadeTo(10,1.0);
+		                          }, 
+		                          function () {
+		                            jQuery(this).css({'background-color' : 'transparent'});
+		                          }
+		                        );
+		                        jQuery(foundPhoto).click(function () {
+		                           
+		                            hasSelected = true; 
+		                            
+		                            // Get the src attribute from image element with a class 'photo'
+		                            var src = jQuery(".photo", this).attr("src");
+		                            jQuery("#photourl").html(src); 
+		                            //jQuery("#selection-details").css({'display' : 'block'});
+		                            
+		                            // Remove events and change class of pick photo 
+		                            jQuery(this).unbind('mouseenter mouseleave click');
+		                            jQuery(this).css({'background-color' : 'transparent'});
+		                            jQuery(this).removeClass();
+		                            jQuery(this).addClass("selected-photo");
+		
+		                            // Chain together and fade then removal of other options
+		                            jQuery(".found-photo").fadeTo(300, 0.0, 
+		                                function(){  
+		                                    jQuery(this).css("display","none");
+		                                    jQuery("#searching").css({'display' : 'none'});   
+		                                }
+		                            )
+		                            jQuery('#search-heading').html('Selected photo');
+		                            
+		                            
+		
+		                        });
+	                       
+	                       }
+	                       
+	                       
+                       }else{
+                       		// Re append the node back into DOM
+                       		jQuery(foundPhoto).appendTo('#found-photos');  	
+                       }
+                       
+                               
+                  }      
+             } 
+         }
+     }
+     
+     // Finds the DOM node for a photo if its already been created
+     function findPhotoInCollection(sourceURL){
+     	var foundNode = null;
+     	for (var i = 0; i < photoCollection.length.length; i++) {
+     		if(photoCollection[i].sourceURL == sourceURL){
+     			foundNode = photoCollection[i];
+     			break;
+     		}
+     	}
+     	return foundNode;
+     }
+     
+     
+    var alertTimerId;
+     
+    function statusUpdate(e, type){
+        if(type != null){
+            if(type == 'error')
+                jQuery('#searching').html('Sorry there was a problem with your request.');
+        }
+        clearTimeout (alertTimerId);
+        alertTimerId = setTimeout ("delayedStatusUpdate()", 500);
+               
+    }
+    
+    function delayedStatusUpdate(){
+        if(ident.isSearching()){
+            jQuery('#searching').html('<img class="spinner" src="images/ajax-loader.gif" /> Looking across the web for photos of you...');
+        }else{
+            // Get given name
+            var name = ident.topFormattedName();
+            var givenName = '';
+            if( name != '' ){
+                parts = name.split(' ');
+                if(parts.length > 0)
+                    givenName = parts[0];
+            }
+            
+            if( imageNumber > 0 ){
+                jQuery('#search-heading').html('Please click on your best photo ' + givenName );
+            }else{
+                jQuery('#search-heading').html('Sorry ' + givenName + ' could not find any pictures of you');
+            }
+            jQuery('#searching').css({'display' : 'none'});
+        }
+    }
+    
+    function displayError(e, type){
+        resetAllContent();
+        jQuery('<h2 id="search-heading"></h2>').appendTo('#results');
+        jQuery('<div id="searching"></div>').appendTo('#results');
+        
+        jQuery('#searching').html('<h2 class="error">' + type + '</h2>');
+        jQuery('#searching').css({'display' : 'none'});
+        jQuery('#search-heading').css({'display' : 'block'});
+     }
+
+    
+    // Clear the debug html
+    function resetContent(){
+        jQuery('#found-photos').html('');
+    }
+
+    function resetAllContent(){
+        hasSelected = false;
+        imageNumber = 0;
+        jQuery('#results').html('');
+    }
+
+
+
+</script>
+
+</head>
+
+<body>
+
+
+	<div class="content">
+		<div class="centered">
+
+		<h1>Ident Engine - Photo Picker Demo</h1>
+		
+		<noscript id="no-javascript-error"><h2 class="error">Sorry but you need to have JavaScript running to use this demo</h2></noscript>
+
+		<p class="form-text">Please enter the web address of a profile page. This could be on Twitter, 
+		FriendsFeed, Flickr, Digg or any other web profile page.</p>
+		
+		<div>
+			<label for="urlinput">Web address</label>&nbsp;<input id="urlinput" name="url" value="http://twitter.com/glennjones" size=50 type="text" />&nbsp;
+				<input type="button" value="Find"  id="subbutton" class="button"/>
+			<div id="webaddress"></div>
+		</div>
+		
+		<div class="floatclear" style="clear:both">
+			<div id="results"></div>
+		</div>
+		
+		</div>
+	</div>
+	
+	
+	<div class="notes"> 
+		<p>Notes:<br />The interface uses the <a href="http://identengine.com/">Ident Engine JavaScript library</a>. It in turn makes call's 
+		to Google’s Social Graph API, Yahoo’s YQL API and UfXtract microformats parser API. The content is parsed from micoformats, RSS and Atom feeds.</p>
+		<p>The nature of this type of technique means you will get the odd false relationship link. This can ripple through the data collection and bring back information for someone completely different.</p>
+	</div>
+
+	
+
+    <div class="footer">
+		<div class="centered">
+			<div class="copyright">© Copyright Glenn Jones 2009. All Rights Reserved.</div>
+		</div>
+	</div>
+
+</body>
+</html>

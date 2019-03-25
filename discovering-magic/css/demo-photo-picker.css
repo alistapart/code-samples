@@ -1,0 +1,28 @@
+﻿	
+	#found-photos {
+		height: 80px;
+		margin-right: 2em;
+		margin-bottom: 10em;
+	}
+		
+	.found-photo {
+		position: relative;
+		padding: 3px;
+		margin: 7px;
+		float: left;
+	}
+		
+	.selected-photo {
+		position: relative;
+	}
+	
+	.photo {
+		border: 3px double #CCCCCC;
+	}
+	
+	.icon {
+		position: absolute;
+		z-index: 100;
+		top: 40px;
+		left: 40px;
+	}

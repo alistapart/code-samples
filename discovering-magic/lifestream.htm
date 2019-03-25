@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Ident Engine - Lifestream</title>
+
+<link rel="stylesheet" href="css/demos.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/demo-lifestream.css" type="text/css" media="all" />
+
+<script language="javascript" type="text/javascript" src="ident/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-profile-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-content-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-ufxtract-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-yql-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/ident-twitter-parser-0.1.js"></script>
+<script language="javascript" type="text/javascript" src="ident/web-address.js"></script>
+
+
+<script language="javascript" type="text/javascript">
+
+     /*
+     *  Copyright 2009, Glenn Jones
+     *  Licensed under the MIT license.
+     *  http://identengine.com/license/
+     *  More information: http://identengine.com/
+     */
+    
+    // Page functions
+    // -------------------------------------------------
+   
+    var days = 60; // Number of days of content to show
+
+    // Adds click event to form when page loads
+    var doc = jQuery(document);
+    doc.ready(function () {
+    
+        // Wire update notice to render page content
+        doc.bind('ident:update', statusUpdate);
+        doc.bind('ident:update', headingUpdate);
+        doc.bind('ident:error', displayError);
+        
+        webAddress.elt = "#webaddress";
+        webAddress.startAnimate();
+        
+         
+                // Adds onclick event to form button
+        jQuery("#subbutton").click(function () {
+        	startDemo()            
+        });
+        
+        // Add on enter keyup event
+        jQuery("#urlinput").keyup(function(e) {
+			if(e.keyCode == 13) {
+				startDemo();
+			}
+		}); 
+
+      });  
+     
+     
+         function startDemo(){
+         ident.reset();
+        	resetAllContent();
+        	webAddress.stopAnimate();    
+        
+          	jQuery('<h2 id="search-heading">Searching for your content</h2>').appendTo('#results');
+        	jQuery('<div id="searching"><img class="spinner" src="images/ajax-loader.gif" /> Looking across the web to find your content.</div>').appendTo('#results');
+            
+            var url = jQuery("#urlinput").attr("value");
+            ident.search(url);
+	}
+
+     
+     
+     
+    function headingUpdate(){
+        jQuery('#search-heading').html("Searching for your profiles - Found " + ident.identities.length);
+    }
+    
+    
+    var alertTimerId;
+     
+     
+    function statusUpdate(e, type){
+        if(type != null){
+            if(type == 'content-added')
+                renderContent();
+                    
+        }
+        clearTimeout (alertTimerId);
+        alertTimerId = setTimeout ("delayedStatusUpdate()", 500);
+    } 
+    
+    
+    function delayedStatusUpdate(){
+         if(ident.isSearching()){
+            jQuery('#searching').html('<img class="spinner" src="images/ajax-loader.gif" /> Looking across the web to find your content...');
+        }else{
+           renderProfiles();
+           jQuery('#search-heading').html("Loading content...");
+           loadContent();
+        }
+    }
+    
+    
+    function loadContent(){ 
+        // A number of data services that should make a good lifestream
+        ident.findContent('twitter.com', 'Status', 'hAtom' );
+        ident.findContent('ident.ca', 'Status', 'hAtom' );  
+        ident.findContent('flickr.com', 'Images', 'Atom' ); 
+        ident.findContent('del.icio.us', 'Bookmarks', 'Rss'); 
+        ident.findContent('upcoming.yahoo.com', 'Events', 'Rss' );
+        ident.findContent('last.fm', 'Activity', 'Rss' );
+        ident.findContent('ffffound.com', 'Images', 'Rss' );
+        ident.findContent('tumblr.com', 'Lifestream', 'Rss' );
+        ident.findContent('backtype.com', 'Activity', 'Rss' );
+        ident.findContent('vimeo.com', 'Video', 'Rss' );
+    }
+     
+     
+    function renderProfiles(){
+    
+     
+        jQuery('#profiles').html('');  
+            
+        var hCard = ident.combinedProfile;
+
+        var profile = jQuery('<div class="profile"></div>').appendTo('#profiles');
+        var titlegroup = jQuery('<div class="title-group"></div>').appendTo(profile); 
+        
+        if( hCard.photo ) 
+            if(hCard.photo.length > 0 )
+                renderPhoto(profile,hCard.photo[0].value); 
+          
+        // Use top username
+        if(ident.topFormattedName() != '')
+            jQuery('<div class="fn">' + ident.topFormattedName() +  '</div>').appendTo(titlegroup);
+        else
+            jQuery('<div class="fn">' + hCard.fn +  '</div>').appendTo(titlegroup); 
+                        
+        if( hCard.title ) 
+           if(hCard.title.length > 0 )
+                    jQuery('<div class="title">' + hCard.title[0].value +  '</div>').appendTo(titlegroup); 
+            
+        if( hCard.role )
+            jQuery('<div class="role">' + hCard.role.value +  '</div>').appendTo(titlegroup); 
+            
+        if( hCard.org ) 
+            if(hCard.org.length > 0 )
+                if(hCard.org[0]['organization-name'])
+                    jQuery('<div class="organization-name">' + hCard.org[0]['organization-name'] +  '</div>').appendTo(titlegroup); 
+
+
+        // Render first array item of note - only first 5 sentences of that item    
+        if( hCard.note ){  
+          if( hCard.note.length > 0 ){
+               jQuery('<div class="note">' + ident.sentenceTruncate(hCard.note[0].value,5) +  '</div>').appendTo(profile);  
+          }
+        }
+          
+        if( hCard.adr ) 
+        {
+            var adr = jQuery('<div class="adr"></div>').appendTo(profile);                
+            for (var x = 0; x < hCard.adr.length; x++) {
+                var address = hCard.adr[x];
+                if( address['extended-address'] )
+                    renderArray(adr,address['extended-address']);
+                    
+                if( address['street-address'] )
+                    renderArray(adr,address['street-address']);
+                    
+                if( address.locality )
+                    jQuery('<div class="locality">' + address.locality +  '</div>').appendTo(adr); 
+                    
+                if( address.region )
+                    jQuery('<div class="region">' + address.region +  '</div>').appendTo(adr); 
+                    
+                if( address['postal-code'] )
+                    jQuery('<div class="postal-code">' + address['postal-code'] +  '</div>').appendTo(adr); 
+                    
+                if( address['country-name'] )
+                    jQuery('<div class="country-name">' + address['country-name'] +  '</div>').appendTo(adr);                  
+            }
+        }  
+              
+   
+        if( hCard.tel )
+            renderItemArray(profile,hCard.tel);   
+                       
+        if( hCard.email )
+            renderItemArray(profile,hCard.email); 
+              
+        if(ident.topDeclaredProfileUrl() != '')
+            jQuery('<div class="url"><a href="' + ident.topDeclaredProfileUrl() +  '">' + ident.topDeclaredProfileUrl() +  '</a></div>').appendTo(profile); 
+        else 
+            renderItemArray(profile,hCard.url);
+                      
+  
+        if(ident.identities.length > 0){
+             var ul = jQuery('<ul class="profile-list"></ul>').appendTo('.profile'); 
+             for (var x = 0; x < ident.identities.length; x++) {
+                if(ident.identities[x].name != '')
+                    jQuery('<li><a href="' + ident.identities[x].profileUrl  + '"><img width="16" class="icon" src="' + ident.identities[x].iconUrl +  '" />' + ident.identities[x].name + '</a> <span class="username">(' + ident.identities[x].username + ')</span></li>').appendTo(ul);   
+                else
+                    jQuery('<li><a href="' + ident.identities[x].profileUrl  + '"><img width="16" class="icon" src="' + ident.identities[x].iconUrl +  '" />' + ident.identities[x].domain + '</a></li>').appendTo(ul); 
+             }
+         } 
+                 
+    }
+    
+    
+    // Sorts objects into order using the name property
+    ident.sortByDate = function(a, b) {
+        var x = a['published-datetime'];
+        var y = b['published-datetime'];
+        return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+    };
+    
+    
+    function renderContent(){
+   
+        jQuery('#results').html('');
+        jQuery('#searching').css({'display' : 'none'});
+        jQuery('#search-heading').css({'display' : 'none'});
+        
+        /*
+        // Refresh button for content - needs more work
+        
+        var refresh = jQuery('<input id="refresh" type="button" value="Refresh lifestream" />').appendTo('#results');
+        jQuery(refresh).click(function () {
+            // Forced clear down of content data
+            jQuery('#results').html('');
+            ident.entries = new Array();
+            ident.events = new Array();
+            ident.relCollection = new Array();
+            ident.history = new Array();
+            loadContent();
+        });
+        */
+
+        // Sort the collection of domains into order  
+        ident.entries.sort(ident.sortByDate);    
+
+        // Create of cutoff date
+        var cutoff = new Date();
+        cutoff.setDate(cutoff.getDate()-days);
+       
+         for (var i = 0; i < ident.entries.length; i++) {
+            
+             if(ident.entries[i]['published-datetime'] > cutoff)
+             {
+
+                var div = jQuery('<div class="item"></div>').appendTo('#results');
+                jQuery('<div><img width="16" title="' + ident.entries[i].name + '" class="icon" src="ident/icons/' + ident.entries[i].name.replace(/[.,-, ]/g,'')  +  '.png" /></div>').appendTo(div);   
+                var item = ident.entries[i];
+
+                switch (item.type){
+                    case 'Status':
+                        renderStatus( item, div );
+                        break;
+                    case 'Images':
+                        renderItem( item, div );
+                        break;
+                    case 'Bookmarks':
+                        renderBookmarks( item, div );
+                        break;    
+                    case 'Events':
+                        renderEvents( item, div );
+                        break;
+                   case 'Activity':
+                        renderActivity( item, div );
+                        break;
+
+                    default:
+                        renderItem( item, div )    
+                }
+            }
+        }
+    }
+    
+    
+    // Renders a standard feed item
+    function renderItem( item, div ){
+        jQuery(div).addClass( 'standard' );
+    
+        if(item['entry-title']){
+            if(item.link)
+                jQuery('<div class="entry-title"><a href="' + item.link + '">' + item['entry-title'] + '</a></div>').appendTo( div );
+            else
+                jQuery('<div class="entry-title">' + item['entry-title'] + '</div>').appendTo( div );
+        }
+        
+        if(item['entry-content']){
+            if(item['entry-title'] != item['entry-content'])
+                jQuery('<div class="entry-content">' + addHyperlinks(item['entry-content']) + '</div>').appendTo( div );
+        }
+        
+        if(item['published-datetime'])
+            jQuery('<div class="published">' + item['published-datetime'].toLocaleDateString() + ' - ' + item['published-datetime'].toLocaleTimeString() + '</div>').appendTo(div);
+         
+    }
+    
+     
+    // Renders a status item Twitter / Identi.ca etc
+    function renderStatus( item, div ){
+        jQuery(div).addClass( 'status' );
+    
+        var body = '' 
+        if(item['entry-title'])
+            body = item['entry-title'];
+        else
+           body = item['entry-content'];    
+        
+        body = addHyperlinks( body );   
+        body = addStatusAccountLinks( body, 'http://' + item.domain + '/' );
+          
+        
+        jQuery('<div class="entry-title">' + body + '</div>').appendTo( div );
+       
+        if(item['published-datetime'])
+            jQuery('<div><a class="published" href="' + item.bookmark.link + '">' + item['published-datetime'].toLocaleDateString() + ' - ' + item['published-datetime'].toLocaleTimeString() + '</a></div>').appendTo(div);
+         
+    }
+    
+    
+    function renderBookmarks( item, div ){
+        renderItem( item, div );
+        jQuery(div).addClass( 'bookmark' );
+    }
+    
+    
+    function renderEvents( item, div ){
+        renderItem( item, div );
+        jQuery(div).addClass( 'event' );
+    }
+    
+    
+   function renderActivity( item, div ){
+        renderItem( item, div );
+        jQuery(div).addClass( 'activity' );
+    }
+       
+
+    function addHyperlinks( text ){
+        if(ident.isArray(text)){
+            if(text.length > 0){
+                text = text[0];
+            }else{
+                text= '';
+            }
+        }
+           
+        if( text != ''){
+            parts = text.split(' ');
+            for(var x = 0; x <= parts.length-1; x++){
+                if(parts[x].indexOf('http://') == 0)
+                    parts[x] = '<a href="' + parts[x] + '">' + parts[x] + '</a>';
+            }
+            text = parts.join(' ');
+        }
+        return text;
+    }
+    
+    
+    function addStatusAccountLinks( text, url ){
+        if(ident.isArray(text))
+            text = text[0];
+            
+        if( text != ''){
+            parts = text.split(' ');
+            for(var x = 0; x <= parts.length-1; x++){
+                if(parts[x].indexOf('@') == 0){
+                    if( parts.length > x ){
+                        parts[x+1] = '<a href="'+ url + parts[x+1] + '">' + parts[x] + parts[x+1] + '</a>';
+                        parts[x] = '';
+                    }
+                }
+            }
+            text = parts.join(' ');
+        }
+        return text;
+    }
+    
+    
+    function renderArray( element, array, prefix, classname ){
+        if(ident.isArray(array)){
+            for (var i = 0; i < array.length; i++) {
+                if( prefix )
+                    jQuery('<div class="' + classname +'">' + prefix + ': ' + array[i] +  '</div>').appendTo(element); 
+                else
+                    jQuery('<div class="' + classname +'">' + array[i] +  '</div>').appendTo(element);   
+            }
+        }
+     }
+     
+     
+     function renderItemArray( element, array, prefix, classname ){
+        for (var i = 0; i < array.length; i++) {
+            var type = '';
+            if(array[i].type != '')
+                type = ' (' + array[i].type + ')';
+            
+            if( prefix )
+                jQuery('<div class="' + classname +'">' + prefix + ': ' + array[i].value  + type + '</div>').appendTo(element); 
+            else
+                jQuery('<div class="' + classname +'">' + array[i].value + type + '</div>').appendTo(element);   
+        }
+     }
+     
+     
+    function renderPhoto( element, url ){
+        jQuery('<div><img class="photo" src="' + url +  '" /></div>').appendTo(element); 
+
+    }
+    
+    
+    function displayError(e, type){
+        resetAllContent();
+        jQuery('<h2 id="search-heading"></h2>').appendTo('#results');
+        jQuery('<div id="searching"></div>').appendTo('#results');
+        
+        jQuery('#searching').html('<h2 class="error">' + type + '</h2>');
+        jQuery('#searching').css({'display' : 'block'});
+        jQuery('#search-heading').css({'display' : 'none'});
+     }
+
+     
+
+    // Clear the debug html
+    function resetContent(){
+        //jQuery('#results').html('');
+    }
+    
+        // Clear the debug html
+    function resetAllContent(){
+        jQuery('#profiles').html('');
+        jQuery('#results').html('');
+    }
+
+
+</script>
+
+</head>
+
+<body>
+
+
+	<div class="content">
+		<div class="centered">
+	
+		<h1>Ident Engine - Lifestream Demo</h1>
+		
+		<noscript id="no-javascript-error"><h2 class="error">Sorry but you need to have JavaScript running to use this demo</h2></noscript>
+
+		<p class="form-text">Please enter the web address of a profile page. This could be on Twitter, 
+		FriendsFeed, Flickr, Digg or any other web profile page.</p>
+		
+		<div>
+			<label for="urlinput">Web address</label>&nbsp;<input id="urlinput" name="url" value="http://twitter.com/glennjones" size=50 type="text" />&nbsp;
+				<input type="button" value="Find"  id="subbutton" class="button"/>
+			<div id="webaddress"></div>
+		</div>
+		
+		<div class="floatclear" style="clear:both">
+        <div id="results"></div>
+        <div id="profiles"></div>
+        </div>		
+				
+		</div>
+	</div>
+	
+	
+	<div class="notes"> 
+		<p>Notes:<br />The interface uses the <a href="http://identengine.com/">Ident Engine JavaScript library</a>. It in turn makes call's 
+		to Google’s Social Graph API, Yahoo’s YQL API and UfXtract microformats parser API. The content is parsed from micoformats, RSS and Atom feeds.</p>
+		<p>The nature of this type of technique means you will get the odd false relationship link. This can ripple through the data collection and bring back information for someone completely different.</p>
+	</div>
+
+
+    <div class="footer">
+		<div class="centered">
+		<div class="copyright">© Copyright Glenn Jones 2009. All Rights Reserved.</div>
+		</div>
+	</div>
+
+		
+
+</body>
+</html>
