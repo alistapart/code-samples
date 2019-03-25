@@ -1,0 +1,51 @@
+body {
+	background-color: #000;
+	margin: 0;
+	padding: 0;
+	}
+
+#book { 
+	background-image: url(https://alistapart.com/d/imagemap/images/bookpages.jpg);
+	height: 595px;
+	width: 750px;
+	}
+
+#menu a {
+   position: absolute;
+   height: 38px;
+   width: 88px;
+   top: 31px; 
+   text-decoration: none;
+   }
+
+#menu a i { visibility: hidden; }
+
+a#credits, a#indicia { top: 531px; }
+a#home { left: 101px; }
+a#preface { left: 221px; }
+a#stories { left: 311px; }
+a#gallery { left: 431px; }
+a#forum { left: 526px; width: 61px; }
+a#mementos { left: 591px; width: 98px; }
+a#credits { left: 431px; }
+a#indicia { left: 591px; }
+
+a#home:hover { background-image: url(http://d.alistapart.com/imagemap/images/homeglow.jpg); }
+a#preface:hover { background-image: url(http://d.alistapart.com/imagemap/images/prefaceglow.jpg); }
+a#stories:hover { background-image: url(http://d.alistapart.com/imagemap/images/storiesglow.jpg); }
+a#gallery:hover { background-image: url(http://d.alistapart.com/imagemap/images/galleryglow.jpg); }
+a#forum:hover { background-image: url(http://d.alistapart.com/imagemap/images/forumglow.jpg); }
+a#mementos:hover { background-image: url(http://d.alistapart.com/imagemap/images/mementosglow.jpg); }
+a#credits:hover { background-image: url(http://d.alistapart.com/imagemap/images/creditsglow.jpg); }
+a#indicia:hover { background-image: url(http://d.alistapart.com/imagemap/images/indiciaglow.jpg); }
+
+a#home:hover,
+a#preface:hover, 
+a#stories:hover, 
+a#gallery:hover, 
+a#forum:hover,   
+a#mementos:hover, 
+a#credits:hover, 
+a#indicia:hover { border: none; } 
+
+#copyright { color:#fff }
