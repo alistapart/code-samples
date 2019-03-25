@@ -1,0 +1,341 @@
+/*~  Default/shared styles
+----------------------------------------------------------------------*/
+div#count {
+	background-color: #AAAAFE;
+	padding: 6px;
+	font: normal 0.8em Arial, Helvetica, sans-serif;
+	margin-bottom: 10px;
+}
+
+p {
+	font: 0.8em Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	font: normal 0.8em Verdana, Arial, sans-serif;
+}
+
+dt {
+	font: bold 0.9em Verdana, Arial, sans-serif;
+}
+
+/*~  Body class: pda_ver
+----------------------------------------------------------------------*/
+.pda_ver dl,
+.pda_ver dt,
+.pda_ver dd {
+	margin: 0;
+	padding: 0;
+}
+
+/*~  Body class: pda_hor
+----------------------------------------------------------------------*/
+.pda_hor .tabbed {
+	margin-top: 30px;
+}
+
+.pda_hor dl {
+	position: relative;
+	width: 90%;
+}
+
+.pda_hor dt {
+	background: #CCC;
+	clear: left;
+	cursor: pointer;
+	float: left;
+	font: bold 0.8em Arial, Helvetica, sans-serif;
+	margin: 1px 0 1px 6px;
+	padding: 2px 6px 2px 6px;
+	position: relative;
+	white-space: normal;
+	width: 11px;
+	z-index: 30;
+}
+
+.pda_hor dt.current {
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	border-right: 1px solid #FFF;
+	margin: 0 0 1px 4px;
+	padding: 2px 6px 2px 7px;
+	width: 12px;
+}
+
+.pda_hor dd h3 {
+	font-weight: bold;
+}
+
+.pda_hor dd {
+	display: none;
+	position: absolute;
+	left: 39px;
+	top: 0;
+	z-index: 20;
+}
+
+.pda_hor dd.current {
+	border: 1px solid #CCC;
+	display: block;
+	left: 30px;
+	margin-left: 0;
+	padding: 0 12px 12px;
+}
+
+/*~  Body class: screen_ultralow
+----------------------------------------------------------------------*/
+.screen_ultralow dl {
+	position: relative;
+	width: 85%;
+}
+
+.screen_ultralow dt {
+	background: #CCC;
+	cursor: pointer;
+	float: left;
+	font: bold 0.8em Arial, Helvetica, sans-serif;
+	height: 19px;
+	margin: 2px 1px 0 1px;
+	padding: 2px 6px 2px 6px;
+	top: 0;
+	white-space: normal;
+}
+
+.screen_ultralow dt.current {
+	background: #FFF;
+	border: 1px solid #CCC;
+	border-bottom: none;
+	cursor: pointer;
+	float: left;
+	height: 22px;
+	margin: 0 1px 0 1px;
+	padding: 2px 6px 2px 6px;
+	position: relative;
+	top: 0;
+	z-index: 99;
+}
+
+.screen_ultralow dd {
+	display: none;
+}
+
+.screen_ultralow dd.current {
+	display: block;
+	border: 1px solid #CCC;
+	left: 0;
+	margin-left: 0;
+	padding: 12px;
+	position: absolute;
+	top: 26px;
+	z-index: 0;
+}
+
+/*~  Body class: screen_low
+----------------------------------------------------------------------*/
+.screen_low dl {
+	margin: 0;
+	position: relative;
+	width: 400px;
+}
+
+.screen_low dt {
+	margin-left: 0;
+	margin-right: 86px;
+	position: absolute;
+	width: 130px;
+}
+
+.screen_low dt,
+.screen_low p,
+.screen_low h3 {
+	font-size: 13px;
+}
+
+.screen_low dd {
+	float: left;
+	margin: 0 20px 0 0;
+	padding-top: 2em;
+	width: 130px;
+}
+
+* html .screen_low dt {
+	display: block;
+	margin-right: 0;
+}
+
+.screen_low dt#tab1 {
+	left: 0;
+	top: 1em;
+}
+
+.screen_low dt#tab2 {
+	left: 37%;
+	top: 1em;
+}
+
+.screen_low dt#tab3 {
+	left: 0;
+	top: 39em;
+}
+
+.screen_low dt#tab4 {
+	left: 37%;
+	top: 39em;
+}
+
+/*~  Body class: screen_med
+----------------------------------------------------------------------*/
+.screen_med dl {
+	padding-top: 50px;
+	position: relative;
+	margin: 0;
+	width: 800px;
+}
+
+.screen_med dt {
+	position: absolute;
+	width: 30%;
+	margin-top: -38px;
+	margin-left: 0;
+	padding-right: 20px;
+	margin-right: 30px;
+	border-bottom: 1px solid #999;
+	margin-bottom: 20px;
+	display: inline;
+}
+
+.screen_med dd {
+	width: 40%;
+	float: left;
+	margin-left: 0;
+	margin-right: 20px;
+	margin-bottom: 80px;
+}
+
+* html .screen_med dt {
+	display: block;
+	margin-right: 0;
+	padding-right: 0;
+}
+
+.screen_med dt#tab1 {
+	left: 0;
+	top: 40px;
+}
+
+.screen_med dt#tab2 {
+	left: 43%;
+	top: 40px;
+}
+
+.screen_med dt#tab3 {
+	left: 0;
+	top: 350px;
+}
+
+.screen_med dt#tab4 {
+	left: 43%;
+	top: 350px;
+}
+
+/*~  Body class: screen_high
+----------------------------------------------------------------------*/
+.screen_high dl {
+	padding-top: 50px;
+	position: relative;
+	margin: 0;
+	width: 100%;
+}
+
+.screen_high dt {
+	background: #999;
+	color: #FFF;
+	margin: 0 3% 20px 0;
+	padding: 5px;
+	padding-right: 2.2%;
+	position: absolute;
+	width: 15%;
+}
+
+.screen_high dt#tab1 {
+	left: 0;
+}
+
+.screen_high dt#tab2 {
+	left: 22.5%;
+}
+
+.screen_high dt#tab3 {
+	left: 44.5%;
+}
+
+.screen_high dt#tab4 {
+	left: 66.5%;
+}
+
+.screen_high dd {
+	float: left;
+	margin: 40px 3% 0 0;
+	padding-right: 4.2%;
+	width: 15%;
+}
+
+* html .screen_high dt {
+	display: block;
+	margin-right: 0;
+	padding-right: 0;
+}
+
+/*~  Body class: screen_wide
+----------------------------------------------------------------------*/
+.screen_wide dl {
+	margin: 0;
+	padding-top: 50px;
+	position: relative;
+	width: 100%;
+}
+
+.screen_wide dt {
+	background: #999;
+	margin-left: 0;
+	margin-right: 1.8%;
+	color: #FFF;
+	height: 20px;
+	margin: 0;
+	padding: 5px;
+	position: absolute;
+	width: 22%;
+}
+
+.screen_wide dt#tab1 {
+	left: 0;
+}
+
+.screen_wide dt#tab2 {
+	left: 24%;
+}
+
+.screen_wide dt#tab3 {
+	left: 47.5%;
+}
+
+.screen_wide dt#tab4 {
+	left: 71.5%;
+}
+
+.screen_wide dd {
+	margin: 40px 30px 0 0;
+	float: left;
+	width: 22%;
+}
+
+.screen_wide .tabbed {
+	margin: auto;
+}
+
+* html .screen_wide dt {
+	display: block;
+	margin-right: 0;
+	padding-right: 0;
+}
+
