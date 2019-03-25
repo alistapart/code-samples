@@ -1,0 +1,27 @@
+body {
+	font-family: verdana;
+	font-size: 1em;
+	background: #bef2a5;
+}
+
+h2 {
+	margin: 0;
+	padding: 0;
+	color: white;
+}
+
+.content {
+	padding: 10px;
+}
+
+#top {
+	background: #339933;
+}
+
+#side {
+	background: #7c8f50;
+}
+
+#main {
+	background: #426142;
+}
