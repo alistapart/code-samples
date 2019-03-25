@@ -1,0 +1,147 @@
+
+
+@import url(ns4_toxins.css);
+
+body	{
+	background: white;
+	color: black;
+	margin:	0;
+	padding: 0;
+	}
+body, div, p, th, td, li, dd	{
+	font-family:	Verdana, Lucida, Arial, Helvetica, sans-serif;
+	font-size:	11px;
+	}
+td, th	{
+	vertical-align:	top;
+	text-align:	left;
+	}
+p, ul, ol, dl	{
+	margin-top:	.67em;
+	margin-bottom: .67em;
+	}
+.nav a {	
+	font-weight:	bold;
+	}
+td.right, th.right	{
+	text-align:	right;
+	}
+td.center, th.center	{
+	text-align:	center;
+	}
+#navcolumn th {
+	text-transform: uppercase; 
+	border-top: solid 1px black; 
+	border-bottom: solid 1px black;
+	}
+#navcolumn table	{
+	margin-bottom: 1em
+	}
+#loginstatus {
+	font-weight: bold
+	}
+#loginstatus .username {
+	color: #900
+	}
+#helptext {
+	margin-top: 2em
+	}
+#helptext th {
+	background: #fc6;
+	}
+#helptext td {
+	background: #ffc
+	}
+#helptext td div {
+	margin: .33em
+	}
+#bodycol {
+	}
+#projectnav {
+	}
+#navtool {
+	}
+#projectnav .heading {
+	}
+.modaloptgroup td, .modaloptgroup td a  {
+	color: #fff;
+	font-weight: bold;
+	background: #039;
+	text-decoration: none;
+	}
+.modaloptgroup th, .modaloptgroup th a {
+	color: #fff;
+	font-weight: bold;
+	background: #69c;
+	}
+.modaloptgroup .modaloptgroup td, .modaloptgroup .modaloptgroup td a {
+	font-weight: normal;
+	background: #69c;
+	color: #fff;
+	}
+.modaloptgroup .modaloptgroup th {
+	color: #000;
+	background: #fff;
+	}
+#guts table {
+	margin-top: 1em
+	}
+#myprojects .multicol {
+	text-transform: uppercase;
+	color: #fff;
+	background: #039;
+	}
+#mybugs .multicol {
+	text-transform: uppercase;
+	background: #ccc;
+	}
+#mysearches .multicol {
+	text-transform: uppercase;
+	background: #ccc;
+	}
+
+#guts td, #guts th {
+	border-top: 1px dotted #ccc;
+	border-left: 1px dotted #ccc;
+	border-right: none;
+	border-bottom: none;
+	}  
+#guts th {
+	border: none
+	}
+#guts table {
+	border: none
+	}
+tr.a td {
+	background: #efefef;
+	}
+tr.b td {
+	background: #fff;
+	}
+
+/*
+
+.multicol th, th.multicol {
+	text-transform: uppercase;
+	background: #ccc;
+	}
+
+body table .multicol td {
+	background: #ccc;
+	border: none;
+	}
+
+.focus th.multicol {
+	background: #009;
+	color: white;
+	}
+
+.stb	{
+	margin-top: 1em;
+	}
+.mtb	{
+	margin-top: 2em;
+	}
+*/
+
+/* div { border: 1px solid red; padding: 2px; margin: 2px } */
