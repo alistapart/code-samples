@@ -1,0 +1,229 @@
+/*-General-----------------------------------------------*/
+
+body {
+	background-color:#000000;
+	color:#ffffff;
+	font-family:serif;
+	font-weight:normal;
+	text-decoration:none; 
+	font-size:x-small;
+	voice-family:"\"}\"";
+	voice-family:inherit;
+	font-size:small;
+}
+html>body {
+	font-size:small;
+}
+
+.strong {
+	font-weight:bold;
+}
+
+/*-Main Markup-------------------------------------------*/
+
+#overall {
+	background-color: #ffffff;
+	color:#000000;
+}
+
+/*-Left Column--------*/
+
+.leftcolumn .node a {
+	color:#006666;
+	background-color:transparent;
+}
+
+.leftcolumn .node p {
+	font-size:1.2em;
+	font-weight:normal;
+}
+
+.leftcolumn .node h1 {
+	font-weight:normal;
+	font-size:1.2em;
+	color:#ffffff;
+	background-color:#006666;
+}
+
+.leftcolumn .node h1 a {
+	color:#ffffff;
+	background-color:transparent;
+}
+
+.leftcolumn .node h2 {
+	font-weight:bold;
+	font-size:.95em;
+}
+
+.leftcolumn .node ul {
+	list-style-type:none;
+}
+
+.leftcolumn .node li.more {
+	font-weight:bold;
+	font-size:.75em;
+}
+
+.leftcolumn .node li.selected {
+	font-weight:bold;
+	font-size:1.18em;
+	color:#000000;
+	background-color:#cccccc;
+}
+
+.leftcolumn .node li.selected a {
+	color:#000000;
+	background-color:transparent;
+}
+
+/*-Center Column------*/
+
+.centercolumn .node {
+	font-family:serif;
+}
+
+.centercolumn .node a {
+	color:#006666;
+	background-color:transparent;
+}
+
+.centercolumn .node h1 {
+	font-family:Arial, Helvetica, serif;
+	font-weight:bold;
+	font-size:1.38em;
+	color:#ffffff;
+	background:#006666 url('../images/slc.gif') no-repeat;
+}
+
+.centercolumn .node h1 a {
+	color:#ffffff;
+	background-color:transparent;
+}
+
+.centercolumn .node h2 {
+	font-weight:bold;
+	font-size:1.18em;
+}
+
+.centercolumn .node h3 {
+	font-weight:bold;
+	font-size:.95em;
+}
+
+.centercolumn .node h4 {
+	font-weight:normal;
+	font-size:1.2em;
+}
+
+.centercolumn .node h4 a {
+	font-weight:bold;
+}
+
+.centercolumn .node p {
+	font-size:1.2em;
+	font-weight:normal;
+}
+
+/*-Right Column-------*/
+
+.rightcolumn .node {
+	color:#000000;
+	background-color:#cccccc;
+}
+
+.rightcolumn .node a {
+	color:#006666;
+	background-color:transparent;
+}
+
+.rightcolumn .node h1 {
+	font-family:Arial, Helvetica, serif;
+	font-weight:bold;
+	font-size:1.38em;
+	color:#ffffff;
+	background-color:#006666;
+}
+
+.rightcolumn .node h1 a {
+	color:#ffffff;
+	background-color:transparent;
+}
+
+.rightcolumn .node h2 {
+	font-weight:bold;
+	font-size:.95em;
+}
+
+.rightcolumn .node ul.none {
+	list-style-type:none;
+}
+
+.rightcolumn .node ul.dot {
+	list-style-type:none;
+	list-style-image:url('../images/listdot.gif');
+}
+
+.rightcolumn .node ul.books {
+	list-style-type:disc;
+}
+
+/*-OSDN Navagation bar-----------------------------------*/
+
+#OSDNNavbar {
+	background-color:#999999;
+	color:#006666;
+}
+
+#OSDNNavbar div#links {
+	background-color:#999999;
+	color:#006666;
+}
+
+#OSDNNavbar a {
+	background-color: transparent;
+	color: #006666;
+}
+
+/*-Remaining layout--------------------------------------*/
+
+#randomquote {
+	font-size:1.2em;
+	font-style:italic;
+}
+
+#copyright {
+	font-size:.75em;
+	font-family:Arial, Helvetica, serif;
+	background-color:transparent;
+	color:#006666;
+}
+
+#copyright a {
+	background-color:transparent;
+	color:#006666;
+}
+
+#bottomNav {
+	background-color:transparent;
+	color:#006666;
+}
+
+#bottomNav a {
+	background-color:transparent;
+	color:#ffffff;
+}
+
+#oldStuffNav {
+	font-weight:bold;
+}
+
+
+
+
+
+
+
+
+
+
+		
