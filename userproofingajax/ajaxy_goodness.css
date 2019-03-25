@@ -1,0 +1,104 @@
+/*****************************************************************************/
+/** Example 1 and beyond.													**/
+
+#wait_indicator {
+	margin-left: 10px;
+	display: none;
+}
+
+#error_msg {
+	display: none;
+	
+	border: 4px double #FF0000;
+	padding: 10px;
+	margin: 20px;
+	font-size: 18px;
+}
+
+#error_msg cite {
+	font-weight: normal;
+}
+
+/*****************************************************************************/
+/** Example 2 and beyond.													**/
+
+#wait_error_message {
+	display: none;
+	padding: 10px;
+	border: 4px double #FFFF00;
+	background-color: #FFFFDD;
+}
+
+#wait_error_message button {
+	display: inline;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+
+#wait_error_message a:link, #wait_error_message a:visited {
+	background-color: #FFFFDD;
+}
+
+#wait_error_message a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: #004368;
+}
+
+/*****************************************************************************/
+/** Example 3 and beyond.													**/
+
+#status_monitor {
+	font-size: 12px;
+	padding: 2px;
+	color: #666666;
+	background: #EEEEEE;
+}
+
+
+/* Everything else is pure visual style.
+ */
+
+body {
+	margin: 40px;
+	padding: 40px;
+	border: 10px double #004F79;
+	background: #FFFFFF;
+}
+
+h1 {
+	margin: 0px 0px 0px 0px;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+div, input {
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+ul {
+	list-style: url(images/arrow.gif) outside;
+
+}
+
+li {
+	font-size: 16px;
+	line-height: 26px;
+	padding-left: 6px;
+	margin-left: 0px;
+}
+
+a:link, a:visited {
+	color: #004368;
+	background-color: #FFFFFF;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: #004368;
+}
+
+a:active {
+	font-weight: bold;
+}
