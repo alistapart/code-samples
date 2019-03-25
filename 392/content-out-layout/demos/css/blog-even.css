@@ -1,0 +1,726 @@
+/* 
+
+Mark Boulton Design
+Web site: http://markboultondesign.com
+Twitter: http://twitter.com/markboultondsg
+
+Index
+1. Reset
+2. Clearfix
+3. General Typography & Layout
+4. More specific css
+
+/* 1. Reset ---------------------------------------- */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+html, body {
+	overflow-x: hidden;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+	display: block;
+}
+
+nav ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+a {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+ins {
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
+}
+
+mark {
+	background-color: #ff9;
+	color: #000; 
+	font-style: italic;
+	font-weight: bold;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img{
+	width: 100%;
+	max-width: 100%;
+}
+
+/* change border colour to suit your needs */
+hr {
+	display: block;
+	height: 1px;
+	border: 0;   
+	border-top: 1px solid #cccccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+input, select {
+	vertical-align:middle;
+}
+
+/* 2. Clearfix -------------------------------- */
+/* More info: http://nicolasgallagher.com/micro-clearfix-hack/
+
+For modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
+}
+
+/* 3. General Typography & Layout ------------------------------ */
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font-size: 16px;
+	line-height: 1.4;
+	color: #333333;
+	overflow-x: hidden;
+	padding: 0;
+	position: relative;
+	background-color: #F0C800;
+}
+
+#even {
+	background: #fff;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 400;
+}
+
+.article-header h1 {
+	font-size: 36px;
+	margin-bottom: 0.5em;
+}
+
+@media only screen and (max-width: 991px)  {
+
+.article-header h1 {
+	font-size: 30px;
+	margin-bottom: 0.5em;
+}
+
+}
+
+@media only screen and (max-width: 767px)  {
+
+.article-header h1 {
+	font-size: 24px;
+	margin-bottom: 0.5em;
+}
+
+}
+
+h3 {
+	margin-bottom: 1em;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-weight: 700;
+}
+
+.article p {
+	font-family: Georgia,'Times New Roman',serif;
+}
+
+article p + p, article blockquote + p, article img + p {
+	margin-top: 1em;
+}
+
+#main, #main-sidebar, #nav-section {
+	padding: 2em;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+
+#main {
+	box-shadow: -0.4em 0 0.4em rgba(188, 157, 0, 0.5);
+	background: #fff;
+	position: relative;
+}
+
+#main-sidebar {
+	border-left: 1px solid #ddd;
+	position: relative;
+	z-index: 10;
+}
+
+@media only screen and (min-width: 992px) {
+
+#main-sidebar {
+	height: 100%;
+	position: absolute;
+	right: 0;
+}
+
+}
+
+#nav-section {
+	z-index: 10;
+	position: relative;
+	background-color: #F0C800;
+	padding: 1em 2em;
+}
+
+@media only screen and (min-width: 768px) {
+
+#nav-section{
+	background-color: transparent;
+	height: 100%;
+	padding: 2em;
+}
+
+}
+
+#nav-section a {
+	padding: 1em 0 1em 0;
+	display: block;
+	color: #333;
+}
+
+#nav-section #nav-mobile {
+	padding: 0;
+	display: none;
+	height: 20px;
+	width: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+
+#nav-section #nav-mobile {
+	display: block;
+}
+
+}
+
+#nav-section .active a {
+	padding-bottom: 0.35em;
+	margin-bottom: 0.5em;
+	border-bottom: 0.15em solid #333;
+	padding-right: 2em;
+	width: 100%;
+	position: relative;
+}
+
+#nav-section .list-links {
+	margin-top: 61.80469%;
+}
+
+#logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #333;
+	font-weight: 400;
+	height: 100%;
+	font-family: Georgia;
+	font-style: italic;
+}
+
+#logo a {
+	color: #F0C800;
+	margin: auto;
+	position: absolute;
+	top: -0.3em;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0;
+	height: 1em;
+	padding-left: 2em;
+}
+
+@media only screen and (min-width: 768px) {
+
+#logo {
+	margin-bottom: 3em;
+	display: block;
+	line-height: 1;
+	padding: 0;
+	padding-top: 56.25%;
+	width: 100%;
+	height: 0;
+	margin: 0;
+}
+
+#logo a {
+	font-size: 1.2em;
+	padding: 0;
+	display: block;
+	line-height: 1;
+	height: 1em;
+	text-align: center;
+}
+
+}
+
+@media only screen and (min-width: 1400px) {
+
+#logo a {
+	font-size: 1.5vw;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+.list-links {
+	display: none;
+}
+
+}
+
+blockquote {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	background-color: #F0C800;
+	color: #333;
+	line-height: 1.6;
+	margin-bottom: 1em;
+}
+
+cite {
+	display: block;
+}
+
+a {
+	color: rgb(77,148,204);
+	text-decoration: none;
+}
+
+a:hover {
+	color: rgb(37,108,164);
+	text-decoration: underline;
+}
+
+p a {
+	text-decoration: underline;
+}
+
+p, li {
+	max-width: 44em;
+}
+
+p a:hover {
+	text-decoration: none;
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd + dt {
+	margin-top: 10px;
+}
+
+.box {
+	border: 1px solid #ddd;
+	background: #eee;
+	overflow: hidden;
+	padding: 10px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.blurb {
+	overflow: hidden;
+}
+
+.blurb + .blurb {
+	margin-top: 1.5em;
+}
+
+@media only screen and (max-width: 767px) {
+
+.blurb + .blurb {
+	margin-top: 2em;
+}
+
+
+}
+
+.divider-top {
+	margin-top: 3em;
+	padding-top: 1em;
+	border-top: 1px solid #ddd;
+}
+
+.divider-left {
+	border-left: 1px solid #ddd;
+}
+
+.main-img {
+	margin-bottom: 2em;
+}
+
+img {
+	margin-bottom: 0;
+	vertical-align: bottom;
+}
+
+figure {
+	position: relative;
+	padding-top: 56.25%;
+	overflow: hidden;
+	height: 0;
+	border: 1px solid #999;
+}
+
+figure img {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+figcaption {
+	background-color: rgba(0,0,0,0.7);
+	padding: 0.5em;
+	display: block;
+	z-index: 1;
+	color: #fff;
+	position: absolute !important;
+	bottom: 0;
+	left: 0;
+	float: none !important;
+	margin: 0 !important;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 12px;
+}
+
+.row {
+	float: left;
+}
+
+.main-img figcaption {
+	right: 0;
+	left: auto;
+}
+
+figcaption {
+	bottom: 0;
+	width: 100%;
+	font-size: 11px;
+	font-size: 1.1rem;
+}
+
+.body-text {
+	padding: 0;
+}
+
+.body-text figure {
+	margin: 1em;
+	float: right !important;
+	padding: 0;
+	padding-top: 23.43751875%;
+}
+
+.more-stories figure, #related figure {
+	padding: 0;
+	padding-top: 14.0625%;
+	margin-right: 1em;
+}
+
+.article figure img {
+	margin: 0;
+}
+
+.list-links {
+	margin-top: 0.5em;
+	margin-bottom: 2em;
+	position: relative;
+}
+
+.list-links li {
+	list-style: none;
+}
+
+.list-links li:first-child {
+	padding-top: 0;
+}
+
+.list-links a {
+	display: block;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.article .list-links {
+	font-size: 14px;
+	font-size: 1.4rem;
+	padding-left: 0;
+	float: left;
+}
+
+@media only screen and (min-width: 1200px) {
+
+.article .list-links {
+	left: -15px;
+}
+
+}
+
+.article .list-links a {
+	padding: 0.5em 1em;
+	font-size: 12px;
+	font-size: 0.9em;
+	border-bottom: 2px solid #fff;
+	background-color: #F0C800;
+	color: #333;
+	position: relative;
+	margin-right: 1.26em;
+}
+
+.article .list-links a:after {
+	position: absolute;
+	content: "";
+	top: 0;
+	right: -2.3em;
+	border: 1.26em solid transparent;
+	border-left-color: #F0C800;
+	background-color: #fff;
+}
+
+.article-sidebar h3 {
+	margin-bottom: 1.5em;
+	padding-top: 3em;
+	font-size: 0.9em;
+	color: #999;
+}
+
+.article blockquote {
+	margin: 1.5em 0;
+	padding: 1em;
+	float: right !important;
+	margin-left: 2em;
+}
+
+@media only screen and (max-width: 991px)  {
+
+.article blockquote {
+	width: auto;
+	display: block;
+	left: -15px !important;
+	float: none !important;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+.article blockquote {
+	padding-left: 1em;
+	padding-right: 1em;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+}
+
+.article-sidebar .blurb h1 {
+	font-size: 0.9em;
+}
+
+.more-stories .blurb h1 {
+	font-size: 0.8em;
+}
+
+@media only screen and (max-width: 991px)  {
+
+.article-sidebar .blurb h1 {
+	font-size: 18px;
+}
+
+}
+
+#related {
+	margin-bottom: 3em;
+}
+
+.blurb.feature h1 {
+	margin-top: 0.5em;
+}
+
+.article-sidebar p {
+	font-size: 14px;
+	font-size: 1.4rem;
+	margin-top: 0.5em;
+}
+
+.body-text figure {
+	margin-top: 2em;
+	margin-bottom: 2em;
+	float: right;
+	margin-left: 2em;
+}
+
+@media only screen and (max-width: 767px) {
+
+.body-text figure {
+	width: 100%;
+	margin: 2em 0;
+	display: block;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+.body-text figure {
+	padding-top: 56.25%;
+}
+
+}
+
+.body-text p {
+	font-size: 18px;
+	max-width: 36em;
+}
+
+.blurb h1 {
+	font-size: 1.25em;
+	margin-bottom: 0.25em;
+	margin-top: -0.25em;
+}
+
+.blurb h1 a {
+	font-weight: 700;
+	color: #333;
+}
+
+.more-stories h1 a {
+	font-weight: 400;
+}
+
+@media only screen and (max-width: 767px) {
+
+.blurb figure {
+	margin-bottom: 0.5em;
+}
+
+}
+
+.blurb p {
+	max-width: 50em;
+}
+
+@media only screen and (max-width: 767px) {
+	
+	.blurb {
+		font-size: 14px;
+	}
+	
+}
+
+@media only screen and (max-width: 767px) {
+
+	.blurb h1 {
+		font-size: 1em;
+	}
+	
+}
+
+@media only screen and (max-width: 767px) {
+	
+	.blurb p {
+		display: none;
+	}
+	
+}
+
+.blurb [class*=floatleft] {
+	margin-right: 1em !important;
+}
+
+#main-sidebar [class*=floatleft] {
+	margin-right: 0.5em !important;
+}
+
+/* Blurb Examples */
+
+#blurb-examples {
+	padding-top: 2.5em;
+}
+
+#blurb-examples .blurb {
+	margin: 0 0 3em;
+}
+
+#blurb-examples .blurb p {
+	display: block;
+}
+
+#blurb-examples figure {
+	padding-top: 15.5516625%;
+	margin-right: 1em;
+}

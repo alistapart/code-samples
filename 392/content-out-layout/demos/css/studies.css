@@ -1,0 +1,202 @@
+/* 
+
+Mark Boulton Design
+Web site: http://markboultondesign.com
+Twitter: http://twitter.com/markboultondsg
+
+Index
+1. Reset
+2. Clearfix
+3. General Typography & Layout
+4. More specific css
+
+/* 1. Reset ---------------------------------------- */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, .box, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+html, body {
+	overflow-x: hidden;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+	display: block;
+}
+
+nav ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+a {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+ins {
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
+}
+
+mark {
+	background-color: #ff9;
+	color: #000; 
+	font-style: italic;
+	font-weight: bold;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.box{
+	width: 100%;
+	max-width: 100%;
+}
+
+/* change border colour to suit your needs */
+hr {
+	display: block;
+	height: 1px;
+	border: 0;   
+	border-top: 1px solid #cccccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+input, select {
+	vertical-align:middle;
+}
+
+/* 2. Clearfix -------------------------------- */
+/* More info: http://nicolasgallagher.com/micro-clearfix-hack/
+
+For modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
+}
+
+/* 3. General Typography & Layout ------------------------------ */
+
+body {
+	font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font-size: 16px;
+	line-height: 1.4;
+	color: #333;
+	padding: 5% 0;
+}
+
+article {
+	overflow: hidden;
+	display: block;
+	margin: 0 40px 8em;
+}
+
+header {
+	margin-bottom: 1em;
+}
+
+header h1 {
+	font-size: 24px;
+}
+
+header p {
+	color: #666;
+}
+
+article > div {
+	overflow: hidden;
+	padding-top: 2em;
+}
+
+.box {
+	padding-top: 56.25%;
+	background-color: #cceaf6;
+	border: 1px solid #0095d3;
+	display: block;
+	margin-bottom: 2em;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.e1 .box, .e2 .box {
+	margin-bottom: 13.490754405764%;
+}
+
+.e2-e4 > .box {
+	margin-bottom: 4.125837850202%;
+}
+
+.e5-e6 .box {
+	margin-bottom: 6.31912%;
+}
+
+.gr1-gr2 .box {
+	margin-bottom: 19.0499%;
+}
+
+.gr3 .box {
+	margin-bottom: 8.988746090708%;
+}
+
+.gr3-gr4 > .box {
+	margin-bottom: 3.31943%;
+}
+
+.gr5-gr6 .box {
+	margin-bottom: 8.24742%;
+}
