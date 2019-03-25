@@ -1,0 +1,63 @@
+@media screen {
+
+body.high 
+{ color : #000; font-size : 90%; }
+
+body.highvisibility  { background : #000; color : #ff0; font-size : 120%; }
+
+body.highvisibility a  { color : #fff;}
+
+body.highvisibility #container { width : 90%; }
+
+body.highvisibility #content-main { width : 70%; }
+
+body.highvisibility #content-sub { width : 25%; }
+	
+}
+	
+@media print {
+
+body.default
+{ font : 100% "Lucida Sans Unicode", Verdana, Arial, sans-serif; }
+
+body.small-sans
+{ font : 80% Arial, sans-serif; }
+
+body.small-sans #container 
+{ width : 90%; }
+
+body.small-sans #content-main 
+{ width : 100%; }
+
+body.small-sans #content-sub 
+{ display : none; }
+
+body.large-serif
+{ font : 120% "Times New Roman", Times, serif; }
+
+body.large-serif #container 
+{ width : 90%; }
+
+body.large-serif #content-main 
+{ width : 100%; }
+
+body.large-serif #content-sub 
+{ display : none; }
+
+}
+	
+@media projection {
+
+body.fluid #container 
+{ width : 90%; }
+
+body.fluid #content-main 
+{ width : 70%; }
+
+body.fluid #content-sub 
+{ width : 25%; }
+	
+}
+
+
+
