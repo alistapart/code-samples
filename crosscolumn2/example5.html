@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<title>
+CSS - Cross-Column Pull-Out Part Two: Custome Silhouettes - Example 5
+</title>
+<style type="text/css">
+* {margin: 0; padding: 0;}
+p {padding:.625em 0; text-align: justify; line-height: 20px;}
+#overall {width: 755px; margin: 0 auto;}
+.col {width: 365px; padding: 0 5px; float: left;}
+.CCsilhouette {float: left; clear: left; margin-left: -180px;}
+.CCsilhouette span {position: absolute;}
+.preImageBuffer {height: 9em; width: 1px;}
+#leftCol .preImageBuffer {float: right;}
+#rightCol .preImageBuffer {float: left;}
+.LS1, .LS2, .LS3, .LS4 {float: right; clear: right;}
+.RS1, .RS2, .RS3, .RS4 {float: left; clear: left;}
+.LS1, .RS1 {width: 50px; height:40px;}
+.LS2, .RS2 {width:100px; height:40px;}
+.LS3, .RS3 {width:140px; height:40px;}
+.LS4, .RS4 {width:170px; height:60px;}
+</style>
+</head>
+<body>
+<!-- The Cross Column Silhouette Pull Out technique was developed by Daniel M. Frommelt and Matthew Latzke from the University of Wisconsin - Platteville -->
+<!-- Major hat tip to Daniel Sheppard who showed us a better way to pull it all together! -->
+
+<div id="overall">
+	<h1>Example 5: The <em>Silhouette</em> Cross Column Pull Out</h1>
+
+	<div id="leftCol" class="col">
+		<div class="preImageBuffer"></div>
+		<span class="LS1">&nbsp;</span>
+		<span class="LS2">&nbsp;</span>
+		<span class="LS3">&nbsp;</span>
+		<span class="LS4">&nbsp;</span>
+		<span class="LS3">&nbsp;</span>
+		<span class="LS2">&nbsp;</span>
+		<span class="LS1">&nbsp;</span>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet tortor ac nunc. Nulla risus nulla, suscipit eget, rhoncus et, nonummy sed, tortor. Aliquam erat volutpat. Etiam consequat imperdiet lorem. Nullam aliquet volutpat wisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed dolor pede, tempus non, volutpat dignissim, cursus non, mauris. In tristique. Integer blandit, lorem eget tincidunt posuere, quam wisi fermentum elit, quis aliquam ante enim at nibh. Sed faucibus sem et mi. Donec iaculis nulla nec urna. Phasellus ultricies est et urna.</p>
+		<p>Praesent congue sagittis elit. Nullam sagittis tortor ut dui. Praesent tristique feugiat ligula. Quisque congue ante vel augue facilisis nonummy. Nulla auctor, purus id ullamcorper ultrices, justo metus venenatis odio, eu nonummy pede urna pretium tortor. Aliquam erat volutpat. Nullam ante. Aenean feugiat. Etiam lacinia dolor sagittis nunc. Maecenas nibh risus, suscipit vel, elementum vitae, posuere et, purus. Vivamus ipsum nunc, mattis non, gravida ut, tempor et, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed sem. Integer accumsan mi sed metus porta volutpat. Duis sollicitudin enim at diam. Donec ultrices sem aliquam ante ullamcorper placerat.</p>
+	</div>
+
+	<div id="rightCol" class="col">
+		<div class="preImageBuffer"></div>
+		<span class="RS1">
+			<span class="CCsilhouette"><span><img src="monkey.gif" alt="Office Monkey" /></span></span>
+		</span>
+		<span class="RS2">&nbsp;</span>
+		<span class="RS3">&nbsp;</span>
+		<span class="RS4">&nbsp;</span>
+		<span class="RS3">&nbsp;</span>
+		<span class="RS2">&nbsp;</span>
+		<span class="RS1">&nbsp;</span>
+		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam tristique arcu vitae dui. Ut tempus wisi eget urna. Nullam laoreet scelerisque felis. Aliquam turpis libero, iaculis nec, porta nec, condimentum sit amet, dolor. Proin cursus orci eu purus. In quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus accumsan, augue vitae vehicula viverra, risus velit consequat nunc, ut molestie erat risus non dui. Morbi placerat leo. Maecenas iaculis elit at eros. Cras sem. Phasellus augue.</p>
+		<p>Integer molestie eros et urna. Aenean egestas lectus ac mi. Etiam semper lectus at ipsum. Nunc cursus wisi eget urna. Donec pretium tristique sapien. Integer ligula nunc, malesuada gravida, posuere luctus, semper sit amet, nunc. Cras sagittis blandit urna. Nunc eu arcu sed magna vestibulum dictum. Fusce pretium interdum risus. Praesent bibendum lacinia sem. Aliquam erat volutpat.</p>
+		<p>Nunc arcu. Ut faucibus purus in risus. Morbi sem. Nunc consequat, sem a suscipit scelerisque, leo tortor sollicitudin nibh, quis vehicula turpis nibh et lorem. Fusce facilisis semper felis. Cras quis magna. In hac habitasse platea dictumst. Etiam quam nisl, bibendum et, tincidunt vel, tristique sed, eros. Cras laoreet. Etiam nisl eros, luctus nec, eleifend vitae, aliquam id, sapien.</p>
+	</div>
+</div>
+
+</body>
+</html>
