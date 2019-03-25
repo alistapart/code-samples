@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>3 columns, liquid width, content</title>
+<style type="text/css">
+body{
+	margin:0 100px;
+	padding:0 200px 0 150px;
+}
+#container{
+	background-color:#9cc;
+	float:left;
+	width:100%;	
+	border-left:150px solid #cf9; /* The width and color of the left rail */
+	border-right:200px solid #c33; /* The width and color of the right rail */
+	margin-left:-150px;
+	margin-right:-200px;
+	display:inline; /* So IE plays nice */
+}
+#leftRail{
+	float:left;
+	width:150px;
+	margin-left:-150px;
+	position:relative;
+}
+#center{
+	float:left;
+	width:100%;
+	margin-right:-100%;
+}
+#rightRail{
+	float:right;
+	width:200px;
+	margin-right:-200px;
+	position:relative;
+}
+#header, #footer{
+	background-color:#ddd;
+	margin-left:-150px;
+	margin-right:-200px;
+	clear:both;
+}
+</style>
+<style type="text/css">
+h2{
+	margin:0;
+	padding:5px;
+}
+#center h2{
+	background-color:#222;
+	color:#c33;
+}
+.menu{
+	list-style-type:none;
+	border:1px solid #444;
+	margin:5px;
+	padding:5px;
+}
+#leftRail h2{
+	background-color:#c33;
+}
+#rightRail fieldset{
+	border:1px solid #222;
+	margin:5px;
+	padding:5px;
+}
+.article{
+	border:2px solid #444;
+	margin:5px;
+	padding-top:0;
+	overflow:hidden;
+	padding-left:102px;
+}
+* html .article{
+	height:1%; /* So IE plays nice */
+}
+.article p{
+	margin:0;
+}
+.article h3{
+	background-color:#c93;
+	margin:0 -5px 0 -102px;
+	padding:5px;
+	border-bottom:2px solid #444;
+}
+.articleContainer{
+	width:100%;
+	border-left:102px solid #699;
+	margin-left:-102px;
+	background-color:#fefefe;
+	display:inline;
+	float:left;
+}
+.articleContent{
+	width:100%;
+	float:right;
+	border-left:2px solid #444;
+	margin-left:-2px;
+	position:relative;
+}
+.articleContent p{
+	padding:5px;
+}
+.articleRail{
+	float:left;
+	width:100px;
+	margin-left:-102px;
+	border-right:2px solid #444;
+	position:relative;
+}
+</style>
+</head>
+<body>
+	<div id="header">This is the header</div>
+	<div id="container">
+		<div id="center">
+			<h2>Articles</h2>
+			<div class="article">
+				<h3>Article 1</h3>
+				<div class="articleContainer">
+					<div class="articleContent">
+						<p>
+							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+					<div class="articleRail">
+						<ul>
+							<li>This</li>
+							<li>is</li>
+							<li>nested</li>
+							<li>rail</li>
+							<li>content</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<hr />
+			<div class="article">
+				<h3>Article 2</h3>
+				<div class="articleContainer">
+					<div class="articleContent">
+						<p>
+							Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+						</p>
+					</div>
+					<div class="articleRail">
+						<ul>
+							<li>This</li>
+							<li>is</li>
+							<li>too</li>
+						</ul>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div id="leftRail">
+			<h2>Menu</h2>
+			<ul class="menu">
+				<li><a href="#">Link Number 1</a></li>
+				<li><a href="#">Link Number 2</a></li>
+				<li><a href="#">Link Number 3</a></li>
+				<li><a href="#">Link Number 4</a></li>
+				<li><a href="#">Link Number 5</a></li>
+				<li><a href="#">Link Number 6</a></li>
+				<li><a href="#">Link Number 7</a></li>
+				<li><a href="#">Link Number 8</a></li>
+				<li><a href="#">Link Number 9</a></li>
+				<li><a href="#">Link Number 10</a></li>
+				<li><a href="#">Link Number 11</a></li>
+				<li><a href="#">Link Number 12</a></li>
+				<li><a href="#">Link Number 13</a></li>
+				<li><a href="#">Link Number 14</a></li>
+				<li><a href="#">Link Number 15</a></li>
+				<li><a href="#">Link Number 16</a></li>
+				<li><a href="#">Link Number 17</a></li>
+				<li><a href="#">Link Number 18</a></li>
+				<li><a href="#">Link Number 19</a></li>
+				<li><a href="#">Link Number 20</a></li>
+			</ul>
+		</div>
+		<div id="rightRail">
+			<form action="#">
+			<fieldset>
+				<legend>Search</legend>
+				<input type="text" name="dummy" /><input type="button" name="btn" value="Go" />
+			</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id="footer">This is the footer</div>
+</body>
+</html>

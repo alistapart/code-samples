@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>2 columns, fixed width, right rail, content tallest</title>
+<style type="text/css">
+body{
+	font-size:100%;
+}
+#container{
+	background-color:#9cc;
+	overflow:hidden;
+	width:45em;
+}
+#content{
+	background-color:#9cc;
+	width:35em;
+	border-right:10em solid #c33; /* The width and color of the rail */
+	margin-right:-10em; /* Hat tip to Ryan Brill */
+	float:left;
+}
+#rail{
+	background-color:#c33;
+	width:10em;
+	float:left;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div id="content">This is<br />some content</div>
+		<div id="rail">This is the rail</div>
+	</div>
+</body>
+</html>

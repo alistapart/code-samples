@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>2 columns, liquid, left rail, rail tallest</title>
+<style type="text/css">
+#header, #footer{
+	background-color:#ddd;
+	margin:0 100px;
+}
+#container{
+	background-color:#9cc;
+	overflow:hidden;
+	margin:0 100px;
+	padding-left:150px; /* The width of the rail */
+}
+* html #container{
+	height:1%; /* So IE plays nice */
+}
+#content{
+	background-color:#9cc;
+	width:100%;
+	border-left:150px solid #c33; /* The width and color of the rail */
+	margin-left:-150px; /* Hat tip to Ryan Brill */
+	float:right;
+}
+#rail{
+	background-color:#c33;
+	width:150px;
+	float:left;
+	margin-left:-150px;
+	display:inline; /* So IE plays nice */
+}
+</style>
+</head>
+<body>
+	<div id="header">HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER</div>
+	<div id="container">
+		<div id="content">This is some content This is some content This is some content</div>
+		<div id="rail">This is<br />the rail</div>
+	</div>
+	<div id="footer">FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER</div>
+</body>
+</html>

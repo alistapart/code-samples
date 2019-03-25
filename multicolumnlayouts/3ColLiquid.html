@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>3 columns, liquid width, left rail tallest</title>
+<style type="text/css">
+body{
+	margin:0 100px;
+	padding:0 200px 0 150px;
+}
+#container{
+	background-color:#9cc;
+	float:left;
+	width:100%;	
+	border-left:150px solid #cf9; /* The width and color of the left rail */
+	border-right:200px solid #c33; /* The width and color of the right rail */
+	margin-left:-150px;
+	margin-right:-200px;
+	display:inline; /* So IE plays nice */
+}
+#leftRail{
+	float:left;
+	width:150px;
+	margin-left:-150px;
+	position:relative;
+}
+#center{
+	float:left;
+	width:100%;
+	margin-right:-100%;
+}
+#rightRail{
+	float:right;
+	width:200px;
+	margin-right:-200px;
+	position:relative;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div id="center">CENTER COLUMN CONTENT</div>
+		<div id="leftRail">LEFT<br /> RAIL</div>
+		<div id="rightRail">RIGHT RAIL</div>
+	</div>
+</body>
+</html>
