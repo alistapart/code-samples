@@ -1,0 +1,11 @@
+#nav, #footer {
+	display:none;
+}
+
+#content {
+	margin-left:0px;
+}
+
+#preview-message {
+	display:none;
+}

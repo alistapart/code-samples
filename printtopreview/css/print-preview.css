@@ -1,0 +1,8 @@
+@import "print.css";
+
+#preview-message {
+	display:block;
+	border:1px solid #666;
+	background:#FF6;
+	padding:2px 5px;
+}
