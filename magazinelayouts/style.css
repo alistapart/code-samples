@@ -1,0 +1,22 @@
+.magazine-image {
+	background: #fff;
+	border: 1px #eee solid;
+}
+
+.magazine-image img {
+	padding: 0px;
+	background: #fff;
+	margin: 2px;
+	border: 1px #eee solid;
+}
+
+/* only used in example pages */
+div.thumb {
+  float: left;
+  margin: 3px;
+}
+
+div.thumb img {
+  border: 1px solid #ddd;
+  padding: 3px;
+}

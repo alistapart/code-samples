@@ -1,0 +1,1 @@
+Image variables not specified correctly
