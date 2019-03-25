@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Example 7: Vertical alignment of content with JavaScript &amp; CSS</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<style type="text/css">
+        <!--
+			body {
+				margin: 0;
+				padding: 0;
+				font: 12px/1.5 verdana, arial, helvetica, sans-serif;
+				text-align: center; /* Takes care of horizontal alignment in Internet Explorer */
+				background-image: url(grid.gif);
+			}
+			#content {
+				position: relative; /* Needed for Safari */
+				margin: auto; /* Takes care of horizontal alignment in standards compliant browsers */
+				text-align: left;
+				width: 200px;
+				height: 200px;
+				background-color: #fc0;
+			}
+			h1, p {
+				margin: 0;
+				padding: 1em;
+			}
+			h1 {
+				font-size: 12px;
+				line-height: 1.5em;
+			}
+        -->
+        </style>
+		<script type="text/javascript">
+		<!--
+		function getWindowHeight() {
+			var windowHeight = 0;
+			if (typeof(window.innerHeight) == 'number') {
+				windowHeight = window.innerHeight;
+			}
+			else {
+				if (document.documentElement && document.documentElement.clientHeight) {
+					windowHeight = document.documentElement.clientHeight;
+				}
+				else {
+					if (document.body && document.body.clientHeight) {
+						windowHeight = document.body.clientHeight;
+					}
+				}
+			}
+			return windowHeight;
+		}
+		function setContent() {
+			if (document.getElementById) {
+				var windowHeight = getWindowHeight();
+				if (windowHeight > 0) {
+					var contentElement = document.getElementById('content');
+					var contentHeight = contentElement.offsetHeight;
+					if (windowHeight - contentHeight > 0) {
+						contentElement.style.position = 'relative';
+						contentElement.style.top = ((windowHeight / 2) - (contentHeight / 2)) + 'px';
+					}
+					else {
+						contentElement.style.position = 'static';
+					}
+				}
+			}
+		}
+		window.onload = function() {
+			setContent();
+		}
+		window.onresize = function() {
+			setContent();
+		}
+		//-->
+		</script>
+	</head>
+	<body>
+		<div id="content">
+			<h1>Content</h1>
+			<p>This content should be centered in your browser window. CSS is used for horizontal alignment, while scripting is used for vertical alignment.</p>
+		</div>
+	</body>
+</html>

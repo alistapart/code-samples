@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Exploring footers</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<style type="text/css">
+        <!--
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #9aa;
+				font: 13px/140% "Trebuchet MS", "Bitstream Vera Sans", verdana, lucida, arial, helvetica, sans-serif;
+				text-align: center;
+			}
+			#container {
+				margin: 20px auto;
+				width: 412px;
+			}
+			#content {
+				border: 1px solid #566;
+				padding: 10px;
+				background-color: #fff;
+				text-align: left;
+			}
+			h1 {
+				margin-top: 0;
+				font-size: 20px;
+			}
+			h2 {
+				font-size: 17px;
+				font-weight: normal;
+			}
+			h3 {
+				font-size: 14px;
+			}
+			h4 {
+				font-size: 13px;
+			}
+			a:link, a:visited {
+				font-weight : bold; 
+				text-decoration : none;
+				color: #c30;
+				background: transparent; 
+			}
+			a:hover {
+				font-weight : bold; 
+				text-decoration : underline;
+				color: #999;
+				background: transparent; 
+			}
+			a:active {
+				font-weight : bold; 
+				text-decoration : none;
+				color: #526968;
+				background: transparent;  
+			}
+			code, pre {
+				font-family: "Bitstream Vera Sans Mono", monaco, "Courier New", courier, monospace;
+			}
+			code {
+				font-size: 12px;
+			}
+			pre {
+				font-size: 11px;
+			}
+        -->
+        </style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="content">
+				<h1>Exploring footers</h1>
+				<h4>By Bobby van der Sluis</h4>
+				<p>One of the nice things about old-school table layout methods is that they enable you to create liquid page designs very easily. If you want to center content vertically or stick a footer to the bottom of the browser window, all you have to do is include one main table with a height of 100% and position elements inside of it.</p>
+
+				<p>With web standards, you can&#8217;t do this anymore. The table height property is deprecated in XHTML, and web standards recommend not to use tables for page layout anymore. Dividing structural markup from style, CSS is the way to go if you want to position document elements. However, if you want to use CSS for vertical positioning, you face a lack of support from some mainstream browsers.</p>
+
+				<p>This article explores the ways you can position footers using web standards. Many designs contain a footer that is positioned directly under the content area, unless the content and the footer together don&#8217;t fill the window entirely. In this case the footer will be positioned at the bottom of the browser window.</p>
+
+				<h3>Absolute positioning in a relative box</h3>
+				<p>So how do you position a footer with CSS? Picture that you have a container with a fixed width. The container consists of a variable amount of content followed by a footer with a fixed height. When you add content, the height of the container grows; when you subtract content, it shrinks.</p>
+
+				<p>If you create a relative-positioned container and nest a content block, by default it will follow the normal flow inside the container, expanding or diminishing the height of its parent with its content. One of the strengths of relative positioning is that you can nest absolute-positioned elements inside of them. This makes it possible to nest a footer block and position it absolute to stick at the bottom of the container. Your HTML code looks like:</p>
+
+<pre>&lt;div id="container"&gt;
+    &lt;div id="content"&gt;...&lt;/div&gt;
+    &lt;div id="footer"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+				<p>And your style rules look like:</p>
+
+<pre>#container {
+    position: relative;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+}</pre>
+				<p>However, absolute-positioned elements are taken out of the normal flow and are placed over normal flowed elements. Because you don't want your footer to overlap your content, you can add some padding to the bottom of the content block to compensate the footer's height. Please view the result in <a href="/d/footers/footer_css1.html">example 1</a>.</p>
+
+				<p>This step doesn't work correct in Internet Explorer 5.x/Windows. For these browsers an absolute-positioned child looses its position when the height of the parent element is not set. We will focus on the container's height in the next step.</p>
+
+				<h3>Connecting the container to the viewport</h3>
+				<p>So far the height of the container is determined by the height of the content block, which is cool if there is enough content to fill the height of the browser window (also called the viewport). If this is not the case you want the footer to stick to the bottom of the browser window.</p>
+
+				<p>In CSS this is an easy effect to create. If you give the container a minimal height of 100% with the min-height attribute, the minimal height of the container is equal to the height of its parent element, the body element. You specify that the height of the body element must equal the height of the viewport, by setting the height of both the body and the html element to 100%:</p>
+
+<pre>html, body {
+    height: 100%;
+}
+#container {
+    position: relative;
+    <strong>min-height: 100%;</strong>
+}
+</pre>
+				<p>Please view the result in <a href="/d/footers/footer_css2.html">example 2</a>. This is all the code that should be needed to position a footer with CSS. Unfortunately this technique doesn't work for Internet Explorer and Safari, because of their lack of support for the min-height attribute.</p>
+
+				<p>But wait a minute, the technique works in Internet Explorer 6, even despite the fact that this browser doesn't support the min-height attribute (at least not according to the W3C specs).</p>
+
+				<p>It appears that if you set the height of the body element to 100%, in Internet Explorer 6 (in 'standards compliant mode') the container inherits its parent's height (in our case the viewport's height). Internet Explorer's wrong implementation of the default <code>visible</code> value of the <code>overflow</code> attribute (on Windows only) causes our container to stretch up until its content fits in it, instead of maintaining a fixed 100% viewport height. These two together effectively simulate a <code>min-height</code> attribute.</p>
+
+				<h3>Working around some limitations</h3>
+				<p>Internet Explorer 5.x/Windows always renders a web page in 'quirks mode'. If you set a block element's height to 100%, in 'quirks mode' the element receives the height of the viewport. Now if you could only declare a height of 100% for the container, this would both fix the issue from the first example and make the technique work in this browser too. Note that if you would just set the height of the container to 100%, in 'standards compliant mode' the footer will always stay at the bottom of the browser window.</p>
+
+				<p>Using the <a href="http://tantek.com/CSS/Examples/boxmodelhack.html">box model hack</a>, you can pass style rules to Internet Explorer 5.x/Windows only. You define the height of the container as follows:</p>
+
+<pre>#container {
+    position: relative;
+    min-height: 100%;
+    <strong>height: 100%;
+    voice-family: "\"}\"";
+    voice-family: inherit;
+    height: auto;</strong>
+}
+<strong>html&gt;body #container {
+    height: auto;
+}</strong></pre>
+				<p>Please view the result in <a href="/d/footers/footer_css3.html">example 3</a>. Example 3 doesn't work in Internet Explorer 5.x/Mac and Safari, however it degrades gracefully; the footer will always be placed at the bottom of the content block.</p>
+
+				<p>Microsoft has stopped developing Internet Explorer on the Mac. I hope that the people from Apple decide to support the min-height attribute soon. So what if you want to support Safari or Internet Explorer 5/Mac too? Are their any other alternatives? If you ask yourself these questions, please continue reading.</p>
+
+				<h3>What about the W3C DOM cavalry?</h3>
+				<p>Unfortunately the W3C did not create any specifications on how to calculate the height of both browser window or document elements. They probably should have, the reason of creating standards is that browser makers don't have to create these specifications themselves. In this case browser makers were forced to create their own proprietary attributes.</p>
+
+				<p>So if you want to use scripting to position elements relative to the browser window, you are condemned to use non-standards-compliant proprietary techniques. The question is: Is it a bad practice to use these techniques in an area where there is a lack of standards?</p>
+
+				<p>To my opinion this just depends on how standardized these specifications are amongst themselves. If they are able to fill in the gaps of web standards and are used in a correct way, I think they should be treated the same way as W3C specifications.</p>
+
+				<p>If you have the choice between a pure CSS solution and one that combines CSS and scripting, it is wise to use CSS only. In principle CSS should take care of style and JavaScript of behavior. However especially in the cases where standards are supported poorly or seem to be insufficient, using DOM and JavaScript can enrich the way you style your web documents. In this case it can be justified to use a combination of CSS and scripting techniques.</p>
+
+				<h3>Using proprietary DOM to calculate heights</h3>
+				<p>It seems that browser makers have been looking at each other at the time they created their proprietary height specifications. As a result proprietary DOM offers us the possibility to <a href="http://www.howtocreate.co.uk/tutorials/index.php?tut=0&amp;part=16">calculate the height of the browser window</a> and document elements. Although several browsers use different objects and properties, the following script will retrieve the window height of almost any modern browser correctly:</p>
+
+<pre>function getWindowHeight() {
+  var windowHeight=0;
+  if (typeof(window.innerHeight)=='number') {
+    windowHeight=window.innerHeight;
+  }
+  else {
+    if (document.documentElement&amp;&amp;
+      document.documentElement.clientHeight) {
+        windowHeight=
+          document.documentElement.clientHeight;
+    }
+    else {
+      if (document.body&amp;&amp;document.body.clientHeight) {
+        windowHeight=document.body.clientHeight;
+      }
+    }
+  }
+  return windowHeight;
+}</pre>
+				<p>The <code>window.innerHeight</code> property returns the window height for most modern browsers except Internet Explorer. Internet Explorer 6 in 'standards compliant mode' uses <code>document.documentElement.clientHeight</code> to achieve the same. The <code>document.body.clientHeight</code> property returns the window height for Internet Explorer 4+ browsers.</p>
+
+				<p>With <code>document.getElementById(elementId).offsetHeight</code> you can retrieve the height of any element for all modern browsers.</p>
+
+				<p>Now you can calculate the height of the browser window and your document's elements, you are able write a function to position your footer correctly.</p>
+
+				<h3>Using the W3C DOM to position the footer</h3>
+				<p>Because you use JavaScript, this doesn't mean you cannot use CSS for positioning elements anymore. The W3C DOM offers an interface to use style rules with JavaScript. This means that you can describe JavaScript as it was CSS, with the addition of some conditional logic and a few height calculations.</p>
+
+				<p>You should start by marking up your HTML page in its most simplified form, creating a content and a footer block:</p>
+
+<pre>&lt;div id="content"&gt;...&lt;/div&gt;
+&lt;div id="footer"&gt;...&lt;/div&gt;</pre>
+				<p>If the height of the content block and the footer together are bigger than the height of the viewport, the footer should follow the normal flow (static positioning). If this is not the case, your script has to position the footer at the bottom of the window. With relative positioning you can move the footer downwards, relative to its position in the current flow (you can also use absolute positioning to achieve this). Sounds like CSS, doesn't it?</p>
+
+				<p>The following function describes in script language what we just defined:</p>
+
+<pre>function setFooter() {
+  if (document.getElementById) {
+    var windowHeight=getWindowHeight();
+    if (windowHeight&gt;0) {
+      var contentHeight=
+        document.getElementById('content').offsetHeight;
+      var footerElement=
+        document.getElementById('footer');
+      var footerHeight=footerElement.offsetHeight;
+      if (windowHeight-(contentHeight+footerHeight)&gt;=0) {
+        footerElement.style.position='relative';
+        footerElement.style.top=(windowHeight-
+          (contentHeight+footerHeight))+'px';
+      }
+      else {
+        footerElement.style.position='static';
+      }
+    }
+  }
+}</pre>
+				<h3>Dissecting the setFooter() function</h3>
+				<p>The <code>setFooter()</code> function first retrieves the height of the viewport and stores it in the <code>windowHeight</code> variable:</p>
+
+<pre>var windowHeight = getWindowHeight();</pre>
+				<p>Second it retrieves the height of the content element and the footer element:</p>
+
+<pre>var contentHeight=
+  document.getElementById('content').offsetHeight;
+var footerElement=document.getElementById('footer');
+var footerHeight=footerElement.offsetHeight;</pre>
+				<p>  Next it decides if the height of the window is larger than the
+   combined height of the content and footer:</p>
+
+<pre>if (windowHeight-(contentHeight+footerHeight)&gt;=0)</pre>
+				<p>   If this is the case, it repositions the footer relative (to its 
+   place in the normal flow) at the bottom of the page:</p>
+
+<pre>footerElement.style.position='relative';
+footerElement.style.top=
+  (windowHeight-(contentHeight+footerHeight))+'px';</pre>
+				<p>If they do fill the height of the window, the element is repositioned static to follow the normal flow:</p>
+
+<pre>footerElement.style.position='static';</pre>
+				<p>To make everything work include the <code>getWindowHeight()</code> function in your script and add two functions that call your <code>setFooter()</code> function at the moment our web document is loaded or resized:</p>
+
+<pre>window.onload = function() {
+  setFooter();
+}
+window.onresize = function() {
+  setFooter();
+}</pre>
+				<p>Please view the finished version in <a href="/d/footers/footer_dom1.html">example 4</a>. However there is one little hiccup. Safari is unable to position an element relative (or absolute) when the <code>onload</code> function is called. To work around this issue, add the following style rule:</p>
+
+<pre>#footer {
+  position: relative;
+}</pre>
+				<p>The technique works in all modern browsers without using hacks, a temporary advantage over the CSS only technique. If a browser cannot calculate one of the heights, if JavaScript is switched off or if a browser doesn't support JavaScript, the footer will just follow the normal flow. As you can see structural mark-up and style are still separated and your marked-up code didn't get more complicated. Maybe scripting tends to be more verbose than CSS, but not in a significant way.</p>
+
+				<h3>Reusing the concept</h3>
+				<p>Just by making minor changes in the CSS logic, you have multiple ways to position your footer. You can use relative-positioned elements only (<a href="/d/footers/footer_dom2.html">example 5</a>) or absolute positioning (<a href="/d/footers/footer_dom3.html">example 6</a>).</p>
+
+				<p>The scripting technique can easily be reused for other vertical positioning tasks. Picture you want to <a href="http://www.wpdfd.com/editorial/wpd0103.htm#toptip">center a content block vertically in your browser window using CSS only</a>. You could also have achieved this effect by reusing the scripting technique. Please view the result in <a href="/d/footers/footer_variation1.html">example 7</a>.</p>
+
+				<h2>Discuss</h2>
+				<p>Was this good for you? Discuss this article.</p>
+
+				<h2>About the author</h2>
+				<p>Bobby van der Sluis is a web designer from The Netherlands. You can read more about him at <a href="http://www.bobbyvandersluis.com">his personal website</a>.</p>
+
+			</div>
+		</div>
+	</body>
+</html>
