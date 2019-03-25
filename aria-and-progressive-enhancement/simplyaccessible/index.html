@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"https://alistapart.com/>
+		<title>WCAG 2.0: Beyond Web Content — Simply Accessible</title>
+		<link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/mobile.css" media="screen and (max-width: 680px)" />
+		<script type="text/javascript" src="javascripts/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="javascripts/modernizr-1.1.min.js"></script>
+		<script type="text/javascript" src="javascripts/site.js"></script>
+		<!--[if (gte IE 5.5)&(lte IE 8)]><script type="text/javascript" src="javascripts/ie-css3.js"></script><![endif]-->
+		<!--[if lte IE 7]><link rel="stylesheet" href="stylesheets/mobile-ie.css" type="text/css" media="screen and (max-width: 680px)" /><![endif]-->
+		<!--[if IE 6]>
+		<link rel="stylesheet" href="stylesheets/ie6.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="javascripts/supersleight.plugin.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="javascripts/jquery.mediaqueries.js"></script>
+		<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	</head>
+	<body>
+		<header role="banner">
+			<h2><a href="http://simplyaccessible.com"><img src="images/logo.png" alt="Simply Accessible" /></a></h2>
+			<nav role="navigation">
+				<ul>
+					<li><a href="https://alistapart.com/">Home</a></li>
+					<li><a href="https://alistapart.com/archives/">Archives</a></li>
+					<li><a href="https://alistapart.com/about/">About</a></li>
+					<li><a href="https://alistapart.com/contact/">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<div id="search">
+			<div class="inner">
+				<form class="site-search" action="https://alistapart.com/" method="get" role="search">
+					<label for="s">
+						<span>Search</span>
+						<input type="search" name="s" id="s" placeholder="Search" />
+					</label>
+					<button type="submit"><img src="images/search.png" alt="Go" /></button>
+				</form>
+			</div>
+		</div>
+		
+		<div class="main">
+			<div class="inner">
+				
+				<div class="content">
+					<article role="main">
+						<h1>WCAG 2.0: Beyond Web Content</h1>
+						<div class="meta">
+							<div class="author vcard">
+								<a href="http://furtherahead.com" class="url fn">
+									<span>Derek Featherstone</span>
+									<img alt='Derek Featherstone' src='http://0.gravatar.com/avatar/0aa8a7c6d82af3bed9a7cb9bcb2c9e28?s=60&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' />									</a>
+							</div>
+							<div class="info">
+								<p>
+									By <a href="http://simplyaccessible.com/article/author/feather/" title="Posts by Derek Featherstone">Derek Featherstone</a>
+									<span class="date"><abbr class="published" title="2010-11-09T13:20:21">November 9th, 2010</abbr></span>
+								</p>
+								<p class="excerpt">Even though WCAG 2.0 isn't designed to be used beyond web content, its technology agnostic nature and foundation in user needs means that we can use it as a tool for assessing iPhone/iPad apps, desktop apps and more.</p>
+							</div>
+							<div class="share">
+								<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+								<fb:like layout="box_count" width="65"></fb:like>
+							</div>
+						</div>
+						
+						<p><a href="http://www.w3.org/TR/WCAG20/">WCAG 2.0</a> was designed to be technology agnostic. Contrast WCAG 2.0 with WCAG 1.0 and you&#8217;ll see that version 1.0 specifically references HTML and nothing else. WCAG 2.0 takes a more modern approach, allowing you some freedom of choice in terms of technology. Think of it this way &#8212; if the technology has accessibility support, and you use it appropriately with that support, you can meet the requirements of WCAG 2.0.</p>
+						<p>This fits very well with the way that I&#8217;ve always tried to approach accessibility:</p>
+						<blockquote><p>I don&#8217;t care what technology you use, as long as you use the accessibility features of that technology properly.</p>
+						</blockquote>
+						<p>I know it isn&#8217;t quite that simple, and I generally advocate using HTML-based solutions over others, but in reality, at the end of the day, if you can support accessibility with what you build with Technology X, then do it.</p>
+						<p>I was very very happy to see that the W3C recently published an update to the <a href="http://www.w3.org/TR/WCAG20-TECHS/">Techniques for meeting WCAG 2.0</a> that included a huge number of <a href="http://www.w3.org/TR/WCAG20-TECHS/flash.html">Flash specific techniques for WCAG 2.0</a>. Even if I don&#8217;t always agree with the choice to use Flash, that isn&#8217;t my battle. My battle is making sure that if and when you do choose Flash, you implement accessibility. People are going to continue to use Flash and they need to have the tools and techniques to ensure they are creating accessible content.</p>
+						<h2>What about non-web content?</h2>
+						<p>I&#8217;ve seen and heard this a few times in the last while &#8212; someone will post a message to a mailing list asking &#8220;We&#8217;re building an application for iPad/iPhone. Is anyone else doing that with a focus on accessibility and if so, are you following WCAG 2.0?&#8221;</p>
+						<p>People inevitably point to <a href="http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Accessibility_on_iPhone/Accessibility_on_iPhone.html">Apple&#8217;s Accessibility Programming Guide for iOS</a> to provide guidance for making accessible iPhone apps. That is excellent advice &#8212; it is comprehensive and has a lot of valuable information. </p>
+						<p>Other responses flatly dismiss WCAG 2.0 for this scenario &#8212; &#8220;WCAG 2.0 is meant for web content only.&#8221;</p>
+						<p>My take? Just because something isn&#8217;t web content, per se, doesn&#8217;t mean that we can&#8217;t still take the core principles of WCAG 2.0 and apply it to an iPhone app. <strong>WCAG 2.0 is based on user needs</strong>. Your content and functionality, whether part of an app or delivered via browser, needs to be:</p>
+						<ul>
+							<li>Perceivable.</li>
+							<li>Operable.</li>
+							<li>Understandable.</li>
+							<li>Robust.</li>
+						</ul>
+						<p>Nothing precludes you from using WCAG 2.0 as a framework for assessing an iPhone app. Your app&#8217;s functionality and content needs to be perceivable, operable, understandable and robust, doesn&#8217;t it? </p>
+						<p>The implementation details are different than with HTML. Even so, we&#8217;ve used WCAG 2.0 as a framework for assessing iPhone apps, Flex/Flash applications, and even Java and other desktop apps as part of our <a href="http://furtherahead.com">accessibility consulting</a>.</p>
+						<p>Even if it isn&#8217;t &#8220;web content&#8221; per se, core user needs remain.</p>
+						<p>Have you used WCAG 2.0 as a framework for other types of content? I know all the guidelines don&#8217;t necessarily apply in a non-web context, but what other challenges did you run in to?  If so, we&#8217;d love to hear about it&#8230; please do share!</p>
+						
+						<p class="meta"><span class="tags">Tagged with: <a href="http://simplyaccessible.com/tags/assessment/" rel="tag">assessment</a> <a href="http://simplyaccessible.com/tags/ios/" rel="tag">iOS</a> <a href="http://simplyaccessible.com/tags/ipad/" rel="tag">iPad</a> <a href="http://simplyaccessible.com/tags/iphone/" rel="tag">iPhone</a> <a href="http://simplyaccessible.com/tags/wcag2/" rel="tag">WCAG2</a></span></p>
+					</article>
+					
+					<form action="http://furtherahead.us1.list-manage.com/subscribe/post?u=9a6a9f875c28940a1ce6104bc&amp;id=4515afc895" method="post" id="newsletter" name="mc-embedded-subscribe-form">
+						<h3><img src="images/newsletter.png" alt="Sign up for our newsletter!" /></h3>
+						<fieldset>
+							<p>Sign up for our occasional announcements to stay informed and receive special deals on our training products and events.</p>
+							<div class="primary">
+								<p>
+									<label for="mce-FNAME">
+										First Name
+										<input type="text" name="FNAME" id="mce-FNAME" />
+									</label>
+								</p>
+								<p>
+									<label for="mce-LNAME">
+										Last Name
+										<input type="text" name="LNAME" id="mce-LNAME" />
+									</label>
+								</p>
+							</div>
+							<div class="secondary">
+								<p>
+									<label for="mce-EMAIL">
+										Email <em class="required">(required)</em>
+										<input type="text" name="EMAIL" id="mce-EMAIL" aria-required="true" placeholder="email@domain.com" />
+									</label>
+								</p>
+							</div>
+							<input type="hidden" name="SIGNUP" id="SIGNUP" value="http://simplyaccessible.com/article/wcag2-beyond-web-content/" />
+							<p class="submit"><button type="submit" name="subscribe" value="Subscribe">Subscribe</button></p>
+						</fieldset>	
+					</form>					
+				</div>
+				
+				<div class="sidebar" role="complementary">
+					<div id="furtherahead" class="block">
+						<h3>Presented by</h3>
+						<p><a href="http://furtherahead.com"><img src="images/fa-logo.png" alt="Further Ahead Inc." /></a></p>
+					</div>
+					<div id="subscribe" class="block alt">
+						<h3>Subscribe</h3>
+						<p>There are two ways to subscribe to Simply Accessible—our <a href="http://simplyaccessible.com/feed/">RSS Feed</a> or sign up for email updates below and we’ll email you with the details when we post a new article here. Don’t worry we won’t share or sell your email address.</p>
+						
+						<form action="http://furtherahead.us1.list-manage.com/subscribe/post?u=9a6a9f875c28940a1ce6104bc&amp;id=9aed3bea87" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
+							<p><label for="mce-group-5-0"><input type="checkbox" value="1" name="group[1]" id="mce-group-5-0" /> <em>Awesome! Sign me up for your newsletter as well!</em></label></p>
+							<p>
+								<label for="mce-SUBSCRIBE">
+									<span>Email</span>
+									<input type="text" value="" name="EMAIL" class="required email" id="mce-SUBSCRIBE" placeholder="email@domain.com" />
+								</label>
+								<button type="submit">Subscribe</button>
+							</p>
+						</form>
+					</div>
+					<div id="related" class="block">
+						<h3>Related Posts</h3>
+						<ol>
+							<li>
+								<a href="http://simplyaccessible.com/article/custom-styles-for-ios/" rel="bookmark">Custom Styles for iOS</a>
+								<span class="date"><abbr class="published" title="2010-10-01T03:00:08">October 1st, 2010</abbr></span>
+							</li>
+						</ol>
+					</div>
+					<div id="courses" class="events block alt">
+						<h3>Accessibility Courses</h3>
+				
+						<ol>
+							<li class="vevent">
+								<a href="http://furtherahead.com/courses/understandingaccessibility/" class="summary">Understanding Accessibility</a>
+								<span class="location">Ottawa, Ontario, Canada</span>
+								<span class="price">$295</span>
+							</li>
+							<li class="vevent">
+								<a href="http://furtherahead.com/courses/realworldhtml5/" class="summary">Real World Accessibility for HTML5, CSS3 and ARIA</a>
+								<span class="location">Ottawa, Ontario, Canada</span>
+								<span class="price">$595</span>
+							</li>
+							<li class="vevent">
+								<a href="http://furtherahead.com/courses/realworldajax/" class="summary">Real World Accessibility for Ajax and Web Apps</a>
+								<span class="location">Ottawa, Ontario, Canada</span>
+								<span class="price">$595</span>
+							</li>
+						</ol>
+					</div>
+					<div id="events" class="events block">
+						<h3>Speaking Appearances</h3>
+						<ol>
+							<li class="vevent">
+								<a href="http://adobeevents.ca/cem-ottawa/" class="summary">Adobe Customer Experience Seminar</a>
+								<span class="location">Ottawa, Ontario</span>
+								<span class="date"><abbr class="dtstart" title="2010-11-17">November 17</abbr>, 2010</span>
+								<span class="description"></span>
+							</li>
+							<li class="vevent">
+								<a href="http://adobeevents.ca/cem-toronto/" class="summary">Adobe Customer Experience Seminar</a>
+								<span class="location">Toronto, Ontario</span>
+								<span class="date"><abbr class="dtstart" title="2010-11-18">November 18</abbr>, 2010</span>
+								<span class="description"></span>
+							</li>
+							<li class="vevent">
+								<a href="http://www.knowbility.org/accessu-west/" class="summary">AccessU West 2011</a>
+								<span class="location">San Jose State University, San Jose, CA</span>
+								<span class="date"><abbr class="dtstart" title="2011-01-10">January 10</abbr> to <abbr class="dtend" title="2011-01-12">12</abbr>, 2011</span>
+								<span class="description">AccessU West, Knowbility’s West Coast web accessibility institute (previously CalWAC), returns January 10-12, 2011. Held at San Jose State University, AccessU West offers classes on how to make electronic information technology accessible to everyone – including people with disabilities.</span>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<div class="inner">
+				<p><a href="http://furtherahead.com" class="furtherahead"><img src="images/furtherahead.png" alt="Further Ahead Inc." /></a></p>
+				
+				<div class="copy" role="contentinfo">
+					<p>Copyright © Further Ahead Inc. All Rights Reserved.</p>
+					<p>Social network icons by <a href="http://komodomedia.com">Komodo Media</a>.</p>
+				</div>
+				
+				<nav role="navigation">
+					<ul>
+						<li><a href="https://alistapart.com/">Home</a></li>
+						<li><a href="https://alistapart.com/archives/">Archives</a></li>
+						<li><a href="https://alistapart.com/about/">About</a></li>
+						<li><a href="https://alistapart.com/contact/">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,181 @@
+/* Set up the basic layout and remove unsemantic br tags. */
+
+/* wrap each fieldset of a form in a div class="boxwrap" to apply styles */
+form {
+	width: 53em;
+}
+
+fieldset {
+border: none;
+padding: 0.5em 0.5em 0.5em 1.5em;
+margin: 0;
+}
+
+form div {
+position: relative;
+width: 60em;
+margin: 0.5em 0 0.5em 0;
+}
+
+/* this ensures that all div class="container" blocks are cleared properly and not overlapping */
+div.container:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+/* Hides from IE-mac \*/
+* html div.container {height: 1%;}
+/* End hide from IE-mac */
+
+
+legend {
+font-weight:  bold;
+margin: 0;
+padding: 5px 0 0;
+font-size: 1.4em;
+}
+
+label, span.label {
+float: left;
+width: 8em;
+text-align: right;
+vertical-align: middle;
+}
+
+
+
+fieldset div input {
+	width: 15em; /* Width for modern browsers */
+	border: 3px double #aaa;
+	vertical-align: middle;
+	padding: 0.1em;
+	}
+	
+fieldset div input.radio {
+	width: 1.125em; /* Width for modern browsers */
+	height: 1.125em;
+	padding: 1px;
+	border: none;
+}
+
+fieldset div input.checkbox {
+width: auto;
+border: none;
+}
+
+fieldset hr {
+background-color: #efefef;
+color: #efefef;
+width: 80%;
+height: 1px;
+border: 1px solid #efefef;
+}
+
+fieldset div.container {
+margin: 0.25em 0;
+
+}
+
+
+fieldset div.container label {
+display: block;
+float: left;
+width: 40em;
+margin-left: 0.5em;
+}
+
+
+fieldset div select {
+	font-family: Arial,Verdana,sans-serif;
+	font-size: 100%;
+	width: 140px; /* Width for modern browsers */
+	border: 1px solid #900;
+	height: auto;
+	padding: 1px;
+	}
+						
+	
+
+input.button {
+display: block;
+float: left;
+border: 1px groove #000;
+margin: 0.5em;
+text-align: center;
+vertical-align: middle;
+}
+
+input.button {
+width: 5em;
+}
+
+input.radio, input.checkbox {
+height: 1em;
+width: 1em;
+}
+
+div.group {
+	padding: 0.25em 0 1em 0;
+}
+
+
+div.group div {
+	margin-left: 13em;
+	width: 18em;
+clear: both;
+
+}
+
+
+
+/* some adjustments for IE */
+
+* html div.group {
+	padding-bottom: 0;
+}
+
+* html div.group div {
+	position: relative;
+	top: -1em;
+}
+/* end adjustments for IE */
+div.group div label {width: 10em; text-align: left; float: left;}
+div.group div input.checkbox { float: left;}
+
+div.row {
+float: left;
+}
+
+div.row * {
+	float:left;
+	margin: 0.25em;
+}
+
+div.group div * {
+float: left;
+}
+
+div.group { 
+clear: both;
+}
+
+div.buttonrow {
+margin-left: 13em;
+}
+
+span#zoomctrl {
+display: block;
+margin: 1em;
+}
+
+form div {
+padding-top: 0.01em;
+}
+
+.group li label,
+.group span {
+	float: none;
+}

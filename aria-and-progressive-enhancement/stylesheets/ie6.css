@@ -1,0 +1,8 @@
+label { zoom: 1; }
+label span {
+	float: left;
+	margin-right: 1.0em;
+}
+.fancy {
+	background-image: none;
+}

@@ -1,0 +1,89 @@
+/* >>>>> Page Styles <<<<< */
+
+html, body {margin: 0; padding: 0; font-size: 100%; }
+
+body {
+	margin: 10px 0;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  	font-size: 80%;
+	color: #000;
+	background: #fff; 
+	}
+
+/* IE workarounds for centering and margins */
+* html body div#pagewrap {
+text-align: center;
+}
+
+* html body div#pagewrap div {
+text-align: left;
+}
+
+a img {
+border: none;
+}
+
+h1 {
+font-weight: normal;
+color:#3d5a8d;
+background-color: #fff; 
+font-size: 180%;
+font-family: Arial, Helvetica, sans-serif;
+margin: 1em 0 0.5em;
+
+}
+div#adminArea {
+	position: relative;
+	width: 90%;
+	margin: 0 5%;
+        padding: 0.25em 0 3em;
+	border-top: 4px solid #ccc;
+
+}
+
+
+
+div#adminArea:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+#navigation {
+	list-style: none;
+	border-bottom: 2px solid #CCC;
+}
+
+#navigation li {
+	display: inline;
+	padding: 0 1.0em;
+}
+
+#navigation, #content {
+	margin: 0.5em 0.5em 1.5em;
+	padding: 0 0.5em 0.75em;
+}
+
+#footer {
+	padding-top: 0.5em;
+	text-align: center;
+	border-top: 1px solid #CCC;
+}
+
+
+/* Hide from IE5-Mac \*/
+* html #adminArea {height: 1%;}
+/* end hide *//*** This hack will make IE5-win display the background color for the nav ***/ 
+
+
+div#adminArea h1 {
+
+	margin: 0;
+}
+
+div#adminArea form {
+	margin: 1em  2em;
+}
+

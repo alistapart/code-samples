@@ -1,0 +1,121 @@
+body { min-width: 320px; }
+
+header,
+.inner { width: auto; }
+
+header img,
+#newsletter img { width: 100%; }
+
+header img { max-width: 401px; }
+
+#newsletter img { max-width: 303px; }
+
+header { padding: 15px 20px 10px; }
+
+nav {
+	clear: both;
+	float: none;
+	margin: 0 0 5px;
+	padding: 1px 13px;
+	font-size: 15px;
+	overflow: auto;
+}
+
+nav li { margin: 0 6px; }
+
+#search input { width: 95%; }
+
+.main { padding: 15px 0; }
+
+.main h1,
+.main h1 a,
+.main h2,
+.main h2 a { font-size: 21px; }
+
+.primary,
+.secondary {
+	float: none;
+	width: auto;
+}
+
+.content,
+.sidebar {
+	float: none;
+	width: auto;
+}
+
+span.tags {
+	float: none;
+	width: auto;
+	display: block;
+}
+
+.sidebar {
+	margin-top: 20px;
+	border-top: 2px solid #CCC;
+}
+
+.comment .meta,
+.nested .meta {
+	min-height: 3.5em;
+	overflow: visible;
+}
+
+.nested .meta img {
+	float: left;
+	width: 3.5em;
+	height: 3.5em;
+}
+
+.comment .meta p,
+.nested .meta p,
+.nested .nested .meta p {
+	margin: 0.5em 10px;
+	line-height: 1.4;
+	font-size: 12px;
+	max-width: 55%;
+}
+
+.nested .meta p { max-width: 50%; }
+
+.comment .nested .nested .meta p { max-width: 60%; }
+
+.nested .meta .comment-reply-link {
+	height: 2.5em;
+	padding: 1.0em 15px 0;
+}
+
+.nested .nested .meta p { max-width: 75%; }
+
+.block { margin-bottom: 20px; }
+
+.guidelines {
+	clear: right;
+	float: none;
+	width: auto;
+}
+
+.commentlist #respond textarea,
+#contactform textarea,
+#respond textarea,
+#contactform input[type=text],
+#contactform select { width: 98%; }
+
+li.author {
+	float: none;
+	margin-bottom: 10px;
+	overflow: auto;
+}
+
+.sidebar .author .links { width: 23%; }
+
+.sidebar .author p { min-width: 77%; }
+
+.copy {
+	float: none;
+	margin: 0;
+}
+
+footer p:first-child { text-align: left; }
+
+.info { width: 65%; }

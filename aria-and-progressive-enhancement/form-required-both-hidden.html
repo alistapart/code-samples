@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Form example: Indicating Required Fields</title>
+		<link rel="stylesheet" href="stylesheets/screen.css" media="screen" />
+		<link rel="stylesheet" href="stylesheets/form-required-aria.css" media="screen" />
+		<!--[if IE]><link rel="stylesheet" href="/css/ie.css" type="text/css" /><![endif]-->
+		<link rel="stylesheet" href="stylesheets/formfields.css" />
+	</head>
+	<body>
+		<div id="header">
+			<div class="inner">
+				<h1>Form example: Indicating Required Fields</h1>
+				<p>Required fields for a form field using our traditional method (in the label with aria-hidden="true" on em) and aria-required="true".</p>
+			</div>
+		</div>
+
+		<div class="inner content">
+			<h2>Add New User</h2>
+	
+			
+	
+			<form action="" method="POST">
+			  <fieldset>
+			  	<legend>User Details</legend>
+					<p id="unameerrordiv"><label for="unameerror">Username <em aria-hidden="true">(required)</em><strong></strong></label> <input id="unameerror" type="text" name="uname" value="" aria-required="true" /></p>
+					<p><label for="email">Email Address </label> <input id="email" type="text" name="email" value="" /></p>
+					<p><label for="fname">First Name <em aria-hidden="true">must not be blank</em></label> <input id="fname" type="text" name="fname" value="" /></p>
+					<p><label for="lname">Last Name </label> <input id="lname" type="text" name="lname" value="" /></p>
+				</fieldset>
+			</form>
+		</div>
+		<div id="footer" class="inner">
+			<p><a href="http://furtherahead.com"><img src="images/fa-logo.png" alt="Further Ahead Inc." /></a></p>
+		</div>
+	</body>
+</html>

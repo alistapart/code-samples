@@ -1,0 +1,26 @@
+header,
+.inner { width: 960px; }
+
+#search button { right: 45px; }
+
+p.meta:last-child { height: 1%; }
+
+p.meta:last-child a:first-child { float: left; }
+
+p.meta:last-child span { width: 70%; }
+
+p.meta:last-child span a:first-child { float: none; }
+
+nav,
+.main,
+.author { height: 1%; }
+
+.author ul { padding-left: 3px; }
+
+.author li { margin: 0 3px 0 0; }
+
+.guidelines { margin-right: 30px; }
+
+#newsletter input { display: block; }
+
+#newsletter li input { display: inline; }

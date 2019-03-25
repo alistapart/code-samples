@@ -1,0 +1,73 @@
+form div {
+	position: relative;
+	width: 60em;
+	margin: 0.5em 0 0.5em 0;
+	padding: 0.5em 0;	
+	clear: both;
+}
+
+form div.error {
+	height: 54px;
+	border: 1px solid #ccc;
+	background-color: #efefeb;
+}
+
+label {
+	margin: 0 0.5em;
+	line-height: 2em;
+}
+
+label em, label img {
+	position: absolute;
+	left: 29em;
+	top: 0;
+	color: #900;
+	float: left;
+	text-align:left;
+	font-style: italic;
+	padding: 0.5em 0;
+}
+
+label em { width: 20em;	 }
+
+label strong {
+	position: absolute;
+	left: 16em;
+	top: 2.5em;
+	color: #900;
+	width: 40em;
+	text-align:left;
+	font-style: italic;
+	margin: 0.25em 0;
+	line-height: 1.5em;
+	height: auto;
+}
+
+
+body.zoom label em, body.zoom label img {
+	position: static;
+	display: inline;
+	float: none;
+	width: auto;
+	text-align: left;
+	border: none;
+}
+
+body.zoom label img { padding: 0; }
+
+body.zoom label {
+	text-align: left;
+	float: left;
+	width: auto;
+	border: none;
+}
+
+body.zoom div input {
+	display: block; 
+	clear: both;
+}
+
+
+form p {
+	position: relative;
+}

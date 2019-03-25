@@ -1,0 +1,99 @@
+table.details, table.details tr td, table.details tr {
+	border: 1px solid #caeadf;
+	font-family: verdana,arial,helvetica,sans-serif; 
+	font-size: 95%;
+	border-collapse: collapse;
+}
+table.details tbody tr td {
+background-color: #fff;
+vertical-align: top;
+
+}
+
+table.details tbody tr.even, table.details tbody tr.even td {
+  background-color: #f0f9f6;
+  }
+
+table.details thead tr th {
+  white-space: nowrap;
+  }
+
+table.details tbody tr:hover td, table.details tbody tr.hover td {
+background-color: #eee;
+color: #333;
+}
+
+table.details tr td div.tablethumb {
+height: 60px;
+width: 60px;
+overflow: hidden;
+border: 1px solid #00f;
+}
+
+table.details tr td div.tablethumb img {
+height: 60px;
+width: 60px;
+}
+
+tr.hover * {
+  background-color: #eee;
+  color: #333;
+}
+
+table.details tbody tr.hilite, table.details tbody tr.hilite td {
+  background-color: #ffffdd;
+}
+
+tr.hilite * {
+  background-color: #ffffdd;
+}
+
+table.details tr td {
+	padding: 0.25em;
+	vertical-align: middle;
+}
+
+table.details {
+	width: 90%;
+   margin: 1em;
+
+}
+
+* html table.details {
+
+}
+
+table.details tr td:first-child {
+
+}
+
+table.details th#allth {
+  text-align: left;
+  }
+
+
+span#toggle {
+position: relative;
+left: 5em;
+}
+
+th.right { text-align: right; font-weight: bold; }
+td.right {text-align: right; background-color: #fff; color: #000; padding-right; 1em;}
+tr.header, tr.header th { background-color: #009; color: #fff; font-weight: bold; text-align: left; }
+tr.header th, tr.header { border: 1px solid #009; font-weight: bold; }
+table.details th { font-weight: bold; white-space: nowrap;}
+td.center, tr.header th.center {text-align: center;}
+
+
+table.details tr.header th a {
+	background-color: #009;
+	color: #fff;
+	text-decoration: none;
+}
+
+table.details tr.header th a:hover {
+	background-color: #fff;
+	color: #009;
+	text-decoration: underline;
+}
+

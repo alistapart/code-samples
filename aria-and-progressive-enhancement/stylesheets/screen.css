@@ -1,0 +1,254 @@
+body {
+	margin: 0 auto;
+	font: 62.5%/1.5 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Helvetica, Arial, sans-serif;
+	color: #333;
+	background: #FFF;
+}
+
+img { border: none; }
+
+p, li {
+	font-size: 1.3em;
+	text-shadow: 0 0 0 #000;
+}
+
+li pre { display: inline; }
+
+h1 {
+	color: #FFF;
+	font-size: 2.9em;
+	text-shadow: 1px 1px 1px #000;
+}
+
+#header {
+	padding: 1.0em 0;
+	color: #F9F9F9;
+	background: #2D3236;
+	border-bottom: 3px solid #111;
+}
+
+#header p, #header li { text-shadow: 0 -1px 1px #000; }
+
+#header a { color: #FFF; }
+
+.inner {
+	width: 77.0em;
+	margin: 0 auto;
+}
+
+.content {
+	margin: 2.0em auto;
+	overflow: auto;
+}
+
+form {
+	width: 50.0em;
+	margin: 5.0em auto;
+	padding: 0.5em 1.5em;
+	background: #DDD;
+	border: 1px solid #DDD;
+	-webkit-background-clip: border;
+	-webkit-background-origin: padding;
+	-webkit-border-radius: 5px;
+	-moz-background-clip: border;
+	-moz-background-origin: padding;
+	-moz-border-radius: 5px;
+}
+
+form p, .password {
+	padding: 0.3em 1.5em;
+	background: #FFF;
+	border: 1px solid #EEE;
+	-webkit-background-clip: border;
+	-webkit-background-origin: padding;
+	-webkit-border-radius: 5px;
+	-moz-background-clip: border;
+	-moz-background-origin: padding;
+	-moz-border-radius: 5px;
+	overflow: hidden;
+}
+
+div.password { padding: 0; }
+
+div.password p { border: none; }
+
+label span:first-child, input, textarea {
+	display: block;
+	float: left;
+	margin-right: 1.0em;
+}
+
+label span:first-child {
+	width: 9.5em;
+	text-align: right;
+}
+
+label span { margin-top: 0.5em; }
+
+input, textarea, select { width: 20.0em; }
+
+textarea {
+	height: 15.0em;
+	margin-bottom: 1.0em;
+}
+
+input, textarea {
+	padding: 0.5em;
+	border: 1px solid #CCC;
+}
+
+span.required {
+	display: block;
+	float: left;
+	color: #933;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+span.complete { color: #888; }
+
+.submit {
+	background: none;
+	border: none;
+	text-align: right;
+}
+
+.fancy {
+	background: #222 url(../images/button-overlay.png) repeat-x; 
+	display: inline-block; 
+	padding: 0.5em 1.0em 0.6em; 
+	color: #fff; 
+	font-size: 1.1em;
+	font-weight: bold;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px #000;
+	border: 1px solid rgba(0,0,0,0.25);
+	border-width: 0 0 1px;
+}
+
+.fancy:hover { background-color: #020202; }
+
+button.complete {
+	border: 2px solid #F00;
+	text-decoration: underline;
+}
+
+#footer {
+	border-top: 3px solid #CCC;
+	padding: 10px;
+}
+
+#footer p { margin: 0; }
+
+section {
+	display: block;
+	margin: 15px 0 30px;
+	padding: 1px 5px 10px;
+	border: 1px solid #CCC;
+	border-width: 5px 0 1px;
+}
+
+#searchform { margin: 2.0em 0; }
+
+form#searchform p.submit {
+	margin-bottom: 0;
+	padding: 0;
+}
+
+#navigation {
+	margin: 0;
+	padding: 5px 10px;
+	list-style: none;
+	background: #EEE;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	overflow: auto;
+}
+
+#navigation li {
+	float: left;
+	margin: 0 10px;
+}
+
+fieldset {
+	border: 0;
+	width: auto;
+}
+
+form fieldset div input[type=radio],
+form fieldset div input.radio,
+form fieldset div input[type=checkbox],
+form fieldset div input.checkbox {
+	float: left;
+	width: auto;
+	height: auto;
+	padding: 0;
+}
+
+.group {
+	padding: 0.3em 1.5em;
+	background: #FFF;
+	border: 1px solid #EEE;
+	-webkit-background-clip: border;
+	-webkit-background-origin: padding;
+	-webkit-border-radius: 5px;
+	-moz-background-clip: border;
+	-moz-background-origin: padding;
+	-moz-border-radius: 5px;
+	overflow: hidden;
+}
+
+.group .label {
+	display: block;
+	width: 9.5em;
+	font-size: 1.3em;
+	text-align: right;
+	font-weight: bold;
+}
+
+.group ul {
+	margin: 0 0 1.0em 14em;
+	padding: 0;
+	list-style: none;
+}
+
+.group li { overflow: auto; }
+
+.group input {
+	margin-right: 0.5em;
+	border: 0;
+}
+
+#details {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#details th,
+#details td {
+	padding: 0.5em 1.0em;
+	font-size: 1.2em;
+	border: 1px solid #CCC;
+}
+
+#details th { background: #D9D9D9; }
+
+#details tbody tr:hover td,
+#details tbody tr.hover td { background: #EEE; }
+
+.button { text-align: right; }
+
+.fancy {
+	background-color: #AAA;
+	text-shadow: 1px 1px 1px #FFF;
+	text-decoration: none;
+	font-size: 1.0em;
+}
+
+.fancy:hover,
+.fancy:focus { background-color: #BBB; }
+
+#buttonrole .ui-dialog-titlebar-close { display: none; }

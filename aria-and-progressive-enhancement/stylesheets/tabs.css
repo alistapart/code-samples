@@ -1,0 +1,100 @@
+.tabs {margin: 1em 0 3em;}
+.tabsList {float: left; list-style: none; margin: 0 0 0 0;}
+.tabsList li {
+	position: relative; /*for z-index*/
+	float: left;
+	margin: 0 5px 0 0;
+	z-index: 1;
+}
+.tabsList li a {
+	position: relative;
+	top: 4px;
+	float: left;
+	overflow: hidden;
+	font-weight: normal;
+	text-shadow: none;
+	background: #fff;
+	color: #444;
+	text-decoration: none;
+	margin: 4px 0 0;
+	padding: 8px 0.5em 10px;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 2px 2px 0;
+	-moz-border-radius-topleft: 0.5em;
+	-moz-border-radius-topright: 0.5em;
+	-webkit-border-top-left-radius: 0.5em;
+	-webkit-border-top-right-radius: 0.5em;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	cursor: pointer;
+}
+.tabsList li a:link {border-color: #ccc;}
+.tabsList li a:hover, .tabsList li a:focus, .tabsList li a:active {
+	border-color: #999;
+	text-shadow: 0 1px 1px rgba(0, 0, 0,.2);
+}
+.tabsList li a:active {top: 2px;}
+.tabsList li.current {z-index: 10;}
+.tabsList li.current a {
+	top: 2px;
+	font-weight: bold;
+	color: #333;
+	background: #fafafa;
+	border-color: #999;
+	text-shadow: 0 1px 1px rgba(0, 0, 0,.2);
+}
+.tabsList li.current a:hover, .tabsList li.current a:focus {color: #333; background-color: #fafafa;}
+.tabsList li.current a:focus {outline: 1px dotted #444;}
+.tabsList a span {
+	position: absolute;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	opacity: 0;
+}
+.tabPanel {
+	position: relative;  /*for z-index*/
+	display: block;
+	visibility: visible;
+	clear: left;
+	overflow: auto;
+	padding: 1em 4em 2em;
+	border: 2px solid #999;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	border-radius: 1em;
+	z-index: 5;
+	color: #333;
+	background-color: #fafafa;
+}
+.tabPanel:focus {outline: 1px dotted #999;}
+.tabPanel h2 {display: inline-block;}
+.tabPanel h2:focus {outline: 1px dotted #999;}
+/*==============================*/
+/*IE6-7*/
+/*properties preceded by a "_" are for ie6 only*/
+.tabPanel {zoom:1; _z-index: 0;}
+.tabsList li.current a {_top: 2px; _background-color: #fafafa; _border-bottom: none; outline: expression(hideFocus='');}
+.tabsList li.current a:hover, .tabsList li.current a:focus, .tabsList li.current a:active {
+	_top: 2px;
+	_border-bottom: none;
+	_color: #333;
+	_background-color: #fafafa;
+}
+.tabsList li a:hover, .tabsList li a:focus {
+	_top: 4px;
+	_border: 2px solid #999;
+	_border-bottom: none;
+}
+.tabsList li a:active {
+	_top: 2px;
+	_border: 2px solid #999;
+	_border-bottom: none;
+}
+.tabPanel h3 {
+	zoom: 1;
+	*display: inline; 
+	_height:1em;
+}
