@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <title>Daemon Skins: Separating Presentation from Content: A List Apart</title>
+
+<style type="text/css" media="all">@import "https://alistapart.com/c/ala.css";</style>
+<style type="text/css">
+body {margin: 10px; background: #fff}
+</style>
+<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Language" content="en-us" />
+<meta name="ROBOTS" content="ALL" />
+<meta name="Copyright" content="Copyright (c) 2003 A List Apart Magazine, Happy Cog Studios LLC, Jeffrey Zeldman, and the respective authors" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<link rel="Shortcut Icon" href="https://alistapart.com/favicon.ico" type="image/x-icon" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://alistapart.com/rss.xml" />
+
+<meta name="description" content="Daemon Skins: Separating Presentation from Content. There's more than one way to skin a blog (or any other site). Mark Newhouse of iBlog demonstrates creative scripting techniques that give users more control over their experience, while satisfying a web d" />
+<meta name="keywords" content="CSS, cascading style sheets, JavaScript, W3C, world wide web, consortium, recommendations, standards, advanced graphic scripting techniques, change interface, user control, skins, blogging, blogs," />
+
+<link rel="help" href="http://www.alistapart.com/about/" title="Site info." />
+
+<link rev="happycog" href="http://www.happycog.com/" title="Produced by Happy Cog Studios LLC: web design, consulting, and publishing." />
+<link rev="zeldman" href="http://www.zeldman.com/" title="Directed by Jeffrey Zeldman, bringing web designers The Daily Report since 1995." />
+
+<meta name="Rating" content="General" />
+<meta name="revisit-after" content="5 Days" />
+<meta name="doc-class" content="Living Document" />
+
+
+</head>
+
+<body onload="window.defaultStatus='A List Apart, for people who make websites.'" id="sectiontwo">
+
+
+
+<div id="pagebody">
+
+<h2><a href="https://alistapart.com/articles/daemonskin/">Daemon Skins: Separating Presentation from Content</a></h2>
+
+
+
+<h2>Exhuming the script (How I Skinned iBlog)</h2>
+
+<p>This sidebar explains, step by step, the JavaScript that I use
+to apply different CSS files to an HTML file. I have included the
+script in its entirety at the <a href="#script"
+title="Jump to the script...">end of the page</a> should you wish
+to use or modify it.</p>
+
+<p>The first part of the script came from Porter Glendinning. He
+used it to strip off a named anchor so that he could jump to that
+anchor after it was called within a frameset (see <a
+href="http://www.serve.com/apg/workshop/framedAnchors/"
+title="Linking to a Named Anchor Within a Frameset, the JavaScript that launched a thousand skins..."
+>his code and explanation</a> for more details). I
+modified the script to grab the name of a linked stylesheet, and
+then document.write the link. Adding the name of the stylesheet to
+the end of the url as a query string allows you to change
+stylesheets at the click of a mouse. Within certain limitations, of
+course...</p>
+
+<p>Let's dissect the code:</p>
+
+<p>Put the URL into the string variable parentURL:</p>
+
+ <pre>
+ parentURL = ""+document.location;
+</pre> 
+ 
+
+<p>Check to see if there is a query string (a "?" followed by a
+string) at the end of the URL (parSharpIndex):</p>
+
+ <pre>
+ parSharpIndex = parentURL.indexOf("?");
+</pre> 
+ 
+
+<p>If there is anything in parSharpIndex, assign it to the variable
+anchorString:</p>
+
+ <pre>
+ if (parSharpIndex &gt;= 0) {
+  anchorString = parentURL.substring(parSharpIndex, parentURL.length);
+
+</pre> 
+ 
+
+<p>Here's where things get geeky. I set up a regular expression. It
+looks pretty complicated, but is actually fairly simple, at least
+in concept. First it looks for a question mark (?), followed by any
+number of letters (these are remembered because <code>\w*</code> is in
+parentheses), followed by <code>.css</code>:</p>
+
+ <pre>
+ MyRe=/\?(\w*)\.css/g;
+</pre> 
+ 
+
+<p>Apply the regular expression to the string anchorString, and put
+the remembered string into an array. Assign the contents of the
+array to the variable anchor:</p>
+
+ <pre>
+   MyArray = MyRe.exec(anchorString);
+  anchor = RegExp.$1;
+    }
+</pre> 
+ 
+
+<p>If there is no query string in the URL, assign the string
+'classic' to anchor. This is the default stylesheet for the
+blog:</p>
+
+ <pre>
+     else {
+     anchor = 'classic';
+     }
+
+</pre> 
+ 
+
+<p>Use document.write to write the linked stylesheet (anchor), and
+you are done:</p>
+
+<pre>
+document.write('&lt;link rel="stylesheet" href="' + anchor + '.css"
+type="text\/css"&gt;');
+
+</pre> 
+ 
+
+<h2>Applying the Code</h2>
+
+<p>So, what does it look like in action? I've created three
+different stylesheets: <a
+href="http://gnuhaus.com/iblog/0011.html?classic.css"
+title="The original look of iBook, iMac, iBlog..." target="ala">classic.css</a> is essentially the original stylesheet
+for iBook, iMac, iBlog. The next one I created was an exorcism in
+something completely opposite interms of readability, and style -
+it's called <a
+href="http://gnuhaus.com/iblog/0011.html?skate.css"
+title="I was going for a grungy, difficult to read look here - something very different from classic.css...">skate.css</a>. The last one uses an image of a
+microphone as a background and is called <a
+href="http://gnuhaus.com/iblog/0011.html?mic.css"
+title="If the Web is the largest public address system, then my blog is my microphone...">mic.css</a>.</p>
+
+<p>Currently, due to the way the regular expression is set up, the
+CSS file must be located in the same directory as the HTML file in
+order for the script to apply it to the blog. It would be fairly
+trivial to modify the regular expression to accept fully qualified
+URLs, allowing anyone to create a stylesheet, put it anywhere on
+the web, and then link to it by adding
+"?http://www.example.com/xyz.css" to the end of the URL. Also, the
+skin will only apply to a single page. To be more ubiquitous would
+require setting cookies or using server side solutions. Feel free
+to take the script and use it or modify it as you see fit.</p>
+
+<h2 id="script">The Script</h2>
+
+<pre>&lt;script language="JavaScript" type="text/javascript"&gt;
+&lt;!--
+parentURL = ""+document.location;
+parSharpIndex = parentURL.indexOf("?");
+if (parSharpIndex &gt;= 0) {
+  anchorString = parentURL.substring(parSharpIndex, parentURL.length);
+
+MyRe=/\?(\w*)\.css/g;
+MyArray = MyRe.exec(anchorString);
+anchor = RegExp.$1;
+}
+else {
+ anchor = 'classic';
+ }
+document.write('&lt;link rel="stylesheet" href="' + anchor + '.css"
+type="text\/css"&gt;');
+
+// --&gt;
+&lt;/script&gt;
+</pre>
+
+</div>
+
+</body>
+</html>
+
