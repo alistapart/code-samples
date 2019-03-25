@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="ala-modernizr-sample" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>My Beautiful Sample Page</title>
+	<script src="modernizr-1.1.js"></script>
+	<style type="text/css" media="screen">
+		/* Thinnify type in Safari */
+		body { -webkit-text-stroke:1px transparent; }
+		@media only screen and (max-device-width:480px) {body{-webkit-text-stroke:0 black;}}
+
+		html,
+		body {
+			background: #ef8dbb;
+			color: #141414;
+			font: normal 14px/20px Helvetica, Verdana, Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+		a:link,
+		a:visited {
+			color: #941350;
+			font-weight: bold;
+		}
+		a:visited {
+			color: #666;
+		}
+		a:focus,
+		a:hover {
+			color: #e33a89;
+			text-decoration: none;
+		}
+		img {
+			vertical-align: bottom;
+		}
+		#content {
+			background: #fafafa;
+			border: 2px outset #666;
+			margin: 20px auto 10px;
+			padding: 40px 40px 20px;
+			text-align: left;
+			width: 500px;
+		}
+		#content h1+p {
+			margin: 20px 0;
+		}
+		#content h1+p:first-line {
+			font-weight: bold;
+			font-variant: small-caps;
+		}
+		h1 {
+			color: #e33a89;
+			font: 27px/27px Baskerville, Palatino, Palatino Linotype, Book Antiqua, Georgia, serif;
+			margin: 0;
+			text-shadow: #aaa 5px 5px 5px;
+		}
+		section {
+			float: right;
+			text-align: justify;
+			width: 200px;
+		}
+		section h2 {
+			background: url(modernizr-logo.gif) 53px 5px no-repeat;
+			margin: 0;
+			height: 70px;
+			text-indent: -9999px;
+			width: 200px;
+		}
+		section p {
+			font-size: 12px;
+			line-height: 16px;
+			margin: 0 0 20px;
+			padding: 0 40px 0 0;
+			width: 200px;
+		}
+		ol.features {
+			font-size: 12px;
+			line-height: 18px;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		p.download {
+			font-size: 12px;
+		}
+		footer {
+			font-size: 11px;
+			font-style: oblique;
+		}
+		footer a {
+			font-style: normal;
+		}
+		
+		/* Medium additions */
+		.js #content {
+			padding-right: 280px;
+			position: relative;
+			width: 380px;
+		}
+		.borderradius #content {
+			border: 1px solid #141414;
+			
+			border-radius: 12px;
+			-moz-border-radius: 12px;
+			-webkit-border-radius: 12px;
+		}
+		.boxshadow #content {
+			border: none;
+			box-shadow: rgba(0,0,0, .5) 3px 3px 6px;
+			-moz-box-shadow: rgba(0,0,0, .5) 3px 3px 6px;
+			-webkit-box-shadow: rgba(0,0,0, .5) 3px 3px 6px;
+		}
+		.js section {
+			float: none;
+			position: absolute;
+			right: 40px;
+			top: 40px;
+		}
+		.js section p {
+			font-size: 11px;
+			line-height: 16px;
+		}
+		.js h1 {
+			line-height: 50px;
+		}
+		.rgba h1 {
+			text-shadow: rgba(148,19,80, .3) 5px 5px 5px;
+		}
+		@font-face {
+			src: url(Beautiful-ES.ttf);
+			font-family: "Beautiful";
+		}
+		.fontface h1 {
+			font: 42px/50px Beautiful;
+			margin: 0;
+			text-shadow: none;
+		}
+		.csscolumns ol.features {
+			columns: 2;
+			-o-columns: 2;
+			-moz-column-count: 2;
+			-webkit-columns: 2;
+		}
+		.no-csscolumns ol.features {
+			float: left;
+			margin: 0 0 20px;
+		}
+		.no-csscolumns ol.features li {
+			float: left;
+			width: 180px;
+		}
+		.csstransforms section img {
+			position: relative;
+			top: 20px;
+			
+			transform: rotate(5deg);
+			-o-transform: rotate(5deg);
+			-moz-transform: rotate(5deg);
+			-webkit-transform: rotate(5deg);
+		}
+		.boxshadow section img {
+			box-shadow: #000 0 0 3px;
+			-moz-box-shadow: #000 0 0 3px;
+			-webkit-box-shadow: #000 0 0 3px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="content">
+		<h1>My Beautiful Sample Page</h1>
+		
+		<p>New features in CSS3 and HTML5 allow web developers to build increasingly elegant websites using very clean and semantic markup. It offers them exciting features like localStorage, and using advanced CSS3 techniques to style it all. Sadly, it isn't quite as simple as that; the many different levels of support for all these features across the entire browser landscape has given many developers a headache. Since aspirin can't be distributed via https, alternative solutions had to be created. One such solution is Modernizr, a library that detects the availability of features in the current browser and makes that information available to the web developer.</p>
+
+		<section>
+			<h2>Modernizr</h2>
+			<p><a href="http://www.modernizr.com/" rel="external">Modernizr</a> is an open source JavaScript library that aims to make the process of using the latest and greatest technologies on the web a little easier. With Modernizr, you can target CSS and JavaScript specifically based on each feature the current browser supports.</p>
+		
+			<img src="photo.jpg" width="200" height="300" alt="Photo of audience seats in an auditorium-like formation, resembling a 3-dimensional representation of the Modernizr logo.">
+		</section>
+
+		<p>Here is a list of the features Modernizr detects:</p>
+	
+		<ol class="features">
+			<li class="applicationcache">applicationCache</li>
+			<li class="borderimage">border-image:</li>
+			<li class="borderradius">border-radius:</li>
+			<li class="boxshadow">box-shadow:</li>
+			<li class="canvas">Canvas</li>
+			<li class="canvastext">Canvas Text</li>
+			<li class="csstransforms">CSS 2D Transforms</li>
+			<li class="csstransforms3d">CSS 3D Transforms</li>
+			<li class="cssanimations">CSS Animations</li>
+			<li class="csscolumns">CSS Columns</li>
+			<li class="cssgradients">CSS Gradients</li>
+			<li class="cssreflections">CSS Reflections</li>
+			<li class="csstransitions">CSS Transitions</li>
+			<li class="fontface">@font-face</li>
+			<li class="geolocation">Geolocation API</li>
+			<li class="hsla">hsla()</li>
+			<li class="audio">HTML5 Audio</li>
+			<li class="video">HTML5 Video</li>
+			<li class="input">Input Attributes</li>
+			<li class="inputtypes">Input Types</li>
+			<li class="localstorage">localStorage</li>
+			<li class="multiplebgs">Multiple backgrounds</li>
+			<li class="opacity">opacity:</li>
+			<li class="rgba">rgba()</li>
+			<li class="sessionstorage">sessionStorage</li>
+			<li class="webworkers">Web Workers</li>
+		</ol>
+	
+		<p class="download"><a href="http://www.fontsquirrel.com/fonts/Beautiful-ES" rel="external">Download <cite>Beautiful ES</cite> on Fontsquirrel.com</a></p>
+	</div>
+	
+	<footer>This page was created by <a href="http://farukat.es/" rel="external me">Faruk Ateş</a> for <a href="http://www.alistapart.com/articles/taking-advantage-of-html5-and-css3-with-modernizr">A List Apart issue 308</a></footer>
+	
+</body>
+</html>

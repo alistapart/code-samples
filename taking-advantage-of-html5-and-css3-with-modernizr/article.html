@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Taking Advantage of HTML5 and CSS3 with Modernizr</title>
+	
+</head>
+
+<body>
+
+
+<h1>Taking Advantage of HTML5 and CSS3 with Modernizr</h1>
+<p>Ten years ago, only the most cutting edge web designers were using CSS for layouts and styling. Browser support for CSS-based layouts was slim and buggy, so these people advocated for web standards adherence whilst at the same time creating hacks that made CSS layouts work across all browsers. One such hack that became widely used was browser sniffing: detecting which browser and version the user had by looking at the navigator.userAgent property in JavaScript. It allowed for quick and easy forking of code, letting developers target different browsers with different instructions.</p>
+
+<p>Today, CSS-based layouts are commonplace and every browser has pretty solid support for them, but now we have CSS3 and HTML5 and the situation is repeating itself, with browsers having very different levels of support for these new technologies. We&rsquo;ve smartened up, however, and no longer employ CSS hacks nor use the unreliable, poor practice of browser sniffing. We&rsquo;ve also become able to convince more and more clients that <a href="http://dowebsitesneedtolookexactlythesameineverybrowser.com/" rel="external">websites don&rsquo;t need to look exactly the same in every browser</a>. So how do we deal with this new but familiar problem? Simple: we use <strong>feature detection</strong>, which means we ask the browser not &ldquo;who are you?&rdquo; and make unreliable assumptions from there on, but instead we ask the browser: &ldquo;can you do <em>this</em> and <em>that</em>?&rdquo; It&rsquo;s a simple way to test what a browser is capable of, but doing all these tests manually all the time gets tiresome. To solve that problem (and others), you can use <a href="http://www.modernizr.com/" rel="external">Modernizr</a>.</p>
+
+<h2>Modernizr: the feature-detection library for HTML5 and CSS3</h2>
+
+<p>Modernizr is an open-source JavaScript library that makes it easy for web designers to support different levels of experiences, based on the capabilities of the visitor&rsquo;s browser. This allows them to take full advantage of everything in HTML5 and CSS3 that is implemented in some browsers, without sacrificing control over the user experience in other browsers.</p>
+
+<p>When you embed the Modernizr script in your page, it will detect whether the current browser has support for CSS3 features like @font-face, border-radius, border-image, box-shadow, rgba() and so forth, as well as HTML5 features like Audio and Video, localStorage and the new <code>&lt;input&gt;</code> element types and attributes. With this knowledge you can take advantage of these native implementations in browsers that support these features, and decide whether to create a JavaScript-based fallback or simply gracefully degrade the page in browsers that don&rsquo;t. Additionally, Modernizr makes the new HTML5 elements available for styling in Internet Explorer, so that you can start using their improved semantics right away.</p>
+
+<p>Modernizr was created on the principle of progressive enhancement, so it supports&mdash;encourages, even&mdash;building your website layer by layer, starting with a no-JavaScript base and adding layers of enhancement one by one. This is easy with Modernizr since you&rsquo;ll know what the browser is capable of. Let&rsquo;s look at a practical example of how to use Modernizr to build cutting-edge websites.</p>
+
+<h2>Getting Started with Modernizr</h2>
+
+<p>Start by downloading the latest stable release on <a href="http://www.modernizr.com">www.modernizr.com</a>, where you can also see the full list of features it detects. Once you have the latest version, <em>1.2</em> at the time of writing, include it in your page&rsquo;s <code>&lt;head&gt;</code> section:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;title&gt;My Beautiful Sample Page&lt;/title&gt;
+	&lt;script src="modernizr-1.2.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&hellip;</code></pre>
+
+<p>Next, add the class &ldquo;<code>no-js</code>&rdquo; to the <code>&lt;html&gt;</code> element:</p>
+
+<p><code>&lt;html class=&rdquo;no-js&rdquo;&gt;</code></p>
+
+<p>When Modernizr runs it will replace that class with the class &ldquo;js&rdquo; which allows you to know, in your CSS, whether or not JavaScript is enabled. But Modernizr doesn&rsquo;t stop there: it will add classes for every feature it detects, prefixing them with &ldquo;no-&rdquo; if the browser doesn&rsquo;t support it. So, your &lt;html&gt; element will look something like this upon page load (providing JavaScript is enabled):</p>
+
+<p><code>&lt;html class=&rdquo;js canvas canvastext no-geolocation rgba hsla multiplebgs borderimage borderradius boxshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions video audio localstorage sessionstorage webworkers applicationcache fontface&rdquo;&gt;</code></p>
+
+<p>Modernizr also creates a JavaScript object, simply called Modernizr, which has a list of properties that contain boolean values for each feature. Modernizr.canvas will be true if the browser supports the new Canvas element, and false if the browser does not. The JavaScript object also contains more detailed information about certain features, for example: <code>Modernizr.video.h264</code> will tell you if the browser supports that particular codec, <code>Modernizr.inputtypes.search</code> will tell you if the new Search input type is supported, and so forth.</p>
+
+<p>Our <a href="sample-raw.html">raw sample page</a> is looking a little bare-bones, but it&rsquo;s highly semantic and accessible. Let&rsquo;s give it some basic styling; some formatting, color and layout to make it a little more visually pleasing. So far, this process is nothing new: we&rsquo;re adding simple CSS to a semantically structured HTML page, and <a href="sample-basic.html">the result</a>&mdash;while basic&mdash;is very straightforward too.</p>
+
+<p>Next, let&rsquo;s enhance the page and make it more interesting. I want to use a fancy (open license) font for the h1 header, split the list of features into two columns and move the section about Modernizr with a photo to the right of everything. I&rsquo;m also going to change the border around the page and make it nicer. Now, CSS is pretty great because you can just add new properties to a rule, and if the browser doesn&rsquo;t recognize (read: support) them, it will simply ignore them. Combine that with the Cascading nature of CSS and you can make use of things like border-radius without having to rely on Modernizr. However, using Modernizr <em>does</em> offer something you can&rsquo;t achieve without it: the ability to change properties that the browser <em>does</em> support, only on the condition of it supporting <em>some other</em> property. I&rsquo;ll illustrate this by adding two new CSS rules to our page:</p>
+
+<pre><code>.borderradius #content {
+	border: 1px solid #141414;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+}
+.boxshadow #content {
+	border: none;
+	box-shadow: rgba(0,0,0, .5) 3px 3px 6px;
+	-moz-box-shadow: rgba(0,0,0, .5) 3px 3px 6px;
+	-webkit-box-shadow: rgba(0,0,0, .5) 3px 3px 6px;
+}</code></pre>
+
+<p>The first rule adds a nice 12 pixel rounded corner to our #content element. However, the original rule we had for #content specified a border of &ldquo;2px outset #666&rdquo;, which looked nice when the box had square corners but with rounded corners it&rsquo;s not so nice. Thanks to Modernizr, I can instruct the browser to render only a solid, one-pixel border <em>if</em> the browser supports border-radius.</p>
+
+<p>The second rule takes this a little bit further by adding a drop shadow to the #content element, and removing the border altogether if the browser supports the box-shadow property. Why? Because most browsers don&rsquo;t render the combination of a border with border-radius <em>and</em> box-shadow very nicely (a flaw in browsers, it should be noted, but something we have to live with for now), and I&rsquo;d rather utilize the drop shadow around our element than <em>not</em> use a drop shadow and only use a border. This way I can have the best of all worlds, or rather, the best of all CSS: browsers that support box-shadow property will show us a nice drop shadow, browsers that only support border-radius will show us nice rounded corners with a thinner border, and browsers that support neither get our original 2-pixel outset border.</p>
+
+<p>In our next example we add a special font for our header. Here&rsquo;s our original h1 declaration, which we&rsquo;re not changing but I&rsquo;m highlighting it here for the example:</p>
+
+<pre><code>h1 {
+	color: #e33a89;
+	font: 27px/27px Baskerville, Palatino, Palatino Linotype, Book Antiqua, Georgia, serif;
+	margin: 0;
+	text-shadow: #aaa 5px 5px 5px;
+}</code></pre>
+
+<p>This declaration worked fine for our basic page, and the font size of 27 pixels is fine for all of these fonts, but it is far too small for our custom font, named <em>Beautiful</em>. Let&rsquo;s add the CSS rules to use it:</p>
+
+<pre><code>@font-face {
+	src: url(Beautiful-ES.ttf);
+	font-family: "Beautiful";
+}
+.fontface h1 {
+	font: 42px/50px Beautiful;
+	text-shadow: none;
+}</code></pre>
+
+<p>First we add the @font-face declaration wherein we specify the path, filename and font family name for our custom font. Then we add the font choice in a CSS rule to our h1 element, but as you can see I&rsquo;m giving it a <em>much</em> bigger font size. That&rsquo;s because the <em>Beautiful</em> font renders much smaller than all the other fonts I specified for the h1 element, and so we have to instruct the browser to render our header at a much larger size, but <em>only when</em> it renders our custom font.</p>
+
+<p>Additionally, our beautiful script font has some issues with text shadow rendering, so I&rsquo;m removing the shadow when the browser decides to render the custom font.</p>
+
+<p>The list of features still needs to be split up. To do so, I want to use the awesome CSS Columns feature, which allows browsers to intelligently separate a list into columns without messing up its ordering&mdash;and our list, though not visibly numbered, is ordered alphabetically. Of course, not every browser <em>supports</em> CSS Columns yet, so for those browsers we&rsquo;ll just use floats to make the list two columns; it&rsquo;ll no longer be alphabetically sorted (visually), but it&rsquo;s better than nothing:</p>
+
+<pre><code>.csscolumns ol.features {
+	columns: 2;
+	-o-columns: 2;
+	-moz-column-count: 2;
+	-webkit-columns: 2;
+}
+.no-csscolumns ol.features {
+	float: left;
+	margin: 0 0 20px;
+}
+.no-csscolumns ol.features li {
+	float: left;
+	width: 180px;
+}</code></pre>
+
+<p>Again, I&rsquo;m using Modernizr to apply very common properties only under certain circumstances, something I couldn&rsquo;t do via property overloading or the Cascade. If the browser supports CSS Columns, our work here is done and the list looks great and is still alphabetically ordered. If the browser <em>doesn&rsquo;t</em> support CSS Columns, as determined by the &ldquo;<code>no-csscolumns</code>&rdquo; class added to the <code>&lt;html&gt;</code> element in that scenario, we float our list items and apply some margins and widths to get a similar result. It&rsquo;s not <em>as</em> good, but it&rsquo;s an improvement over one long, single-column list.</p>
+
+<p>As you may have noticed, I&rsquo;m specifying my columns differently from the border-radius and box-shadow properties in the examples above. That&rsquo;s because, for one, Opera only supports CSS Columns via the vendor prefix at this time, and two, Mozilla doesn&rsquo;t recognize the &ldquo;columns&rdquo; shorthand property yet, hence the use of <code>-moz-column-count</code> for that browser.</p>
+
+<p>With these and a couple of other, similar changes, our new page <a href="sample-medium.html">looks decidedly better</a>.</p>
+
+<p>Let&rsquo;s finish this tutorial by adding even more progressive enhancements to our page. WebKit-based browsers have support for some pretty darn cool things: CSS Transitions, Animations and 3-dimensional Transforms, and I want to show some of that off in our final step. Again, some of these properties could simply be added to our existing CSS rules and get safely ignored by browsers that don&rsquo;t support them, but other properties would interfere with the layout in <em>all</em> browsers if I added them just like that, so I&rsquo;m using Modernizr to control very precisely when these enhancements are applied and when not.</p>
+
+<p>First we set the stage:</p>
+
+<pre><code>@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotateY(0); }
+	100% { -webkit-transform: rotateY(360deg); }
+}
+.csstransforms3d.cssanimations section {
+	-webkit-perspective: 1000;
+}</code></pre>
+
+<p>The @keyframes rule is part of the new CSS Animations specification, which currently is only supported by WebKit. It allows you to declare a full animation path, with whatever properties you want, and change them at whatever steps you&rsquo;d like. Note that you don&rsquo;t specify a duration in this declaration, only the key frames themselves&mdash;you specify things like the duration, loop count and easing curves when you apply the animation in a CSS rule. This allows you to re-use a particular animation at different speeds on different elements, and thus gives you the greatest flexibility. For more information on using Animations, see the <a href="http://www.w3.org/TR/css3-animations/">W3C Working Draft specification</a>.</p>
+
+<p>Next, we apply our animation&mdash;which makes an element rotate around in 3D space&mdash;to our secondary header:</p>
+
+<pre><code>.csstransforms3d.cssanimations section h2 {
+	background-image: url(modernizr-logo.png);
+	overflow: hidden;
+	-webkit-animation: spin 2s linear infinite;
+}</code></pre>
+
+<p>Because we&rsquo;re now rotating in 3D space I&rsquo;d like the background image of the Modernizr logo to look nice and anti-aliased, so I&rsquo;m replacing it with a PNG version. I&rsquo;m also adding an overflow:hidden property to hide the original text in the header, which we were offsetting to -999px. Rotating the element in 3D made it show up during the rotation, which was amusing but didn&rsquo;t look very nice. Lastly, we apply the animation rule, set it to take 2 seconds, spin in a linear fashion and keep it going indefinitely.</p>
+
+<p><a href="sample-advanced.html">Our final page looks great</a>, and even has some fun animation going on in WebKit browsers. I hope you now have a good understanding of how much more control you get over your websites with Modernizr, and how much easier it makes doing truly progressive enhancements. That&rsquo;s not all that Modernizr is good for, though; it&rsquo;s also invaluable for creating JavaScript-driven fallbacks and leveraging cool new features from HTML5&mdash;but that&rsquo;s a topic we&rsquo;ll have to discuss another time.</p>
+
+
+</body>
+</html>
