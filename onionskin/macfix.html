@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Onion Skinned Drop Shadows - Mac Test Suite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="typography.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+#shadow1 div {
+	display: table; 
+}
+#shadow1a div {
+	display: table-caption; 
+}
+#shadow1b div {
+	display: table-cell; 
+}
+#shadow1c div {
+	display: table-column; 
+}
+#shadow1d div {
+	display: table-column-group; 
+}
+#shadow1e div {
+	display: table-footer-group; 
+}
+#shadow1f div {
+	display: table-header-group; 
+}
+#shadow1g div {
+	display: table-row; 
+}
+#shadow1h div {
+	display: table-row-group; 
+}
+#shadow2 div {
+	display: compact; 
+}
+#shadow3 div {
+	display: inline; 
+}
+#shadow4 div {
+	display: inline-table; 
+}
+#shadow5 div {
+	display: list-item;
+	list-style-type:none;
+}
+#shadow6 div {
+	display: marker; 
+}
+#shadow7 div {
+	display: run-in; 
+}
+#shadow4 {
+	padding: 15px;
+	border:solid 1px #F60;
+	}
+/* \*/
+.wrap1, .wrap2, .wrap3 {display:block;}
+/**/
+.wrap1 {
+	float:left;
+	background:url(images/shadows/v6/shadow.gif) right bottom no-repeat;}
+.wrap2 {background:url(images/shadows/v6/corner_bl.gif) left bottom no-repeat;}
+.wrap3 {
+	padding:0 22px 22px 0;
+	background:url(images/shadows/v6/corner_tr.gif) right top no-repeat;}
+.wrap3 img {display:block;}
+p {
+	margin: 20px 0 8px 0;
+	clear:both;
+}
+-->
+</style>
+</head>
+<body> 	
+<h1>CSS Display Property</h1> 
+	<h2>IE5 Mac Test Suite</h2> 
+	<p>The goal of this test is to identify presentation quirks of the CSS <code>display</code> property by determining which values will cause a containing <code>&lt;div&gt;</code> to collapse as far as its contents will allow&ndash;specifically in IE5 on the Mac.</p> 
+	<p>Each logo instance below is contained in a <code>&lt;div&gt;</code> which uses a unique display property. Every known value for the display property was tested to determine if any values would result in the desired behavior.</p> 
+	<p>The results indicate that <code>display:inline-table</code> is the <em>only known value</em> for the display property that will cause a block element, such as a <code>div</code>, to shrink to fit an object it contains. If you are viewing this page with IE5.x on a Mac running OS 9, you should only see a complete, intact drop shadow on the instance below that uses <code><a href="#success">display:inline-table</a></code>.<br />
+<p><a href="https://alistapart.com/articles/onionskin/" title="Return to article">Return to article</a></p>
+<p>Version 1: table</p>  
+<div id="shadow1"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>1a: table-caption</p> 
+<div id="shadow1a"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>1b: table-cell</p>
+<div id="shadow1b"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>1c: table-column</p>
+<div id="shadow1c"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>1d: table-column-group</p> 
+<div id="shadow1d"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>1e: table-footer-group</p> 
+<div id="shadow1e"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>1f: table-header-group</p> 
+<div id="shadow1f"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>1g: table-row</p> 
+<div id="shadow1g"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>1h: table-row-group</p> 
+<div id="shadow1h"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>2: compact</p> 
+<div id="shadow2"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div>  <a name="success"></a>
+<p>3: inline</p> 
+<div id="shadow3"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div>
+<p>4: inline-table</p> 
+<div id="shadow4"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div><p>&nbsp;</p></div> 
+<p>5: list-item</p> 
+<div id="shadow5"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>6: marker</p> 
+<div id="shadow6"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div> 
+<p>7: run-in</p> 
+<div id="shadow7"><div class="wrap1"><div class="wrap2"><div class="wrap3"><img src="images/logo.jpg" width="80" height="97" /></div></div></div></div>
+</body>
+</html>
