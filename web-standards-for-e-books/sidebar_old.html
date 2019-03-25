@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-CA" lang="en-CA">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Sidebar: Book typography vs. E-book typography</title>
+	<link rel="stylesheet" href="https://alistapart.com/css/article.css" type="text/css" media="all" />
+	<style type="text/css" title="printable">
+body {font: 14pt/1.4 Corbel, "Lucida Sans", "Hoefler Text", Georgia, Palatino, serif; margin: 0 9% 3% 7%;}
+p+p {text-indent: 2em;}
+blockquote { border-left: 3px solid gray; padding-left: .5em;}
+.right { text-align: right; }
+</style>
+
+</head>
+<body>
+<h1>Sidebar: Book typography vs. E-book typography</h1>
+<p class="byline">by Joe Clark</p>
+
+<p class="noindent">Sidebar to “<a href="http://www.alistapart.com/articles/web-standards-for-e-books" title="A List Apart: Web standards for E-books">Web standards for E-books</a>”</p>
+
+<p>
+You may not believe, as I do, that print-book typography and design are going straight downhill as more and more junior “designers,” with less and less expertise, do the work for less and less money. It is nonetheless an open-and-shut case that the typography and design of any companion E-book you buy will be <em>much, much worse</em>. I have found <em>no</em> counterexamples among commercially-available E-books in plain-text or ePub formats; they’re <em>all</em> terrible, as far as I’ve seen.
+</p>
+
+<p>
+Let’s take one example: <cite><a href="http://www.librarything.com/work/7702396/book/55645711" title="LibraryThing entry">The City &amp; the City</a></cite> by China Miéville (2009), a murder mystery set in a divided city whose residents can’t even acknowledge each other. (<abbr class="stars" title="five stars">★★★★★</abbr>, by the way.) I’ll show you scans from the printed book along with screenshots from the E-book.
+</p>
+
+<ul>
+<li>
+
+<p>
+Real quotation marks become neutral quotation marks, as though reproducing typescript from an IBM Selectric. You don’t need to see the original to spot this one.
+</p>
+
+<div class="eshot">
+<img src="City_and_the_City_E-text_return_before_quote.png" alt="Screenshot with neutral quotation marks"https://alistapart.com/>
+</div>
+
+<p>
+(This reader software is so dumb it breaks a line before a quote mark.)
+</p>
+</li>
+<li>
+<p>
+Thin spaces between dots in an ellipsis become question marks.
+</p>
+
+<div class="bookscan">
+<img src="CityandtheCityp4-ellipsis.png" alt="Scan: Typeset page with ellipsis" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_thin_spaces_inside_ellipsis_as__._._._.png" alt="Screenshot: &hellip; as ?.?.?.?" />
+</div>
+
+<p>
+(Ellipsis characters elsewhere in the E-book are just rendered as three dots.)
+</p>
+</li>
+<li>
+
+<p>
+Hyphens are mangled completely.
+</p>
+<ul>
+<li>
+<p>
+Soft hyphen, which shouldn’t be used in E-book copy (the display engine must handle hyphenation), is rendered as hyphen-space. Look for the word <cite>English</cite> here:
+</p>
+<div class="bookscan">
+<img src="CityandtheCityp5-softhyphen.png" alt="Scan: Single paragraphof text" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_soft_hyphen_as_hyphen-space.png" alt="Screenshot: Hyphen shown as hyphen-space in the word En-&nbsp;glish" />
+</div>
+</li>
+<li>
+
+<p>
+The common use, in desktop publishing, of a soft hyphen <em>before</em> a word to mean the word should <em>not</em> be hyphenated comes through as a question mark (look for <cite>mattress-sheltered dew</cite>):
+</p>
+<div class="bookscan">
+<img src="CityandtheCityp4-nohyphen-hyphen.png" alt="Scan: Paragraph with the phrase mattress-scented dew broken after that hyphen" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_nohyphen-hyphen.png" alt="Screenshot: mattress-sheltered dew rendered as ?mattress-sheltered dew" />
+</div>
+</li>
+<li>
+<p>
+Nonbreaking hyphen is rendered as hyphen then question mark (look for <cite>beat-up</cite>):
+</p>
+
+<div class="bookscan">
+<img src="CityandtheCityp8-nonbreakinghyphen.png" alt="Scan: Paragraph with visible hyphen in &lsquo;beat-up&rsquo;" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_nonbreaking_hyphen_as_-___ellipsis_as__.png" alt="Screenshot: beat-?up" />
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>
+Character encoding is not the dumbest it could possibly be, as I would expect; it isn’t 1991-style US-ASCII, in that a word like <cite>GunterStrász</cite> is rendered well. But the name of one of the two cities in the book, Besźel, is a bit too weird for the file and comes out as Bes´zel (acute-accent character + <cite>z</cite>).
+</p>
+
+<div class="bookscan">
+<img src="CityandtheCity_sectionbreakBeszel.png" alt="Scan: Section-break page reads Part One: BESŹEL" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_Beszel.png" alt="Screenshot: Bes&acute;zel" />
+</div>
+</li>
+</ul>
+
+<p>
+And none of this even <em>begins</em> to address structural markup.
+</p>
+
+<p>
+How much does my vendor for this hacked and mangled “book,” Kobo, charge for it? $17.99.
+</p>
+
+<h2 id="worse">Could it be worse?</h2>
+
+<p>
+Yes: You might have bought <a href="http://blog.fawny.org/2009/03/10/shortchangers/" title="Cf. &lsquo;Sharp Teeth&rsquo; by Toby Barlow">a book of blank verse</a>.
+</p>
+
+<p>
+<a href="https://alistapart.com/articles/web-standards-for-e-books">Return to the main article</a>
+</p>
+
+</body>
+</html>

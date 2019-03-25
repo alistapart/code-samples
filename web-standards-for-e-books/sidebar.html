@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-CA" lang="en-CA">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Sidebar: Book typography vs. E-book typography</title>
+	<link rel="stylesheet" href="https://alistapart.com/css/article.css" type="text/css" media="all" />
+	<style type="text/css" title="printable">
+/*  body {font: 14pt/1.4 Corbel, "Lucida Sans", "Hoefler Text", Georgia, Palatino, serif; margin: 0 9% 3% 7%;}
+p+p {text-indent: 2em;}
+blockquote { border-left: 3px solid gray; padding-left: .5em;}
+.right { text-align: right; }  */
+
+.returnToArticle {
+background-color: rgb(248, 247, 239);
+border: dashed rgb(153, 153, 153);
+border-width: 1px 0px;
+padding: 15px 25px;
+margin-top: 25px;
+}
+
+#main .returnToArticle h3 {
+	margin: 5px;
+}
+
+.example {
+	border-top: 1px dashed rgb(204, 204, 204);
+	border-bottom: 1px dashed rgb(204, 204, 204);
+	margin: 10px 0 15px 0;
+	}
+	
+ul li div {
+	margin-left: -25px;
+	margin-bottom: 20px;
+}
+
+ul li ul li div {
+	margin-left: -65px;
+	}
+
+</style>
+
+</head>
+<body>
+<div id="main">
+<div id="content" class="column">
+<div class="ishinfo">March <b>9, 2010</b></div>
+<div id="articletext">
+<h1 class="title">
+<a href="http://www.alistapart.com/articles/web-standards-for-e-books/">Web Standards for E-books</a> (Sidebar)
+</h1>
+<h3 class="byline">
+by 	<a href="http://www.alistapart.com/authors/c/joeclark"> Joe Clark</a>
+</h3>
+
+<p class="noindent">Sidebar to “<a href="http://www.alistapart.com/articles/web-standards-for-e-books" title="A List Apart: Web standards for E-books">Web standards for E-books</a>”</p>
+
+<p>
+You may not believe, as I do, that print-book typography and design are going straight downhill as more and more junior “designers,” with less and less expertise, do the work for less and less money. It is nonetheless an open-and-shut case that the typography and design of any companion E-book you buy will be <em>much, much worse</em>. I have found <em>no</em> counterexamples among commercially-available E-books in plain-text or ePub formats; they’re <em>all</em> terrible, as far as I’ve seen.
+</p>
+
+<p>
+Let’s take one example: <cite><a href="http://www.librarything.com/work/7702396/book/55645711" title="LibraryThing entry">The City &amp; the City</a></cite> by China Miéville (2009), a murder mystery set in a divided city whose residents can’t even acknowledge each other. (<abbr class="stars" title="five stars">★★★★★</abbr>, by the way.) I’ll show you scans from the printed book along with screenshots from the E-book.
+</p>
+
+<ul>
+<li>
+
+<p>
+Real quotation marks become neutral quotation marks, as though reproducing typescript from an IBM Selectric. You don’t need to see the original to spot this one.
+</p>
+
+<div class="eshot">
+<img src="City_and_the_City_E-text_return_before_quote.png" alt="Screenshot with neutral quotation marks"https://alistapart.com/>
+</div>
+
+<p>
+(This reader software is so dumb it breaks a line before a quote mark.)
+</p>
+</li>
+<li>
+<p>
+Thin spaces between dots in an ellipsis become question marks.
+</p>
+
+<div class="bookscan">
+<img src="CityandtheCityp4-ellipsis.png" alt="Scan: Typeset page with ellipsis" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_thin_spaces_inside_ellipsis_as__._._._.png" alt="Screenshot: &hellip; as ?.?.?.?" />
+</div>
+
+<p>
+(Ellipsis characters elsewhere in the E-book are just rendered as three dots.)
+</p>
+</li>
+<li>
+
+<p>
+Hyphens are mangled completely.
+</p>
+<ul>
+<li>
+<p>
+Soft hyphen, which shouldn’t be used in E-book copy (the display engine must handle hyphenation), is rendered as hyphen-space. Look for the word <cite>English</cite> here:
+</p>
+<div class="bookscan">
+<img src="CityandtheCityp5-softhyphen.png" alt="Scan: Single paragraphof text" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_soft_hyphen_as_hyphen-space.png" alt="Screenshot: Hyphen shown as hyphen-space in the word En-&nbsp;glish" />
+</div>
+</li>
+<li>
+
+<p>
+The common use, in desktop publishing, of a soft hyphen <em>before</em> a word to mean the word should <em>not</em> be hyphenated comes through as a question mark (look for <cite>mattress-sheltered dew</cite>):
+</p>
+<div class="bookscan">
+<img src="CityandtheCityp4-nohyphen-hyphen.png" alt="Scan: Paragraph with the phrase mattress-scented dew broken after that hyphen" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_nohyphen-hyphen.png" alt="Screenshot: mattress-sheltered dew rendered as ?mattress-sheltered dew" />
+</div>
+</li>
+<li>
+<p>
+Nonbreaking hyphen is rendered as hyphen then question mark (look for <cite>beat-up</cite>):
+</p>
+
+<div class="bookscan">
+<img src="CityandtheCityp8-nonbreakinghyphen.png" alt="Scan: Paragraph with visible hyphen in &lsquo;beat-up&rsquo;" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_nonbreaking_hyphen_as_-___ellipsis_as__.png" alt="Screenshot: beat-?up" />
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>
+Character encoding is not the dumbest it could possibly be, as I would expect; it isn’t 1991-style US-ASCII, in that a word like <cite>GunterStrász</cite> is rendered well. But the name of one of the two cities in the book, Besźel, is a bit too weird for the file and comes out as Bes´zel (acute-accent character + <cite>z</cite>).
+</p>
+
+<div class="bookscan">
+<img src="CityandtheCity_sectionbreakBeszel.png" alt="Scan: Section-break page reads Part One: BESŹEL" />
+</div>
+<div class="eshot">
+<img src="City_and_the_City_E-text_Beszel.png" alt="Screenshot: Bes&acute;zel" />
+</div>
+</li>
+</ul>
+
+<p>
+And none of this even <em>begins</em> to address structural markup.
+</p>
+
+<p>
+How much does my vendor for this hacked and mangled “book,” Kobo, charge for it? $17.99.
+</p>
+
+<h2 id="worse">Could it be worse?</h2>
+
+<p>
+Yes: You might have bought <a href="http://blog.fawny.org/2009/03/10/shortchangers/" title="Cf. &lsquo;Sharp Teeth&rsquo; by Toby Barlow">a book of blank verse</a>.
+</p>
+		
+<div class="returnToArticle">
+<h3>
+<a href="http://www.alistapart.com/articles/web-standards-for-e-books/">Return to main article</a>
+</h3>
+
+</div>
+
+</div> <!-- end article text -->
+
+</div> <!-- end main content column -->
+
+<div id="sidebar" class="column">
+	
+		<div class="first">
+	<form method="post" action="http://www.alistapart.com/"  >
+<div class='hiddenFields'>
+<input type="hidden" name="ACT" value="19" />
+<input type="hidden" name="XID" value="3df0548daac63f12c0d5c6e58d085d6146941e96" />
+<input type="hidden" name="RP" value="search/results" />
+<input type="hidden" name="NRP" value="" />
+<input type="hidden" name="RES" value="20" />
+<input type="hidden" name="status" value="" />
+<input type="hidden" name="weblog" value="articles|issues" />
+<input type="hidden" name="search_in" value="entries" />
+<input type="hidden" name="where" value="all" />
+<input type="hidden" name="site_id" value="1" />
+</div>
+
+
+	<h3>Search ALA</h3>
+	<input type="text" name="keywords" id="search" />
+	<input type="image" src="https://alistapart.com/pix/go.gif" id="submit" value="Search" />
+	<p><input type="checkbox" name="incdisc" id="incdisc" value="comments|entries" onclick="this.form.elements['search_in'].value = (this.checked) ? 'everywhere' : 'entries';" /> include discussions</p>
+	</form>
+</div>
+
+<div id="topiclist">
+	<h3>Topics</h3>
+
+	<ul>
+	
+	<li><a href="https://alistapart.com/topics/code/" title="Code">Code</a></li>
+	
+	<li><a href="https://alistapart.com/topics/content/" title="Content">Content</a></li>
+	
+	<li><a href="https://alistapart.com/topics/culture/" title="Culture">Culture</a></li>
+	
+	<li><a href="https://alistapart.com/topics/design/" title="Design">Design</a></li>
+	
+	<li><a href="https://alistapart.com/topics/process/" title="Process">Process</a></li>
+	
+	<li><a href="https://alistapart.com/topics/userscience/" title="User Science">User Science</a></li>
+	
+	</ul>
+
+</div>
+
+
+<div id="snapshot">
+  <h3>Snapshot</h3>
+  <p>For once, the right technology is winning. HTML is the preferred way to mark up and publish online documents that are <em>not</em> websites. That includes E-books, which can benefit from web-standards thinking.</p>
+</div>
+
+
+<div id="lucre">
+	<script type="text/javascript">
+	//<![CDATA[
+	(function(id) {
+	  document.write('<script type="text/javascript" src="' +
+	    'http://www.northmay.com/deck/deck' + id + '_js.php?' +
+	    (new Date().getTime()) + '"></' + 'script>');
+	})("AL");
+	//]]>
+	</script>
+	<p>
+	<a href="http://www.coudal.com/deck/">Ad via The Deck</a>
+	</p>
+</div>
+
+<div id="jobboard">
+	<h4>Job Board</h4>
+	<script src="http://www.37signals.com/svn/job.fcgi" type="text/javascript"></script>
+	<p class="monitor">More on the <a href="http://jobs.37signals.com/?source=ala">Job Board</a>.</p>
+</div>
+
+<div id="colophon">
+
+	<p class="init">
+	Hosted by
+	<a href="http://mediatemple.net/"><img src="https://alistapart.com/pix/mediatemple.png" alt="Hosted by Media Temple" /></a>
+	</p>
+
+	<p>
+	Published by
+	<a href="http://happycog.com/"><img src="https://alistapart.com/pix/happycog.png" title="" alt="Published by Happy Cog" /></a>
+	</p>
+</div>
+		
+	</div>
+		
+
+</div> <!-- end sidebar -->
+
+<div id="footer">
+<p>
+<span class="issn">ISSN: <b>1534-0295</b></span>
+<span class="copyright"><a href="https://alistapart.com/copyright/" rel="license">Copyright &copy;</a> <span class="years">1998-2010</span> A List Apart Magazine and the authors.</span>
+</p>
+</div>
+
+</div> <!-- end main -->
+</body>
+</html>
