@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+	<title>Dynamic Select Boxes example</title>
+	<style type="text/css">
+    </style>
+	<script type="text/javascript">
+		function populate(o)
+		{
+			d=document.getElementById('de');
+			if(!d){return;}			
+			var mitems=new Array();
+			mitems['Main Courses']=['Burger Meals','Breakfast','Steaks','Fish Dishes','Vegetarian Dishes'];
+			mitems['Snacks']=['Brownies','Cookies'];
+			mitems['Drinks']=['Shakes','Sodas','Cocktails','Juices'];
+			mitems['Salads']=['Tuna Salad','Cesar Salad','Green Salad','Prawn Salad'];
+			mitems['Deserts']=['Pancakes','Waffles','Ice Cream','Fresh Fruit'];
+			d.options.length=0;
+			cur=mitems[o.options[o.selectedIndex].value];
+			if(!cur){return;}
+			d.options.length=cur.length;
+			for(var i=0;i<cur.length;i++)
+			{
+				d.options[i].text=cur[i];
+				d.options[i].value=cur[i];
+			}
+		}
+    </script>
+</head>
+<body>
+<form action="" method="get">
+	<label for="or">Our menu:</label>
+	<select name="or" id="or" onchange="populate(this)">
+		<option value="Main Courses">Main Courses</option>
+		<option value="Snacks">Snacks</option>
+		<option value="Salads">Salads</option>
+		<option value="Drinks">Drinks</option>
+		<option value="Deserts">Deserts</option>
+	</select>
+	<label for="de">Select:</label>
+	<select name="de" id="de">
+	</select>
+	<input type="submit" value="Show me" />
+</form>
+<p>Not a real menu, dudes. This is only a demo. Everything works, but there are no subpages to click to.</p> 
+</body>
+</html>

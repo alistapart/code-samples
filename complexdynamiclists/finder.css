@@ -1,0 +1,60 @@
+body
+{
+	margin:0;
+	padding:0;
+	font-family:arial,sans-serif;
+}
+.domenabled #finderparent
+{
+	border:1px solid #000;
+	position:relative;
+	height:150px;
+}
+.domenabled #finder
+{
+	position:absolute;
+	top:1em;
+	left:1em;
+}
+.domenabled ul#finder,
+.domenabled ul#finder li,
+.domenabled ul#finder ul
+{
+	width:200px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.domenabled ul#finder ul.hidden
+{
+	top:0px;
+	left:-2000px;
+	position:absolute;
+}
+.domenabled ul#finder ul.shown
+{
+	top:0px;
+	left:200px;
+	position:absolute;
+}
+.domenabled #finder a.open
+{
+	background:url(arrowon.gif) no-repeat 90% 50% #eee;
+	padding-right:16px;
+	padding-left:0px;
+	display:block;
+}
+.domenabled #finder a.parent
+{
+	background:url(arrow.gif) no-repeat #fff 100% 50%;
+	padding-right:16px;
+	padding-left:0px;
+}
+.domenabled ul#finder li a
+{
+	color:#000;
+	background:url(normal.gif) no-repeat #fff 0 50% ;
+	padding-left:16px;
+	text-decoration:none;
+}
+
