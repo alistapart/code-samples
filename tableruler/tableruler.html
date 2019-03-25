@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+	<title>Row Rollover table demo</title>
+	<style type="text/css">
+		body{
+			font-family:Arial,Helvetica,Sans-serif;
+			font-size:80%;
+		}
+		caption{
+			padding-bottom:5px;
+			font-weight:bold;
+		}
+		thead th,tfoot td{
+			background:#ddd;
+		}
+		tr.ruled{
+			background:#9cf;
+		}    
+		table{
+			border:1px solid #000;
+			border-collapse:collapse;
+		}
+		th,td{
+			border:1px solid #000;
+			border-collapse:collapse;
+		}
+		#mytable tr.ruled{
+			background:#333;
+			color:#ccc;
+		}
+    </style>
+	<script type="text/javascript" src="tableruler.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){tableruler();} 
+    </script>
+</head>
+<body>
+<h1>Tableruler Demos</h1>
+
+<h2>Example without own ID</h2>
+<table class="ruler" summary="Table of my records">
+<caption>My Records</caption>
+<thead>
+	<tr>
+		<th scope="col">Artist</th>
+		<th scope="col">Title</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>Ladytron</td>
+		<td>604</td>
+	</tr>
+	<tr>
+		<td>Ladytron</td>
+		<td>Light and Magic</td>
+	</tr>
+	<tr>
+		<td>Fat Truckers</td>
+		<td>Superbike (Maxi)</td>
+	</tr>
+	<tr>
+		<td>Kraftwerk</td>
+		<td>Die Mensch-Maschine</td>
+	</tr>
+	<tr>
+		<td>Dopplereffekt</td>
+		<td>Gesamtkunstwerk</td>
+	</tr>
+	<tr>
+		<td>Console</td>
+		<td>14 Zero, Zero</td>
+	</tr>
+</tbody>
+<tfoot>
+	<tr>
+		<td colspan="2">Last updated: 17.03.2004</td>
+	</tr>
+</tfoot>
+</table>
+
+
+<h2>Example with own ID</h2>
+
+<table class="ruler" id="mytable" summary="Table of my records">
+<caption>My Records</caption>
+<thead>
+	<tr>
+		<th scope="col">Artist</th>
+		<th scope="col">Title</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>Ladytron</td>
+		<td>604</td>
+	</tr>
+	<tr>
+		<td>Ladytron</td>
+		<td>Light and Magic</td>
+	</tr>
+	<tr>
+		<td>Fat Truckers</td>
+		<td>Superbike (Maxi)</td>
+	</tr>
+	<tr>
+		<td>Kraftwerk</td>
+		<td>Die Mensch-Maschine</td>
+	</tr>
+	<tr>
+		<td>Dopplereffekt</td>
+		<td>Gesamtkunstwerk</td>
+	</tr>
+	<tr>
+		<td>Console</td>
+		<td>14 Zero, Zero</td>
+	</tr>
+</tbody>
+<tfoot>
+	<tr>
+		<td colspan="2">Last updated: 17.03.2004</td>
+	</tr>
+</tfoot>
+</table>
+
+<h2>Example without rollover (no class ruler)</h2>
+
+<table id="mytable" summary="Table of my records">
+<caption>My Records</caption>
+<thead>
+	<tr>
+		<th scope="col">Artist</th>
+		<th scope="col">Title</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>Ladytron</td>
+		<td>604</td>
+	</tr>
+	<tr>
+		<td>Ladytron</td>
+		<td>Light and Magic</td>
+	</tr>
+	<tr>
+		<td>Fat Truckers</td>
+		<td>Superbike (Maxi)</td>
+	</tr>
+	<tr>
+		<td>Kraftwerk</td>
+		<td>Die Mensch-Maschine</td>
+	</tr>
+	<tr>
+		<td>Dopplereffekt</td>
+		<td>Gesamtkunstwerk</td>
+	</tr>
+	<tr>
+		<td>Console</td>
+		<td>14 Zero, Zero</td>
+	</tr>
+</tbody>
+<tfoot>
+	<tr>
+		<td colspan="2">Last updated: 17.03.2004</td>
+	</tr>
+</tfoot>
+</table>
+</body>
+</html>
