@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>a popup apart</title>
+	<style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	background-color: #c30;
+}
+	</style>
+	<script type="text/javascript" src="lib.js"></script>
+	<script type="text/javascript">
+listen('load', window, function() {
+	getElem('img').style.backgroundColor = '#' + location.search.substring(1);
+});	
+	</script>
+</head>
+
+<body>
+
+<img id="img" src="example_popup.gif" alt="a popup apart" />
+
+</body>
+</html>

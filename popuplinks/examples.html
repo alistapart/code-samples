@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>popup examples</title>
+	<style type="text/css">
+ul {
+	margin: 22px 10%;
+	padding: 0;
+}	
+
+li {
+	list-style: none;
+	margin: 0;
+	padding: 4px 0;
+}
+
+a {
+	border: 1px solid #bbb;
+	padding: 4px 7px;
+	background: #eee;
+	color: #777;
+	display: block;
+	text-decoration: none;
+}
+
+a code {
+	color: #444;
+}
+
+a:hover {
+	border-color: #99c;
+	background: #ddf;
+	color: #669;
+}
+
+a:hover code {
+	color: #335;
+}
+
+	</style>
+	<script type="text/javascript" src="lib.js"></script>
+	<script type="text/javascript" src="popup.js"></script>
+	<script type="text/javascript" >
+	
+// redefining default features
+var _POPUP_FEATURES = 'location=0,statusbar=0,menubar=0,width=190,height=140';
+
+listen('load', window, function() {
+	listen('click', 'popup-listen', event_popup );
+	listen('click', 'popup-feat'  , event_popup_features('location=0,statusbar=1,menubar=1,width=190,height=300') );
+	mlisten('click', getElementsByClass('popup','a'), event_popup );
+});
+
+	</script>
+</head>
+
+<body>
+
+<ul>
+	<li>
+		<a 
+			href="javascript:raw_popup('example_popup.html'); void(0)">
+				the wrong method.<br />
+				test its accessibility downfalls</a>
+	</li>
+	<li>
+		<a 
+			href="example_popup_nojs.html" 
+			onclick="raw_popup('example_popup.html'); return false"
+			>
+				<code>raw_popup</code> using a different page for javascript disabled users<br />
+			</a>
+	</li>
+	<li>
+		<a 
+			href="example_popup.html" 
+			onclick="link_popup(this); return false"
+			>
+				<code>link_popup</code><br />
+			</a>
+	</li>
+	<li>
+		<a
+			id="popup-listen"
+			href="example_popup.html" >
+				<code>event_popup</code>: using event listeners
+			</a>
+	</li>
+	<li>
+		<a
+			id="popup-feat"
+			href="example_popup.html" >
+				<code>event_popup_features</code>: specifying window features with event listeners
+			</a>
+	</li>
+	<li>
+		<a
+			href="example_popup.html?099" class="popup" target="a_popup_window">
+				named target windows
+			</a>
+	</li>
+	<li>
+		<a
+			href="example_popup.html?009" class="popup" target="a_popup_window">
+				named target windows (same target)
+			</a>
+	</li>
+	<li>
+		<a
+			href="example_popup.html?909" class="popup" target="a_popup_window">
+				named target windows (same target)
+			</a>
+	</li>
+	<li>
+		<a
+			href="example_popup.html?990" class="popup" target="another_popup_window">
+				named target windows (different target)
+			</a>
+	</li>
+</ul>
+
+
+</body>
+</html>
+
