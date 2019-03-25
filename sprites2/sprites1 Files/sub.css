@@ -1,0 +1,39 @@
+@import url(base.css);
+
+dt, dd {line-height: 1.8em;}
+dd {margin-bottom: 0.8em;}
+
+div#ishdate {text-align: center; border-bottom: 1px dashed #999;
+  padding-bottom: 1em; margin-bottom: 1.5em;}
+
+#content h1 {font: 1.66em Georgia, Times, serif; text-align: center;
+  margin: 0.5em 0; padding-bottom: 0.75em; border-bottom: 1px dashed #B2B2B2;}
+#content h1 a {color: #333;}
+#content h1 a:hover {color: #000;}
+#content h1 em {font-style: normal;}
+
+#content .title {font-size: 1.66em;}
+#content p {margin: 0.5em 0 1.5em;}
+.ishinfo a {color: #333; border: none;}
+.ishinfo a:hover {color: #000;}
+#content ul, #content ol {margin-bottom: 1.25em;}
+#content li {margin-bottom: 0.66em; line-height: 1.6em;}
+#content ul li {padding-left: 40px; background: url(https://alistapart.com/pix/diamond-black.gif) 22px 0.66em no-repeat;}
+#content ol {padding-left: 40px; list-style: decimal;}
+#content ol li {padding-left: 5px; background-image: none;}
+
+span.ishdate {padding-left: 15px; margin-left: 10px;
+  background: url(https://alistapart.com/pix/diamond-gray.gif) 0 0.5em no-repeat;}
+
+.contribute div#content p {text-align: justify; margin-right: 10px;}
+.feed #content ul li {background: none; padding-left: 1em; }
+
+.comment h4 a, .pages h4, li.author, li.editorial {font: bold 0.8em Verdana, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.25em;}
+#main .pages h4, #main li.author, #main li.editorial {font-weight: normal; font-size: 1em; display: inline; margin: 0 1em 0 0; padding-left: 1em;}
+.pages {border-top: 1px dashed #999; padding: 5px 0;}
+.pages h4, .pages p {display: inline;}
+.pages a, .pages strong {padding: 0 0.5em; margin: 0 -0.5em; border-bottom-width: 0;}
+
+.button {vertical-align: -6px; margin-right: 1em;
+  border-bottom: none !important; background: none !important;}

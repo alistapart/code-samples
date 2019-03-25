@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="description" content="Replace old-school image slicing with CSS">
+<meta name="keywords" content="CSS, Sprites, Grid, Image Map, Slice">
+<link rel="alternate" type="application/rss+xml" title="A List Apart main RSS feed" href="http://www.alistapart.com/feed/rss.xml">
+<link rel="stylesheet" type="text/css" href="sprites1%20Files/print.css" media="print"><title>A List Apart: Articles: CSS Sprites2</title>
+  <link rel="stylesheet" href="sprites1%20Files/article.css" type="text/css" media="all">
+
+
+
+
+<!-- custom head stuff needed for inline examples --> 
+	<link rel="stylesheet" type="text/css" href="inline/example.css" media="screen" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript"></script>
+	<script src="inline/sprites-function.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		generateSprites(".nav-example-fade", "current-", true, 300, "fade");
+		generateSprites(".nav-example-slide", "current-", true, 300, "slide");
+		generateSprites(".nav-example-animate", "current-", true, 300, "animate");
+	});
+	</script>
+<!-- /custom head stuff --> 
+
+
+  
+</head>
+
+<body class="articles" onload="">
+
+<ul id="navbar">
+  <li id="articles"><a href="http://www.alistapart.com/articles/" title="Articles">Articles</a></li>
+  <li id="topics"><a href="http://www.alistapart.com/topics/" title="Topics">Topics</a></li>
+  <li id="about"><a href="http://www.alistapart.com/about/" title="About">About</a></li>
+  <li id="contact"><a href="http://www.alistapart.com/contact/" title="Contact">Contact</a></li>
+  <li id="contribute"><a href="http://www.alistapart.com/contribute/" title="Contribute">Contribute</a></li>
+  <li id="feed"><a href="http://www.alistapart.com/feed/" title="Feed">Feed</a></li>
+</ul>
+
+<h1 id="masthead">
+<a href="http://www.alistapart.com/"><img src="sprites1%20Files/alalogo.gif" alt="A LIST Apart: For People Who Make Websites"></a>
+</h1>
+<div id="ish">
+<a href="http://www.alistapart.com/issues/273" title="Issue 273">No. <em>273</em></a>
+
+</div>
+
+<div id="main">
+
+<div id="content" class="column">
+
+  <div class="ishinfo">
+  July <b>0x, 2008</b>
+</div>
+
+<h1 class="title"><a href="http://www.alistapart.com/articles/sprites2">CSS Sprites2: It's Javascript Time</a></h1>
+<h3 class="byline">by  <a href="http://www.alistapart.com/authors/s/daveshea"> Dave Shea</a></h3>
+
+<ul id="metastuff">
+  <li>Published in: <a href="http://www.alistapart.com/topics/code/browsers/" title="Browsers">Browsers</a>, <a href="http://www.alistapart.com/topics/code/css/" title="CSS">CSS</a>, <a href="http://www.alistapart.com/topics/code/htmlxhtml/" title="HTML and XHTML">HTML and XHTML</a> <b>|</b> </li>
+  <li class="discuss">
+
+  <p><a href="http://www.alistapart.com/comments/sprites2/">Discuss this article »</a></p></li>
+
+</ul>
+
+<div id="articletext">
+
+
+<p>One of the traditional differentiators between Flash-heavy web sites and standards-based sites has been a sense of movement. Flash interfaces have always seemed more alive, responding to the user's interactions in a dynamic way that standards-based web sites haven't been able to replicate.</p>
+
+<p>Lately that's been changing of course, with a resurgence in dynamic interface effects helped along in no small part by the various Javascript libraries out there that make it easy, libraries like <a href="http://prototypejs.org/">Prototype</a>, <a href="http://script.aculo.us/">Scriptaculous</a>, <a href="http://mootools.net/">Moo</a>, <a href="http://developer.yahoo.com/yui/">YUI</a>, <a href="http://mochikit.com/">MochiKit</a> (and I could go on). And so it's high time to revisit the <a href="http://alistapart.com/articles/sprites/">CSS Sprites</a> technique from 4 years ago, and see if we can't interject a little bit of movement of our own.</p>
+
+<p>The examples below demonstrate inline CSS Sprites2, the technique we'll be covering in this article:</p>
+
+
+		<ul class="nav nav-example-fade current-about">
+			<li class="home"><a href="#">Home</a></li>
+			<li class="about"><a href="#">About</a></li>
+			<li class="services"><a href="#">Services</a></li>
+			<li class="contact"><a href="#">Contact</a></li>
+		</ul>
+
+		<ul class="nav nav-example-slide current-about">
+			<li class="home"><a href="#">Home</a></li>
+			<li class="about"><a href="#">About</a></li>
+			<li class="services"><a href="#">Services</a></li>
+			<li class="contact"><a href="#">Contact</a></li>
+		</ul>
+
+		<ul class="nav nav-example-animate current-about">
+			<li class="home"><a href="#">Home</a></li>
+			<li class="about"><a href="#">About</a></li>
+			<li class="services"><a href="#">Services</a></li>
+			<li class="contact"><a href="#">Contact</a></li>
+		</ul>
+
+
+<h2>Enter the jQuery</h2>
+
+<p>So here's the first caveat: we're going to lean on jQuery to make this happen. <a href="http://jquery.com/">jQuery</a> is a maturing Javascript library that does the same sort of neat stuff as all the other Javascript libraries out there, but it has an additional advantage that lends itself particularly well to extending CSS Sprites: jQuery allows us to select elements on a page using a CSS-like syntax that we already know.</p>
+
+<p>And the other thing to get out of the way is the non-trivial extra kilobytes that the use of a library will add to your initial page loads. An external Javascript file is cacheable of course, so it's a one-time-only hit the first time a user comes to your site. But the the most compact version of jQuery weighs in at 15k. It's unavoidable overhead, and that may be a cause for concern. If you're already putting jQuery to use on your site for other purposes, this is a non-issue. If you're interested in adding it solely for this technique, please keep in mind the file size consideration, and make the decision for yourself whether the effect is worth it. (Since <a href="http://code.google.com/p/jqueryjs/">Google is now hosting jQuery</a>, you could link to their version of the library as we do in these examples and hope that many of your users will already have that URL cached in their browser.)</p>
+
+<p>As for other Javascript libraries? There's absolutely no reason why this couldn't or shouldn't be implemented in them; consider this article an open invitation to port this technique to your library of choice, and link to your port in the comments.</p>
+
+
+
+<h2>Basic HTML and CSS Setup</h2>
+
+<p>The first thing we want to do is set the foundation, and create a default unscripted state for users without Javascript. (Because we read <a href="http://www.alistapart.com/articles/behavioralseparation/">Jeremy Keith's article</a> from a few years back and are now big fans of unobtrusive DOM scripting, naturally.)</p>
+
+<p>We do already have a CSS-only method for rollovers, so let's begin by building our nav to function with a basic CSS Sprites setup. And because we're lazy we don't want to build the rollovers a second time, so we'll just re-use this foundation later and add the jQuery on top of it; but we'll get to that in a bit.</p>
+
+<p>I'll leave the bulk of explaining the hows and whys of CSS Sprites to the original article, but there are a few things to clarify below. Let's start with the HTML. Pay close attention to this structure, we'll be referring back to it a lot:</p>
+
+<pre>
+&lt;ul class="nav current-about"&gt;
+	&lt;li class="home"&gt;&lt;a href="#">Home&lt;/a&gt;&lt;/li&gt;
+	&lt;li class="about"&gt;&lt;a href="#">About&lt;/a&gt;&lt;/li&gt;
+	&lt;li class="services"&gt;&lt;a href="#">Services&lt;/a&gt;&lt;/li&gt;
+	&lt;li class="contact"&gt;&lt;a href="#">Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>Each class serves a purpose: the containing <code>ul</code> has a class of <code>nav</code> that will allow us to target it in our CSS (and later Javascript), as well as a second class of <code>.current-about</code> that will be used to indicate in the navigation which page or section of the site we're currently viewing. Then each of the <code>li</code> elements has its own unique class, which we'll also use for targetting.</p>
+
+<p>So far so good, our navigation's markup is a simple and accessible HTML list, and we have enough classes to get going with our Sprites:</p>
+
+<pre>
+.nav {
+	width: 401px;
+	height: 48px;
+	background: url(../i/blue-nav.gif) no-repeat;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+}
+</pre>
+
+<p>We've set the position value to <code>absolute</code> in order to change the positioning offset to the <code>li</code>, instead of the <code>body</code> element, though we could have used <code>relative</code> instead to accomplish the same thing while leaving the <code>.nav</code> element within the document flow. There are reasons to do it either way, but for now we'll stick with absolute. For more on this <code>absolute</code>/<code>relative</code> tossup, see <a href="http://www.stopdesign.com/articles/absolute/">Douglas Bowman's article</a> on the subject.</p>
+
+<p>Now the meat of our Sprites technique lies in applying a background image to each of the nav items, and absolutely positioning them within the parent <code>ul</code>:</p>
+
+<pre>
+.nav li a:link, .nav li a:visited {
+	position: absolute;
+	top: 0;
+	height: 48px;
+	text-indent: -9000px;
+	overflow: hidden;
+}
+	.nav .home a:link, .nav .home a:visited {
+		left: 23px;
+		width: 76px;
+	}
+	.nav .home a:hover, .nav .home a:focus {
+		background: url(../i/blue-nav.gif) no-repeat -23px -49px;
+	}
+	.nav .home a:active {
+		background: url(../i/blue-nav.gif) no-repeat -23px -98px;
+	}
+</pre>
+
+<p>I should point out here that we're going a bit further than the original article and defining <code>:focus</code> and <code>:active</code> states. The former is simply a minor addition to trigger the hover image when an anchor is subject to either the <code>:hover</code> or <code>:focus</code> states, while the latter adds a new state when the user clicks on a nav item. Neither is essential, although it's a good idea to define them both. The <code>overflow: hidden;</code> rule is new too, it's just there to prevent some browsers from extending a dotted outline from the element's position all the way off the left of the screen to the negatively-indented text.</p>
+
+
+<p><a href="examples/example1-css.html">Example 1</a>: Basic CSS Sprites setup.</p>
+
+<p>So that gets us our real starting point, a working Sprite-enabled navigation menu, complete with currently-selected navigation items. And now to extend it.</p>
+
+
+
+<h2>Initializing in jQuery</h2>
+
+<p>A couple of things to know. Everything below will be placed <strong>inside</strong> a jQuery function that will ensure the code only runs once the document is fully loaded. The code snippets you see below all assume they're running inside this function, so if you encounter errors, remember to check their placement:</p>
+
+<pre>
+$(document).ready(function(){
+
+	// everything goes here
+
+});
+</pre>
+
+<p>Since the Sprite menu is our fallback state when Javascript is disabled (if we've done it right), we'd better get rid of those CSS-applied background images on hover before anything, because we're going to create our own in the script below:</p>
+
+<pre>
+$(".nav").children("li").each(function() {
+	$(this).children("a").css({backgroundImage:"none"});
+});	
+</pre>
+
+<p>On the first line, we're querying any elements with a class of <code>nav</code> (of which we only have one on this example page), and then attaching a new function to each child <code>li</code> element it contains. That function is on the second line, and it queries the <code>this</code> object (given the context, <code>this</code> means the <code>li</code> elements that the function is running on) for any <code>a</code> children elements, and if it finds them, it sets the CSS <code>background-image</code> property to <code>none</code>.</p>
+
+<p><a href="examples/example2-disabledcss.html">Example 2</a>: Disabling CSS hovers with jQuery.</p>
+
+<p>And that works... but we also lose our currently-selected item in the process. So we need to throw in a check to see which item we've identified with the <code>current-</code>(whatever) class we applied to the parent <code>ul</code>, and skip that one from our background image removal. The previous snippet needs to be expanded a bit:</p>
+
+<pre>
+$(".nav").children("li").each(function() {
+	var current = "nav current-" + ($(this).attr("class"));
+	var parentClass = $(".nav").attr("class");
+	if (parentClass != current) {
+		$(this).children("a").css({backgroundImage:"none"});
+	}
+});	
+</pre>
+
+<p>The second line now creates a variable called <code>current</code> that uses each <code>li</code>'s class in sequence to create a string that should match the classes of the parent <code>ul</code> if that particular <code>li</code> is the currently-selected item. Then the third line creates a second variable which reads the actual value directly from the <code>ul</code>. Finally, the fourth line compares the two and if they don't match, only then do we set the <code>background-image</code> property of the <code>a</code> element. This skips the change in background image for the currently-selected item, which is exactly what we're shooting for.</p>
+
+
+<h2>Attaching the Events</h2>
+
+<p>Now we need to attach a function to each of the <code>li</code> elements for every interaction event we want to style. Let's create a function for this, called <code>attachNavEvents</code>:</p>
+
+<pre>
+function attachNavEvents(parent, myClass) {
+	$(parent + " ." + myClass).mouseover(function() {
+		// do things here
+	}).mouseout(function() {
+		// do things here
+	}).mousedown(function() {
+		// do things here
+	}).mouseup(function() {
+		// do things here
+	});
+}
+</pre>
+
+<p>This function takes two arguments. The first is a string containing the literal class of the parent element, complete with preceding period, as you'll see when we call it below. The second is a string containing the class of the particular <code>li</code> to which we're attaching the events. We're going to combine both of those on the first line on the function to create a jQuery selector that targets the same element as the CSS descendent selector of, for example, <code>.nav .home</code> (which element depends on the arguments we've passed to the function, of course).</p>
+
+<p>And because jQuery allows us to chain multiple functions on a single object, we're able to create all the event-triggered functions at the same time. Chaining is a unique jQuery concept, and a bit tricky to wrap your mind around; it's not essential to understand why this works, so if you're confused, just take it for granted that it does work for now.</p>
+
+<p>Now to attach these functions to every item in our navigation. The following is a verbose way, and we'll optimize it later, but for now let's run the function on every <code>li</code>. For arguments we'll pass the parent of each, as well as the <code>li</code>'s own class:</p>
+
+<pre>
+attachNavEvents(".nav", "home");
+attachNavEvents(".nav", "about");
+attachNavEvents(".nav", "services");
+attachNavEvents(".nav", "contact");
+</pre>
+
+<p>This doesn't do much yet, but we're about to fix that.</p>
+
+<p><a href="examples/example3-scriptsetup.html">Example 3</a>: Basic script setup for events.</p>
+
+
+
+<h2>The Theory</h2>
+
+<p>I'm going to try and explain up front what happens next. Stay with me, it's important to understand what's going on here because you'll need to style the elements we're manipulating.</p>
+<p>For each of the links, we're going to create a brand new <code>div</code> element inside the <code>li</code> we're targetting, which we will then use for our jQuery effects. We'll apply the nav image to this new <code>div</code> using the same <code>background-image</code> rule we used for the <code>a</code> element inside the shared parent <code>li</code>. We'll also absolutely position the <code>div</code> within the parent. It's more or less a duplicate of the existing <code>a</code> element in our CSS Sprites setup. Through trial and error, this new <code>div</code> creation has proven less glitchy than directly applying the jQuery effect to the existing elements, so it's a necessary step.</p>
+
+<p>The style for this <code>div</code> needs to already exist in the CSS, so we'll create a new class for this <code>li</code> (<code>.nav-home</code>) based on the class of the targeted <code>li</code> so that it doesn't conflict with anything else we've created so far, and add the style:</p>
+
+
+<pre>
+.nav-home {
+	position: absolute;
+	top: 0;
+	left: 23px;
+	width: 76px;
+	height: 48px;
+	background: url(../i/blue-nav.gif) no-repeat -23px -49px;
+}
+</pre>
+
+
+<h2>The Practice</h2>
+
+<p>And now it's time to add the effects. When the <code>mouseover</code> event is triggered, we'll create the <code>div</code> element and give it the previously-mentioned class. We need it to start out invisible before fading in, so we'll use the jQuery <code>css</code> function to set a CSS <code>display</code> value of <code>none</code>, and then finally use the jQuery <code>fadeIn</code> function to fade it from hidden to visible, and pass an argument of 200 to that function in order to specify the duration of this animation (in milliseconds):</p>
+
+<pre>
+function attachNavEvents(parent, myClass) {
+	$(parent + " ." + myClass).mouseover(function() {
+		$(this).before('&lt;div class="nav-' + myClass + '"&gt;&lt;/div&gt;');
+		$("div.nav-" + myClass).css({display:"none"}).fadeIn(200);
+	});
+}
+</pre>
+
+<p>Then we perform the same in reverse on the <code>mouseout</code> event; we'll fade out the <code>div</code>, and once it's finished fading we'll clean up after ourselves by removing it from the DOM. This is how our <code>attachNavEvents</code> function should look:</p>
+
+<pre>
+function attachNavEvents(parent, myClass) {
+	$(parent + " ." + myClass).mouseover(function() {
+		$(this).before('&lt;div class="nav-' + myClass + '"&gt;&lt;/div&gt;');
+		$("div.nav-" + myClass).css({display:"none"}).fadeIn(200);
+	}).mouseout(function() {
+		// fade out & destroy pseudo-link
+		$("div.nav-" + myClass).fadeOut(200, function() {
+			$(this).remove();
+		});
+	});
+}
+</pre>
+
+<p>And that's pretty much it for the hovers:</p>
+
+<p><a href="examples/example4-scriptedhovers.html">Example 4</a>: Scripted hover events.</p>
+
+
+<p>We had probably better do something about the <code>mousedown</code> and <code>mouseup</code> events too, if we had previously defined a change for the <code>:active</code> state in the CSS. We will need a different class from the hovers so we can target it uniquely in the CSS, so let's change the class on <code>mousedown</code>. We'll also want to revert it on <code>mouseup</code> to restore the <code>:hover</code> state, since the user may not have moved their mouse away from the nav item. Here's what the revised <code>attachNavEvents</code> function now looks like:</p>
+
+<pre>
+function attachNavEvents(parent, myClass) {
+	$(parent + " ." + myClass).mouseover(function() {
+		$(this).before('&lt;div class="nav-' + myClass + '"&gt;&lt;/div&gt;');
+		$("div.nav-" + myClass).css({display:"none"}).fadeIn(200);
+	}).mouseout(function() {
+		$("div.nav-" + myClass).fadeOut(200, function() {
+			$(this).remove();
+		});
+	}).mousedown(function() {
+		$("div.nav-" + myClass).attr("class", "nav-" + myClass + "-click");
+	}).mouseup(function() {
+		$("div.nav-" + myClass + "-click").attr("class", "nav-" + myClass);
+	});
+}
+</pre>
+
+<p>And we can re-use the style of the hover <code>div</code>, with a slight modification of the background position to adjust which part of our main Sprite image is showing on click:</p>
+
+<pre>
+.nav-home, .nav-home-click {
+	position: absolute;
+	top: 0;
+	left: 23px;
+	width: 76px;
+	height: 48px;
+	background: url(../i/blue-nav.gif) no-repeat -23px -49px;
+}
+.nav-home-click {
+	background: url(../i/blue-nav.gif) no-repeat -23px -98px;
+}
+</pre>
+
+<p>And now we've got the hovers, the currently-selected nav item, and click events all worked out:</p>
+
+<p><a href="examples/example5-all-together.html">Example 5</a>: Putting it all together.</p>
+
+
+<h2>Other Considerations</h2>
+
+<p>We're not limited to the fade effect either. jQuery has a built-in <code>slideUp</code>/<code>slideDown</code> function we can use as well (which is shown in the second example at the top of this article), or we can get really fancy and create custom CSS-defined animation effects using the jQuery <code>animate</code> function (as shown in the third example). But a word of caution about <code>animate</code> &#8212; the results can be a touch erratic, as you may have noticed in the example.</p>
+
+<p>Cross-browser functionality is a bit of a freebie; jQuery works across most modern browsers, so everything you see here works fine in IE6+, Firefox, Safari, Opera, etc. We've also accounted for multiple graceful degradation scenarios; if a user has turned off Javascript, they get basic CSS Sprites. If they've disabled Javascript and CSS, they get a basic HTML list. And we get the other benefits of CSS Sprites, too, since we're still using a single image for all the various navigation states and effects.</p>
+
+<p>Though it's not required, it's strongly suggested that you embrace subtlety; animation speeds of more than a few hundred milliseconds may be fun to begin with, but they will quickly grate on the nerves of those who use the site you're building after the novelty wears off. Err on the side of quicker animation speeds, rather than slower.</p>
+
+<p>One potential glitch you might run into is other text on the page seemingly "flashing" during animations. This is a complicated issue that has to do with <a href="http://mezzoblue.com/archives/2006/12/12/opacity_bugs/">sub-pixel rendering</a> common in modern operating systems, and the best fix seems to be applying a just-slightly-less-than-opaque <code>opacity</code> value to force a particular text rendering mode. If you add this to your CSS the flashing should clear up (at the expense of regular anti-aliased text instead of sub-pixel anti-aliased):</p>
+
+<pre>
+p {
+	opacity 0.9999;
+}
+</pre>
+
+
+
+
+<h2>Packaged to Go</h2>
+
+<p>But you don't actually need to remember any script in this article, since there's a <a href="examples/sprites2.js">pre-built function</a> awaiting you in this final example. Using the Javascript in the HTML file as a reference, you need to edit only a single line of Javascript to apply Sprites2 to your site:</p>
+
+<pre>
+$(document).ready(function(){
+	generateSprites(".nav", "current-", true, 150, "slide");
+});
+</pre>
+
+<p>The <code>generateSprites</code> function takes 5 arguments:</p>
+
+<ol>
+	<li>The primary class of your parent <code>ul</code>, including the period.</li>
+	<li>The prefix you're using for selected items, eg. for a selected class of <code>selected-about</code>, use <code>selected-</code> as the value.</li>
+	<li>A toggle to indicate whether you're styling the <code>:active</code> state. set it to <code>true</code> if you've defined the <code>:active</code> state and jQuery equivalents in your CSS, otherwise set it to <code>false</code>.</li>
+	<li>The animation speed, in milliseconds. eg. <code>300</code> = 0.3 seconds</li>
+	<li>Your preferred animation style, as a string. Set to <code>"slide"</code> or <code>"fade"</code>, defaults to the latter.</li>
+</ol>
+
+<p><a href="examples/example6-function.html">Example 6</a>: One easy line of script to modify, thanks to the pre-built function.</p>
+
+<p>You will still need to position and style the various scripted elements in your CSS, so feel free to use the CSS file examples in this article as a reference.</p>
+
+
+
+<h2>Footnotes</h2>
+<p>During the writing of this article, a <a href="http://www.shopdev.co.uk/blog/animated-menus-using-jquery/">similar technique</a> was written up elsewhere, albeit without our nice CSS Sprites fallback. Also, the A List Apart editors came across a very different <a href="http://nettuts.com/html-css-techniques/how-to-create-a-mootools-homepage-inspired-navigation-effect-using-jquery/">animated jQuery menu</a> that the reader may find useful.</p>
+
+
+</div>
+
+<div id="learnmore">
+  <h2>Learn More</h2>
+  <p>Related Topics: <a href="http://www.alistapart.com/topics/code/browsers/" title="Browsers">Browsers</a>, <a href="http://www.alistapart.com/topics/code/css/" title="CSS">CSS</a>, <a href="http://www.alistapart.com/topics/code/htmlxhtml/" title="HTML and XHTML">HTML and XHTML</a></p>
+</div>
+
+
+<div class="discuss">
+  <h2>Discuss</h2>
+  <p>Was it good for you, too?  <a href="http://www.alistapart.com/comments/sprites2/">Join the discussion »</a></p>
+</div>
+
+
+  <div id="authorbio">
+
+  <h2>About the Author</h2>
+
+  
+
+  
+
+  <p><img src="dave_shea.jpg" alt=" Dave Shea">
+Dave Shea runs his own studio <a href="http://www.brightcreative.com/">Bright Creative</a> in (not very) sunny Vancouver. He blogs sometimes at <a href="http://www.mezzoblue.com/">Mezzoblue</a> and <a href="http://flickr.com/photos/mezzoblue/">Flickrs</a> a bit more often than that. Oh, and he's done <a href="http://brightcreative.com/portfolio/events/">other</a> <a href="http://brightcreative.com/portfolio/publications/">stuff</a> too.</p>
+  <br style="clear: both;">
+
+  
+
+</div>
+
+
+
+</div>
+
+<div id="sidebar" class="column">
+
+<div class="first">
+<form method="get" action="http://search.atomz.com/search/">
+  <h3>Search ALA</h3>
+  <input name="sp-q" id="search" type="text">
+  <input src="sprites1%20Files/go.gif" id="submit" value="Search" type="image">
+  <p><input name="incdisc" id="incdisc" value="All" onclick="this.form.elements['sp-k'].value = (this.checked) ? '' : 'All';" type="checkbox"> include discussions</p>
+  <input name="sp-a" value="sp1002d27b" type="hidden">
+  <input name="sp-f" value="ISO-8859-1" type="hidden">
+  <input name="sp-p" value="All" type="hidden">
+  <input name="sp-k" value="All" type="hidden">
+</form>
+</div>
+
+<div id="topiclist">
+  <h3>Topics</h3>
+  <ul>
+
+    <li><a href="http://www.alistapart.com/topics/code">Code</a></li>
+
+    <li><a href="http://www.alistapart.com/topics/content">Content</a></li>
+
+    <li><a href="http://www.alistapart.com/topics/culture">Culture</a></li>
+
+    <li><a href="http://www.alistapart.com/topics/design">Design</a></li>
+
+    <li><a href="http://www.alistapart.com/topics/process">Process</a></li>
+
+    <li><a href="http://www.alistapart.com/topics/userscience">User Science</a></li>
+
+  </ul>
+
+</div>
+
+
+<div id="snapshot">
+  <h3>Snapshot</h3>
+  <p>[summary of this article]</p>
+
+</div>
+
+
+<div id="lucre">
+
+<p>
+<a href="http://decknetwork.net/">Ad via The Deck</a>
+</p>
+</div>
+
+<div id="jobboard">
+<h4>Job Board</h4>
+</div>
+
+
+</div>
+
+<div id="colophon">
+
+<p class="init">
+Hosted by
+<a href="http://textdrive.com/"><img src="sprites1%20Files/textdrive.png" alt="Hosted by TextDrive"></a>
+</p>
+
+<p>
+Published by
+<a href="http://happycog.com/"><img src="sprites1%20Files/happycog.png" title="" alt="Published by Happy Cog"></a>
+</p>
+</div>
+
+</div>
+
+</div>
+
+<div id="footer">
+<p>
+<span class="issn">ISSN: <b>1534-0295</b></span>
+<span class="copyright"><a href="http://www.alistapart.com/copyright/" rel="license">Copyright ©</a> <span class="years">1998-2008</span> A List Apart Magazine and the authors.</span>
+</p>
+</div>
+
+<script src="sprites1%20Files/a" type="text/javascript"></script><img src="sprites1%20Files/a.html" alt="" style="position: absolute; left: -9999px;" onload="this.parentNode.removeChild(this);">
+
+</body></html>

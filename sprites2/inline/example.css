@@ -1,0 +1,168 @@
+/*
+
+	-- -- -- -- -- -- --
+	css sprites 2
+	nav style
+
+	http://www.alistapart.com/articles/sprites2
+	-- -- -- -- -- -- --
+	
+*/
+
+																		/* -- blue nav -- */
+.nav-example-fade {
+	width: 401px;
+	height: 48px;
+	background: url(blue-nav.gif) no-repeat;
+	position: relative;
+}
+.nav-example-slide {
+	width: 401px;
+	height: 48px;
+	background: url(blue-nav.gif) no-repeat;
+	position: relative;
+}
+.nav-example-animate {
+	width: 401px;
+	height: 48px;
+	background: url(blue-nav.gif) no-repeat;
+	position: relative;
+}
+.nav li {
+	display: inline;
+}
+.nav a:link, .nav a:visited {
+	position: absolute;
+	top: 0;
+	height: 48px;
+	text-indent: -9000px;
+	overflow: hidden;
+	z-index: 10;
+	border: none;
+}
+	.nav .home a:link, .nav .home a:visited {
+		left: 23px;
+		width: 76px;
+	}
+	.nav .home a:hover, .nav .home a:focus {
+		background: url(blue-nav.gif) no-repeat -23px -49px;
+	}
+	.nav .home a:active {
+		background: url(blue-nav.gif) no-repeat -23px -98px;
+	}
+	.current-home .home a:link, .current-home .home a:visited {
+		background: url(blue-nav.gif) no-repeat -23px -147px;
+		cursor: default;
+	}
+	.nav-home, .nav-home-click {
+		position: absolute;
+		top: 0;
+		left: 23px;
+		width: 76px;
+		height: 48px;
+		background: url(blue-nav.gif) no-repeat -23px -49px;
+	}
+	.nav-home-click {
+		background: url(blue-nav.gif) no-repeat -23px -98px;
+	}
+
+
+
+	.nav .about a:link, .nav .about a:visited {
+		left: 100px;
+		width: 82px;
+	}
+	.nav .about a:hover, .nav .about a:focus {
+		background: url(blue-nav.gif) no-repeat -100px -49px;
+	}
+	.nav .about a:active {
+		background: url(blue-nav.gif) no-repeat -100px -98px;
+	}
+	.current-about .about a:link, .current-about .about a:visited {
+		background: url(blue-nav.gif) no-repeat -100px -147px;
+		cursor: default;
+	}
+	.nav-about, .nav-about-click {
+		position: absolute;
+		top: 0;
+		left: 100px;
+		width: 82px;
+		height: 48px;
+		background: url(blue-nav.gif) no-repeat -100px -49px;
+	}
+	.nav-about-click {
+		background: url(blue-nav.gif) no-repeat -100px -98px;
+	}
+
+
+
+	.nav .services a:link, .nav .services a:visited {
+		left: 183px;
+		width: 97px;
+	}
+	.nav .services a:hover, .nav .services a:focus {
+		background: url(blue-nav.gif) no-repeat -183px -49px;
+	}
+	.nav .services a:active {
+		background: url(blue-nav.gif) no-repeat -183px -98px;
+	}
+	.current-services .services a:link, .current-services .services a:visited {
+		background: url(blue-nav.gif) no-repeat -183px -147px;
+		cursor: default;
+	}
+	.nav-services, .nav-services-click {
+		position: absolute;
+		top: 0;
+		left: 183px;
+		width: 97px;
+		height: 48px;
+		background: url(blue-nav.gif) no-repeat -183px -49px;
+	}
+	.nav-services-click {
+		background: url(blue-nav.gif) no-repeat -183px -98px;
+	}
+
+
+	
+	.nav .contact a:link, .nav .contact a:visited {
+		left: 281px;
+		width: 97px;
+	}
+	.nav .contact a:hover, .nav .contact a:focus {
+		background: url(blue-nav.gif) no-repeat -281px -49px;
+	}
+	.nav .contact a:active {
+		background: url(blue-nav.gif) no-repeat -281px -98px;
+	}
+	.current-contact .contact a:link, .current-contact .contact a:visited {
+		background: url(blue-nav.gif) no-repeat -281px -147px;
+		cursor: default;
+	}
+	.nav-contact, .nav-contact-click {
+		position: absolute;
+		top: 0;
+		left: 281px;
+		width: 97px;
+		height: 48px;
+		background: url(blue-nav.gif) no-repeat -281px -49px;
+	}
+	.nav-contact-click {
+		background: url(blue-nav.gif) no-repeat -281px -98px;
+	}
+
+
+																		/* -- overriding ALA style -- */
+#content ul.nav {
+	padding: 0;
+	margin: 2em 0;
+}
+#content ul.nav li {
+	display: inline;
+	background: none;
+	margin-bottom: 0;
+	padding-left: 0;
+}
+																		/* -- ALA anti-aliasing fix -- */
+.issn {
+	opacity: 0.9999;
+}
