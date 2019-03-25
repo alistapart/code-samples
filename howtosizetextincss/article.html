@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>How to Size Text in CSS</title>
+<link rel="stylesheet" href="http://alistapart.com/css/article.css" type="text/css" media="all" />
+<style type="text/css">
+@import url(http://alistapart.com/css/248.css);
+</style>
+</head>
+<body class="articles">
+<div id="main">
+<div id="content" class="column">
+
+<h1>How to Size Text in CSS</h1>
+
+<div id="articletext">
+<p>
+There&#8217;s been a welcome resurgence of <a href="http://ilovetypography.com/2007/09/19/15-excellent-examples-of-web-typography/">interest</a> in <a href="http://webtypography.net">web typography</a> over the past year or so, with many <a href="http://www.digital-web.com/articles/css_typography/">articles</a> and <a href="http://webtypography.net/sxsw2007/">conference</a> <a href="http://www.markboulton.co.uk/journal/comments/type_in_berlin/">talks</a> offering <a href="http://www.sitepoint.com/blogs/2007/04/30/typography-baseline-rhythm-deciphered/">techniques</a> and <a href="http://markboulton.co.uk/articles/detail/five_simple_steps_to_better_typography/">theory</a>. Frequently asserted  is the notion that good typography requires accurate control of font size and line-height. But this is the web: it&#8217;s a special medium where the reader can have as much control as the designer&#8212;the implication being that text on the web, while bending to the designer&#8217;s will, must also be reliably resizable across browsers and platforms.</p>
+
+<p>In this article, we will reconcile the designer&#8217;s requirement for accuracy with the user&#8217;s need to resize text on demand, arriving at a best practice that satisfies designers <em>and</em> users and works across browsers and platforms.</p>
+
+<p>We&#8217;ll reach our destination by the traditional method of trial and error. With more than a nod to Owen Briggs&#8217;s <a href="http://www.thenoodleincident.com/tutorials/box_lesson/font/index.html">pioneering work</a> of 2002, I have created a base case with six iterations and 161 screenshots. Follow along, won&#8217;t you?
+</p>
+
+<h2>The test suite</h2>
+
+<p>
+The <a href="test-0.html">content used for testing purposes</a> was a two-column layout with body copy on the left and a sidebar on the right. Text was set in Arial to aid consistency across operating systems and platforms.
+</p>
+
+<p>
+The browsers used for testing were Safari 2, Firefox 2 and Opera 9.5&alpha; running on Mac OS X Tiger, along with Internet Explorer 6 (IE6) and Internet Explorer 7 (IE7) running on Windows XP with ClearType turned on. Clearly this is not an exhaustive list of browsers, operating systems, or rendering engines, but it covers the majority of users out there today.
+
+<p>Each operating system and browser was run using its default settings. 
+Every iteration was tested to see how each browser rendered text at smaller, medium, larger, and largest sizes, along with 90%, 100%, 110%, and 120% page zoom levels, where applicable.
+</p>
+
+<h2>Base Case</h2>
+
+<p>
+First it was necessary to verify that browsers provided a consistent baseline from which to start. The <a href="ss-test-0.html">base case</a> shows that in each browser, the default text size is consistently 16px when no styles are applied (other than the browser defaults), and the text scales fairly consistently across the board.
+</p>
+
+<h2>Text size in pixels &ndash; iteration 1</h2>
+
+<p>
+The default text size of the base case is a good starting point, but for most people (designers, clients, and their customers) 16px is too large for body text. In our example, the body text was reduced to 14px, with the sidebar set at 12px. This first iteration does just that, setting the fonts in pixels:
+</p>
+
+<pre>.bodytext p {
+	font-size:14px;
+}
+
+.sidenote {
+	font-size:12px;
+}</pre>
+
+<p>
+<a href="ss-test-1.html">The result</a> is that Safari and Firefox still resize the text, whereas IE6 and IE7 do not. The text can be resized in Opera and IE7 by using the page zoom tool, which magnifies the page layout, text and images within.
+</p>
+
+<h2>Text size in ems &ndash; iteration 2</h2>
+
+<p>
+Although browser market share differs from site to site, and browser share statistics are drawn in sand, it&#8217;s safe to say that IE6 is still used by <a href="http://marketshare.hitslink.com/report.aspx?qprid=6">many people</a>. So setting text in pixels would leave many people no means of resizing it. There&#8217;s also an argument that says IE7 users should be able to resize text without being forced to use the zoom control.
+</p>
+
+<p>
+The next unit to try for text sizing is ems. The em is a true typographic unit, <a href="http://www.w3.org/WAI/GL/css2em.htm">recommended by the W3C</a>, and affords a precision <a href="http://www.alistapart.com/articles/sizematters/">keywords</a> lack. Working from a default of 16px, the following styles should give the desired text sizes:
+</p>
+
+<pre>.bodytext p {
+	font-size:0.875em; /* 16x.875=14 */
+}
+
+.sidenote {
+	font-size:0.75em; /* 16x0.75=12 */
+}</pre>
+
+<p>
+<a href="ss-test-2.html">The results</a> show that, across all browsers, text at the medium browser setting is rendered identically to text set in pixels. It also demonstrates that text sized in ems can be resized across all browsers. However IE6 and IE7 unacceptably exaggerate the smallness and largeness of the resized text.
+</p>
+
+<h2>Body sized as percentage &ndash; iteration 3</h2>
+
+<p>
+A fix to the exaggerated text resizing of IE6 and IE7 is to size the body using a percentage. So retaining the ems on our content, the following styles were tested:
+</p>
+
+<pre>body {
+	font-size:100%;
+}
+
+.bodytext p {
+	font-size:0.875em;
+}
+
+.sidenote {
+	font-size:0.75em;
+}</pre>
+
+<p>
+<a href="ss-test-3.html">The results</a> show that the difference between larger and smaller browser settings in IE6 and IE7 is now less pronounced, meaning we now have all browsers rendering text at an identical size on their medium setting, and resizing text consistently.
+</p>
+
+<h2>Setting line height in pixels &ndash; iteration 4</h2>
+
+<p>
+Recent web typography articles such as &#8220;<a href="http://www.alistapart.com/articles/settingtypeontheweb">Setting Type on the Web to a Baseline Grid</a>&#8221; (<cite>A List Apart</cite>, April 2007) stress that good typography requires a vertical grid, that is to say a solid vertical rhythm achieved with a consistent, measured line-height. The key implication is that line-height should be the same regardless of the size of the text (so that line-height, or the vertical grid, remains consistent, regardless of font size).
+</p>
+
+<p>
+For our example, a suitable line height is 18px, so that is added to the body as follows:
+</p>
+
+<pre>body {
+	font-size:100%;
+	line-height:18px;
+}
+
+.bodytext p {
+	font-size:0.875em;
+}
+
+.sidenote {
+	font-size:0.75em;
+}</pre>
+
+<p>
+<a href="ss-test-4.html">The results</a> show that the 18px line height is inherited by all text on the page&#8212;note how the sidebar text has the same regular rhythm as the body copy.  Specifying a unit (in this case, px) when setting the line-height enables the <strong>value</strong> to be inherited throughout the page. If a <a href="http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/">unitless line-height</a> had been specified, the <strong>multiplier</strong> would have been inherited, resulting in line-heights being rendered proportionally to the text size, thus breaking the vertical rhythm.
+</p>
+
+<p>
+Unfortunately the results show that the 18px line height is not scaled by IE6 and IE7 when text is resized, meaning the largest setting appears to squash the text.
+</p>
+
+<h2>Setting line height in ems &ndash; iteration 5</h2>
+
+<p>
+When pixels failed before, we turned to ems. Repeating the logic gives us the following styles:
+</p>
+
+<pre>body {
+	font-size:100%;
+	line-height:1.125em; /* 16×1.125=18 */
+}
+
+.bodytext p {
+	font-size:0.875em;
+}
+
+.sidenote {
+	font-size:0.75em;
+}</pre>
+
+<p>
+<a href="ss-test-5.html">The results</a> show accurate, consistently resized text and line-height across all browsers. Perfect. Or nearly so.
+</p>
+
+<h2>The Safari monospace problem &ndash; iteration 6</h2>
+
+<p>
+The observant among you may have noticed a wee glitch in the Safari <a href="ss-test-5.html">screenshots</a>: the monospaced font included in the body text is rendered inconsistently. For text set in pixels, Safari renders the monospaced font at the same size as the proportional-width text surrounding it. When text is set in ems, however, Safari renders monospace text much smaller than the surrounding text. The inconsistency appears to stem from Safari&#8217;s default text sizes, which are 16px for &#8220;standard fonts&#8221; and 13px for &#8220;fixed-width fonts.&#8221; Safari 3&alpha; on OS X does not appear to suffer from this problem.
+</p>
+
+<p>
+You could decide that undersized monospace text in Safari is something you and your readers can live with, and in roughly 18 months (the approximate upgrade cycle for OS X users) the problem will have almost disappeared. If not, a fix is to send text sized in pixels to Safari. 
+</p>
+
+<p>
+The following code appends a <a href="http://msdn.microsoft.com/library/default.asp?url=/workshop/author/dhtml/overview/ccomment_ovw.asp">downlevel-revealed conditional comment</a> to our styles, so that pixels are sent to all browsers except IE6 and IE7 (note the <code>[if !IE]</code> syntax, instructing IE/Win to ignore the  markup that follows).
+</p>
+
+<pre>&lt;style type="text/css"&gt;
+body {
+	font-size:100%;
+	line-height:1.125em;
+}
+
+.bodytext p {
+	font-size:0.875em;
+}
+
+.sidenote {
+	font-size:0.75em;
+}
+&lt;/style&gt;
+
+&lt;!--[if !IE]&gt;--&gt;
+
+&lt;style type="text/css"&gt;
+body {
+	font-size:16px;
+}
+&lt;/style&gt;
+
+&lt;!--&lt;![endif]--&gt;
+</pre>
+
+<p>
+<a href="ss-test-6.html">The results</a> show consistently resized text and line height across all browsers, including the monospaced text in Safari 2.
+</p>
+
+<p>Conditional comments are controversial, with many <a href="http://meiert.com/en/blog/20070201/why-conditional-comments-are-bad-repeat-bad/">detractors</a> and <a href="http://www.456bereastreet.com/archive/200510/stop_using_css_hacks_now/">proponents</a>, but I believe the approach is appropriate in this case, as we are using a browser feature (conditional comments) to work around a browser behaviour (non-resizing of pixels). It should also be noted that, for the sake of clarity, the code listed above presents CSS rules within <code>style</code> elements; best practice would dictate the use of <a href="http://htmlhelp.com/reference/css/style-html.html#external">linked style sheets</a> instead.</p>
+
+<h2>Conclusion</h2>
+<p>
+The task at hand was to find a way to size text in CSS that would allow designers to retain accurate control of their typography, without sacrificing the reader's control of their reading environment. The tests showed that sizing text in ems, with a percentage on the body (and an optional caveat for Safari 2), is a viable way to achieve accurate, resizable text across all browsers in common use today. They also showed that a vertical rhythm can be created with a single rule by setting the body line-height in ems.
+</p>
+
+<h3>Addendum</h3>
+
+<p>
+Ems can be tricky to work with, especially when nesting elements deeply, as it can be hard to keep track of the maths. However commenting your style sheets well and styling elements from the body inwards can keep things easier to follow. This more <a href="complexexample.html">complex example</a> and its <a href="complexexample.css">accompanying style sheet</a> demonstrate how to size nested elements using the body as the starting point.
+</p>
+
+</div>
+</div>
+</div>
+</body>
+</html>

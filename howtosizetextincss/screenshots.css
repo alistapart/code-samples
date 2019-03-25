@@ -1,0 +1,41 @@
+body {
+	background: #fff;
+	color: #333;
+	font-family: verdana, sans-serif;	font-size:100%;	line-height:1.125em; /* 18px */
+	margin:0;
+	padding: 18px;
+}
+
+h1 {
+	font-family: georgia, serif;
+	font-weight: normal;
+	font-size: 1.5em; /* 27px */
+	line-height:1.333em; /* 36px */
+	margin:0;
+}
+
+p, th, td, pre {
+	font-size: 0.75em; /* 12px */
+}
+
+p, pre {
+	margin: 1.333em 0; /* 18px */
+}
+
+table {
+	border-collapse: collapse;
+	background: #ddd;
+	color: #000;
+	position: relative;
+	left: -0.5em; /* 9px */
+}
+
+th, td {
+	text-align: left;
+	vertical-align: top;
+	padding: 0.75em; /* 9px */
+}
+
+th {
+	font-weight: bold;
+}

@@ -1,0 +1,95 @@
+body {
+	background: #fff;
+	color: #333;
+	font-family: georgia, serif;	font-size:100%;	line-height:1.125em; /* 16x1.125=18px */
+	margin:0;
+	padding: 18px;
+}
+
+#wrapper {
+	width: 36em;
+}
+
+h1, h2, h3 {
+	font-weight:normal;	
+}
+
+h1 {
+	font-size: 1.375em; /* 16x1.375=22px */
+	line-height: 1.636em;/* 16x1.636=36px */
+	margin: 0;
+}
+
+h2 {
+	font-size: 1.125em; /* 16x1.125=18px */
+	margin:1em 0; /* 18x1=18px */
+}
+
+p {
+	font-size: 0.875em; /* 16x0.875=14px */
+	margin: 1.286em 0; /* 14x1.286=18px */
+}
+
+table {
+	border-collapse: collapse;
+	clear: left;
+}
+
+th, td {
+	text-align: left;
+	vertical-align: top;
+	padding: 0;
+}
+
+/* rather than give the table a font size, use contextual selectors to target the th and td elements within */
+
+th {
+	width:20%;
+	font-weight: normal;
+	font-size: 0.875em; /* 16x0.875=14px */
+	padding:0 0.643em 0.571em 0.643em; /* 14x0.643=9px 14x0.571=8px */
+	border-bottom:0.071em solid #ccc; /* 14x0.071=1px */
+}
+
+td {
+	font-size: 0.75em; /* 16x0.75=12px */
+	padding:0.333em 0.75em 0.417em 0.75em; /* 12*0.333=4px 12*0.75=9px 12x0.417=5px */
+	border-bottom:0.083em solid #ccc; /* 12x0.083=1px */
+	line-height: 1em; /* 12x1=12px */ 
+}
+
+/* @group sidebar */
+
+/* rather than give the sidebar itself a font size, use contextual selectors to get at the elements within */
+
+.sidebar {
+	width: 12em;
+	float: left;
+	margin: 0 1.125em 0 0; /* 16x1.125=18px */
+	padding: 0.5625em; /* 16x0.5625=9px */
+	background:#ddd;
+	color: #000;
+}
+
+.sidebar h3 {
+	font-size: 0.875em; /* 16x0.875=14px */
+	margin: 0 0 0.643em 0; /* 14x0.643=9px */
+}
+
+.sidebar p {
+	font-size: 0.75em; /* 16x0.75=12px */
+	margin: 0 0 1.5em 0; /* 12x1.5=18px */
+}
+
+.sidebar ul {
+	padding: 0;
+	margin: 0 0 1.125em 1.125em; /* 16x1.125=18px */
+}
+
+.sidebar li {
+	font-size: 0.75em; /* 16x0.75=12px */
+}
+
+/* @end */
+
+

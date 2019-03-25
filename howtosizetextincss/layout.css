@@ -1,0 +1,8 @@
+body {	margin:0;	padding:0;	background:url(ruler-x.gif) repeat-x top left;
+	font-family: arial, sans-serif;}
+
+code {
+	font-family: "Courier New", mono;
+}.wrapper {	background:url(ruler-y.gif) repeat-y top left;	padding:18px;
+	overflow: auto;
+	_height:1%;}div, p {	margin:0;	padding:0;}.bodytext {	width:198px;	float:left;}.sidenote {	width:126px;	margin-left:216px;}
