@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+
+xml:lang="en" lang="en">
+
+<head>
+
+<title>The page you requested is no longer here [error 404]</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+</head>
+
+
+
+<body>
+
+<h1>The page you requested is no longer here <small>[error 404]</small></h1>
+
+<p>... but we think we can help you</p>
+
+<script type="text/javaScript">
+
+<!--
+
+// let's see what they were searching for ...
+
+var strReferrer=document.referrer.toLowerCase();
+
+if (location.href.indexOf("noreferrer=true")>=0) strReferrer="";
+
+
+
+if (strReferrer.length==0)
+
+	{
+
+	//not referred from anything at all, apparently!
+
+	var str='';
+
+	str+='We think you will find one of the following links useful:</p>';
+
+	str+='<p><a href="https://alistapart.com/" title="Go to the home page for blahblah.com">Home Page<\/a>  ';
+
+	str+='<a href="#" rel="nofollow" title="View the complete site map for blahblah.com">Site Map<\/a><\/p>';
+
+	str+='<hr \/>';
+
+	str+='<p><strong>You may not be able to find this page because of:<\/strong><\/p>';
+
+	str+='<ol type="a">';
+
+	str+='  <li>An <strong>out-of-date bookmark\/favourite<\/strong><\/li>';
+
+	str+='  <li>A search engine that has an <strong>out-of-date listing for us</strong><\/li>';
+
+	str+='  <li>A <strong>mis-typed address</strong><\/li>';
+
+	str+='<\/ol>';
+
+	document.write(str);
+
+}
+
+var blnSearchReferral = false;
+
+var blnInsiteReferral = false;
+
+var strSite = "";
+
+if (strReferrer.length!=0)
+
+//we have been referred to this page some another web page ...
+
+	{
+
+	if (
+
+		(strReferrer.indexOf(".looksmart.co")>0)||
+
+		(strReferrer.indexOf(".ifind.freeserve")>0)||
+
+		(strReferrer.indexOf(".ask.co")>0)||
+
+		(strReferrer.indexOf("google.co")>0)||
+
+		(strReferrer.indexOf("altavista.co")>0)||
+
+		(strReferrer.indexOf("msn.co")>0)||
+
+		(strReferrer.indexOf("yahoo.co")>0)
+
+		)
+
+		{
+
+		//we have been referred to from a known search engine
+
+		
+
+		blnSearchReferral=true;
+
+		var arrSite=strReferrer.split("https://alistapart.com/");
+
+		var arrParams=strReferrer.split("?");
+
+		var strSearchTerms = arrParams[1];
+
+		arrParams=strSearchTerms.split("&");
+
+		
+
+		strSite=arrSite[2];
+
+		var sQryStr="";
+
+		
+
+		//define what search terms are in use
+
+		var arrQueryStrings = new Array();
+
+		arrQueryStrings[0]="q=";	//google, altavista, msn
+
+		arrQueryStrings[1]="p=";	//yahoo
+
+		arrQueryStrings[2]="ask=";	//ask jeeves
+
+		arrQueryStrings[3]="key=";	//looksmart
+
+		
+
+		for (i=0;i<arrParams.length;i++)
+
+		//loop through all the parameters in the referring page's URL
+
+			{
+
+			for (q=0;q<arrQueryStrings.length;q++)
+
+				{
+
+				sQryStr = arrQueryStrings[q];
+
+				if (arrParams[i].indexOf(sQryStr)==0)
+
+					{//we've found a search term!
+
+					strSearchTerms = arrParams[i];
+
+					strSearchTerms = strSearchTerms.split(sQryStr);
+
+					strSearchTerms = strSearchTerms[1];
+
+					strSearchTerms = strSearchTerms.replace("+", " ");
+
+					}
+
+				}
+
+			}
+
+		document.write ("<p>You did a search on <strong><a href='" + strReferrer + "' target='_blank'>" + strSite + "</a></strong> for \"<strong>" + strSearchTerms + "</strong>\". However, their index appears to be out of date.</p><h2>All is not lost!</h2><p>We think that the following page on our site will be able to help you:</p>");
+
+		//--------------------------------------------------------------
+
+		// edit and repeat for all pages you want to match to the search phrases found
+
+		if (
+
+		(strSearchTerms.indexOf("usability")>=0)||
+		(strSearchTerms.indexOf("accessibility")>=0)
+
+		)
+
+			{
+
+			document.write("<a href='http://www.alistapart.com/topic/usability/'>topic directory: usability</a><br />");
+
+			document.write("<a href='http://www.alistapart.com/topic/accessibility/'>topic directory: accessibility</a><br />");
+
+			}
+
+		//--------------------------------------------------------------
+
+		}//end of section dealing with referral from known search engine
+
+
+
+		if (!blnSearchReferral)
+
+			{
+
+			// for referrals from other sites with broken links
+
+			// ------------------------------------------------
+
+			strSite = strReferrer;
+
+			strSite = strSite.split("https://alistapart.com/");
+
+			strSite = strSite[2];
+
+			document.write("<p>You were incorrectly referred to this page by: <strong><a href='" + strReferrer + "' target='_blank'>" + strSite + "</a></strong><br />We suggest you try one of the links below:</p>");
+
+			}
+
+		if (blnSearchReferral)
+
+			{
+
+			document.write("<p>Or you could try one of the following pages:<\/p>");
+
+			}
+
+			document.write('<p><a href="https://alistapart.com/" title="Go to the home page for blahblah.com">Home Page<\/a>  ');
+
+			document.write('<a href="https://alistapart.com/site-map.php" title="View the complete site map for blahblah.com">Site Map<\/a><\/p>');
+
+
+
+		if (!blnSearchReferral)
+
+			{
+
+			// for referrals from other sites with broken links
+
+			// ------------------------------------------------
+
+			
+
+			blnInsiteReferral =((strReferrer.indexOf("http://www.mysite1.com/")>=0)||
+
+								(strReferrer.indexOf("http://www.mysite2.co.uk/")>=0)||
+
+								(strReferrer.indexOf("http://www.mysite3.com/")>=0))
+
+//got here
+
+			str='<div class="form">';
+
+			str+='<h2>Help us to help you ...</h2>';
+
+			if (blnInsiteReferral)
+
+				{str+='<p>It looks like one of our own links is broken - we\'re very sorry about this, and we will ensure that this is passed on so that the links can be fixed. All you need to do is press the button below.</p>';}
+
+			else
+
+				{str+='<p>In order to improve our service, you can inform us that someone else has an incorrect link to our site. We will do our best to notify them that this page has moved and ask them to update the link. <strong>Just press the button!</strong></p>';}
+
+			str+='<form method="post" action="http:\/\/www.cutandpastescripts.com\/cgi-bin\/formprocessing\/forms.pl" onsubmit="alert(\'Thank you for letting us know!\');">';
+
+			str+='<input type="hidden" name="activenumber" value="721199347485" \/>';
+
+			str+='<input type="hidden" name="username" value="accessify" \/>';
+
+			str+='<input type="hidden" name="Referring Site" value="' + strReferrer + '" \/>';
+
+			str+='<input type="hidden" name="Page Requested" value="' + location.href + '" \/>';
+
+			str+='<input type="submit" name="cmdSubmit" class="button" value="Report this broken link &gt;&gt;" \/>';
+
+			str+='<\/form>';
+
+			str+='<\/div>';
+
+			document.write(str);
+
+			}
+
+	}
+
+//-->
+
+</script>
+
+<noscript>
+
+<p>You may not be able to find this page because of:</p>
+
+<ol type="a">
+
+  <li>An <strong>out-of-date bookmark/favourite</strong></li>
+
+  <li>A search engine that has an <strong>out-of-date listing for us</strong></li>
+
+  <li>A <strong>mis-typed address</strong></li>
+
+</ol>
+
+<p><strong>Please try one of the following pages:</strong></p>
+
+<p>
+
+<ul>
+<li><a href="https://alistapart.com/" title="Go to the home page of widgets.com">Home Page</a></li>
+
+<li><a href="https://alistapart.com/site-map.php" title="View the complete site map for widgets.com">Site Map</a></li>
+</ul>
+</p>
+
+</noscript>
+
+</body>
+
+</html>
