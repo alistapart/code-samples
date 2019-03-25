@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Demo Page: Enhancing a Form Using TestUserDevice.js</title>		
+		<link rel="stylesheet" type="text/css" href="css/basic.css" />
+	</head>
+	<body>
+	
+		<div id="header">
+			<a href="#" id="logo"><img src="images/acmelogo.gif" alt="Acme Corp." width="165" height="30" /></a>
+		</div>
+		
+		<div id="content">
+			<ul id="navigation">
+				<li><a href="#">Home</a></li>
+				<li>Your Profile</li>
+			</ul>
+			
+			
+			<form action="demo_fakeresponse.html">
+				<h1>About You</h1>
+				<p>Please fill out the following fields and we’ll update your profile.</p>
+				<fieldset>
+					<h2>Personal Data</h2>
+					<p>Tell us a little bit about yourself.</p>
+					<div class="fieldgroup">
+						<div class="fieldPair">
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" class="text" />
+						</div>
+						<div class="fieldPair">
+							<label for="birthday">Birthday</label>
+							<input type="text" name="birthday" id="birthday" value="mm/dd/yyyy" class="text" />
+						</div>
+					</div>
+				</fieldset>
+				
+				<fieldset>
+					<h2>Your Hobbies</h2>
+					<p>Rate the following activities based on your preferences.</p>
+					<div class="fieldgroup">
+						<div class="fieldPair ui-clearfix">
+							<label for="reading">Reading</label>
+							<select name="reading" id="reading">
+								<option value="Hate it">Hate it</option>
+								<option value="Dislike it">Dislike it</option>
+								<option value="No preference" selected="selected">No preference</option>
+								<option value="Like it">Like it</option>
+								<option value="Love it">Love it</option>
+							</select>
+						</div>
+						<div class="fieldPair ui-clearfix">
+							<label for="writing">Writing</label>
+							<select name="writing" id="writing">
+								<option value="Hate it">Hate it</option>
+								<option value="Dislike it">Dislike it</option>
+								<option value="No preference" selected="selected">No preference</option>
+								<option value="Like it">Like it</option>
+								<option value="Love it">Love it</option>
+							</select>
+						</div>
+						
+						<div class="fieldPair ui-clearfix">
+							<label for="eating">Eating</label>
+							<select name="eating" id="eating">
+								<option value="Hate it">Hate it</option>
+								<option value="Dislike it">Dislike it</option>
+								<option value="No preference" selected="selected">No preference</option>
+								<option value="Like it">Like it</option>
+								<option value="Love it">Love it</option>
+							</select>
+						</div>
+						
+						<div class="fieldPair ui-clearfix">
+							<label for="drinking">Drinking</label>
+							<select name="drinking" id="drinking">
+								<option value="Hate it">Hate it</option>
+								<option value="Dislike it">Dislike it</option>
+								<option value="No preference" selected="selected">No preference</option>
+								<option value="Like it">Like it</option>
+								<option value="Love it">Love it</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				
+				<fieldset>
+					<h2>Your favorite animal</h2>
+					<p>What’s your favorite kind of animal?</p>
+					<div class="fieldgroup">
+						<div class="fieldPair">
+							<input type="radio" name="animal_type" id="dog" class="radio" />
+							<label for="dog" class="radio">Dog</label>
+							<div class="fieldPair">
+								<label for="dog_breed" title="Breed of dog">Breed:</label>
+								<input type="text" name="dog_breed" id="dog_breed" class="text" />
+							</div>
+						</div>
+						<div class="fieldPair">	
+							<input type="radio" name="animal_type" id="cat" class="radio" />
+							<label for="cat" class="radio">Cat</label>
+							<div class="fieldPair">
+								<label for="cat_breed" title="Breed of cat">Breed:</label>
+								<input type="text" name="cat_breed" id="cat_breed" class="text" />
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				
+				<fieldset class="actions">
+					<button type="submit" value="submit">Submit</button>
+				</fieldset>
+			</form>
+		</div>
+		
+
+	</body>
+</html>

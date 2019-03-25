@@ -1,0 +1,94 @@
+/*basic stylesheet for ALA demo pages*/
+body {
+	font-size: 62.5%;
+	font-family: "Trebuchet MS", Tahoma, Verdana, sans-serif;
+	margin: 0;
+	color: #222;
+	background: #fff;
+}
+a:link {
+	color: #1f8fdd;
+}
+#header {
+	background: #c34209;
+	padding: 2.5em 25px;
+	border-bottom: 3px solid #fff;
+}
+#logo img {
+	border: 0;
+}
+#content {
+	background: #fff url(../images/bgtile.jpg) top repeat-x;
+	padding: 2em 25px;
+	min-height: 783px;
+}
+
+ul#navigation li {
+	font-size: 1.3em;
+}
+h1 {
+	font-size: 2.2em;
+	color: #1f8fdd;
+	font-weight: bold;
+	margin: 0;
+}
+p {
+	font-size: 1.2em;
+	color: #527288;	
+}
+form, div#formResponse {
+	margin: 2em 0;
+	background: #fff;
+	border: 1px solid #e2e2df;
+	padding: 4em 30px 2em;
+}
+fieldset {
+	margin: 3em 0;
+	padding: 1em 20px;
+	border: 1px solid #ddd;
+}
+fieldset.actions {
+	text-align: right;
+
+}
+
+h2 { /*h2 in place of legends, since legends can't be styled much */
+	font-size: 1.1em;
+	text-transform: uppercase;
+	color: #f46f0c;
+}
+div.fieldPair {
+	padding: .5em 0;
+	clear: left;
+}
+div.fieldPair div.fieldPair {
+	margin-left: 10px;
+}
+
+label, input, select, button {
+	font-size: 1.1em;
+	line-height: 1.2;
+}
+input.text, select {
+	width: 20em;
+}
+input.text {
+	padding: .2em;
+	width: 19.6em;
+}
+label {
+	width: 70px;
+	float: left;
+	margin-right: .7em;
+	text-align: right;
+	padding: .6em 0;
+}
+div.fieldPair div.fieldPair label {
+	width: 70px;
+}
+input.radio {
+	float: left;
+}
+label.radio {
+	float: none;
+}

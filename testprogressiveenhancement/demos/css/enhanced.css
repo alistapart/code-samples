@@ -1,0 +1,121 @@
+/*enhanced stylesheet for ALA demo pages*/
+ul#navigation {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+ul#navigation li {
+	display: inline;
+	margin-right: .5em;
+}
+ul#navigation li a {
+	padding-right: 1em;
+	background: url(../images/iconarrowright.gif) right no-repeat;
+}
+h1 {
+	float: left;
+	margin-right: .7em;
+	background: url(../images/icondiamond.gif) right no-repeat;
+	padding-right: .7em;
+}
+p {
+margin: .7em;
+}
+fieldset {
+	border: 0;
+	background: url(../images/bgfieldset.jpg) 0 0 no-repeat;
+	position: relative;
+	width: expression(document.body.clientWidth < 650? "auto" : document.body.clientWidth > 650? "650px" : "auto");
+	max-width: 650px;
+}
+fieldset.actions {
+	background: none;
+}
+
+h2 {
+	float: left;
+	width: 195px;
+	padding: 0;
+	margin: 3em 15px -3em 0;
+}
+fieldset p {
+	margin: 0;
+	margin: 3.6em 15px .6em 0;
+	width: 195px;
+	float: left;
+	line-height: 1.4;
+	clear: left;
+}
+div.fieldgroup {
+	float: right;
+	width: 320px;
+	padding: 15px;
+	border: 2px solid #ecebe9;
+	background: #f7f6f4 url(../images/bgfieldgroup.jpg) top repeat-x;
+}
+div.fieldPair {
+	clear: both;
+	margin: .5em 0;
+}
+button {
+	color: #fff;
+	font-weight: bold;
+	background: #489cd7 url(../images/bgbuttontile.jpg) top repeat-x;
+	padding: .6em 1.5em;
+	font-size: 1.4em;
+	border: 2px solid #127bc4;
+	cursor: pointer;
+}
+button:hover {
+	border-color: #489cd7;
+}
+button.sending {
+	background: #4ea2de url(../images/ajax-loader.gif) 15px no-repeat;
+	color: #6cbbf3;
+	padding-left: 2.5em;
+}
+*, button:active, a:active, button span {
+	outline: 0 !important;
+	outline: none !important;
+}
+
+
+.menuIcon {
+	width: 7px;
+	height: 7px;
+	display: block;
+	position: relative;
+	top: -1.5em;
+	right: -285px;
+	background: url(../images/292929_7x7_arrow_down.gif);
+}
+
+
+/*ui sliders with scales, etc */
+
+
+
+.ui-slider {
+	float: left;
+	margin-top: .6em;
+	overflow: visible !important;
+}
+/* old positioning scheme - ie6 wasn't feelin' it
+.ui-slider .ui-slider-scale li {
+	text-indent: -2.8em;
+}
+.ui-slider .ui-slider-scale li.first, .ui-slider .ui-slider-scale li.last {
+	text-indent: 0;
+}
+*/
+
+.ui-slider .ui-slider-scale li span.ui-slider-label {
+	position: relative;
+	left: -2.8em;
+}
+.ui-slider .ui-slider-scale li.first span.ui-slider-label, .ui-slider .ui-slider-scale li.last span.ui-slider-label {
+	position: static;
+	left: auto;
+}
+
+
