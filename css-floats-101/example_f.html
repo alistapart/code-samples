@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>CSS Floats 101</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background: #ccc;
+		}
+		#container {
+			width: 960px;
+			margin: 0 auto;
+		}
+		#header { 
+			padding: 30px;
+			background: #bbb;
+		}
+		#content {
+			float: left;
+			width: 660px;
+			background: #fff;
+		}
+		#navigation {
+			float: right;
+			width: 300px;
+			background: #eee;
+		}
+		#navigation a {
+			display: block;
+			margin: 0 0 10px 0;
+		}
+		#footer {
+			clear: both;
+			background: #aaa;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1>Header</h1>
+		</div>
+		<div id="content">
+			<p>Proin vel ante a orci tempus eleifend ut et magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi a enim in magna semper bibendum.</p>
+			<p>Proin vel ante a orci tempus eleifend ut et magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi a enim in magna semper bibendum.</p>
+		</div>
+		<div id="navigation">
+			<a href="#">Nav Item</a>
+			<a href="#">Nav Item</a>
+			<a href="#">Nav Item</a>
+			<a href="#">Nav Item</a>
+		</div>
+		<div id="footer">
+			Footer
+		</div>
+	</div>
+</body>
+</html>

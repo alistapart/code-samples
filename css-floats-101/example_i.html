@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>CSS Floats 101</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background: #ccc;
+		}
+		p { margin: 0; }
+		#container {
+			width: 280px;
+			margin: 0 auto;
+			padding: 10px;
+			background: #aaa;
+			border: 1px solid #999;
+		}
+		img {
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<p>This is some text contained within a small-ish box. I'm using it as an example of how placing your floated elements in different orders in your HTML can affect your layouts. For example, take a look at this great photo placeholder that should be sitting on the right.</p>
+		<img src="image.gif" />
+	</div>
+</body>
+</html>
