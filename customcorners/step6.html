@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>CSS Design: Creating Custom Corners &amp; Borders: A List Apart: Full-fledged layout</title>
+
+<!--  the methods on this page is largely the hard work (freely given) of many other people from the css-discuss list [http://www.css-discuss.org], including (but not limited to) Big John, Holly Bergevin, Douglas Livingstone, Scott Sauyet, Victor Caston and Mike Papageorge  -->
+
+<!-- <script type="text/javascript" src="ResizeReloadNN4.js"></script> -->
+
+<style type="text/css">
+
+/* ====================================================================
+GENERAL STYLING
+-------------------------------------------------------------------- */
+/* border:nones are for NN4 */
+html { margin: 0px; padding: 0px; }
+body
+	{
+	margin: 30px 10%;
+	padding: 0px;
+	background-color:#cbdea8;
+	}
+div { margin: 0px; padding: 0px; }
+.clear { clear: both;} /* CSS HACK: only for NN4, so now use Caio hack to cleanse palette */
+/*/*/ .clear { display: none; } /* */
+.box-header
+	{
+	color: #000000;
+	margin: 0px;
+	border: none;
+	}
+
+.box-footer
+	{
+	clear: both;
+	border: none
+	}
+/* ====================================================================
+COLUMNS LAYOUT
+-------------------------------------------------------------------- */
+.columns-float
+	{
+	float: left;
+	width: 75%;
+	}
+.column-one
+	{
+	float: left;
+	width: 33%;
+	}
+/* CSS HACK: Caio hide from NN4 since NN4's float model is all wrong */
+/*/*/
+.column-two { margin-left: 33%; }
+.column-three {margin-left: 75%;}
+/* */
+.column-one-content, .column-two-content, .column-three-content
+	{
+	border: none;
+	color: #000000;
+	}
+/* CSS HACK:  position:relative needed by IE6 otherwise the header and col 2 don't show up on initial rendering - they're there but you have to minimise the window or switch to another app and back to see the full effect. But IE5(pc) doesn't like it. And nor does NN4.
+NB. the use of pos:rel has to go way beyond skin-deep - any nested element that needs a background colour appears to require to be be relatively positioned */ 
+/*/*/
+.box-wrap, .columns-float, .column-one, .column-two, .column-three, h2
+	{ p\osition: relative; }
+/* */
+
+</style>
+ <style type="text/css" media="screen">
+ /* ====================================================================
+Custom corners and borders
+-------------------------------------------------------------------- */
+/* Styles we want all browsers to see */
+body {
+background: #cbdea8;
+font: 12px/1.5 Geneva, Arial, Helvetica, sans-serif;
+}
+div.Article {
+font: 12px/1.5 Geneva, Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  border:none;
+  position:relative;
+  } 
+div.Article h3 {
+  font-size:1.3em;
+  padding:15px;
+  
+  }
+div.ArticleBody {
+  padding:15px;
+  margin:0;
+  margin-top:-1.7em;
+  }
+div.ArticleFooter {
+  }
+div.ArticleFooter p {
+  padding:15px;
+  margin:-2em 0 0 0;
+  }
+  </style>
+
+<style type="text/css" media="all">
+/* media="all" hides styles from NS4.x only 
+   - so we'll put styles we want to hide from NS4.x here */
+div.Article {
+  background: url(images/custom_corners_topleft.gif) top left no-repeat;
+  } 
+div.Article h3 {
+  background: url(images/custom_corners_topright.gif) top right no-repeat;
+  padding:15px;
+  margin:0;
+  }
+div.ArticleBody {
+  background: url(images/custom_corners_rightborder.gif) top right repeat-y;
+  }
+div.ArticleFooter {
+  background: url(images/custom_corners_bottomleft.gif) bottom left no-repeat;
+  }
+div.ArticleFooter p {
+  background: url(images/custom_corners_bottomright.gif) bottom right no-repeat;
+  }
+  </style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="box-header">
+<div class="Article">
+<h3>3Col_NN4_FMFM - header</h3>
+<div class="ArticleFooter">
+<p><em>Ordered Columns, float-margin/float-margin model</em></p>
+</div>
+</div>
+</div>
+
+<div class="columns-float">
+
+<div class="column-one">
+<div class="column-one-content">
+<div class="Article">
+<h3>column One</h3>
+<div class="ArticleBody">
+<p>column filler</p>
+<p>column filler</p>
+<p>column filler</p>
+<p>column filler</p></div>
+<div class="ArticleFooter">
+<p><a href="#" title="fake link for testing">test link</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="column-two">
+<div class="column-two-content">
+<div class="Article">
+<h3>column Two</h3>
+<div class="ArticleBody">
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam massa felis, posuere nec, interdum non, fermentum vel, pede. Nam consectetuer massa vitae urna. Morbi sit amet justo. Morbi a tellus. Nunc a velit. Nullam tellus. Nunc tincidunt tellus sit amet lacus. Morbi nibh wisi, placerat vel, tempus nec, congue non, nulla. Aenean dignissim arcu nec velit. In tortor.
+
+Praesent rhoncus, felis eu tristique lobortis, tellus est venenatis neque, vel viverra wisi odio eu tellus. Maecenas purus. Phasellus porttitor sapien a odio dapibus ullamcorper. Aenean leo. Nam tincidunt, dolor ut vestibulum luctus, augue lacus feugiat purus, ullamcorper vulputate mauris quam nec quam. Nunc ipsum. Vestibulum id mi. Duis tortor sapien, ultrices non, feugiat nec, aliquam vitae, velit. Sed nonummy mauris at turpis. Nam tristique, urna in blandit faucibus, ipsum libero laoreet nisl, sit amet faucibus est erat eu libero. Vestibulum pellentesque. Quisque neque neque, auctor quis, aliquet ac, porta quis, mauris. </p></div>
+<div class="ArticleFooter">
+<p><a href="#" title="fake link for testing">test link</a></p>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- close columns-float -->
+
+<div class="column-three">
+<div class="column-three-content">
+<div class="Article">
+<h3>column three</h3>
+<div class="ArticleBody">
+<p>column filler</p>
+<p>column filler</p>
+<p>column filler</p></div>
+<div class="ArticleFooter">
+<p><a href="#" title="fake link for testing">test link</a></p>
+</div>
+</div>
+</div>
+</div>
+<br /> <!-- A break tag keeps our divs from touching and there by triggering the IE float margin bug ... sigh ... -->
+<div class="clear">&nbsp;</div><!-- clear only required for NN4 compatibility -->
+<div class="box-footer">
+<div class="Article">
+<h3>footer</h3>
+<div class="ArticleFooter">
+<p><a href="http://www.fu2k.org/alex/css/index.mhtml" title="CSS Enterprise">Back to CSS index</a></p>
+</div></div></div>
+
+
+
+
+</body>
+</html>
+
+
+
+
