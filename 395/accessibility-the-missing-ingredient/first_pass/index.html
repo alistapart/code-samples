@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--[if IE]>
+  <meta http-equiv="cleartype" content="on">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <![endif]-->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <title></title>
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Mono">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body role="application">
+  <div id="container" tabindex="-1">
+    <header>
+      <h1>Robot Shopper</h1>
+      <button id="shopping_cart"></button>
+    </header>
+
+    <!-- dynamically loaded from our template -->
+    <div id="main">
+    </div>
+
+    <footer>
+      <p>Robot Shopper &copy; 2014</p>
+    </footer>
+  </div>
+
+  <div
+    id="my_cart"
+    tabindex="0">
+
+    <div id="my_cart_contents"></div>
+
+    <button
+      title="Close dialog"
+      id="close_cart">
+      x
+    </button>
+  </div>
+
+  <div id="page_mask"></div>
+
+  <script id="all_products" type="text/x-handlebars-template">
+  <div id="product_sections">
+    {{#products}}
+      <section tabindex="-1">
+        <div class="product_information">
+          <h2 class="product_title">{{title}}</h2>
+          <span class="product_price">${{price}}</span>
+        </div>
+        <div class="product_details">
+          <a href="#" title="{{title}} details page" tabindex="0">
+            <img class="product_thumb" src="{{img_uri}}" alt="{{title}}">
+          </a>
+          <p class="product_description">{{description}}</p>
+        </div>
+        <button
+          class="button add_to_cart"
+          tabindex="0"
+          title="Add {{title}} to the cart"
+          data-pid="{{pid}}">
+          Add to Cart
+        </button>
+      </section>
+    {{/products}}
+  </div>
+  </script>
+
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="js/handlebars.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

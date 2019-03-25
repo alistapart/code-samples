@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accessibility: The New First</title>
+  <style>
+    body {
+      font-size: 1.3em;
+      font-family: Helvetica, verdana;
+    }
+    h1 {
+      font-size: 1.55em;
+    }
+    h2 {
+      color: #ba3925;
+      font-size: 1.35em;
+    }
+    h3 {
+      font-size: 1.15em;
+    }
+    article {
+      margin: 0 auto;
+      padding: 0em 1em;
+      display: block;
+      max-width: 960px;
+      text-align: left;
+    }
+    body {
+      text-align: center;
+    }
+    pre {
+     white-space: pre-wrap;       /* css-3 */
+     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap;      /* Opera 4-6 */
+     white-space: -o-pre-wrap;    /* Opera 7 */
+     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    }
+    abbr {
+      border-bottom: 1px dotted #333;
+    }
+    figure {
+      margin: 0 auto 3em;
+      text-align: center;
+    }
+    figure > img {
+      margin-bottom: 0.5em;
+      max-width: 100%;
+    }
+    figcaption {
+      font-style: italic;
+    }
+    mark {
+      background: beige;
+      padding: 0.35em 0.7em;
+      border: 1px solid gray;
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <h1>Accessibility: The Missing Ingredient</h1>
+
+    <p>Once upon a time, I treated web accessibility as something of an extra. Sure, my images had <abbr title="alternative text"><code>alt</code></abbr> attributes. Yes, my anchors contained titles. I honored <a href="http://webaim.org/standards/508/checklist">508 compliance</a>, too, but it was usually the last thing I did. The way I saw it, the cake was ready to eat; accessibility was the decorative icing to slather on at the end.</p>
+
+    <p>Sadly, I wasn’t alone. Many developers I've recently spoken with seem to place accessibility last, if they address it at all. Why is accessibility often treated as an afterthought? Key factors include lack of tools and specifications, weak industry demand, and developer laziness.</p>
+
+    <p>Back in the late 90s, web accessibility was primitive at best. <abbr title="Job Access With Speech">JAWS</abbr> was still in its infancy, and <abbr title="Web Accessibility Initiative - Accessible Rich Internet Applications"><a href="http://www.w3.org/TR/wai-aria/">WAI-ARIA</a></abbr> had yet to be conceived. All that seemed to matter was how quickly the user could be visually impressed. <abbr title="Dynamic HTML">DHTML</abbr> and Flash wizards ruled the land. Flannels looked best worn around the waist.</p>
+
+    <p>As accessibility begin to gather steam in 2004-2005, many developers and companies still paid little attention to the subject. Web developers were lost in <abbr title="Cascading Style Sheets">CSS</abbr> black magic, PHP tutorials, and JavaScript books. As a journeyman freelancer, accessibility had never once been mentioned to me as a project requirement.</p>
+
+    <p>Despite the now well publicized and <a href="http://goo.gl/sdfyg2">supported</a> <abbr title="Web Accessibility Initiative - Accessible Rich Internet Applications">WAI-ARIA</abbr>, a specification engineered specifically to help impaired users, we developers often do not implement it. Perhaps we're waiting for an accessibility-minded client to catalyze the learning process. Perhaps we feel overwhelmed at just where to start. Whatever the excuse, it's no longer valid given the resources and technology currently available.</p>
+
+    <p>A few months into my employment at <a href="http://www.ibm.com/us/en/" title="Link to IBM website">IBM</a>, the web application my colleagues and I had been devoting our weekly hours to was required to satisfy a stringent accessibility checklist. The entire web application needed to be thoroughly tested against <abbr title="Web Accessibility Initiative - Accessible Rich Internet Applications">WAI-ARIA</abbr> and <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> compliance. I was suddenly tasked with creating a comprehensive plan detailing the open issues, as well as how long it would take for the team to address them. Placing accessibility last for so many years left me thinly educated and unprepared.</p>
+
+    <p>Through trial and error, the help of my knowledgable colleagues, and much reading on the subject, I’ve emerged as a changed developer. Coding accessibly is not an extra thing to consider at the end of a project, but simply another thing to consider from the beginning. Let’s walk through a homegrown example which showcases some useful <abbr title="Web Accessibility Initiative - Accessible Rich Internet Applications">WAI-ARIA</abbr> <a href="http://www.w3.org/TR/wai-aria/roles" title="Link to WAI-ARIA roles specification">roles</a>, <a href="http://www.w3.org/TR/wai-aria/states_and_properties" title="Link to WAI-ARIA states and properties specification">states, and properties</a>.</p>
+
+    <h2>Before we begin</h2>
+
+    <p>Screen readers, like browsers, vary between vendors. My intention is not to provide an exhaustive tutorial on this broad topic. I chose <a href="http://goo.gl/AVJpk6" title="Link to ChromeVox download">ChromeVox</a> for this tutorial because it's a free screen reader plugin that runs on both Mac and Windows. However, <a href="http://en.wikipedia.org/wiki/List_of_screen_readers"> many other screen readers</a> exist. For web development involving <abbr title="Web Accessibility Initiative - Accessible Rich Internet Applications">WAI-ARIA</abbr>, here are some popular choices.</p>
+
+    <h4 id="windows_users">Windows users</h4>
+    <ul aria-labelledby="windows_users">
+     <li><a href="http://goo.gl/dUJ4">JAWS</a></li>
+     <li><a href="http://www.nvaccess.org/">NVDA</a></li>
+     <li><a href="https://www.gwmicro.com/Window-Eyes/">Windows Eyes</a></li>
+     <li><a href="http://goo.gl/AVJpk6">ChromeVox</a></li>
+    </ul>
+
+    <h4 id="mac_users">Mac users</h4>
+    <ul aria-labelledby="mac_users">
+      <li><a href="http://www.apple.com/accessibility/osx/voiceover/">VoiceOver</a></li>
+      <li><a href="http://goo.gl/AVJpk6">ChromeVox</a></li>
+    </ul>
+
+    <h4 id="linux_users">Linux users</h4>
+    <ul aria-labelledby="linux_users">
+     <li><a href="http://goo.gl/n3B7F0">Orca</a></li>
+    </ul>
+
+    <p>As mentioned above, each reader is unique. If you're following this demo with a reader other than ChromeVox, you'll notice differences in how the assistive technology parses ARIA.</p>
+
+    <h2>What are we trying to accomplish?</h2>
+
+    <p>Our client would like a shopping cart for his robot parts business, Robot Shopper. The cart must meet <abbr title="Web Accessibility Initiative - Accessible Rich Internet Applications">WAI-ARIA</abbr> guidelines and work smoothly from a keyboard. To test our cart on a screen reader, we’re going to use <a href="https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en" title="Link to ChromeVox plugin">ChromeVox</a>, which will allow us to aurally experience our web page. After we're through, you may wish to disable the plugin. To do that, visit chrome://extensions and untick the box beside the ChromeVox plugin.</p>
+
+    <p>To manage items in the cart, we’ll use <a href="http://diveintohtml5.info/storage.html" title="Link to tutorial on HTML storage">HTML5 storage</a>, and we'll employ some JavaScript templating using <a href="http://handlebarsjs.com/" title="Link to Handlebars website">Handlebars</a> to display our inventory markup. As for the design, here’s what we’re aiming for: </p>
+
+    <figure>
+      <img src="images/robot_shopper_cart_closed.png" alt="Initial display with the cart closed">
+      <figcaption>Initial display with the cart closed</figcaption>
+    </figure>
+
+    <figure>
+      <img src="images/robot_shopper_cart_empty.png" alt="The cart is opened and empty">
+      <figcaption>The cart is opened and empty</figcaption>
+    </figure>
+
+    <figure>
+      <img src="images/robot_shopper_cart_full.png" alt="The cart is opened with items">
+      <figcaption>The cart is opened with items</figcaption>
+    </figure>
+
+    <h3>Beginning markup</h3>
+    <p><code><mark>first_pass/index.html</mark></code></p>
+
+    <pre><code>
+    &lt;body <strong>role="application"</strong>&gt;
+      &lt;div id="container"&gt;
+        &lt;header&gt;
+          &lt;h1&gt;Robot Shopper&lt;/h1&gt;
+
+          &lt;button
+            title="Cart count"
+            id="shopping_cart"&gt;
+          &lt;/button&gt;
+        &lt;/header&gt;
+
+        &lt;!-- dynamically loaded from our template --&gt;
+
+        &lt;div
+          id="main"
+          tabindex="-1"&gt;
+        &lt;/div&gt;
+
+        &lt;footer&gt;
+          &lt;p&gt;Robot Shopper &copy; 2014&lt;/p&gt;
+        &lt;/footer&gt;
+      &lt;/div&gt;
+
+      &lt;div
+        id="my_cart"
+        tabindex="0"&gt;
+
+        &lt;div id="my_cart_contents"&gt;&lt;/div&gt;
+
+        &lt;button
+          title="Close dialog"
+          id="close_cart"&gt;
+          x
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div id="page_mask"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+    </code></pre>
+
+    <h3>The application role</h3>
+
+    <p>Although I didn't plan on diving into ARIA roles in our first pass of the code, adding the application role to the <code>body</code> is mandatory for the experience we wish to create. This small passage from the <a href="http://goo.gl/qO5BMe">Yahoo! Accessiblity blog</a> really captures the gist of this role:</p>
+
+    <blockquote>Your average web page is a document. The user expects to read content and it may feature some interactive behaviors. Applications are more like a desktop application. The user expects tool sets, instant changes, dynamic interactions.</blockquote>
+
+    <p>One must-have feature of our Robot Shopper application is for users to navigate quickly between product sections using the up/down arrow keys. For certain screen readers, such as NVDA, removing the application role will prevent our custom JavaScript from overriding these keyboard events. Without the application role, pressing the up/down arrows will instead move focus between every element on the page&mdash;not what we want. Using this role, we're informing the browser, &ldquo;I know what I'm doing. Don't override my defined behaviors.&rdquo; Keep in mind that any region we declare as an application requires us, the developers, to implement custom keyboard navigation.</p>
+
+    <h3>Our template</h3>
+
+    <p>You may have noticed above that our main <code>div</code> designated for storing all of our products, is empty. That’s because our Handlebars template immediately loads our <abbr title="JavaScript Object Notation">JSON</abbr> product data into this element.</p>
+
+    <p><code><mark>first_pass/index.html</mark></code></p>
+
+    <pre><code>
+    &lt;script id="all_products" type="text/x-handlebars-template"&gt;
+      &lt;div id="product_sections"&gt;
+        {{#products}}
+          &lt;section tabindex="-1"&gt;
+            &lt;div class="product_information"&gt;
+              &lt;h2 class="product_title"&gt;{{title}}&lt;/h2&gt;
+              &lt;span class="product_price"&gt;${{price}}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="product_details"&gt;
+              &lt;a href="#" title="{{title}} details"&gt;
+                &lt;img class="product_thumb" src="{{img_uri}}" alt="{{title}}"&gt;
+              &lt;/a&gt;
+              &lt;p class="product_description"&gt;{{description}}&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;button
+              title="Add to Cart"
+              class="button add_to_cart"
+              tab-index="0"
+              data-pid="{{pid}}"&gt;
+              Add to Cart
+            &lt;/button&gt;
+          &lt;/section&gt;
+        {{/products}}
+      &lt;/div&gt;
+    &lt;/script>
+    </code></pre>
+
+    <p><code><mark>first_pass/products.js</mark></code></p>
+
+    <pre><code>
+    data = { products: [
+    {
+      title: "Jet Engines",
+      price: "500.00",
+      img_uri:  "http://goo.gl/riaO3q",
+      description: "It's only a jetpack--a simple, high-thrust, fuel-thirsty jetpack. I would add this puppy to the cart. What could go wrong?",
+      pid: "product_093A14"
+    },
+
+    &hellip;
+
+    ]};
+    document.getElementById(<strong>"main"</strong>).innerHTML = <strong>template(data)</strong>;
+    </code></pre>
+
+
+    <h3>ChomeVox time (<a href="first_pass/index.html" title="Link to first pass of demo">demo - first pass</a>)</h3>
+
+    <p>Although we can tab to product detail anchors and “Add to Cart” buttons, it takes users two tab presses to traverse each item&mdash;a chore if a disabled user wishes to reach an item far down on the list using a keyboard. We've solved this issue by adding keyboard arrow navigation.</p>
+
+   <p><code><mark>first_pass/app.js</mark></code></p>
+
+   <pre><code>
+     $(document.documentElement).keyup(function (event) {
+          …
+          if (key_pressed === UP) {
+            direction = "prev";
+          } else if (key_pressed === DOWN) {
+            direction = "next";
+          }
+          &hellip;
+       $(".selected")[direction]()
+          .addClass("selected")
+          .focus()
+          .siblings()
+          .removeClass("selected");
+          &hellip;
+     });
+   </code></pre>
+
+    <p>One interesting thing about this code is that we've associated the arrow key pressed with the direction we’d like to move in the product list. The directional string (“prev”, “next”) becomes an interpolated jQuery function which does the moving for us. Using the up/down arrow keys, we can move between items more quickly and efficiently. After arrowing (or clicking) to the product section we’re interested in, we can then tab to each product’s anchored thumbnail or “Add to Cart” button.</p>
+
+    <h3>A lackluster cart experience</h3>
+
+    <p>From an empty cart, we click an “Add to Cart” button. Sighted users can see the number on the blue robot’s chest increment. Non-sighted users only hear “Add to Cart button.”</p>
+
+    <p>Clicking the blue robot launches the cart modal. Of course, a user wouldn’t know that unless she could <em>see</em> it happening. Users dependent on screen readers will hear: “1 button,” or the number of items in the cart.</p>
+
+    <p>Once we’re in the visible modal, we can increase, decrease, and remove all items from the cart. In our first pass, however, accessing those buttons leads to a rather poor UX for visually disabled users. “Plus button” isn’t a good enough response from our screen reader when we hit the “+” button.</p>
+
+    <p>Similarly, when closing the cart modal using our “X” button, our reader tells us, “X button.” </p>
+
+    <p>It’s not the fault of the screen reader, either. Our reader doesn’t have what it needs to offer a rich experience to users dependent on it. To provide a rich experience for non-sighted users, we must improve our semantics using <abbr title="Web Accessibility Initiative - Accessible Rich Internet Applications">WAI-ARIA</abbr> roles, states and properties.</p>
+
+    <h3>First pass fixes</h3>
+
+    <p>We’ll approach our accessibility enhancements using a general-to-specific approach.</p>
+
+    <h4>1. Landmark roles</h4>
+
+    <p>Although somewhat semantic, our first pass markup contains no landmark roles. Why use landmark roles? According to <a href="http://blog.paciellogroup.com/author/admin/">Steve Faulkner</a>, accessibility guru and advocate:</p>
+
+    <blockquote>&ldquo;Adding ARIA landmarks to your existing site, or to a site you are developing, provides useful global navigation features and aids understanding of content structure for users.&rdquo;</blockquote>
+
+    <p>Landmark roles allow users of a screen reader to navigate to major sections of your website with a single keystroke. Our markup also lacks ARIA states and properties. These states and properties are terms, which, <a href="http://www.w3.org/TR/wai-aria/states_and_properties">according to the W3C</a>, “provide specific information about an object, and both form part of the definition of the nature of roles.”</p>
+
+    <p><code><mark>second_pass/index.html</mark></code></p>
+
+    <pre><code>
+      &lt;!-- Header --&gt;
+      &lt;header <strong>role="banner"</strong>&gt;
+
+      &lt;!-- Main content element --&gt;
+      <del>&lt;div id="main" tabindex="-1"&gt;&lt;/div&gt;</del>
+      &lt;<strong>main</strong>
+        id="main"
+        tabindex="-1"&gt;
+      <strong>&lt;/main&gt;</strong>
+    </code></pre>
+
+    <p>If we'd chosen to remain with our <code>div</code> in parenting our main content, adding <code>role="main"</code> to it would be acceptable for accessibility purposes. However, we're going to forgo the role in lieu of the straightforward <code><a href="http://www.sitepoint.com/html5-main-element/">main</a></code> tag.</p>
+
+    <h4>Cart dialog:</h4>
+
+    <p><code><mark>second_pass/index.html</mark></code></p>
+    <pre><code>
+      &lt;div
+        id="my_cart"
+        tabindex="0"
+        <strong>role="dialog"
+        aria-hidden="true"
+        aria-labelledby="my_cart_title"</strong>&gt;&lt;/div&gt;
+    </code></pre>
+
+    <p>When items are first added to the cart, markup is dynamically created using code in the <code>updateCartDialog</code> function. Sighted users will notice that the cart is not yet visible. For non-sighted users, we need to ensure the cart is not announced by our screen reader. To do this, we've added the <code>aria-hidden</code> attribute which, <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden">according to the specification</a>, sets a state on a given element &ldquo;indicating that the element and all of its descendants are not visible or perceivable to any user as implemented by the author.&rdquo; It goes on to say, &ldquo;if an element is only visible after some user action, authors <strong>MUST</strong> set the <code>aria-hidden</code> attribute to <code>true</code>.&rdquo; The cart dialog is labelled by this table’s <code>caption</code> element.</p>
+
+    <p><code><mark>second_pass/app.js</mark></code></p>
+    <pre><code>
+    $cart_contents
+      .html("")
+      .append("\
+      &lt;table id='cart_summary'&gt;\
+        &lt;caption <strong>id='my_cart_title'</strong>&gt;Cart Contents&lt;/caption&gt;\
+      &hellip;
+      &lt;/table&gt;\
+    </code></pre>
+
+    <h4>2. Adding/removing items from the cart should notify the user</h4>
+
+    <p>Clicking the “Add to Cart” button triggers ChromeVox to say, “Add to Cart button,” which isn’t very helpful to a user dependent on aural cues. Users should know what exactly is being added to the cart. Also, the action of adding and removing items from within the cart modal should audibly inform the user how many items are in the cart <em>the moment the cart count changes</em>.</p>
+
+    <p>To make this happen, we first modify the “Add to Cart” button markup in our Handlebars template.</p>
+
+    <p><code><mark>second_pass/index.html</mark></code></p>
+    <pre><code>
+    &lt;script id="all_products" type="text/x-handlebars-template"&gt;
+      &hellip;
+      &lt;button
+        class="button add_to_cart"
+        tabindex="0"
+        <strong>aria-label="Add {{title}} to the cart"
+        aria-controls="shopping_cart cart_count"</strong>
+        data-pid="{{pid}}"&gt;
+        Add to Cart
+      &lt;/button&gt;
+      &hellip;
+    &lt;/script&gt;
+    </code></pre>
+
+    <p>The action associated with this button <em>controls</em> the <code>shopping_cart</code> and <code>cart_count</code> elements by incrementing the total number of items in the cart.</p>
+
+    <pre><code>
+    &lt;script id="all_products" type="text/x-handlebars-template"&gt;
+      &hellip;
+      &lt;button
+        title="Cart Count"
+        <strong>id="shopping_cart"
+        aria-owns="cart_contents"
+        aria-label="Cart count"</strong>&gt;
+      &lt;/button&gt;
+      &hellip;
+    &lt;/script&gt;
+    </code></pre>
+
+    <p>The shopping cart button (the blue robot) stores the current number of items in the cart. However, to audibly notify the user of changes as they occur, we'll take a new approach.</p>
+
+    <code><pre>
+    &lt;div
+      class="aria_counter"
+      <strong>id="cart_count"
+      aria-live="polite"</strong>&gt;
+    &lt;/div&gt;
+    </code></pre>
+
+    <p>As the user adds an item to the cart, we update our aria counter which contains an <code><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-live">aria-live</a></code> attribute. An element using this attribute will announce its contents when something changes.</p>
+
+    <h4>3. Cart dialog buttons need ARIA properties</h4>
+
+    <figure>
+      <img src="images/dialog_buttons.png" alt="Cart dialog  buttons">
+      <figcaption>Cart dialog buttons</figcaption>
+    </figure>
+
+    <h4>3a. “x” button (remove all)</h4>
+
+    <p>As stated earlier, clicking “x” currently prompts ChromeVox to say, “x button.”</p>
+
+    <p><code><mark>first_pass/app.js</mark></code></p>
+    <pre><code>
+      &lt;button class='button row_button remove_row_items' title='Remove all items of this type' data-pid='" + element.pid + "'&gt;x&lt;/button&gt;
+    </code></pre>
+
+    <p>Our improved “x” button related code lives in the <code>updateCartDialog</code> function.</p>
+
+    <p><code><mark>second_pass/app.js</mark></code></p>
+    <pre><code>
+    &lt;button <strong>aria-controls='row_" + index  +  " cart_count item_count'</strong> class='button row_button remove_row_items' <strong>aria-label='Remove all " + element.title + "s from the cart?'</strong> data-pid='" + element.pid + "'>x&lt;/button&gt;\
+    </code></pre>
+
+    <p>Introducing the <code><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls">aria-controls</a></code> attribute to our button provides more semantic meaning. We're informing screen readers that a given row in our cart is controlled by the &ldquo;x&rdquo; button within each row. This makes sense since we can remove the entire row by clicking the button and confirming the removal. In addition, the “x” button is now labelled, so screen reader users will be told which exact item is to be removed from the cart.</p>
+
+    <h4>3b. “-” button (decrease quantity of specific item)</h4>
+
+    <p>When clicked, ChromeVox reads aloud, “dash button.” We store the id of the target quantity field the button changes within a non-semantic data attribute.</p>
+
+    <p><code><mark>first_pass/app.js</mark></code></p>
+    <pre><code>
+      &lt;button class='button row_button decrement_row_item'  title='Decrease quantity by one' <strong>data-pid='" + element.pid + "' data-product-quantity='product_quantity_" + index  + "'</strong>&gt;-&lt;/button&gt;
+
+      &hellip;
+
+      $(document).on("click", ".decrement_row_item", function() {
+         app.decrementItemQuantity(this.dataset.pid, <strong>this.dataset.productQuantity</strong>);
+         &hellip;
+       });
+    </code></pre>
+
+    <p>Let's do away with the non-semantic data attribute in place of a semantic ARIA atrribute. Here’s our improved version:</p>
+
+    <p><code><mark>second_pass/app.js</mark></code></p>
+    <pre><code>
+
+      &lt;button <strong>aria-controls='product_quantity_" + index  + " cart_count item_count'</strong> class='button row_button decrement_row_item' <strong>aria-label='Decrease " + item_title + " quantity'</strong> data-pid='" + element.pid + "'&gt;-&lt;/button&gt;
+
+      &hellip;
+
+      $(document).on("click", ".decrement_row_item", function() {
+         var aria_controls = $(this).attr("aria-controls").split(" ")[0];
+         app.decrementItemQuantity(this.dataset.pid, <strong>aria_controls</strong>);
+         &hellip;
+       });
+    </code></pre>
+
+    <p>The “-” button is now labelled. For a better UX, our label now includes the product title. Adding <code>aria-controls</code> to the mix, we declare the elements in the DOM which are controlled by this button:</p>
+
+    <ol>
+      <li><strong>product quantity:</strong> the <code>td</code> containing the current product quantity</li>
+      <li><strong>cart count:</strong> the off-screen cart counter whose value is announced when the number of items in the cart changes</li>
+      <li><strong>item count:</strong> another off-screen counter whose value is announced when the quantity of each item in the cart changes</li>
+    </ol>
+
+    <p>Here is the JS handling the button click:</p>
+
+    <code><pre>
+      $(document).on("click", ".decrement_row_item", function() {
+         // get the product quantity id of the row
+         var aria_controls = $(this).attr("aria-controls").split(" ")[0];
+         <strong>app.decrementItemQuantity(this.dataset.pid, aria_controls</strong>);
+         &hellip;
+       });
+    </pre></code>
+
+    <p>Improving our markup has the added benefit of making our JS more specific, too. Our second argument to <code>decrementItemQuantity</code> becomes part of the value of the <code>aria-controls</code> attribute. So, not only is the button more accessible, our code has become more readable.</p>
+
+    <h4>4. Cart modal needs ARIA state</h4>
+
+    <p>Currently, when we launch the cart modal, ChromeVox doesn’t indicate this detail to the user. This is because we only add and remove a semantically weak class name on the body to get this interaction rolling.</p>
+
+    <p><code><mark>first_pass/app.js</mark></code></p>
+    <pre><code>
+      showModal: function() {
+        $("body").addClass("show_cart");
+      },
+
+      removeModal: function() {
+        $("body").removeClass("show_cart");
+      }
+    </code></pre>
+
+  <p>To make our reader perform better, we'll feed it better semantics. When the cart is open, we'd like to conceal our container (everything beneath the cart modal) from assistive technologies. Conversely, our cart now comes out of hiding and is clearly revealed to assistive technologies.</p>
+
+    <p><code><mark>second_pass/app.js</mark></code></p>
+    <pre><code>
+      showModal: function() {
+        if (app.elements.$my_cart.attr("aria-hidden") === "true") {
+          $("body").addClass("show_cart");
+          &hellip;
+          <strong>app.elements.$container.attr("aria-hidden", "true");
+          app.elements.$my_cart.attr("aria-hidden", "false");</strong>
+        }
+        &hellip;
+      }
+    </code></pre>
+
+    <h4>5. Selected product sections need ARIA state</h4>
+    <p>When users press the up and down arrow keys, a &ldquo;selected&rdquo; class is added to represent the currently selected product section. Let's trade that class for <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-selected"><code>aria-selected</code></a>.</p>
+
+    <p><code><mark>second_pass/app.js</mark></code></p>
+    <pre><code>
+     $(document.documentElement).keyup(function(event) {
+        …
+        if (key_pressed === UP) {
+          direction = "prev";
+        } else if (key_pressed === DOWN) {
+          direction = "next";
+        }
+        &hellip;
+        $selected[direction]()
+          <strong>.attr("aria-selected", "true")</strong>
+          .focus()
+          .siblings()
+          <strong>.attr("aria-selected", "false");</strong>
+          &hellip;
+     });
+    </code></pre>
+
+  <h2>Round 2 (<a href="second_pass/index.html" title="Link to second pass of demo">demo - second pass</a>)</h2>
+
+  <p>Follow along and notice how we’ve improved the UX for disabled users through better semantics.</p>
+
+  <ol>
+    <li>
+      From an empty cart, add any item to the cart.
+      <p>
+        <strong>Before</strong><br>
+        “Add to cart button”
+      </p>
+      <p>
+        <strong>After</strong><br>
+        “Add {{title of product}} to the cart button. Cart count one”
+      </p>
+    </li>
+
+    <li>
+      Tab to focus on the robot.
+      <p>
+        <strong>Before</strong><br>
+        “1 button”
+      </p>
+      <p>
+        <strong>After</strong><br>
+        “Banner, cart count one”
+      </p>
+    </li>
+
+    <li>
+      Click the robot to open the cart.
+      <p>
+        <strong>Before</strong><br>
+        (contents of the cart)
+      </p>
+      <p>
+        <strong>After</strong><br>
+        “Enter dialog” (contents of the cart)
+      </p>
+    </li>
+
+    <li>
+      Click the plus button in the opened cart containing one item.
+      <p>
+        <strong>Before</strong><br>
+        “Plus button”
+      </p>
+      <p>
+        <strong>After</strong><br>
+        “Increase {{title of product }} quantity button. Item quantity two. Cart count two”
+      </p>
+    </li>
+
+    <li>
+      Click the “x” to remove all items of a certain type.
+      <p>
+        <strong>Before</strong><br>
+        “X button”
+      </p>
+      <p>
+        <strong>After</strong><br>
+        “Remove all {{title of product}}s from the cart button”
+      </p>
+    </li>
+
+    <li>
+      Cancel out of the JavaScript confirm pop-up and exit the modal dialog using the escape key or “X” button.
+      <p>
+        <strong>Before</strong><br>
+        “”
+      </p>
+      <p>
+        <strong>After</strong><br>
+        “Exited dialog”
+      </p>
+    </li>
+  </ol>
+
+  <p>Our focus then returns to the last selected product before the cart was opened. If no product section had been previously selected, focus returns to the first product section in the list.</p>
+
+  <h2>Wrapping up </h2>
+
+  <p>I’d be a liar if I told you writing accessible code takes no extra work. When prototyping and sketching with our product designer, we scrutinize our decisions even more heavily than before. Each design must lead to an accessible UX. Similarly, developers unfamiliar with accessibility  practices may spend more time revising their commits before seeing their code merged.</p>
+
+  <p>Good product managers realize that new challenges beget greater time requirements from designers and developers. Encouragingly, we are highly adaptable creatures; these upfront labor costs will diminish over time. Most importantly, this hard work will yield a more usable product for all customers and a more readable codebase for developers. Let’s agree not to treat accessibility as the icing on the cake, but rather as an essential part of the mix.</p>
+
+  <footer>
+    <h2>About the Author</h2>
+    <a class="photo" href="#">
+      <img src="images/profile.jpg" width="120" height="120" alt="">
+    </a>
+    <p><strong>Andrew Hoffman</strong></p>
+    <p>Andrew Hoffman is a front-end developer at <a href="http://www.ibm.com/">IBM</a>. He loves cycling, awkward humor, and complex analogies. He tweets about code and obscure life observations at <a href="https://twitter.com/antibland">@antibland</a>.</p>
+  </footer>
+
+ </article>
+</body>
+</html>
