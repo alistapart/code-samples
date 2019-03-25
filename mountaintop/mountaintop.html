@@ -1,0 +1,98 @@
+<p>Either I&#8217;ve never bothered to try easier methods for creating rounded corners, or I am not afraid of having horrible eyesight in a mere five to eight years.  Regardless, one of my most oft-used little image creation tricks has to do with <em>mountaintops</em>: want that corner a little rounder? Just add another peak. This will begin to make sense in just a moment.</p>
+
+<dl>
+	<dt><img src="fig_1.gif" /></dt>
+	<dd>Figure 1</dd>
+</dl>
+
+<p>Consider Figure 1.  A boring, square box with a single pixel removed from each corner.  When viewed at 100%, the absence of that one pixel creates the illusion that the box is ever-so-slightly rounded. It&#8217;s one of those techniques that&#8217;s been used since TRON was cutting-edge.</p>
+
+<h2>Less pixels = more round</h2>
+
+<p>You can take the illusion even further though, by removing more pixels and creating &#8220;mountaintops&#8221; (and you thought it was just a silly title).  Take a look at Figure 2 and you&#8217;ll see a zoomed-in view of a box corner, with several pixels removed to form a jagged, diagonal landscape. When viewed at 100%, the corner appears nicely rounded.</p>
+
+<dl>
+	<dt><img src="fig_2.gif" /></dt>
+	<dd>Figure 2</dd>
+</dl>
+
+<p>For lighter backgrounds, you can remove yet a few more pixels to create an even more rounded effect.  By creating a jagged diagonal as we had done previously (see Figure 3) and then removing one extra pixel at either end we can smooth the edge a bit.  Anything with three mountaintops or more usually requires this extra pixel of space and works especially nice with a light color that blends with the main page background.</p>
+
+<dl>
+	<dt><img src="fig_3.gif" /></dt>
+	<dd>Figure 3</dd>
+</dl>
+
+<h2>Transparent peaks</h2>
+
+<p>At this point, you may be saying &#8220;Dan, this is a stupidly simple technique.&#8221;  And it is. But the real value in using the pencil tool to shave off pixels when a rounded corner is desired (aside from the odd pleasure you might receive in doing so) is the combination of transparency and CSS to create <strong>boxes and borders that can change in size and color</strong>.</p>
+
+<p>Because mountaintop corners utilize only two colors, we can set one of those colors as transparent, leaving the mountaintops the same color as the page background, thereby creating the rounded effect.</p>
+
+<h2>A flexible chameleon</h2>
+
+<p>For example, let's take an ordinary defintion list (<code>&lt;dl&gt;</code>) of items, and set a top and bottom <code>background-image</code> of transparent, rounded corners.  We can then assign a <code>background-color</code> with CSS and change the entire box&#8217;s appearance at will.</p>
+
+<p>The semantic markup would look like this:</p>
+
+<pre>
+&lt;dl&gt;
+&#160;&#160;&lt;dt&gt;Mt. Everest&lt;/dt&gt;
+&#160;&#160;&lt;dd&gt;The tallest mountain peak in the world.&lt;/dd&gt;
+&#160;&#160;&lt;dd&gt;29,035 feet&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+
+<p><em>You could, of course, use any structure you&#8217;d like, but the definition list structure gives us a pleasing number of elements to style with CSS.</em></p>
+
+<p>Next, we&#8217;ll create a 240-pixel-wide image that will act as the top portion of the rounded box.  This image will be just tall enough to the contain white top corners at either end, while the rest will be transparent (where the background color that we&#8217;ll specify with CSS will show through).  Figure 4 shows a condensed and zoomed version of the image in order to show detail.
+
+<dl>
+	<dt><img src="fig_4.gif" /></dt>
+	<dd>Figure 4 &#8212; Zoomed portions of top image</dd>
+</dl>
+
+<p>We&#8217;ll also create a similiar second image, flipped vertically for the bottom rounded corners.  The easiest way to do this in Photoshop is to choose <code>Image &#8250; Rotate Canvas &#8250; Flip Canvas Vertical</code>.</p>
+
+<p>By assigning the top image as a background for the <code>&lt;dt&gt;</code> element, and the bottom image as a background for the entire <code>&lt;dl&gt;</code>, we&#8217;ll have be left with a rounded box (fixed-width) that expands and contracts depending on the amount of content within &#8212; or if the user decides to bump up the text size.</p>
+
+<pre>
+dl {
+&#160;&#160;width: 240px;
+&#160;&#160;margin: 0 0 20px 20px;
+&#160;&#160;background: #999 url(box_bottom.gif) no-repeat bottom left;
+&#160;&#160;}
+
+dt {
+&#160;&#160;margin: 0;
+&#160;&#160;padding: 10px;
+&#160;&#160;background: #999 url(box_top.gif) no-repeat top left;
+&#160;&#160;}
+
+dd {
+&#160;&#160;margin: 0;
+&#160;&#160;padding: 10px;
+&#160;&#160;}
+</pre>
+
+<p><em>You&#8217;ll notice that I&#8217;ve used the shorthand method for specifying the background&#8217;s color along with its image for both the <code>&lt;dl&gt;</code> and <code>&lt;dt&gt;</code> elements. You&#8217;ll see why this has an advantage when we mix up the colors later on.</em></p>
+
+<p><a href="example1.html">This example</a> demonstrates they way that the CSS above sets the background images on either end of the box, while asssigning a background color to shine through the transparent portions of the images.  I&#8217;ve also added some font styling and a decorative arrow image that sits to the left of each <code>&lt;dd&gt;</code> element.</p>
+
+<p>Try increasing the text size for the example page to see how the boxes will expand and contract along with the text.</p>
+
+<h2>Climbing higher</h2>
+
+<p>We can get even fancier by assigning differing background colors to the <code>&lt;dl&gt;</code> and <code>&lt;dt&gt;</code> elements.  <a href="example2.html">This example</a> shows how two different background colors with the addition of a white <code>border-bottom</code> for the <code>&lt;dt&gt;</code> element can be achieved from the same markup and images.</p>
+
+<p>Additionally, we&#8217;re not limited to just rounded shapes.  As long as we stick to creating two-color GIFs, we can add any shape we&#8217;d like to the background images that flank the box. <a href="example3.html">This final example</a> shows how an alternate image is used for the bottom of the box, with the addition of a white mountaintop sillouette (see Figure 5).</p>
+
+<dl>
+	<dt><img src="fig_5.gif" /></dt>
+	<dd>Figure 5 &#8212; Alternate bottom image (zoomed) with mountain sillouette</dd>
+</dl>
+
+<h2>Summary</h2>
+
+<p>Because an element&#8217;s <code>background-image</code> sits <em>on top</em> of it&#8217;s <code>background-color</code>, we can use transparent GIF images that create the illusion of rounded or shaped corners and borders.  By keeping these decorative graphics within CSS, we can achieve flexible containers that can change color with the update of a single CSS rule.  Happy hiking.</p>
+
