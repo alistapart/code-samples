@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	<title>Example of changing a submit button</title>
+	<style type="text/css">
+
+		body{
+			font-family:"Trebuchet MS",Arial,Sans-Serif;
+			padding:10px 20px;
+			background-color: #eee;
+		}
+		#intro {
+			font-family:"Trebuchet MS",Arial,Sans-Serif;
+			color: #036;
+			font-size:1.2em;
+			font-weight: bold;
+			}
+		
+		form {
+			padding: 0 0 0 20px;
+			margin: 0;
+		}
+		
+		label{
+			display:block;
+		}
+		
+		input {
+			margin: 0;
+			padding: 0;
+		}
+
+		
+	</style>
+	<script type="text/javascript" src="textresizedetector.js"></script>
+	<script type="text/javascript">
+		function init()  {
+		   var iBase = TextResizeDetector.addEventListener(onFontResize,null);
+		}
+		function onFontResize(e,args) {
+			var demo = document.getElementById('intro');
+			if(demo){
+				// if the font is larger than 20 pixels, remove the multicolum CSS class 
+				if(args[0].iSize>=25){
+					document.getElementById('send').type='submit';
+					document.getElementById('send').value='submit now';
+				} else {
+					document.getElementById('send').type='image';
+				}
+			}
+		}
+		//id of element to check for and insert control
+		TextResizeDetector.TARGET_ELEMENT_ID = 'intro';
+		//function to call once TextResizeDetector has init'd
+		TextResizeDetector.USER_INIT_FUNC = init;
+	</script>
+</head>
+<body>
+<p id="intro">Increase text size to see the page use TextResizeDetector to swap in a standard submit element in place of a custom button.</p>
+<form>
+<p><label for="Name">Name</label><input type="text" id="name" name="Name" /></p>
+<p><label for="eMail">E-mail</label><input type="text" id="email" name="eMail" /></p>
+<p><input type="image" id="send" alt="submit now" src="submit.gif" /></p>
+</form>
+</body>
+</html>

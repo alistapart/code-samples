@@ -1,0 +1,179 @@
+<p>When you design for the web, you don't know what software people will use to experience your site, and you don't know what capabilities your users (and their software) have. Flexible layouts and resizable type can eliminate a lot of worst-case usability and design scenarios, but it's still extremely difficult to create pages layouts that don't break even if the user increases or the type size by more than a few settings.</p>
+
+<p>Stick around and we'll give you a way to detect your visitors' initial font size setting&#8212;and a way to find out whenever your visitor increases or decreases the font size. Why would you want to know these things? Because with this knowledge in hand, you can create a set of stylesheets that adapt your pages to the users' chosen font sizes, preventing overlapping elements and other usability and design disasters. (You can also do a lot of other interesting things, which we'll discuss later.)</p>
+
+<img src="resize_issue.gif" width="391" height="328" alt="Overlapping navigational elements" />
+
+<h2>Flexible design approaches</h2>
+<p>Some existing techniques&#8212;like <a
+href="http://www.simplebits.com/">Dan Cederholm</a>&#8217;s "<a
+href="http://www.wait-till-i.com/index.php?p=143">Bullet Proof CSS</a>," <a
+href="http://alistapart.com/articles/fauxcolumns/">faux columns</a> that simulate columns with
+background images, and <a
+href="http://icant.co.uk/articles/flexible-css-menu/">oversized images and
+background-position</a> that allow for growth of text&#8212;are a great help, but some designs just aren't meant for large text. Furthermore, you won't want to serve bite-sized content to visitors with large resolutions just to cater to visitors with smaller resolutions&#8212;if you can avoid it.</p>
+
+<h2>Designing into the unknown</h2>
+<p>Before we get into the technique itself, let's take a step back and examine the underlying problem. 
+
+<p>We already know how to adapt to the size of the user's window and screen resolution.
+Stuart Colville's <a href="http://muffinresearch.co.uk/archives/2006/02/07/css-drop-column-layout/">CSS
+Drop Column Layout</a> shows content in four columns and drops the fourth below 
+the third when there is not enough space on the screen. An older script by Cameron Adams <a href="http://www.themaninblue.com/writing/perspective/2006/01/19/"> allows for window-size dependent styling</a>. If you use Cameron's resolution script, your website can learn when the visitor's window gets resized and react to it accordingly. Sadly, this is not the case when you resize the font.</p> 
+
+<h2>How to detect font size changes</h2>
+<p>It is remarkably easy to detect changes in font size. All you need is JavaScript that:</p>
+<ul>
+<li>creates a hidden @span@ element with a space inside it,</li>
+<li>reads the height of that element and stores it,</li>
+<li>registers listener functions to call when the font size changes, and </li>
+<li>checks periodically if the height of the @span@ element changed&#8212;which means that the user has resized the font.</li>
+</ul>
+<p>This is nothing new, and it has been used on some high-traffic web portals 
+before. It becomes a lot more interesting, though, when you mix it with 
+<a href="http://developer.yahoo.com/yui/event/#customevent">custom events</a>. In 
+essence, using a custom event means you get notified every time there is 
+a change in font size.</p>
+<p>Check the <a
+href="fontResizeSwitchDemo.html">demo page</a> to see the effect in action. 
+(Resize the font in your browser to get the notifications.)</p>
+
+<h2>Using the text resize detector</h2>
+<p>To implement this script, first embed it in the @head@ of your document:</p>
+<notextile><pre><code>&#60;!DOCTYPE HTML PUBLIC &#34;-//W3C//DTD HTML 4.01//EN&#34; 
+&#34;http://www.w3.org/TR/html4/strict.dtd&#34;&#62;
+&#60;html dir=&#34;ltr&#34;&#62;
+&#60;head&#62;
+  &#60;meta http-equiv=&#34;Content-Type&#34; content=&#34;text/html;charset=utf-8&#34;&#62; 
+  &#60;title&#62;Font Resizer Demo&#60;/title&#62;
+<strong>  &#60;script type=&#34;text/javascript&#34; src=&#34;textresizedetector.js&#34;&#62;&#60;/script&#62;
+</strong>&#60;/head&#62;
+&#60;body&#62;
+  &#60;h1&#62;Resize me, now!&#60;/h1&#62;
+&#60;/body&#62;</code></pre></notextile>
+
+<p>Next, define two properties: </p>
+<ul>
+	<li>The @id@ of the element you want to add the @span@ to and</li>
+	<li>the name of the function that gets called when the text resize detector initialized.</li>
+</ul>
+<p>These are stored in two parameters called @TARGET_ELEMENT_ID@ and @USER_INIT_FUNC@ respectively.</p>
+
+<notextile><pre><code>&#60;script type=&#34;text/javascript&#34; src=&#34;textresizedetector.js&#34;&#62;&#60;/script&#62;
+  &#60;script type="text/javascript"&#62;
+<strong>    //id of element to check for and insert test SPAN into
+    TextResizeDetector.TARGET_ELEMENT_ID = 'header';
+    //function to call once TextResizeDetector was initialized
+    TextResizeDetector.USER_INIT_FUNC = init;</strong>
+  &#60;/script&#62;
+</code></pre></notextile>
+
+<p>Note: to determine the correct base font of the document, the element 
+with the @id@ that you store in <code>TARGET_ELEMENT_ID</code> should be fairly high 
+in the source order and not inherit font size from any other element. This also 
+means that the detector runs as soon as possible.</p> 
+
+<p>If you don't care about the base font size, you can specify any element.</p>
+<p>Lastly, define the function that you set in the <code>USER_INIT_FUNC</code> property:</p>
+<notextile><pre><code>
+  &#60;script type=&#34;text/javascript&#34; src=&#34;textresizedetector.js&#34;&#62;&#60;/script&#62;
+  &#60;script type=&#34;text/javascript&#34;&#62;
+<strong>    function init()  {
+      var iBase = TextResizeDetector.addEventListener(onFontResize,null);
+      alert(&#34;The base font size = &#34; + iBase);
+    }
+</strong>    //id of element to check for and insert control
+    TextResizeDetector.TARGET_ELEMENT_ID = 'header';
+    //function to call once TextResizeDetector was initialized
+    TextResizeDetector.USER_INIT_FUNC = <strong>init</strong>;
+&#60;/script&#62;</code></pre></notextile>
+<p>The <code>init()</code> function is where you register listeners with 
+<code>addEventListener</code>. This ensures that your function&#8212;in this case
+<code>onFontResize()</code>&#8212;is called when the font size has been changed. 
+It also returns the base font size, which is useful for Opera and IE7 
+users.</p>
+
+h3. A tangent: Opera and IE7
+
+<p>These browsers take a different approach to 
+resizing: instead of increasing the font size, they zoom the whole document, including 
+form elements and images. As there is no font resizing involved, your event will 
+never fire, therefore initially reading out the base font size can help you adjust your 
+layout/widget as necessary. *[Author clarification requested. &#8212;EK]*</p>
+
+h3. Back to work
+
+<p>Once you've set everything up, you can define your listener function:</p>
+<notextile><pre><code>&#60;script type=&#34;text/javascript&#34; src=&#34;textresizedetector.js&#34;&#62;&#60;/script&#62;
+  &#60;script type=&#34;text/javascript&#34;&#62;
+    function init()  {
+       var iBase = TextResizeDetector.addEventListener(<strong>onFontResize</strong>,null);
+      alert(&#34;The base font size = &#34; + iBase);
+    }
+    <strong>function onFontResize(e,args) {
+      var msg = &#34;\nThe base font size in pixels: &#34; + args[0].iBase;
+      msg +=&#34;\nThe current font size in pixels: &#34; + args[0].iSize;
+      msg += &#34;\nThe change in pixels from the last size:&#34; + args[0].iDelta;
+      alert(msg);
+    }</strong>
+    //id of element to check for and insert control
+    TextResizeDetector.TARGET_ELEMENT_ID = 'header';
+    //function to call once TextResizeDetector has init'd
+    TextResizeDetector.USER_INIT_FUNC = init;
+  &#60;/script&#62;</code></pre></notextile>
+
+<p>When the event fires, this function retrieves two parameters:</p>
+<ul>
+
+</ul> 
+<li>The the name of the event&#8212;<code>textSizeChanged</code>&#8212;and</li>
+<li>an array of arguments, the first of which is an object with the following properties:
+<dl>
+	<dt><code>iBase</code></dt>
+	<dd>The initial value of the document when it was loaded.</dd>
+	<dt><code>iDelta</code></dt>
+	<dd>The difference between the last font size and the new font size.</dd>
+	<dt><code>iSize</code></dt>
+	<dd>The new font size.</dd>
+</dl>
+</li>
+<p>All font sizes are in pixels.</p>
+<p>The <code>TextResizeDetector</code> object itself has three methods:</p>
+<dl>
+	<dt><code>addEventListener()</code></dt>
+	<dd>Registers your event handler and returns the base font size. If you pass an object as a second
+	parameter, your handler function is executed in the scope of that object.</dd>
+	<dt><code>stopDetector()</code></dt>
+	<dd>Stops the detector.</dd>
+	<dt><code>startDetector()</code></dt>
+	<dd>Starts the detector. Only 
+	needed if the <code>stopDetector()</code> method has been executed beforehand.</dd>
+</dl>
+<h2>Possible Uses</h2>
+<p>That&#8217;s grand, but what to do with this information? Whatever you please. Possible options include</p>       
+<ul>
+	<li><a
+	href="fontSizeDropColumn.html">Turning
+	a horizontal menu bar into a vertical single list</a> when the font is too large.</li>
+	<li><a href="exampleSubmitButton.html">Replacing a graphical button with a normal submit on large fonts</a></li>
+	<li>Applying different style sheets to the document according to font size. You could 
+		also automatically switch to a <a href="http://joeclark.org/access/webaccess/zoom/">zoom layout</a> 
+	at a certain stage.</li>
+	<li>Removing elements when a certain size is reached.</li>
+	<li>Showing more elements when a certain size is reached (in case the user zooms out 
+	instead of in).</li>
+	<li>Pulling in longer text passages via Ajax when the screen space allows for longer texts.</li>
+	<li>Increase the width of a sidebar when the font size changes to keep a consistent line length.</li>
+	<li>Center an element that is defined in em on the screen.</li>
+</ul>
+
+<p>How else might this script be used? Tell us about it in the comments.</p>
+
+<h2>That's it!</h2>
+<p>That is all there is to it. You can <a href="textresizedetector.zip">download 
+all the code and examples in this zip</a>.</p>
+<p>For more info about custom events, here are two good resources.</p>
+<ul>
+<li><a href="http://developer.yahoo.com/yui/event/#customevent">Yahoo's User Interface (YUI) library explanation of custom events</a></li>
+<li><a href="http://www.truerwords.net/articles/web-tech/custom_events.html">A Nice article by Seth Dillingham about custom events</a></li>
+</ul>

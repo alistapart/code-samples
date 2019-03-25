@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	<title>Demonstration of the TextResizeDetector functionality</title>
+	<style type="text/css">
+		body{
+			font-family:"Trebuchet MS",Arial,Sans-Serif;
+			font-size:.9em;
+			padding: 10px 20px;
+			background-color: #eee;
+		}
+		ul.multicolumn,ul.multicolumn li{
+			float:left;
+			list-style:none;
+			padding:0;
+			margin:0;
+		}
+		ul.multicolumn li{
+			padding:0 .5em 0 0;
+		}
+		h1{
+			font-size:1.3em;
+			color: #036;
+		}
+		
+	</style>
+	<script type="text/javascript" src="textresizedetector.js"></script>
+  <script type="text/javascript">
+ 	function init()  {
+   var iBase = TextResizeDetector.addEventListener(onFontResize,null);
+	}
+	//id of element to check for and insert control
+	TextResizeDetector.TARGET_ELEMENT_ID = 'header';
+	//function to call once TextResizeDetector has init'd
+	TextResizeDetector.USER_INIT_FUNC = init;
+		function onFontResize(e,args) {
+			var demo = document.getElementById('demo');
+			if(demo){
+				// if the font is larger than 20 pixels, remove the multicolum CSS class 
+				demo.className=((args[0].iSize)>=20)?'':'multicolumn';
+			}
+		}	
+	</script>
+</head>
+<body id="header">
+<h1>Increase text size to see TextResizeDetector prevent menu items from overlapping</h1>
+<ul class="multicolumn" id="demo">
+	<li>Expositionspropyhlaxe</li>
+	<li>Geschwindigkeitsbegrenzungsmessger&auml;t</li>
+	<li>Unkrautvernichtungsmittelbeh&auml;lter</li>
+	<li>Auslegewarenfachverkaufsgehilfe</li>
+</ul>
+</body>
+</html>
