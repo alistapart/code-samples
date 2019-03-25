@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Let them eat cake: Accessibility and usability, brought together through the DOM and CSS</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <meta name="ROBOTS" content="ALL" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta name="Rating" content="General" />
+  <script type="text/javascript" src="1.js"></script>
+</head>
+<body>
+<div id="header">
+  <h1>Let them eat cake</h1>
+  <h2>Accessibility and usability, brought together through the <acronym title="Document Object Model">DOM</acronym> and <acronym title="Cascading Style Sheets">CSS</acronym></h2>
+  <p id="byline">by Aaron Gustafson</p>
+  <ul id="mainNav">
+    <li><a id="navIntro" href="#intro">Introduction</a></li>
+    <li><a id="navIngred" href="#ingredients">Ingredients</a></li>
+    <li><a id="navPrepare" href="#prepare">Preparation</a></li>
+    <li><a id="navDecorate" href="#decorate">Decoration</a></li>
+    <li><a id="navServe" href="#serve">Suggested Serving</a></li>
+  </ul>
+</div>
+<div id="intro">
+  <h3>Introduction</h3>
+  <p>There has been a growing debate lately, pitting accessibility against usability. My feeling is that if you can make a page more usable without making it less accessible, by all means do so; do not let your inability to translate certain usability enhancements into accessible functions or features restrict your use of those enhancements. As long as the enhancements do not restrict accessibility, go for it.</p>
+  <p>As many of you know, with JavaScript and the <acronym title="Document Object Model">DOM</acronym>, we have the ability to control every element on a well-structured webpage. It is my feeling that, using the <acronym title="Document Object Model">DOM</acronym>, we can improve the usability of a page without restricting its accessibility. Sprinkle in a little <acronym title="Cascading Style Sheets">CSS</acronym> and we have the recipe for a wonderful experience all around, regardless of the browser, platform or device being used.</p>
+  <a href="#header" title="return to the top of the page">Back to top</a>
+</div>
+<div id="ingredients">
+  <h3>Ingredients: A Well-structured Document</h3>
+  <p>To begin, we need a well-structured document. My example will be an article, this one in fact, consisting of a <a href="1.html" title="The raw page we will be working with">single page</a> with jump refs to the various content sections.</p>
+  <p>Project-wise, let&#8217;s say the idea is to present this article in a highly accessible, yet entirely usable way. The article is divided into sections and, as human psychology demonstrates, information is <a href="http://college.hmco.com/education/snowman/psych_app/9e/students/course/suggestions/suggestions_08.html" title="A good discussion of chunking can be found in Psychology Applied to Teaching, Chapter 8: Information Processing Theory">easier to digest in chunks</a>. One way to make a lengthy article easier to follow is to show the content section by section. This not only aids in digesting the information but reduces scrolling (which appeals to the many out there who remain convinced that the general population still has no clue how to scroll).</p>
+  <p>How do we meet this usability goal without causing accessibility issues? Enter the <acronym title="Document Object Model">DOM</acronym>.</p>
+  <a href="#header" title="return to the top of the page">Back to top</a>
+</div>
+<div id="prepare">
+  <h3>Preparation: Pour in the <acronym title="Document Object Model">DOM</acronym>; Mix and bake</h3>
+  <p>As you have probably noticed, the navigation links within the header section of the document are jump refs to the different sections (divisions) of the article. The first link (&#8220;Introduction&#8221;) takes you to the introduction of the article (wrapped in <code>&#60;div id=&#34;intro&#34;&#62;&#60;/div&#62;</code>). This not only makes the page easier to navigate, but it also makes it easier for other people to reference particular sections of the article from their own work (via citations or links). The helpful &#8220;Back to top&#8221; links also reorient users as needed.</p>
+  <p>Glancing at the source, we can see that the whole document uses semantic <code>id</code>s for divvying up the document into manageable chunks. This offers us a world of possibilities. With the aid of the <acronym title="Document Object Model">DOM</acronym>, we can easily traverse the page, looking at the <code>id</code>s of the divisions, hiding the ones we don&#8217;t want immediately visible. The basic code would look something like this:</p>
+  <pre>  function hideDivs()
+  {
+    var divs = document.getElementsByTagName(&#34;div&#34;);
+    for(var i=0; i &#60; divs.length; i++)
+    {
+      var div = divs[i];
+      var id = div.id;
+      if ((id != &#34;header&#34;) &#38;&#38;
+          (id != &#34;footer&#34;))
+      {
+        div.style.display = &#34;none&#34;;
+      }
+    }
+  }
+  
+  window.onload = function()
+  {
+    hideDivs();
+  }</pre>
+  <p>First, we collect all of the <code>&#60;div&#62;</code>s on the page into an array, and then we loop through the array, hiding all of them with the exception of the ones with <code>id</code>s of &#8220;header&#8221; and &#8220;footer&#8221;. In the interest of hiding the script from older browsers which don&#8217;t understand <code>document.getElementsByTagName</code>, we should add the following line to the beginning of the function:</p>
+  <pre>  if (!document.getElementsByTagName) return null;</pre>
+  <p>Now <a href="2.html" title="View the resulting page">we have hidden everything</a> from the browser (with the exception of the header and footer <code>&#60;div&#62;</code>s), which means that no actual content is available for the user to read. We should show the introduction right off the bat, so we need to make a slight modification to the <code>hideDivs</code> function. We could hard code a conditional statement for <code>id == &#34;intro&#34;</code> into the function (alongside the header and footer ones), but that doesn&#8217;t give us much flexibility. If we add an argument to the function called <var>exempt</var>, we can specify a <code>&#60;div&#62;</code> to exclude from the function on the fly:</p>
+  <pre>  function hideDivs(<strong>exempt</strong>)
+  {
+    if (!document.getElementsByTagName) return null;
+    <strong>if (!exempt) exempt = &#34;&#34;;</strong>
+    var divs = document.getElementsByTagName(&#34;div&#34;);
+    for(var i=0; i &#60; divs.length; i++)
+    {
+      var div = divs[i];
+      var id = div.id;
+      if ((id != &#34;header&#34;) &#38;&#38;
+          (id != &#34;footer&#34;) <strong>&#38;&#38;
+          (id != exempt)</strong>)
+      {
+        div.style.display = &#34;none&#34;;
+      }
+    }
+  }
+  
+  window.onload = function()
+  {
+    hideDivs(<strong>&#34;intro&#34;</strong>);
+  }</pre>
+  <p>We pass the value &#8220;intro&#8221; to the function upon page load as the exemption, and that sets up our document for its <a href="3.html" title="View the resulting page">initial state</a>. But how do we allow the user to change what section they are viewing? If we take a look at the document structure, we already have links to the varying sections as jump refs. This is perfect because each jump ref link (e.g. <code>#ingredients</code>) already contains the <code>id</code> of the <code>&#60;div&#62;</code> we want it to show. All we have to do is find a way to change the link so that it triggers a JavaScript funtion to show the chosen section and hide the others. Enter the <acronym title="Document Object Model">DOM</acronym> again:</p>
+  <pre>  function fixLinks()
+  {
+    if (!document.getElementsByTagName) return null;
+    var anchors = document.getElementsByTagName(&#34;a&#34;);
+    for(var i=0; i &#60; anchors.length; i++)
+    {
+      var a = anchors[i];
+      var href = a.href;
+      if ((href.indexOf(&#34;#&#34;) != -1) &#38;&#38;
+          (href.indexOf(&#34;header&#34;) == -1))
+      {
+        var index = href.indexOf(&#34;#&#34;) + 1;
+        href = &#34;javascript:show('&#34; +
+               href.substring(index) + &#34;');&#34;;
+        a.setAttribute(&#34;href&#34;,href);
+      }
+    }
+  }</pre>
+  <p>In this function, we parse the document looking for <code>&#60;a&#62;</code> tags which contain &#8220;#&#8221; in the <code>href</code> attribute. In order to avoid grabbing the &#8220;Back to top&#8221; links, we add in an exclusion of links containing the term &#8220;header&#8221;. The <code>id</code> of the <code>&#60;div&#62;</code> the link was referencing is separated from the #, and the <code>href</code> is then reconstituted as the target <code>&#60;div&#62;</code> <code>id</code> wrapped inside a JavaScript function called <code>show</code>. We add <code>fixLinks</code> to the list of functions called upon in the <code>onload</code> function, and we&#8217;re halfway there.</p>
+  <p>The brilliance of having JavaScript rewrite the link as a JavaScript call is that we already know JavaScript is operating on the user&#8217;s device, so we are assured that <code>&#60;a href=&#34;javascript:show('ingredients');&#34;&#62;</code> will not be meaningless to the browsing device. If a user&#8217;s browsing device does not support JavaScript (or does not support it to the extent that it understands <code>document.getElementsByTagName</code>), the links remain unchanged, jump refs to the different divisions of the page. Likewise, the divisions all remain visible, so both accessibility <em>and</em> usability are well-served.</p>
+  <p>Now, about that <code>show</code> function&#8230; This is a simple function that uses the <acronym title="Document Object Model">DOM</acronym> to show an identified node and hide the rest. We already have a great multi-purpose hiding function in <code>hideDivs</code>, so all we need is the &#8220;show&#8221; part. Here&#8217;s the code:</p>
+  <pre>  function show(what)
+  {
+    if (!document.getElementById) return null;
+    showWhat = document.getElementById(what);
+    showWhat.style.display = &#34;block&#34;;
+    hideDivs(what);
+  }</pre>
+  <p>We begin by testing to be sure <code>document.getElementById</code> is supported, and then we display the <code>&#60;div&#62;</code> with an <code>id</code> equal to the value we passed to the function. We wrap it all up with a call to <code>hideDivs</code>, passing it the value of the newly shown <code>&#60;div&#62;</code> as the exemption. The <a href="4.html" title="View the resulting page">resulting page</a> only needs us to make it a little more attractive.</p>
+  <a href="#header" title="return to the top of the page">Back to top</a>
+</div>
+<div id="decorate">
+  <h3>Decoration: Liberal application of <acronym title="Cascading Style Sheets">CSS</acronym></h3>
+  <p>This part is up to you; decorate as you see fit. My basic example has a <a href="5.html" title="View the resulting page">cakey theme</a> with minimal decoration. Apart from aesthetics, however, there are some improvements we can make to what we have done so far using <acronym title="Cascading Style Sheets">CSS</acronym>.</p>
+  <p>A problem with the code we&#8217;ve written becomes clear when a user goes to print the article (which I hope they do). You see, having JavaScript change the display style of a node causes most (if not all) browsers to treat the style application as an inline style. According to the cascade rules of <acronym title="Cascading Style Sheets">CSS</acronym>, inline has the greatest precedence, so it overrides all other styles. If we want someone to be able to print the entire article and not just one section at a time, we need to make sure that all sections of the page are visible. This is accomplished by creating a class (let&#8217;s call it &#8220;hidden&#8221;) within a stylesheet that is applied to the screen media type only, and hides the content:</p>
+  <pre>  .hidden {
+    display: none;
+  }</pre>
+  <p>In your print stylesheet (if you have one), leaving out this class would cause anything classed with it to be displayed by default.</p>
+  <p>Now we can go back and fix the JavaScript functions accordingly:</p>
+  <pre>  function hideDivs(exempt)
+  {
+    if (!document.getElementsByTagName) return null;
+    if (!exempt) exempt = &#34;&#34;;
+    var divs = document.getElementsByTagName(&#34;div&#34;);
+    for(var i=0; i &#60; divs.length; i++)
+    {
+      var div = divs[i];
+      var id = div.id;
+      if ((id != &#34;header&#34;) &#38;&#38;
+          (id != &#34;footer&#34;) &#38;&#38;
+          (id != exempt))
+      {
+        <strong>div.className = &#34;hidden&#34;;</strong>
+      }
+    }
+  }
+  
+  function fixLinks()
+  {
+    if (!document.getElementsByTagName) return null;
+    var anchors = document.getElementsByTagName(&#34;a&#34;);
+    for(var i=0; i &#60; anchors.length; i++)
+    {
+      var a = anchors[i];
+      var href = a.href;
+      if ((href.indexOf(&#34;#&#34;) != -1) &#38;&#38;
+          (href.indexOf(&#34;header&#34;) == -1))
+      {
+        var index = href.indexOf(&#34;#&#34;) + 1;
+        href = &#34;javascript:show('&#34; +
+               href.substring(index) + &#34;');&#34;;
+        a.setAttribute(&#34;href&#34;,href);
+      }
+    }
+  }
+  
+  function show(what)
+  {
+    if (!document.getElementById) return null;
+    showWhat = document.getElementById(what);
+    <strong>showWhat.className = &#34;&#34;;</strong>
+    hideDivs(what);
+  }
+  
+  window.onload = function()
+  {
+    hideDivs("intro");
+    fixLinks();
+  }</pre>
+  <p>One final housekeeping note: we should re-examine those &#8220;Back to top&#8221; links. Now that we have a page which only shows sections based upon the link we click, we simply don&#8217;t need them around, confusing people. Additionally, we don&#8217;t want them popping up in a print version of the page, where they really don&#8217;t serve any function. One quick addition to the <code>fixLinks</code> function can solve this:</p>
+  <pre>  function fixLinks()
+  {
+    if (!document.getElementsByTagName) return null;
+    var anchors = document.getElementsByTagName(&#34;a&#34;);
+    for(var i=0; i &#60; anchors.length; i++)
+    {
+      var a = anchors[i];
+      var href = a.href;
+      <strong>if (href.indexOf("#header") != -1) {
+        a.className = "alt";
+      } else </strong>if ((href.indexOf(&#34;#&#34;) != -1) &#38;&#38;
+                  (href.indexOf(&#34;header&#34;) == -1))
+      {
+        var index = href.indexOf(&#34;#&#34;) + 1;
+        href = &#34;javascript:show('&#34; +
+               href.substring(index) + &#34;');&#34;;
+        a.setAttribute(&#34;href&#34;,href);
+      }
+    }
+  }</pre>
+  <p>With the addition of an <code>.alt</code> style to the screen <em>and</em> print stylesheets,</p>
+  <pre>  .alt {
+    display: none;
+  }</pre>
+  <p><a href="final.html" title="View the resulting page">it all comes together nicely</a>. I encourage you to explore print stylesheets further by reading <a href="http://www.complexspiral.com/" title="Eric Meyer&#8217;s consulting business &#8212; Complex Spiral Consulting">Eric Meyer</a>&#8217;s superb reference on the subject, <a href="http://www.alistapart.com/articles/goingtoprint/" title="CSS Design: Going to Print">CSS Design: Going to Print</a>.</p>
+  <a href="#header" title="return to the top of the page">Back to top</a>
+</div>
+<div id="serve">
+  <h3>Suggested Serving: One Document, Infinite Possibilities</h3>
+  <p>This article, though by no means meant to be the end-all, be-all on the concept of helping usability and accessibility play nicely together, will hopefully give you inspiration and methods to improve your own projects, in order to meet diverse needs, while excluding no one. As accessibility becomes a greater concern in the private sector, we need to keep usability fresh in our minds as well. The examples created here are meant to give you ideas for rewriting your usability enhancements with accessibility in mind and designing accessible pages with usability in mind. There are infinite possibilities out there&#8230; bake your own and enjoy.</p>
+  <a href="#header" title="return to the top of the page">Back to top</a>
+</div>
+<hr class="hidden" />
+<div id="footer">
+  <p>Aaron Gustafson is Sr. Web Designer / Developer at Cronin and Company in Glastonbury, Connecticut. He is a major proponent of web standards, accessibility and usability, speaking often on these topics and helping clients, large and small, meet the growing need for well-structured and accessible websites.</p>
+</div>
+</body>
+</html>
