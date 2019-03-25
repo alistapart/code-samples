@@ -1,0 +1,116 @@
+/*----------------------------------------------------------
+Typography CSS file for RWI
+Created by Easy! Designs, LLC - easy-designs.net
+        on 23 March 2007
+----------------------------------------------------------*/
+
+/* =WHITESPACE RESETS */
+html, form, fieldset, legend {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+h1 {
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6, pre, dl {
+  margin: .5em 0 .2em;
+  padding: 0;
+}
+p {
+  margin: 0 0 1.4em;
+  padding: 0;
+}
+ul, ol {
+  margin: 0 0 1.4em;
+  padding: 0 0 0 1.15em;
+}
+
+/* =Default Text Styles */
+a {
+  text-decoration: underline;
+}
+a img {
+  border: 0;
+}
+a[rel=footnote] {
+  vertical-align: super;
+  font-size: .7em;
+  line-height: 0;
+  padding: 0 2px 0 1px;
+  text-decoration: none;
+}
+abbr, acronym, dfn {
+  font-style: normal;
+  border: 0;
+  cursor: inherit;
+}
+abbr a, acronym a, dfn a {
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+abbr a:focus, acronym a:focus, dfn a:focus,
+abbr a:hover, acronym a:hover, dfn a:hover {
+  border-bottom: 1px solid;
+}
+body {
+  background: #fff;
+  font: 62.5%/1em Verdana, Arial, Helvetica, sans-serif;
+}
+h1, h2, h3, h4, h5, h6, legend, caption {
+  font: normal 1.2em/1em Tahoma, Verdana, Arial, Helvetica, sans-serif;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+li h2, li h3, li h4, li h5, li h6,
+dl h2, dl h3, dl h4, dl h5, dl h6 {
+  font-family: inherit;
+  text-transform: none;
+  letter-spacing: 0;
+}
+h1 {
+  font-size: 1.8em;
+  margin-top: 0;
+}
+h2, legend, caption {
+  font-size: 1.6em;
+}
+h3 {
+  font-size: 1.4em;
+}
+p, ol, ul, dl {
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+li ol, li ul, li p, li dl,
+dl dl, dl ol, dl ul, dl p {
+  font-size: 1em;
+}
+li {
+  line-height: 1.4em;
+}
+dl dt, dl dd {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+dl dt {
+  font-weight: bold;
+}
+dl dt:after {
+  content: ':';
+}
+dl dd:after {
+  content: '\000A';
+  white-space: pre;
+}
+
+
+#main ul,
+#main ol {
+  margin-left: -20px;
+  padding: 0 0 0 20px;
+}
+#main li {
+  margin-bottom: .5em;
+}

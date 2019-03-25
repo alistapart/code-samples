@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>FigureHandler Demo 1: Default Columns</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta name="author" content="Aaron Gustafson (aaron [at] easy-designs [dot] net)" />
+  <meta name="Copyright" content="(CC) 1999-2006 Easy! Designs, LLC. Some rights reserved." />
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <meta name="ROBOTS" content="ALL" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta name="Rating" content="General" />
+  <link rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" />
+  <link rel="stylesheet" type="text/css" href="type.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="screen.css" />
+  <script type="text/javascript" src="prototype.js"></script>
+  <script type="text/javascript" src="FigureHandler.js"></script>
+  <script type="text/javascript">
+    // <![CDATA[
+    if( typeof( Prototype ) != 'undefined' ){
+      Event.observe( window, 'load', function(){ new FigureHandler; } );
+    }
+    // ]]>
+  </script>
+  <style type="text/css"><!--
+.figure {
+  margin: 0 0 1.5em;
+}
+.figure p {
+  margin: 0;
+  width: auto;
+}
+#content .figure .credit {
+  font-size: .8em;
+  text-align: right;
+}
+.figure .credit cite {
+  font-style: inherit;
+}
+.figure .caption {
+  font-style: italic;
+  font-size: 1.1em;
+}
+.figure .title {
+  font-style: normal;
+  font-weight: bold;
+}
+.figure .title:after {
+  content: ":";
+}
+#main .figure.half-col,
+#main .figure.third-col {
+  float: right;
+  margin: .3em 0 1em;
+}
+#main .figure.half-col p,
+#main .figure.half-col img,
+#main .figure.third-col p,
+#main .figure.third-col img {
+  clear: both;
+  float: right;
+}
+#main .figure.half-col {
+  width: 260px;
+}
+#main .figure.third-col {
+  width: 180px;
+}
+#main .figure.quarter-col {
+  float: left;
+  margin: .3em 0 1em;
+  width: 140px;
+}
+#extras .figure.full-col,
+#extras .figure.three-quarters-col,
+#extras .figure.two-thirds-col {
+  width: 100%;
+}
+#extras .figure.full-col img,
+#extras .figure.full-col p,
+#extras .figure.three-quarters-col img,
+#extras .figure.three-quarters-col p,
+#extras .figure.two-thirds-col img,
+#extras .figure.two-thirds-col p {
+  display: block;
+  margin: 0 auto;
+}
+#extras .figure.half-col,
+#extras .figure.third-col,
+#extras .figure.quarter-col {
+  float: right;
+  margin: .3em 0 1em;
+}
+#extras .figure.half-col {
+  width: 160px;
+}
+#extras .figure.third-col {
+  width: 100px;
+}
+#extras .figure.quarter-col {
+  width: 80px;
+}
+#extras .figure.half-col p,
+#extras .figure.half-col img,
+#extras .figure.third-col p,
+#extras .figure.third-col img,
+#extras .figure.quarter-col p,
+#extras .figure.quarter-col img {
+  clear: both;
+  float: right;
+}
+  --></style>
+</head>
+<body>
+  <div id="header">
+    <h1>FigureHandler Demo 1: Default Columns</h1>
+  </div>
+  <div id="content">
+    <div id="main">
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas dui arcu, eleifend ac, mattis nec, bibendum ac, eros. Maecenas nonummy risus eu enim. Sed lorem. Nunc diam arcu, volutpat ac, interdum vel, sagittis nec, lacus. Etiam sed turpis <a href="#">hendrerit eros dictum</a> adipiscing. Morbi ultricies ultrices sapien. Integer laoreet tortor a tellus.</p>
+      <div class="figure photograph">
+        <img src="main-full-col.gif" alt="" />
+        <p class="credit">Photo by <cite>Bob Johnson</cite></p>
+        <p class="caption"><em class="title">Figure 1</em> Cras rutrum, enim at placerat varius, nisi massa consectetuer arcu, a posuere ligula ante nec nisi.</p>
+      </div>
+      <p>Aliquam erat volutpat. Mauris non dui at mi hendrerit vestibulum. Maecenas adipiscing leo nec lacus. Morbi in est nec libero bibendum tristique. Integer fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+      <div class="figure photograph">
+        <img src="main-three-quarters-col.gif" alt="" />
+        <p class="credit">Photo by <cite>Bob Johnson</cite></p>
+        <p class="caption"><em class="title">Figure 1</em> Cras rutrum, enim at placerat varius, nisi massa consectetuer arcu, a posuere ligula ante nec nisi.</p>
+      </div>
+      <p>In hac habitasse platea dictumst. Duis lectus justo, scelerisque eu, nonummy ut, fringilla id, lorem. Maecenas sodales. Cras lacinia quam ut enim. <abbr title="Glossary Term"><a href="#">Aenean lectus</a></abbr>. Duis imperdiet cursus metus. Suspendisse potenti. Phasellus molestie dolor id ante. In tempus ipsum posuere lectus. Donec nisi. Mauris nisl.</p>
+      <div class="figure photograph">
+        <img src="main-two-thirds-col.gif" alt="" />
+        <p class="credit">Photo by <cite>Bob Johnson</cite></p>
+        <p class="caption"><em class="title">Figure 1</em> Cras rutrum, enim at placerat varius, nisi massa consectetuer arcu, a posuere ligula ante nec nisi.</p>
+      </div>
+      <p>Sed sodales accumsan mi. Proin tempor orci et ligula. Sed libero magna, vestibulum et, sollicitudin ut, fermentum vel, est. Vivamus pulvinar, ipsum vitae feugiat pellentesque, urna elit posuere metus, eget imperdiet sapien risus vel metus. Proin quis risus sit amet ipsum viverra auctor. Nam blandit, velit sit amet mollis iaculis, libero massa gravida felis, non semper magna erat ut nisl. Donec laoreet, enim sit amet condimentum porta, felis urna consequat lectus, vestibulum lobortis lacus ligula in elit. Vivamus non sem.</p>
+      <div class="figure photograph">
+        <img src="main-half-col.gif" alt="" />
+        <p class="credit">Photo by <cite>Bob Johnson</cite></p>
+        <p class="caption"><em class="title">Figure 1</em> Cras rutrum, enim at placerat varius, nisi massa consectetuer arcu, a posuere ligula ante nec nisi.</p>
+      </div>
+      <p>Morbi nec ligula fermentum enim consectetuer scelerisque. Mauris nibh augue, tempus ut, consectetuer pellentesque, rutrum at, libero. Sed tempus. Quisque sapien sem, convallis id, semper et, consectetuer a, diam. Aliquam <a href="#">arcu erat</a>, <a href="#">porta nec</a>, <a href="#">feugiat eget</a>, <a href="#">eleifend aliquet</a>, <a href="#">arcu</a>.</p>
+      <div class="figure photograph">
+        <img src="main-third-col.gif" alt="" />
+        <p class="credit">Photo by <cite>Bob Johnson</cite></p>
+      </div>
+      <p>Morbi nec ligula fermentum enim consectetuer scelerisque. Mauris nibh augue, tempus ut, consectetuer pellentesque, rutrum at, libero. Sed tempus. Quisque sapien sem, convallis id, semper et, consectetuer a, diam. Aliquam <a href="#">arcu erat</a>, <a href="#">porta nec</a>, <a href="#">feugiat eget</a>, <a href="#">eleifend aliquet</a>, <a href="#">arcu</a>.</p>
+      <div class="figure photograph">
+        <img src="main-quarter-col.gif" alt="" />
+        <p class="credit">Photo by <cite>Bob Johnson</cite></p>
+      </div>
+      <p>Aenean euismod pede eget arcu. Nullam tellus. Cras rutrum, enim at placerat varius, nisi massa consectetuer arcu, a posuere ligula ante nec nisi. Aliquam erat volutpat. Sed pede eros, laoreet vel, fermentum vitae, imperdiet in, erat. Nam interdum eros faucibus risus. Curabitur iaculis lacus nec ligula. Sed enim felis, lobortis non, blandit vitae, vulputate non, est. Proin quis risus sit amet ipsum viverra auctor. Nam blandit, velit sit amet mollis iaculis, libero massa gravida felis, non semper magna erat ut nisl.</p>    </div>
+    <div id="extras">
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas dui arcu, eleifend ac, mattis nec, bibendum ac, eros. Maecenas nonummy risus eu enim. Sed lorem. Nunc diam arcu, volutpat ac, interdum vel, sagittis nec, lacus. Etiam sed turpis <a href="#">hendrerit eros dictum</a> adipiscing. Morbi ultricies ultrices sapien. Integer laoreet tortor a tellus.</p>
+      <div class="figure photograph">
+        <img src="extras-two-thirds-col.gif" alt="" />
+        <p class="credit">Photo by <cite>Bob Johnson</cite></p>
+        <p class="caption"><em class="title">Figure 1</em> Cras rutrum, enim at placerat varius, nisi massa consectetuer arcu, a posuere ligula ante nec nisi.</p>
+      </div>
+      <p>Aliquam erat volutpat. Mauris non dui at mi hendrerit vestibulum. Maecenas adipiscing leo nec lacus. Morbi in est nec libero bibendum tristique. Integer fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+      <div class="figure photograph">
+        <img src="extras-half-col.gif" alt="" />
+        <p class="credit">Photo by <cite>Bob Johnson</cite></p>
+        <p class="caption"><em class="title">Figure 1</em> Cras rutrum, enim at placerat varius, nisi massa consectetuer arcu, a posuere ligula ante nec nisi.</p>
+      </div>
+      <p>Morbi nec ligula fermentum enim consectetuer scelerisque. Mauris nibh augue, tempus ut, consectetuer pellentesque, rutrum at, libero. Sed tempus. Quisque sapien sem, convallis id, semper et, consectetuer a, diam. Aliquam <a href="#">arcu erat</a>, <a href="#">porta nec</a>, <a href="#">feugiat eget</a>, <a href="#">eleifend aliquet</a>, <a href="#">arcu</a>.</p>
+    </div>
+  </div>
+  <div id="footer">
+    <p id="copyright">(CC) 2007 Easy! Designs, LLC. <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/">Some rights reserved</a>.</p>
+  </div>
+</body>
+</html>
