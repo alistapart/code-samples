@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>A List Apart: CSS Rollovers</title>
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<style type="text/css" media="all">
+<!--
+
+.ednote {background: #ffd; color: #930; padding: 1em; border: 1px dotted #c30; margin: 15px 0 15px 0; font: 11px/1.5em verdana, arial, sans-serif;}
+
+pre {font: 11px "Trebuchet MS", arial, geneva, sans-serif; padding: 5px 2px 5px 7px; background: #ffd; border: 1px dotted #960;}
+
+code {font: 11px "Trebuchet MS", arial, geneva, sans-serif; border-bottom: 1px dotted #960;}
+
+.linewrap {font-weight: bold; color: #996; font-size: 13px;}
+
+.light {font-size: 11px; font-weight: normal; font-family: verdana, geneva, arial, sans-serif; margin-top: 0; padding-top: 0; margin-bottom: 18px;}
+
+.lib {margin: 5px 0 10px 0; color: #c30; background: #ffc; width: auto; font: 10px/15px geneva, sans-serif;}
+
+
+/*Author-added styles*/
+
+img.ala {background: transparent; margin-right: 4px;}
+
+a.ala {background: #fff;}
+
+a.ala:hover {background: #fcc;}
+
+.topper {background: #ccc; margin-right: 9px;}
+
+.example {margin-top: 10px; margin-bottom: 10px; padding: 10px; background: #ccc; border: 1px solid #666;}
+
+.endcap {background: #ccc; margin-right: 4px;}
+
+-->
+</style>
+
+<script language="javascript" type="text/javascript" src="https://alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="https://alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta name="description" content="CSS Rollovers." />
+
+<meta name="keywords" content="CSS, Rollovers, javascript, cascading, style, sheets, web, standards,  usability, design," />
+</head>
+
+<body bgcolor="#ffffcc" text="#000000">
+
+<div id="wrapper">
+<div id="mast"><a href="https://alistapart.com/"><img src="https://alistapart.com/masthead.gif" alt="A List Apart: for people who make websites" width="430" height="32" border="0" /></a></div>
+<div id="content" style="width: 85%;>
+<p class="superfine">8 March 2002&#8212;Issue No. <a href="https://alistapart.com/issues/140/" title="Permanent location for this issue.">140</a></p>
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/rollovers/"><img class="vs0" src="https://alistapart.com/stories/rollovers/rollovers.gif" width="300" height="150" border="0" alt="CSS Rollovers" title="CSS and DOM&#8211;based Rollover methods." /></a></h1>
+
+<h2 style="margin-bottom: 0; padding-bottom: 0; color: #c90; background: transparent;">Code For Your Pleasure</h2>
+
+
+<pre>&lt;div class="example"&gt;
+&lt;img id="topper1" class="topper" src="https://alistapart.com/stories/
+rollovers/example1_a_2.gif" 
+width="80" height="8" alt="" border="0" 
+/&gt;&lt;img id="topper2" class="topper" src="https://alistapart.com/stories/rollovers/
+example1_b_2.gif" width="80" height="8" alt="" border="0" /&gt;&lt;img 
+id="topper3" class="topper" 
+src="https://alistapart.com/stories/rollovers/example1_c_2.gif" width="80" height="8" alt="" 
+border="0" /&gt;&lt;br /&gt;
+&lt;a href="javascript:;" onmouseover=
+"document.getElementById('example2a2').style.background='#fcc'; 
+document.getElementById('topper1').style.background='black'; 
+document.getElementById('endcap1').style.background='gold';" onmouseout=
+"document.getElementById('example2a2').style.background='#fff'; 
+document.getElementById('topper1').style.background='#ccc'; 
+document.getElementById('endcap1').style.background='#ccc';"&gt;&lt;img id=
+"example2a2" class="ala" style="margin-right: 0; background: #fff;" src="https://alistapart.com/
+stories/rollovers/example1_a.gif" width="80" height="20" alt="" border="0" /&
+gt;&lt;/a&gt;&lt;img id="endcap1" class="endcap" src="https://alistapart.com/stories/rollovers/x.gif" 
+width="5" height="20" alt="" border="0" /&gt;&lt;a href="javascript:;" 
+onmouseover="document.getElementById('example2b2').style.background='#fcc'; 
+document.getElementById('topper2').style.background='black'; 
+document.getElementById('endcap2').style.background='#eee';" onmouseout=
+"document.getElementById('example2b2').style.background='#fff'; 
+document.getElementById('topper2').style.background='#ccc'; 
+document.getElementById('endcap2').style.background='#ccc';"&gt;&lt;img id=
+"example2b2" class="ala" style="margin-right: 0; background: #fff;" src="https://alistapart.com/
+stories/rollovers/example1_b.gif" width="80" height="20" alt="" border="0" /&
+gt;&lt;/a&gt;&lt;img id="endcap2" class="endcap" src="https://alistapart.com/stories/rollovers/x.gif" 
+width="5" height="20" alt="" border="0" /&gt;
+&lt;a href="javascript:;" onmouseover=
+"document.getElementById('example2c2').style.background='#fcc'; 
+document.getElementById('topper3').style.background='black'; 
+document.getElementById('endcap3').style.background='blue';" onmouseout=
+"document.getElementById('example2c2').style.background='#fff'; 
+document.getElementById('topper3').style.background='#ccc'; 
+document.getElementById('endcap3').style.background='#ccc';"&gt;&lt;img id=
+"example2c2" class="ala" style="margin-right: 0; background: #fff;" src="https://alistapart.com/
+stories/rollovers/example1_c.gif" width="80" height="20" alt="" border="0" /&
+gt;&lt;/a&gt;&lt;img id="endcap3" class="endcap" src="https://alistapart.com/stories/rollovers/x.gif" 
+width="5" height="20" alt="" border="0" /&gt;&lt;/div&gt;
+</pre>
+
+</div>
+    </div>
+
+
+
+</body>
+</html>
