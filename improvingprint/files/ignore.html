@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Improving the Printed Page: Sample File (Using Ignore)</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta name="author" content="Aaron Gustafson (aaron at easy-designs dot net)" />
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <meta name="ROBOTS" content="ALL" />
+  <meta name="Copyright" content="(CC) 2005 Easy! Designs, LLC. This page is licensed under a Creative Commons License." />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta name="Rating" content="General" />
+  <script type="text/javascript">
+    // <![CDATA[
+    /*------------------------------------------------------------------------------
+    Function:       footnoteLinks()
+    Author:         Aaron Gustafson (aaron at easy-designs dot net)
+    Creation Date:  8 May 2005
+    Version:        1.3
+    Homepage:       http://www.easy-designs.net/code/footnoteLinks/
+    License:        Creative Commons Attribution-ShareAlike 2.0 License
+                    http://creativecommons.org/licenses/by-sa/2.0/
+    Note:           If you change or improve on this script, please let us know by 
+                    emailing the author (above) with a link to your demo page.
+    ------------------------------------------------------------------------------*/
+    function footnoteLinks(containerID,targetID) {
+      if (!document.getElementById || 
+          !document.getElementsByTagName ||
+          !document.createElement) return false;
+      if (!document.getElementById(containerID) ||
+          !document.getElementById(targetID)) return false;
+      var container = document.getElementById(containerID);
+      var target    = document.getElementById(targetID);
+      var h2        = document.createElement('h2');
+      addClass.apply(h2,['printOnly']);
+      var h2_txt    = document.createTextNode('Links');
+      h2.appendChild(h2_txt);
+      var coll = container.getElementsByTagName('*');
+      var ol   = document.createElement('ol');
+      addClass.apply(ol,['printOnly']);
+      var myArr = [];
+      var thisLink;
+      var num = 1;
+      for (var i=0; i<coll.length; i++) {
+        var thisClass = coll[i].className;
+        if ( (coll[i].getAttribute('href') ||
+              coll[i].getAttribute('cite')) &&
+              (thisClass == '' ||
+               thisClass.indexOf('ignore') == -1)) { 
+          thisLink = coll[i].getAttribute('href') ? coll[i].href : coll[i].cite;
+          var note = document.createElement('sup');
+          addClass.apply(note,['printOnly']);
+          var note_txt;
+          var j = inArray.apply(myArr,[thisLink]);
+          if ( j || j===0 ) {
+            note_txt = document.createTextNode(j+1);
+          } else {
+            var li     = document.createElement('li');
+            var li_txt = document.createTextNode(thisLink);
+            li.appendChild(li_txt);
+            ol.appendChild(li);
+            myArr.push(thisLink);
+            note_txt = document.createTextNode(num);
+            num++;
+          }
+          note.appendChild(note_txt);
+          if (coll[i].tagName.toLowerCase() == 'blockquote') {
+            var lastChild = lastChildContainingText.apply(coll[i]);
+            lastChild.appendChild(note);
+          } else {
+            coll[i].parentNode.insertBefore(note, coll[i].nextSibling);
+          }
+        }
+      }
+      target.appendChild(h2);
+      target.appendChild(ol);
+      addClass.apply(document.getElementsByTagName('html')[0],['noted']);
+      return true;
+    }
+    window.onload = function() {
+      footnoteLinks('content','content');
+    }
+    // ]]>
+  </script>
+  <script type="text/javascript">
+    // <![CDATA[
+    /*------------------------------------------------------------------------------
+    Excerpts from the jsUtilities Library
+    Version:        2.1
+    Homepage:       http://www.easy-designs.net/code/jsUtilities/
+    License:        Creative Commons Attribution-ShareAlike 2.0 License
+                    http://creativecommons.org/licenses/by-sa/2.0/
+    Note:           If you change or improve on this script, please let us know.
+    ------------------------------------------------------------------------------*/
+    if(Array.prototype.push == null) {
+      Array.prototype.push = function(item) {
+        this[this.length] = item;
+        return this.length;
+      };
+    };
+    // ---------------------------------------------------------------------
+    //                  function.apply (if unsupported)
+    //           Courtesy of Aaron Boodman - http://youngpup.net
+    // ---------------------------------------------------------------------
+    if (!Function.prototype.apply) {
+      Function.prototype.apply = function(oScope, args) {
+        var sarg = [];
+        var rtrn, call;
+        if (!oScope) oScope = window;
+        if (!args) args = [];
+        for (var i = 0; i < args.length; i++) {
+          sarg[i] = "args["+i+"]";
+        };
+        call = "oScope.__applyTemp__(" + sarg.join(",") + ");";
+        oScope.__applyTemp__ = this;
+        rtrn = eval(call);
+        oScope.__applyTemp__ = null;
+    	return rtrn;
+      };
+    };
+    function inArray(needle) {
+      for (var i=0; i < this.length; i++) {
+        if (this[i] === needle) {
+          return i;
+        }
+      }
+      return false;
+    }
+    function addClass(theClass) {
+      if (this.className != '') {
+        this.className += ' ' + theClass;
+      } else {
+        this.className = theClass;
+      }
+    }
+    function lastChildContainingText() {
+      var testChild = this.lastChild;
+      var contentCntnr = ['p','li','dd'];
+      while (testChild.nodeType != 1) {
+        testChild = testChild.previousSibling;
+      } 
+      var tag = testChild.tagName.toLowerCase();
+      var tagInArr = inArray.apply(contentCntnr, [tag]);
+      if (!tagInArr && tagInArr!==0) {
+        testChild = lastChildContainingText.apply(testChild);
+      }
+      return testChild;
+    }
+    // ]]>
+  </script>
+  <style type="text/css" media="screen">
+    .printOnly {
+      display: none;
+    }
+  </style>
+  <style type="text/css" media="print">
+    a:link:after,
+    a:visited:after {
+      content: " (" attr(href) ") ";
+      font-size: 90%;
+    }
+    html.noted a:link:after,
+    html.noted a:visited:after {
+      content: '';
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+  <h1>Sample file</h1>
+  <p>Below is a section excerpt from <a href="http://www.easy-designs.net/articles/replaceSelect2">&#60;select&#62; Something New, Part 2</a> containing links, blockquotes and blockquotes containing definition lists. View the print preview to see what our script has done.</p>
+  <p>[Note: random links have been <code>class</code>-ed as &#8220;ignore.&#8221;]</p>
+  
+  <h3>Aside: the <code>&#60;select&#62;</code> and <code>onchange</code></h3>
+  <p>I prefer to do much of my initial development testing in <a href="http://www.mozilla.org/products/firefox/">Firefox</a>, primarily because I find the <a href="http://chrispederick.com/work/firefox/webdeveloper/">Web Developer Toolbar</a>, <a href="https://addons.update.mozilla.org/extensions/moreinfo.php?application=firefox&#38;category=Developer%20Tools&#38;numpg=10&#38;id=271">ColorZilla</a>, JavaScript Console and <a href="http://www.mozilla.org/projects/inspector/"><abbr title="Document Object Model">DOM</abbr> Inspector</a> to be indispensable tools. For the most part, <a class="ignore" href="http://www.mozilla.org/products/firefox/">Firefox</a> (and <a class="ignore" href="http://www.mozilla.org/">Mozilla</a> browsers in general) has great support for web standards and accessibility, but I did come across one oddity that threw me for a loop. It seems <a class="ignore" href="http://www.mozilla.org/">Mozilla</a> has the only family of modern browsers (in my experience, at least) which does not register the <code>onchange</code> event when the keyboard is used to change the value of a <code>&#60;select&#62;</code>. These browsers only register an <code>onchange</code> event when focus is taken away from the <code>&#60;select&#62;</code>. This follows the guidelines in the <a href="http://www.w3.org/TR/html401/"><abbr title="HyperText Markup Language">HTML</abbr> 4.01 <abbr title="specification">spec</abbr></a>:</p>
+
+  <blockquote cite="http://www.w3.org/TR/html401/interact/scripts.html#h-18.2.3">
+    <p>The <code>onchange</code> event occurs when a control loses the input focus and its value has been modified since gaining focus. This attribute applies to the following elements: <code>INPUT</code>, <code>SELECT</code>, and <code>TEXTAREA</code>.</p>
+  </blockquote>
+  <p>but it does not follow the accessibility recommendations set forth in <a href="http://www.w3.org/WAI/UA/TS/html401/Overview.html"><abbr title="User Agent Accessibility Guidelines">UAAG</abbr> 1.0 Test Suite for HTML 4.01</a> in <a href="http://www.w3.org/WAI/UA/TS/html401/cp0102/0102-ONCHANGE-SELECT.html">Checkpoint 1.2, Provision 1</a>:</p>
+
+  <blockquote cite="http://www.w3.org/WAI/UA/TS/html401/cp0102/0102-ONCHANGE-SELECT.html">
+    <dl>
+      <dt>Checkpoint 1.2 Activate event handlers (Priority 1)</dt>
+      <dd>Provision 1: Allow the user to activate, through keyboard input alone, all input device event handlers that are explicitly associated with the element designated by the content focus.
+Using the keyboard or an assistive technology that emulates the keyboard, select a value from the menu to trigger the onChange event.</dd>
+    </dl>
+  </blockquote>
+  <p><a href="http://www.w3.org/WAI/UA/TS/html401/cp0905/0905-ONCHANGE.html">Checkpoint 9.5, Provision 1</a> also touches on a related, though contradictory, premise:</p>
+
+  <blockquote cite="http://www.w3.org/WAI/UA/TS/html401/cp0905/0905-ONCHANGE.html">
+    <dl>
+      <dt>Checkpoint 9.5 No events on focus change (Priority 2)</dt>
+      <dd>Provision 1: Allow configuration so that moving the content focus to or from an enabled element does not automatically activate any explicitly associated event handlers of any event type.</dd>
+    </dl>
+  </blockquote>
+  <p>What&#8217;s a web developer to do? Well, it is my opinion that in the case of a conflict between the <abbr title="specification">spec</abbr> and accessibility, assuming a good case can be made for the accessibility side, accessibility should win.</p>
+
+  <p>That said, we need a way to make <a class="ignore" href="http://www.mozilla.org/">Mozilla</a> browsers behave like the other browsers do, so we can tie into the <code>onchange</code> event of the original <code>&#60;select&#62;</code>. At first, I created a function to run when the <code>onkeydown</code> event took place on the <code>&#60;select&#62;</code>. It checked for certain keys (<kbd>up</kbd>, <kbd>down</kbd>, <kbd>left</kbd>, <kbd>right</kbd>, <kbd>home</kbd>, <kbd>end</kbd>, <abbr lang="la" title="et cetera meaning &#8220;and so forth&#8221;">etc.</abbr>) and then triggered the faux-<code>&#60;select&#62;</code> to change the displayed list item accordingly:</p>
+
+  
+  <pre class="script"><code>function selectReplacement(obj) {
+  ...
+  // when a key is pressed, get its keyCode and perform
+  // the required actions to update the faux-&#60;select&#62;
+  obj.onkeydown = function(event) {
+    // grab the selectedIndex
+    var idx = this.selectedIndex;
+    // decide what do do based on the keyCode
+    switch (event.keyCode) {
+      // move to previous item
+      case 37: // left
+      case 38: // up
+        if (this.prev &#62;= 0) {
+          selectMe(ul.childNodes[idx-1]);
+        }
+        break;
+      // move to next item
+      case 39: // right
+      case 40: // down
+        if (this.next &#60; ul.childNodes.length) {
+          selectMe(ul.childNodes[idx+1]);
+        }
+        break;
+      // go to the beginning of the list
+      case 33: // page up
+      case 36: // home
+        selectMe(ul.firstChild);
+        break;
+      // go to the end of the list
+      case 34: // page down
+      case 35: // end
+        selectMe(ul.lastChild);
+        break;
+    } 
+  };
+  &#8230;
+}</code></pre>
+
+  <p>This worked fine in every browser but Opera, which for some reason kept <a href="http://www.easy-designs.net/articles/replaceSelect2/files/6.html">jumping to every other item, up and down the list</a>. Obviously, this won&#8217;t do, so I began looking for another way to make <a class="ignore" href="http://www.mozilla.org/">Mozilla</a> behave the way we need it to (and, in my opinion, feel it should) and, after banging my head against the wall for nearly a day, I came up with this simple way of equalizing the event models:</p>
+
+  <pre class="script"><code>function selectReplacement(obj) {
+  &#8230;
+  <strong>// equalize the event models of onkeypress and onchange
+  // for the replaced &#60;select&#62;
+  obj.onkeypress = obj.onchange;</strong>
+  &#8230;
+}</code></pre>
+
+  <p>It&#8217;s my experience that the simplest solutions often aren&#8217;t the most obvious and forthcoming ones, at least not in my brain.</p>
+
+  </div>
+</body>
+</html>
