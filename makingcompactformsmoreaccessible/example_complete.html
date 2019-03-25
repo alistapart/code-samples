@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Keeping Compact Forms Accessible: Example #3: Completed form with script and CSS.</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style type="text/css" media="all">
+body {
+	font-size: 1em;
+	font-family: arial,helvetica,sans-serif;
+}
+
+h1 {
+	font-size:1.3em;
+}
+
+form#login {
+	padding:6px;
+	position:relative;
+	border:1px solid grey;
+}
+
+div#username,
+div#password {
+	position:relative;
+	float:left;
+	margin-right:3px;
+}
+
+input#username-field,
+input#password-field {
+	width:10em;
+}
+
+label.overlabel {
+	color:#999;
+}
+label.overlabel-apply {
+	position:absolute;
+	top:3px;
+	left:5px;
+	z-index:1;
+	color:#999;
+}
+</style>
+
+<script type="text/javascript">
+
+function initOverLabels () {
+  if (!document.getElementById) return;  	
+
+  var labels, id, field;
+
+  // Set focus and blur handlers to hide and show 
+  // LABELs with 'overlabel' class names.
+  labels = document.getElementsByTagName('label');
+  for (var i = 0; i < labels.length; i++) {
+	
+    if (labels[i].className == 'overlabel') {
+
+      // Skip labels that do not have a named association
+      // with another field.
+      id = labels[i].htmlFor || labels[i].getAttribute('for');
+      if (!id || !(field = document.getElementById(id))) {
+        continue;
+      }
+
+      // Change the applied class to hover the label 
+      // over the form field.
+      labels[i].className = 'overlabel-apply';
+
+      // Hide any fields having an initial value.
+      if (field.value !== '') {
+        hideLabel(field.getAttribute('id'), true);
+      }
+
+      // Set handlers to show and hide labels.
+      field.onfocus = function () {
+        hideLabel(this.getAttribute('id'), true);
+      };
+      field.onblur = function () {
+        if (this.value === '') {
+          hideLabel(this.getAttribute('id'), false);
+        }
+      };
+
+      // Handle clicks to LABEL elements (for Safari).
+      labels[i].onclick = function () {
+        var id, field;
+        id = this.getAttribute('for');
+        if (id && (field = document.getElementById(id))) {
+          field.focus();
+        }
+      };
+
+    }
+  }
+};
+
+function hideLabel (field_id, hide) {
+  var field_for;
+  var labels = document.getElementsByTagName('label');
+  for (var i = 0; i < labels.length; i++) {
+    field_for = labels[i].htmlFor || labels[i].getAttribute('for');
+    if (field_for == field_id) {
+      labels[i].style.textIndent = (hide) ? '-1000px' : '0px';
+      return true;
+    }
+  }
+}
+
+window.onload = function () {
+  setTimeout(initOverLabels, 50);
+};
+
+</script>
+
+</head>
+<body>
+
+<h1>Keeping Compact Forms Accessible: Example #3: Completed form with script and CSS.</h1>
+
+ <form id="login" action="#" method="post">
+
+  <div id="username">
+   <label for="username-field" class="overlabel">Username</label>
+   <input id="username-field" type="text" name="username" title="Username" value="" tabindex="1" />
+  </div>
+
+  <div id="password">
+   <label for="password-field" class="overlabel">Password</label>
+   <input id="password-field" type="password" name="password" title="Password" value="" tabindex="2" />
+  </div>
+
+  <div id="submit">
+    <input type="submit" name="submit" value="Login" tabindex="3" />
+  </div>
+
+ </form>
+
+</body>
+</html>
