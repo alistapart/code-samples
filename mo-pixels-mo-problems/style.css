@@ -1,0 +1,100 @@
+    @-ms-viewport {
+      width: device-width;
+    }
+
+    body {
+      background: #09083B;
+      background-image: radial-gradient(rgba(255,255,255,.2), rgba(255,255,255,.05) 1px, transparent 10px),
+                        radial-gradient(rgba(255,255,255,.2), rgba(255,255,255,.05) 1px, transparent 10px),
+                        linear-gradient(top left, #09083B, #3C3B6E);
+                        background-size: 200px 200px, 200px 200px, auto auto;
+                        background-position: -25px -25px, 100px 100px, 0 0;
+      color: #fff;
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+
+    }
+
+    h1 {
+      font-size: 1.5em;
+      line-height: 1em;
+      font-weight: 800;
+      padding: 0.5em 0 0;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: #B22234 1px 1px, #B22234 2px 2px, #B22234 3px 3px, #B22234 4px 4px, #B22234 5px 5px, #B22234 6px 6px, #B22234 7px 7px, #B22234 8px 8px, #B22234 9px 9px, #B22234 10px 10px;
+    }
+
+    a { color: #fff; }
+
+    footer {
+      margin-bottom: 3em;
+    }
+
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .hot-or-not {
+      width: 320px;
+      margin: 0 auto 2em;
+      overflow: hidden;
+    }
+
+    .half {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 50%;
+      padding: 0 5px;
+      float: left;
+      margin-bottom: 2em;
+    }
+
+    .picturefill {
+      margin: 0 auto 2em;
+      float: none;
+    }
+
+    pre {
+      box-sizing: border-box;
+      background: #09083B;
+      padding: 1.5em;
+      color: #fff;
+      text-align: left;
+      font-size: 1.2em;
+      overflow-x: scroll;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 2em;
+    }
+
+    @media screen and (min-width: 640px) {
+      h1 {
+        font-size: 3em;
+        text-shadow: #B22234 1px 1px, #B22234 2px 2px, #B22234 3px 3px, #B22234 4px 4px, #B22234 5px 5px, #B22234 6px 6px, #B22234 7px 7px, #B22234 8px 8px, #B22234 9px 9px, #B22234 10px 10px, #B22234 11px 11px, #B22234 12px 12px, #B22234 13px 13px, #B22234 14px 14px, #B22234 15px 15px, #B22234 16px 16px, #B22234 17px 17px, #B22234 18px 18px, #B22234 19px 19px;
+
+      }
+
+      .hot-or-not {
+        width: 640px;
+      }
+      .half {
+        padding: 0 10px;
+      }
+    }
+
+    @media screen and (min-width: 1280px) {
+
+      h1 {
+        font-size: 4em;
+      }
+      .hot-or-not {
+        width: 1280px;
+      }
+      .half {
+        padding: 0 20px;
+      }
+    }
