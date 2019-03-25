@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Responsive Web Design</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" href="http://alistapart.com/css/article.css" type="text/css" media="screen" />
+
+<style type="text/css">
+#main,
+#content,
+#articletext {
+    padding-left: 0;
+    margin: 0 auto;
+}
+#main {
+    float: none;
+    width: auto;
+}
+img {
+    outline: 1px solid #CECECE;
+}
+pre {
+    overflow: auto;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="main">
+<div id="content">
+<div id="articletext">
+
+<h1 class="title">Responsive Web Design</h1>
+
+<h3 class="byline">by <a href="http://www.alistapart.com/authors/m/emarcotte/">Ethan Marcotte</a></h3>
+
+<blockquote>
+   The control which designers know in the print medium, and often desire in the web medium, is simply a function of the limitation of the printed page. We should embrace the fact that the web doesn’t have the same constraints, and design for this flexibility. But first, we must &#8220;accept the ebb and flow of things.&#8221; 
+   <address>
+       <cite>John Allsopp</cite>, &#8220;<a href="http://www.alistapart.com/articles/dao/">A Dao of Web Design</a>&#8221; 
+   </address>
+</blockquote>
+
+<p>The English architect Christopher Wren once quipped that his chosen field &#8220;aims for Eternity,&#8221; and there&#8217;s something appealing about that formula: unlike the web, which often feels like aiming for next week, architecture is a discipline very much defined by its permanence. A building&#8217;s foundation defines its footprint, which defines its frame, which shapes the façade. Each phase of the architectural process is more immutable, more unchanging than the last. Creative decisions quite literally shape a physical space, which define the way that people move through its confines for decades or even centuries.</p>
+
+<p>Working on the web, however, is a wholly different matter. Our work is defined by its transience, often refined or replaced within a year or two. Inconsistent window widths, screen resolutions, user preferences, and our users&#8217; installed fonts are but a few of the intangibles we negotiate around when we publish our work, and over the years we&#8217;ve become incredibly adept at doing so.</p>
+
+<p>But the landscape is shifting, perhaps more quickly than we might like. Mobile browsing is estimated to outpace desktop-based access within <a href="http://www.mediapost.com/publications/?fa=Articles.showArticle&#38;art_aid=120590">three</a> to <a href="http://www.morganstanley.com/institutional/techresearch/mobile_internet_report122009.html">five years</a>. Two of the three dominant video game consoles have web browsers (and <a href="http://www.opera.com/devices/wii/">one of them</a> is quite excellent). We&#8217;re designing for mice and keyboards, for T9 keypads, for handheld game controllers, for touch interfaces. In short, we&#8217;re faced with a greater number of devices, input modes, and browsers than ever before.</p>
+
+<p>In recent years, I&#8217;ve been meeting with more companies that request &#8220;an iPhone website&#8221; as part of their project. It&#8217;s an interesting phrase: at face value, of course, it speaks to mobile WebKit&#8217;s quality as a browser, as well as a powerful business case for thinking beyond the desktop. But as designers, I think we often take comfort in such explicit requirements, as they allow us to compartmentalize the problems before us. We can quarantine the mobile experience on <a href="http://webkit.dailykos.com/">separate</a> <a href="http://m.nytimes.com/">subdomains</a>, spaces distinct and separate from &#8220;the non-iPhone website.&#8221; But what&#8217;s next? An iPad website? An N90 website? Can we really continue to commit to supporting each new user agent with its own bespoke experience? At some point, this starts to feel a zero sum game. But how can we&#8212;and our designs&#8212;adapt?</p>
+
+<h2>A flexible foundation</h2>
+
+<p>Let&#8217;s consider an <a href="ex/ex-site-flexible.html">example design</a>. I&#8217;ve built a simple page for a hypothetical magazine; it&#8217;s a straightforward two-column layout built on a <a href="http://www.alistapart.com/articles/fluidgrids/">fluid grid</a>, with not a few <a href="http://unstoppablerobotninja.com/entry/fluid-images">flexible images</a> peppered throughout. As a long-time proponent of non-fixed layouts, I&#8217;ve long felt they were more &#8220;future proof&#8221; simply because they were layout agnostic. And to a certain extent, that&#8217;s true: flexible designs make no assumptions about a browser window&#8217;s width, and adapt beautifully to devices that have portrait and landscape modes.</p>
+
+<div class="illustration full left">
+   <a href="ex/ex-site-larger.html"><img src="fig/f-img-default-wide.jpg" alt="" /></a>
+
+   Huge images are huge. Our layout, flexible though it is, doesn&#8217;t respond well to changes in resolution or viewport size.
+</div>
+
+<p>But no design, fixed or fluid, scales seamlessly beyond the context for which it was originally intended. The <a href="ex/ex-site-flexible.html">example design</a> scales perfectly well as the browser window resizes, but stress points quickly appear at lower resolutions. When viewed at viewport smaller than 800×600, the illustration behind the logo quickly becomes cropped, navigation text can wrap in an unseemly manner, and the images along the bottom become too compact to appear legible. And it&#8217;s not just the lower end of the resolution spectrum that&#8217;s affected: when viewing the design on a widescreen display, the images quickly grow to unwieldy sizes, crowding out the surrounding context.</p>
+
+<p>In short, our flexible design works well enough in the desktop-centric context for which it was designed, but isn&#8217;t optimized to extend far beyond that.</p>
+
+<h2>Becoming responsive</h2>
+
+<p>Recently, an emergent discipline called &#8220;<dfn>responsive architecture</dfn>&#8221; has begun asking how physical spaces can, well, <em>respond</em> to the presence of people passing through them. Through a combination of embedded robotics and tensile materials, architects are experimenting with <a href="http://robotecture.com/bubble/">art installations</a> and <a href="http://vimeo.com/4661618">wall structures</a> that bend, flex, and expand as crowds approach them. Motion sensors can be paired with climate control systems to adjust a room&#8217;s temperature and ambient lighting as it fills with people. Companies have already produced <a href="http://www.smartglassinternational.com/">&#8220;smart glass technology&#8221; that can automatically become opaque</a> when a room&#8217;s occupants reach a certain density threshold, giving them an additional layer of privacy.</p>
+
+<p>In their book <cite>Interactive Architecture</cite>, Michael Fox and Miles Kemp described this more adaptive approach as &#8220;a multiple-loop system in which one enters into a conversation; <em>a continual and constructive information exchange</em>.&#8221; Emphasis mine, as I think that&#8217;s a subtle yet powerful distinction: rather than creating immutable, unchanging spaces that define a particular experience, they suggest inhabitant and structure can&#8212;and should&#8212;mutually influence each other.</p>
+
+<p>This is our way forward. Rather than tailoring disconnected designs to each of an ever-increasing number of web devices, we can treat them as facets of the same experience. We can design for an optimal viewing experience, but embed standards-based technologies into our designs to make them not only more flexible, but more adaptive to the media that renders them. In short, we need to practice <em>responsive web design</em>. But how?</p>
+
+<h2>Meet the media query</h2>
+
+<p>Since the days of CSS 2.1, our style sheets have enjoyed some measure of device awareness through <a href="http://www.w3.org/TR/CSS21/media.html"><dfn>media types</dfn></a>. If you&#8217;ve ever written <a href="http://www.alistapart.com/articles/goingtoprint/">a print style sheet</a>, you&#8217;re already familiar with the concept:</p>
+
+<pre><code>&lt;link rel="stylesheet" type="text/css" href="core.css" »
+ media="screen" /&gt;
+&lt;link rel="stylesheet" type="text/css" href="print.css" »
+ media="print" /&gt;
+</code></pre>
+
+<p>In the hopes that we&#8217;d be designing more than neatly formatted page printouts, the CSS specification supplied us with a bevy of <a href="http://www.w3.org/TR/CSS21/media.html#media-types">acceptable media types</a>, each designed to target a specific class of web-ready device. But most browsers and devices never really embraced the spirit of the spec, leaving many media types <a href="http://www.alistapart.com/articles/return-of-the-mobile-stylesheet">implemented imperfectly</a>, or altogether&nbsp;ignored.</p>
+
+<p>Thankfully, the <abbr title="World Wide Web Consortium">W3C</abbr> created <a href="http://www.w3.org/TR/css3-mediaqueries/"><dfn>media queries</dfn></a> as part of the <abbr title="Cascading Style Sheets level 3">CSS3</abbr> specification, improving upon the promise of media types. A media query allow us to target not only certain device classes, but to actually inspect the physical characteristics of the device rendering our work. For example, following the recent rise of mobile WebKit, media queries became a popular client-side technique for delivering a tailored style sheet to the iPhone, Android phones, and their ilk. To do so, we could incorporate a query into a <code>link</code>ed style sheet&#8217;s <code>media</code> attribute:</p>
+
+<pre><code>&lt;link rel="stylesheet" type="text/css" »
+ media="screen and (device-max-width: 480px)" »
+ href="shetland.css" /&gt;</code></pre>
+
+<p>The query contains two components:</p>
+
+<ol>
+<li>a media type (<code>screen</code>),</li>
+	<li>the actual query enclosed within parentheses, containing a particular <dfn>media feature</dfn> (<code>device-max-width</code>) to inspect, followed by the target value (<code>480px</code>).</li>
+</ol>
+
+<p>In plain English, we&#8217;re asking the device if its horizontal resolution (<code>device-max-width</code>) is equal to or less than <code>480px</code>. If the test passes&#8212;in other words, if viewing our work on a small-screen device like the iPhone&#8212;then the device will load <code>shetland.css</code>. Otherwise, the <code>link</code> is ignored altogether.</p>
+
+<p>Designers have experimented with resolution-aware layouts in the past, mostly relying on JS(JavaScript)-driven solutions like <a href="http://www.themaninblue.com/experiment/ResolutionLayout/">Cameron Adams&#8217; excellent script</a>. But the media query specification provides <a href="http://www.w3.org/TR/css3-mediaqueries/#media1">a host of media features</a> that extends far beyond screen resolution, vastly widening the scope of what we can test for with our queries. What&#8217;s more, you can test multiple property values in a single query by chaining them together with the <code>and</code> keyword:</p>
+
+<pre><code>&lt;link rel="stylesheet" type="text/css" »
+ media="screen and (device-max-width: 480px) and (resolution: 163dpi)" »
+ href="shetland.css" /&gt;</code></pre>
+
+<p>Furthermore, we&#8217;re not limited to incorporating media queries in our <code>link</code>s. We can include them in our <abbr title="Cascading Style Sheets">CSS</abbr> either as part of a <code>@media</code> rule:</p>
+
+<pre><code>@media screen and (device-max-width: 480px) {
+ .column {
+   float: none;
+ }
+}</code></pre>
+
+<p>Or as part of an <code>@import</code> directive:</p>
+
+<pre><code>@import url("shetland.css") screen and (device-max-width: 480px);</code></pre>
+
+<p>But in each case, the effect is the same: if the device passes the test put forth by our media query, the relevant <abbr title="Cascading Style Sheet">CSS</abbr> is applied to our markup. Media queries are, in short, <a href="http://msdn.microsoft.com/en-us/library/ms537512(VS.85).aspx">conditional comments</a> for the rest of us. Rather than targeting a specific version of a specific browser, we can surgically correct issues in our layout as it scales beyond its initial, ideal resolution.</p>
+
+<h2>Adapt, respond, and overcome</h2>
+
+<p>Let&#8217;s turn our attention to the images at the base of our page. In their default layout, the relevant <abbr title="Cascading Style Sheets">CSS</abbr> currently looks like this:</p>
+
+<pre><code>.figure {
+ float: left;
+ margin: 0 3.317535545023696682% 1.5em 0;   /* 21px / 633px */
+ width: 31.121642969984202211%;             /* 197px / 633px */
+}
+
+li#f-mycroft,
+li#f-winter {
+ margin-right: 0;
+}
+</code></pre>
+
+<p>I&#8217;ve omitted a number of typographic properties to focus on the layout: each <code>.figure</code> element is sized at roughly one third of the containing column, with the right-hand margin zeroed out for the two pictures at the end of each row (<code>li#f-mycroft, li#f-winter</code>). And this works fairly well, at until the viewport is either noticeably smaller or wider than our original design. But with media queries, we can apply resolution-specific spotfixes, adapting our design to better respond to changes in the viewport.</p>
+
+<p>First of all, let&#8217;s linearize our page once the viewport falls below a certain resolution threshold&#8212;say, <code>600px</code>. So at the bottom of our style sheet, let&#8217;s create a new <code>@media</code> block, like so:</p>
+
+<pre><code>@media screen and (max-width: 600px) {
+ .mast,
+ .intro,
+ .main,
+ .footer {
+   float: none;
+   width: auto;
+ }
+}</code></pre>
+
+<p>If you view <a href="ex/ex-site-linearize.html">our updated page</a> in a modern desktop browser and reduce the size of your window below <code>600px</code>, our media query will disable the floats on the design&#8217;s major elements, stacking each block atop each other in the document flow. So our miniaturized design is shaping up nicely, but the images still don&#8217;t scale down that intelligently. But if we introduce another media query, we can alter their layout accordingly:</p>
+
+<pre><code>@media screen and (max-width: 400px) {
+ .figure,
+ li#f-mycroft {
+   margin-right: 3.317535545023696682%;    /* 21px / 633px */
+   width: 48.341232227488151658%;          /* 306px / 633px */
+ }
+
+ li#f-watson,
+ li#f-moriarty {
+   margin-right: 0;
+ }
+}</code></pre>
+
+<p>Don&#8217;t mind the unsightly percentages; we&#8217;re simply recalculating the widths of the <a href="http://www.alistapart.com/articles/fluidgrids/">fluid grid</a> to account for the newly linearized layout. But in short, we&#8217;re <a href="ex/ex-site-mini.html">moving from a three-column layout to a two-column layout</a> when the viewport&#8217;s width falls below <code>400px</code>, making the images more prominent.</p>
+
+<div class="illustration full left">
+<a href="ex/ex-site-mini.html"><img src="fig/f-img-narrow.jpg" alt="" /></a>
+
+Our figures can responsively change our images&#8217; layout <a href="ex/ex-site-mini.html">to better suit smaller displays</a>.
+</div>
+
+<p>We can actually take the same approach for widescreen displays, too. For larger resolutions, we could adopt a six-across treatment for our images, placing them <a href="ex/ex-site-larger.html">all in the same row</a>:</p>
+
+<pre><code>@media screen and (min-width: 1300px) {
+ .figure,
+ li#f-mycroft {
+   margin-right: 3.317535545023696682%;    /* 21px / 633px */
+   width: 13.902053712480252764%;          /* 88px / 633px */
+ }
+}</code></pre>
+
+<p>Now our images are working beautifully <a href="ex/ex-site-larger.html">at both ends of the resolution spectrum</a>, optimizing their layout to changes in window widths and device resolution alike.</p>
+
+<div class="illustration full left">
+<a href="ex/ex-site-larger.html"><img src="fig/f-img-widescreen.jpg" alt="" /></a>
+
+By specifying a wider <code>max-width</code> in a new media query, we can shift our images into <a href="ex/ex-site-larger.html">a single row layout</a>.
+</div>
+
+<p>But this is only the beginning. Working from the media queries we&#8217;ve embedded in our CSS, we can alter much more than the placement of a few images: we can <a href="ex/ex-site-final.html">introduce new, alternate layouts</a> tuned to each resolution range, perhaps making the navigation more prominent in a widescreen view, or repositioning it above the logo on smaller displays.</p>
+
+<div class="illustration full left">
+<a href="ex/ex-site-larger.html"><img src="fig/f-nav-narrow.jpg" alt="" /></a>
+
+Alternate, media query-driven layouts allow us not only to linearize our content, but to <a href="ex/ex-site-larger.html">optimize its presentation</a>.
+</div>
+
+<p>But a responsive design isn&#8217;t limited to layout changes. Media queries allow us to practice some incredibly precise fine-tuning as our pages reshape themselves: we can increase the target area on links for smaller screens, better complying with <a href="http://en.wikipedia.org/wiki/Fitts'_law">Fitts&#8217; Law</a> on touch devices; selectively show or hide elements that might enhance a page&#8217;s navigation; we can even practice <a href="ex/ex-article.html">responsive typesetting</a> to gradually alter the size and leading of our text, optimizing the reading experience for the display providing it.</p>
+
+<h3>A few technical notes</h3>
+
+<p>It should be noted that media queries enjoy incredibly robust support among modern browsers. Desktop browsers such as Safari 3+, Chrome, Firefox 3.5+, and Opera 7+ all natively parse media queries, as do more recent mobile browsers such as Opera Mobile and mobile WebKit. Of course, older versions of those desktop browsers don&#8217;t support media queries. And while Microsoft has committed to <a href="http://ie.microsoft.com/testdrive/HTML5/85CSS3_MediaQueries/Default.html" title="Internet Explorer version 9">media query support in IE9</a>, Internet Explorer currently doesn&#8217;t offer a native implementation.</p>
+
+<p>However, if you&#8217;re interested in implementing legacy browser support for media queries, there&#8217;s a JavaScript-tinted silver lining:</p>
+
+<ul>
+<li><a href="http://plugins.jquery.com/project/MediaQueries">A jQuery plugin</a> from 2007 offers somewhat limited media query support, implementing only the <code>min-width</code> and <code>max-width</code> media properties when attached to separate <code>link</code> elements.</li>
+	<li>More recently, <a href="http://code.google.com/p/css3-mediaqueries-js/">css3-mediaqueries.js</a> was released, a library that promises &#8220;to make IE 5+, Firefox 1+ and Safari 2 transparently parse, test and apply CSS3 Media Queries&#8221; when included via <code>@media</code> blocks. While very much a 1.0 release, I&#8217;ve personally found it to be quite robust, and I plan to watch its development.</li>
+</ul>
+
+<p>But if using JavaScript doesn&#8217;t appeal, that&#8217;s perfectly understandable. However, that strengthens the case for building your layout atop a <a href="ex/ex-site-flexible.html">flexible grid</a>, ensuring your design enjoys some measure of flexibility in media query-blind browsers and devices.</p>
+
+<h2>The way forward</h2>
+
+<p>Fluid grids, flexible images, and media queries are the three technical ingredients for responsive web design, but it also requires a different way of thinking. Rather than quarantining our content into disparate, device-specific experiences, we can use media queries to progressively enhance our work within different viewing contexts. That&#8217;s not to say there isn&#8217;t a business case for separate sites geared toward specific devices; for example, if the user goals for your mobile site are more limited in scope than its desktop equivalent, then serving different content to each might be the best approach.</p>
+
+<p>But that kind of design doesn&#8217;t need to be our default, and media queries ensure that it doesn&#8217;t have to be. Now more than ever, we&#8217;re designing work meant to be viewed along a gradient of different experiences, and responsive web design offers us a way out. We can, as <a href="http://www.alistapart.com/articles/dao/">John Allsopp urged us a decade ago</a>, finally design for &#8220;the ebb and flow of things.&#8221; <img src="http://www.alistapart.com/pix/eoai.gif" id="eoai" alt="" /></p>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

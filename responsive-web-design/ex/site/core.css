@@ -1,0 +1,90 @@
+.section:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td { margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent; }
+body { line-height:1; }
+ol,ul { list-style:none; }
+blockquote,q { quotes:none; }
+blockquote:before,blockquote:after,q:before,q:after { content:'';content:none; }
+ins { text-decoration:none; }
+del { text-decoration:line-through; }
+table { border-collapse:collapse;border-spacing:0; }
+
+body {
+	background: #CDC7C1 url("cream.png") -50% 0;
+	color: #292929;
+	color: rgba(0, 0, 0, 0.82);
+	font: normal 100%/1.6 Cambria, Georgia, serif;
+	-webkit-text-shadow: 0 1px 0 #e6e5e4;
+	-moz-text-shadow: 0 1px 0 #e6e5e4;
+	text-shadow: 0 1px 0 #E6E5E4;
+	-webkit-text-size-adjust: none;
+}
+a {
+	color: #890101;
+	text-decoration: none;
+	-moz-transition: 0.2s color linear;
+	-webkit-transition: 0.2s color linear;
+	transition: 0.2s color linear;
+}
+a:hover {
+	color: #DF3030;
+}
+h1 {
+	background: url("ornament.png") no-repeat 50% 100%;
+	color: #1E1B14;
+	color: rgba(30, 27, 20, 0.85);
+	font: small-caps bold 0.75em Constantia, Palatino, Georgia, serif;	/* 12px / 16px */
+	letter-spacing: 0.2em;
+	padding: 2em 0.5em 3.5em;
+	text-align: center;
+	text-transform: lowercase;
+}
+h1 a,
+h1 i {
+	display: block;
+	font-variant: normal;
+	font-weight: normal;
+	letter-spacing: 0;
+}
+h1 a {
+	font-size: 3em;		/* 28px / 12px */
+	text-transform: none;
+}
+h1 i {
+	margin-bottom: 0.2em;
+}
+p {
+	margin: 0 0 0.2em;
+}
+p+p {
+	text-indent: 1.6em;
+}
+#site {
+	background: #FFF;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	-moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+	margin: 3em auto;
+	width: 85%;
+}
+.page {
+	padding: 1em;
+}
+.lead {
+	font-style: normal;
+	font-weight: normal;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	letter-spacing: 0.1em;
+}
