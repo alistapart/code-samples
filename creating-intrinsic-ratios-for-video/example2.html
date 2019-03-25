@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>How to create a box with an intrinsic ratio</title>
+<style type="text/css">
+.wrapper-with-intrinsic-ratio {
+	position: relative;
+	padding-bottom: 20%; /* bottom vs. top for IE5 */
+	height: 0; /* triggers hasLayout in IE5.0+ */
+}
+.element-to-stretch {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: teal;	
+}
+</style>
+</head>
+<body>
+<h2>A box with an intrinsic ratio</h2>
+<p>To create a box with an intrinsic ratio, all we need to do is apply top or bottom padding to a <code>div</code>.</p>
+<p>No matter the width of the viewport, the teal box below should keep its aspect ratio (5:1).</p>
+
+<div class="wrapper-with-intrinsic-ratio">
+  <div class="element-to-stretch"></div>
+</div>
+<h2>CSS</h2>
+<pre>
+.wrapper-with-intrinsic-ratio {
+	position: relative;
+	padding-bottom: 20%;
+	height: 0;
+}
+.element-to-stretch {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: teal;	
+}</pre>
+
+<h2>Markup</h2>
+<pre>
+&lt;div class=&quot;wrapper-with-intrinsic-ratio&quot;&gt;
+  &lt;div class=&quot;element-to-stretch&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</body>
+</html>

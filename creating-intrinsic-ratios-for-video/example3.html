@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dynamic resizing of videos</title>
+<style type="text/css">
+#containingBlock {
+	width: 50%;
+}
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* the ratio: 9/16 = 0.5625 */
+	padding-top: 25px;      /* the height of the chrome - we use padding vs. height to avoid issues with the box model */
+	height: 0;
+}
+/* FF needs "embed" here */
+.videoWrapper object,
+.videoWrapper embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+<body>
+  <h2>YouTube widescreen video</h2>
+  <p>Just like the teal box in the previous example, the video below should keep its format regardless of the viewport width.</p>
+<div id="containingBlock">
+  <div class="videoWrapper">
+    <object width="480" height="295">
+      <param name="movie" value="http://www.youtube.com/v/mDRYnaajUcY&hl=en&fs=1&showinfo=0"></param>
+      <param name="allowFullScreen" value="true"></param>
+      <param name="allowscriptaccess" value="always"></param>
+      <embed src="http://www.youtube.com/v/mDRYnaajUcY&hl=en&fs=1&showinfo=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="295"></embed>
+    </object>
+  </div>
+  <h2>CSS</h2>
+  <pre>#containingBlock {
+  width:50%;
+}
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper object,
+.videoWrapper embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+  </pre>
+  <h2>Markup</h2>
+  <pre>
+&lt;div id=&quot;containingBlock&quot;&gt;
+  &lt;div class=&quot;videoWrapper&quot;&gt;
+    &lt;object width=&quot;480&quot; height=&quot;295&quot;&gt;
+      &lt;param name=&quot;movie&quot; value=&quot;http://www.youtube.com/v/mDRYnaajUcY&amp;hl=en&amp;fs=1&quot;&gt;&lt;/param&gt;
+      &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot;&gt;&lt;/param&gt;
+      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot;&gt;&lt;/param&gt;
+      &lt;embed src=&quot;http://www.youtube.com/v/mDRYnaajUcY&amp;hl=en&amp;fs=1&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; width=&quot;480&quot; height=&quot;295&quot;&gt;&lt;/embed&gt;
+    &lt;/object&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+</body>
+</html>

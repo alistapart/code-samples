@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Images are replaced elements with intrinsic dimensions</title>
+<style type="text/css">
+img {width: 50%;}
+</style>
+</head>
+
+<body>
+<h2>Image styled with a 50% width</h2>
+<div>
+<p>Images have an intrinsic width and an intrinsic height from which we can determine an intrinsic ratio. Width and height may be scaled by the user agent if the value of the <code>width</code> property is different than &#8220;<code>auto</code>.&#8221;</p>
+
+<p>No matter the width of the viewport, the image below should grow or shrink while maintaining the same format.</p>
+
+<img src="YouTube_image.jpg" alt="Screenshot of a YouTube video" />
+</div>
+
+<h2>CSS</h2>
+<pre>
+img {width: 50%;}
+</pre>
+
+<h2>Markup</h2>
+<pre>&lt;img src=&quot;video.jpg&quot; alt=&quot;Screenshot of a YouTube video&quot; /&gt;
+</pre>
+
+</body>
+</html>

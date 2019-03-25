@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Solution for Internet Explorer</title>
+<style type="text/css">
+#containingBlock {
+	width:50%;
+}
+.videoWrapper {
+	position: relative;
+	padding-top: 25px; /* we do not use height to avoid issues related to the box model */
+	padding-bottom: 56.25%;
+	height: 0; /* IE 5 and 6 would not reveaL the video */
+	/* no need to set a 100% width (which also avoids issues when IE expands the box) */
+}
+* html .videoWrapper {
+	margin-bottom: 45px; /* because IE 5 removes the value of padding-top from the flow */
+	margin-bot\tom: 0; /* reset for IE 6 */
+}
+.videoWrapper div,
+.videoWrapper embed, 
+.videoWrapper object {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+</style>
+</head>
+<body>
+  <h2>Making this solution &#8220;IE-compatible&#8221;</h2>
+  <p>An extra wrapper is all we need to make this technique work in Internet Explorer versions 5, 6, and 7. (IE 8&#8212;as with other browsers&#8212;does not need this.)</p>
+
+<div id="containingBlock">
+<div class="videoWrapper">  
+<div>
+    <object width="480" height="295">
+      <param name="movie" value="http://www.youtube.com/v/mDRYnaajUcY&hl=en&fs=1&showinfo=0"></param>
+      <param name="allowFullScreen" value="true"></param>
+      <param name="allowscriptaccess" value="always"></param>
+      <embed src="http://www.youtube.com/v/mDRYnaajUcY&hl=en&fs=1&showinfo=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="295"></embed>
+    </object>
+</div>
+</div>
+<h2>CSS</h2>
+<pre>
+#containingBlock {
+	width: 50%;
+}
+.videoWrapper {
+	position: relative;
+	padding-top: 25px;
+	padding-bottom: 56.25%;
+	height: 0;
+}
+* html .videoWrapper {
+	margin-bottom: 45px;
+	margin-bot\tom: 0;
+}
+.videoWrapper div,
+.videoWrapper embed, 
+.videoWrapper object {
+  position:absolute;
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+}
+</pre>
+<h2>Markup</h2>
+<pre>&lt;div id=&quot;containingBlock&quot;&gt;
+&lt;div class=&quot;videoWrapper&quot;&gt;
+  &lt;div&gt;
+    &lt;object width=&quot;480&quot; height=&quot;295&quot;&gt;
+      &lt;param name=&quot;movie&quot; value=&quot;http://www.youtube.com/v/mDRYnaajUcY&amp;hl=en&amp;fs=1&quot;&gt;&lt;/param&gt;
+      &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot;&gt;&lt;/param&gt;
+      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot;&gt;&lt;/param&gt;
+      &lt;embed src=&quot;http://www.youtube.com/v/mDRYnaajUcY&amp;hl=en&amp;fs=1&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; width=&quot;480&quot; height=&quot;295&quot;&gt;&lt;/embed&gt;
+    &lt;/object&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Standards compliance</title>
+<style type="text/css">
+#containingBlock {
+	width: 50%;
+}
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+}
+* html .videoWrapper {
+  margin-bottom: 45px;
+  margin-bot\tom: 0;
+}
+.videoWrapper div,
+.videoWrapper object {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+<body>
+  <h2>The single-object method</h2>
+  <p>The single-object method encodes the ampersands in the <abbr title="Uniform resource Locator">URL</abbr>s using a solution inspired by the <a href="http://www.alistapart.com/articles/flashembedcagematch/">&#8220;nested-objects&#8221;</a> method (but reduced to one single object).</p>
+<div id="containingBlock">  
+<div class="videoWrapper">
+  <div>  
+    <!--[if IE]>
+  	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="480" height="295">
+    <param name="movie" value="http://www.youtube.com/v/mDRYnaajUcY&amp;hl=en&amp;fs=1&amp;showinfo=0" />
+    <![endif]-->
+    <!--[if !IE]>-->
+    <object type="application/x-shockwave-flash" data="http://www.youtube.com/v/mDRYnaajUcY&amp;hl=en&amp;fs=1&amp;showinfo=0" width="480" height="295">
+    <!--<![endif]-->
+    <param name="quality" value="high" />
+    <param name="wmode" value="opaque" />
+    <p><a href="http://www.adobe.com/go/getflashplayer"><img alt="Get Adobe Flash player" src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"/></a></p>
+  </object>
+  </div>
+</div> 
+<h2>CSS</h2>
+  <pre><code>#containingBlock {
+  width:50%;
+}
+.videoWrapper {
+  position: relative;
+  padding-bottom:56.25%;
+  padding-top:25px;
+  height:0;
+}
+* html .videoWrapper {
+  margin-bottom: 45px;
+  margin-bot\tom: 0;
+}
+.videoWrapper div,
+.videoWrapper object {
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+}</code>
+  </pre>
+  <h2>Markup</h2>
+<pre><code>&lt;div id=&quot;containingBlock&quot;&gt;
+  &lt;div class=&quot;videoWrapper&quot;&gt;
+    &lt;div&gt;
+      &lt;!--[if IE]&gt;
+      &lt;object classid=&quot;clsid:D27CDB6E-AE6D-11cf-96B8-444553540000&quot; width=&quot;480&quot; height=&quot;295&quot;&gt;
+        &lt;param name=&quot;movie&quot; value=&quot;http://www.youtube.com/v/mDRYnaajUcY&amp;amp;hl=en&amp;amp;fs=1&amp;amp;showinfo=0&quot; /&gt;
+      &lt;![endif]--&gt;
+      &lt;!--[if !IE]&gt;--&gt;
+      &lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;http://www.youtube.com/v/mDRYnaajUcY&amp;amp;hl=en&amp;amp;fs=1&amp;amp;showinfo=0&quot; width=&quot;480&quot; height=&quot;295&quot;&gt;
+      &lt;!--&lt;![endif]--&gt;
+        &lt;param name=&quot;quality&quot; value=&quot;high&quot; /&gt;
+        &lt;param name=&quot;wmode&quot; value=&quot;opaque&quot; /&gt;
+        &lt;p&gt;&lt;a href=&quot;http://www.adobe.com/go/getflashplayer&quot;&gt;&lt;img alt=&quot;Get Adobe Flash player&quot; src=&quot;http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
+      &lt;/object&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/div&gt;</code></pre>
+</div>
+</body>
+</html>

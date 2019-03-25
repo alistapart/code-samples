@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>A more versatile approach</title>
+<style type="text/css">
+#containingBlock {
+	width: 50%;
+}
+.videoWrapper {
+	position: relative;
+	height: 0;
+}
+* html .videoWrapper {
+	margin-bottom: 45px;
+	margin-bot\tom: 0; 
+}
+.videoWrapper div,
+.videoWrapper embed, 
+.videoWrapper object {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+/* ratios */
+.wideScreen {padding-bottom: 56.25%;}
+.fourBYthree {padding-bottom: 75%;}
+/* chromes */
+.chrome_25 {padding-top: 25px;}
+.chrome_35 {padding-top: 35px;}
+</style>
+</head>
+<body>
+  <h2>Videos from different vendors</h2>
+  <p>By applying specific classes to the wrapper, we can style videos with various ratios and chromes.</p>
+
+<div id="containingBlock">
+  <h2>YouTube video</h2>
+  <dl>
+      <dt>Ratio:</dt>
+      <dd>16:9</dd>
+      <dt>Chrome:</dt>
+      <dd>25px</dd>
+  </dl>    
+<div class="videoWrapper wideScreen chrome_25">  
+<div>
+    <object width="480" height="295">
+      <param name="movie" value="http://www.youtube.com/v/mDRYnaajUcY&hl=en&fs=1&showinfo=0"></param>
+      <param name="allowFullScreen" value="true"></param>
+      <param name="allowscriptaccess" value="always"></param>
+      <embed src="http://www.youtube.com/v/mDRYnaajUcY&hl=en&fs=1&showinfo=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="295"></embed>
+    </object>
+</div>
+</div>
+<h2>Yahoo! video</h2>
+<dl>
+    <dt>Ratio:</dt>
+    <dd>4:3</dd>
+    <dt>Chrome:</dt>
+    <dd>35px</dd>
+</dl>    
+<div class="videoWrapper fourBYthree chrome_35">  
+<div>
+<embed src="http://d.yimg.com/cosmos.bcst.yahoo.com/up/fop/embedflv/swf/fop.swf?shareEnable=1&id=11795504&autoStart=0&infoEnable=0&shareEnable=0&prepanelEnable=1&carouselEnable=0&postpanelEnable=1" width="400" height="300" type="application/x-shockwave-flash"></embed>
+</div>
+</div>
+<h2>CSS</h2>
+<pre>#containingBlock {width:50%;}
+.videoWrapper {
+  position:relative;
+  height: 0;
+}
+* html .videoWrapper {
+  margin-bottom: 45px;
+  margin-bot\tom: 0;
+}
+.videoWrapper div,
+.videoWrapper embed, 
+.videoWrapper object {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.wideScreen {padding-bottom:56.25%;}
+.fourBYthree {padding-bottom:75%;}
+.chrome_25 {padding-top:25px;}
+.chrome_35 {padding-top:35px;}</pre>
+<h2>Markup</h2>
+<pre>
+&lt;div id=&quot;containingBlock&quot;&gt;
+  ...
+  &lt;div class=&quot;videoWrapper wideScreen chrome_25&quot;&gt;
+    &lt;div&gt;
+      &lt;object width=&quot;480&quot; height=&quot;295&quot;&gt;
+        &lt;param name=&quot;movie&quot; value=&quot;http://www.youtube.com/v/mDRYnaajUcY&amp;hl=en&amp;fs=1&quot;&gt;&lt;/param&gt;
+        &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot;&gt;&lt;/param&gt;
+        &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot;&gt;&lt;/param&gt;
+        &lt;embed src=&quot;http://www.youtube.com/v/mDRYnaajUcY&amp;hl=en&amp;fs=1&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; width=&quot;480&quot; height=&quot;295&quot;&gt;&lt;/embed&gt;
+      &lt;/object&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...      
+  &lt;div class=&quot;videoWrapper fourBYthree chrome_35&quot;&gt;
+    &lt;div&gt;
+      &lt;embed src=http://d.yimg.com/cosmos.bcst.yahoo.com/up/fop/embedflv/swf/fop.swf?shareEnable=1&amp;id=11795504&amp;autoStart=0&amp;infoEnable=0&amp;shareEnable=0&amp;prepanelEnable=1&amp;carouselEnable=0&amp;postpanelEnable=1 width=400 height=300 type=application/x-shockwave-flash&gt;&lt;/embed&gt;    
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/div&gt;
+</pre>
+</div>
+</body>
+</html>
