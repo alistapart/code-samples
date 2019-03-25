@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Method 4: Wrapping a single list with XHTML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css"> @import "demo.css"; </style>
+
+<style type="text/css"><!--
+
+/*==============================
+style the list
+==============================*/
+/* separate the list from surrounding elements */
+ol
+{
+	margin: 0 0 1em 2em;
+	padding: 0;
+}
+ol li
+{
+	/* Stipulate the height of each item so that 
+	vertical return = items * height */
+	line-height: 1.2em;
+
+	/* Clear the default margins & padding 
+	so we can style the list from scratch */
+	margin: 0;
+	padding: 0;
+}
+
+/* If li position is left static, Internet 
+Explorer disables hyperlinks in the list 
+in all but the final column.
+
+This rule will be processed only by 
+Internet Explorer because only IE believes 
+that there's a level above HTML: */
+
+* html ol li
+{
+	position: relative;
+}
+  
+/* set the horizontal positions of the columns */
+ol li.column1 { margin-left: 0em; }
+ol li.column2 { margin-left: 10em; }
+ol li.column3 { margin-left: 20em; }
+
+/* Bring the first item of each column back up to the level of item 1.
+	Vertical return = items * height.
+	Here, 5 items * 1.2em line-height = 6em */
+li.reset
+{
+	margin-top: -6em;
+}
+
+/* anchor styling */
+ol li a
+{
+	display: block;
+	width: 7em;
+	text-decoration: none;
+}
+ol li a:hover
+{
+	color: #FFF; /* white */
+	background-color: #A52A2A; /* brown */
+}
+--></style>
+
+</head>
+<body>
+
+<p><a class="backlink" href="https://alistapart.com/articles/multicolumnlists/#method4">&laquo; back to <em>CSS Swag: Styling Multiple-Column Lists</em></a></p>
+
+<h1>Method 4: Wrapping a single list with XHTML</h1>
+
+<ol
+	><li class="column1"><a href="#">Aloe</a></li
+	><li class="column1"><a href="#">Bergamot</a></li
+	><li class="column1"><a href="#">Calendula</a></li
+	><li class="column1"><a href="#">Damiana</a></li
+	><li class="column1"><a href="#">Elderflower</a></li
+
+	><li class="column2 reset"><a href="#">Feverfew</a></li
+	><li class="column2"><a href="#">Ginger</a></li
+	><li class="column2"><a href="#">Hops</a></li
+	><li class="column2"><a href="#">Iris</a></li
+	><li class="column2"><a href="#">Juniper</a></li
+
+	><li class="column3 reset"><a href="#">Kava kava</a></li
+	><li class="column3"><a href="#">Lavender</a></li
+	><li class="column3"><a href="#">Marjoram</a></li
+	><li class="column3"><a href="#">Nutmeg</a></li
+	><li class="column3"><a href="#">Oregano</a></li
+	><li class="column3"><a href="#">Pennyroyal</a></li
+></ol>
+
+<h2>The above markup should render like this:</h2>
+<div>
+	<img src="figure4.gif" alt="Method 4: Wrapping a single list with XHTML" />
+</div>
+
+<div class="notes">
+<h2>Notes:</h2>
+<ul>
+	<li>In this technique, two sets of information &#8212; which items belong to each column and which items begin a new column &#8212; are established in the XHTML markup although these are arguably matters of presentation, not content.</li>
+	<li>When items are added to or removed from the list, the class names must be tweaked to keep items in the proper columns, and the reset class must be re-applied to the first item of each column.</li>
+	<li>When the number of items per column changes, the CSS reset rule must be changed accordingly.</li>
+</ul>
+</div><!-- .notes -->
+
+<div class="block">
+<h2>XHTML:</h2>
+<pre>
+&lt;ol
+  &gt;&lt;li class="column1"&gt;&lt;a href="#"&gt;Aloe&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column1"&gt;&lt;a href="#"&gt;Bergamot&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column1"&gt;&lt;a href="#"&gt;Calendula&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column1"&gt;&lt;a href="#"&gt;Damiana&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column1"&gt;&lt;a href="#"&gt;Elderflower&lt;/a&gt;&lt;/li
+
+  &gt;&lt;li class="column2 reset"&gt;&lt;a href="#"&gt;Feverfew&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column2"&gt;&lt;a href="#"&gt;Ginger&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column2"&gt;&lt;a href="#"&gt;Hops&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column2"&gt;&lt;a href="#"&gt;Iris&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column2"&gt;&lt;a href="#"&gt;Juniper&lt;/a&gt;&lt;/li
+
+  &gt;&lt;li class="column3 reset"&gt;&lt;a href="#"&gt;Kava kava&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column3"&gt;&lt;a href="#"&gt;Lavender&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column3"&gt;&lt;a href="#"&gt;Marjoram&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column3"&gt;&lt;a href="#"&gt;Nutmeg&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column3"&gt;&lt;a href="#"&gt;Oregano&lt;/a&gt;&lt;/li
+  &gt;&lt;li class="column3"&gt;&lt;a href="#"&gt;Pennyroyal&lt;/a&gt;&lt;/li
+&gt;&lt;/ol&gt;
+</pre>
+</div><!-- .block -->
+
+<div>
+<div class="block">
+<h2>CSS:</h2>
+<pre>
+/* separate the list from surrounding elements */
+ol
+{
+  margin: 0 0 1em 2em;
+  padding: 0;
+}
+
+ol li
+{
+  /* Stipulate the height of each item so that 
+  vertical return = items * height */
+
+  line-height: 1.2em;
+
+  /* Clear the default margins &amp; padding 
+  so we can style the list from scratch */
+
+  margin: 0;
+  padding: 0;
+}
+
+/* If li position is left static, Internet 
+Explorer disables hyperlinks in the list 
+in all but the final column.
+
+This rule will be processed only by 
+Internet Explorer because only IE believes 
+that there&#8217;s a level above HTML: */
+
+* html ol li
+{
+	position: relative;
+}
+</pre>
+
+<pre>
+/* horizontal position of each column */
+
+ol li.column1 { margin-left: 0em; }
+ol li.column2 { margin-left: 10em; }
+ol li.column3 { margin-left: 20em; }
+</pre>
+
+<pre>
+/* Bring the first item of each column 
+back up to the level of item 1.
+Vertical return = items * height.
+Here, 5 items * 1.2em line-height = 6em */
+
+li.reset
+{
+  margin-top: -6em;
+}
+</pre>
+
+<pre>
+/* anchor styling */
+ol li a
+{
+  display: block;
+  width: 7em;
+  text-decoration: none;
+}
+ol li a:hover
+{
+  color: #FFF; /* white */
+  background-color: #A52A2A; /* brown */
+}
+</pre>
+</div><!-- .block -->
+</div>
+
+</body>
+</html>

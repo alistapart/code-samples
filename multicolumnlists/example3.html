@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Method 3: Numbering split lists with CSS generated content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css"> @import "demo.css"; </style>
+
+<style type="text/css"><!--
+/*==============================
+style the list
+==============================*/
+/* separate lists from subsequent content */
+div.outerwrap
+{
+	margin-bottom: 1em;
+}
+
+/* position list chunks side by side */
+div.wrapper
+{
+	float: left;
+	width: 10em;
+}
+
+/* clear float after lists */
+br
+{
+	clear: left;
+}
+
+/* remove default spacing  to 
+promote cross-browser consistency */
+ol
+{
+	margin: 0;
+	padding: 0;
+}
+/* suppress normal list item numbering */
+ol li
+{
+	width: 11em;
+	list-style-type: none;
+}
+
+/* generate new item numbers that 
+continue from one list to the next */
+ol li:before
+{
+	content: counter(item) ". ";
+	counter-increment: item;
+}
+
+/* anchor styling */
+ol li a
+{
+	text-decoration: none;
+}
+ol li a:hover
+{
+	color: #FFF; /* white */
+	background-color: #A52A2A; /* brown */
+}
+--></style>
+
+</head>
+<body>
+
+<p><a class="backlink" href="https://alistapart.com/articles/multicolumnlists/#method3">&laquo; back to <em>CSS Swag: Styling Multiple-Column Lists</em></a></p>
+
+<h1>Method 3: Numbering split lists with CSS generated content</h1>
+
+<div class="outerwrap">
+	<div class="wrapper">
+		<ol
+			><li><a href="#">Aloe</a></li
+			><li><a href="#">Bergamot</a></li
+			><li><a href="#">Calendula</a></li
+			><li><a href="#">Damiana</a></li
+			><li><a href="#">Elderflower</a></li
+		></ol>
+	</div><!-- .wrapper -->
+	<div class="wrapper">
+		<ol
+			><li><a href="#">Feverfew</a></li
+			><li><a href="#">Ginger</a></li
+			><li><a href="#">Hops</a></li
+			><li><a href="#">Iris</a></li
+			><li><a href="#">Juniper</a></li
+		></ol>
+	</div><!-- .wrapper -->
+	<div class="wrapper">
+		<ol
+			><li><a href="#">Kava kava</a></li
+			><li><a href="#">Lavender</a></li
+			><li><a href="#">Marjoram</a></li
+			><li><a href="#">Nutmeg</a></li
+			><li><a href="#">Oregano</a></li
+			><li><a href="#">Pennyroyal</a></li
+		></ol>
+	</div><!-- .wrapper -->
+	<br />
+</div><!-- .outerwrap -->
+
+<h2>The above markup should render like this:</h2>
+<div>
+	<img src="figure3.gif" alt="Method 3: Numbering split lists with CSS generated content" />
+</div>
+
+<div class="notes">
+<h2>Notes:</h2>
+<ul>
+	<li>Opera is the only browser tested that would display the list numbers in this example; the other browsers do not support CSS generated content.</li>
+
+	<li>This is not one list but three separate ones arranged side by side.</li>
+
+	<li>Each ordered lists resets item-numbering to 1.  To work around this, the stylesheet suppresses normal list item numbering and uses the pseudo-element <code>:before</code> to insert incremental markers before each item.</li>
+
+	<li>These generated item numbers are left-justified as though they were part of the list item content, not right-justified as normal list item numbers are. This causes the list item content to shift position when the number of digits in the item number changes (here, from 9 to 10).</li>
+
+	<li>After the three lists I&#8217;ve cleared the float with a <code>&lt;br /&gt;</code> styled <code>{ clear: left; }</code>.  This is non-semantic content (the clear should perhaps have been applied to the next element on the page that has purpose), but I wanted to highlight its necessity in keeping subsequent page elements from being affected by the float.</li>
+	
+	<li>While in other methods I&#8217;ve styled anchors as blocks so the active area of the hyperlink expands to fill the list item box, I haven&#8217;t done so here because it would have caused each item to wrap (line-break) between the item number and the item text.  The generated content is effectively inline, and when block content follows inline content it wraps to a new row.</li>
+	
+</ul>
+</div><!-- .notes -->
+
+<div class="block">
+<h2>XHTML:</h2>
+<pre>
+&lt;div class=&quot;outerwrap&quot;&gt;
+  &lt;div class=&quot;wrapper&quot;&gt;
+    &lt;ol
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Aloe&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Bergamot&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Calendula&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Damiana&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Elderflower&lt;/a&gt;&lt;/li
+    &gt;&lt;/ol&gt;
+  &lt;/div&gt;&lt;!-- .wrapper --&gt;
+
+  &lt;div class=&quot;wrapper&quot;&gt;
+    &lt;ol
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Feverfew&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Ginger&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Hops&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Iris&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Juniper&lt;/a&gt;&lt;/li
+    &gt;&lt;/ol&gt;
+  &lt;/div&gt;&lt;!-- .wrapper --&gt;
+
+  &lt;div class=&quot;wrapper&quot;&gt;
+    &lt;ol
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Kava kava&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Lavender&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Marjoram&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Nutmeg&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Oregano&lt;/a&gt;&lt;/li
+      &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Pennyroyal&lt;/a&gt;&lt;/li
+    &gt;&lt;/ol&gt;
+  &lt;/div&gt;&lt;!-- .wrapper --&gt;
+
+  &lt;br /&gt;
+&lt;/div&gt;&lt;!-- .outerwrap --&gt;
+</pre>
+</div><!-- .block -->
+
+<div>
+<div class="block">
+<h2>CSS:</h2>
+<pre>
+/* separate lists from subsequent content */
+div.outerwrap
+{
+  margin-bottom: 1em;
+}
+
+/* position list chunks side by side */
+div.wrapper
+{
+  float: left;
+  width: 10em;
+}
+
+/* clear float after lists */
+br
+{
+  clear: left;
+}
+</pre>
+
+<pre>
+/* remove default spacing  to 
+promote cross-browser consistency */
+ol
+{
+  margin: 0;
+  padding: 0;
+}
+
+/* suppress normal list item numbering */
+ol li
+{
+  list-style-type: none;
+}
+
+/* generate new item numbers that 
+continue from one list to the next */
+ol li:before
+{
+  content: counter(item) ". ";
+  counter-increment: item;
+}
+</pre>
+
+<pre>
+/* anchor styling */
+ol li a
+{
+  text-decoration: none;
+}
+ol li a:hover
+{
+  color: #FFF; /* white */
+  background-color: #A52A2A; /* brown */
+}
+</pre>
+</div><!-- .block -->
+</div>
+
+</body>
+</html>

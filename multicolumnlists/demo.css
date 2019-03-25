@@ -1,0 +1,60 @@
+/*==============================
+style the page
+==============================*/
+body
+{
+	margin: 10px 0 25px 25px;
+	font-family: Verdana, Arial, sans-serif;
+}
+div.notes
+{
+	width: 40em;
+	margin: 1em 0 1ex 0;
+	padding: 1ex 0;
+	font-size: small;
+}
+div.notes ul
+{
+	margin: 0;
+	padding: 0 0 0 2em;
+}
+div.notes li
+{
+	padding: 0 0 1ex 0;
+}
+div.block
+{
+	float: left;
+	margin: 1ex 1ex 1em 1ex;
+}
+div.block h2
+{
+	margin: 0;
+}
+div.block pre
+{
+	margin: 1ex 0 0 0;
+	padding: 1ex 1em;
+	border: 1px solid #00F;
+	background-color: #CCF;
+}
+h1, h2, h3
+{
+	margin: 0;
+	margin-bottom: 1ex;
+	padding: 0;
+	font-weight: normal;
+}
+h1 { font-size: x-large; }
+h2 { font-size: large; }
+h3 { font-size: medium; }
+
+img
+{
+	border: 1px solid black;
+}
+a.backlink
+{
+	font-size: small;
+	text-decoration: none;
+}

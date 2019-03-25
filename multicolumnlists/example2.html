@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Method 2: Numbering split lists with HTML attributes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css"> @import "demo.css"; </style>
+
+<style type="text/css"><!--
+/*==============================
+style the list
+==============================*/
+/* position list chunks side by side */
+div.wrapper
+{
+	float: left;
+	width: 10em;
+}
+
+/* clear float after lists */
+br
+{
+	clear: left;
+}
+
+/* anchor styling */
+ol li a
+{
+	display: block;
+	width: 7em;
+	text-decoration: none;
+}
+ol li a:hover
+{
+	color: #FFF; /* white */
+	background-color: #A52A2A; /* brown */
+}
+--></style>
+
+</head>
+<body>
+
+<p><a class="backlink" href="https://alistapart.com/articles/multicolumnlists/#method2">&laquo; back to <em>CSS Swag: Styling Multiple-Column Lists</em></a></p>
+
+<h1>Method 2: Numbering split lists with HTML attributes</h1>
+
+<div>
+	<div class="wrapper">
+		<ol
+			><li><a href="#">Aloe</a></li
+			><li><a href="#">Bergamot</a></li
+			><li><a href="#">Calendula</a></li
+			><li><a href="#">Damiana</a></li
+			><li><a href="#">Elderflower</a></li
+		></ol>
+	</div>
+
+	<div class="wrapper">
+		<ol start="6"
+			><li><a href="#">Feverfew</a></li
+			><li><a href="#">Ginger</a></li
+			><li><a href="#">Hops</a></li
+			><li><a href="#">Iris</a></li
+			><li><a href="#">Juniper</a></li
+		></ol>
+	</div>
+
+	<div class="wrapper">
+		<ol
+			><li value="11"><a href="#">Kava kava</a></li
+			><li><a href="#">Lavender</a></li
+			><li><a href="#">Marjoram</a></li
+			><li><a href="#">Nutmeg</a></li
+			><li><a href="#">Oregano</a></li
+			><li><a href="#">Pennyroyal</a></li
+		></ol>
+	</div>
+	<br />
+</div>
+
+<h2>The above markup should render like this:</h2>
+<div>
+	<img src="figure2.gif" alt="Method 2: Numbering split lists with HTML attributes" />
+</div>
+
+<div class="notes">
+<h2>Notes:</h2>
+<ul>
+	<li>This is not one list but three separate ones arranged side by side.</li>
+
+	<li>The numbering of ordered lists resets to 1 with each new list. To compensate, the deprecated attributes <code>start</code> and <code>value</code> are used to restart numbering where desired.  In this example, the second list is marked up <code>&lt;ol start=&quot;6&quot;&gt;</code> and the eleventh item (the first item in the third list) is marked up as <code>&lt;li value=&quot;11&quot;&gt;</code>.  List item numbering increments normally after each setting.</li>
+
+	<li>To render the list fragments side by side, I&#8217;ve enclosed them in divs floated left.  Floating the <code>&lt;ol&gt;</code> list elements themselves would have suppressed list item numbering in Internet Explorer and Opera.</li>
+
+	<li>After the three lists I&#8217;ve cleared the float with a <code>&lt;br /&gt;</code> styled <code>{ clear: left; }</code>.  This is non-semantic content (the clear should perhaps have been applied to the next element on the page that has purpose), but I wanted to highlight its necessity in keeping subsequent page elements from being affected by the float.</li>
+
+<!--
+	<li>Because assigning a width to either <code>ol</code> or <code>li</code> would suppress item numbering in Internet Explorer, the three list fragments are separated horizontally using right margins for the lists.</li>
+-->
+</ul>
+</div><!-- .notes -->
+
+<div class="block">
+<h2>HTML (deprecated):</h2>
+<pre>
+&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;ol
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Aloe&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Bergamot&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Calendula&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Damiana&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Elderflower&lt;/a&gt;&lt;/li
+  &gt;&lt;/ol&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;ol start=&quot;6&quot;
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Feverfew&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Ginger&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Hops&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Iris&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Juniper&lt;/a&gt;&lt;/li
+  &gt;&lt;/ol&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;ol
+    &gt;&lt;li value=&quot;11&quot;&gt;Kava kava&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Lavender&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Marjoram&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Nutmeg&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Oregano&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Pennyroyal&lt;/a&gt;&lt;/li
+  &gt;&lt;/ol&gt;
+&lt;/div&gt;
+
+&lt;br /&gt;
+</pre>
+</div><!-- .block -->
+
+<div class="block">
+<h2>CSS:</h2>
+<pre>
+/* position list chunks side by side */
+div.wrapper
+{
+  float: left;
+  width: 10em;
+}
+
+/* clear float after lists */
+br
+{
+  clear: left;
+}
+</pre>
+
+<pre>
+/* anchor styling */
+ol li a
+{
+  display: block;
+  width: 7em;
+  text-decoration: none;
+}
+ol li a:hover
+{
+  color: #FFF; /* white */
+  background-color: #A52A2A; /* brown */
+}
+</pre>
+</div><!-- .block -->
+
+</body>
+</html>

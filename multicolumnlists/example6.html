@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Method 6: Wrapping a single list using normal flow</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css"> @import "demo.css"; </style>
+
+<style type="text/css"><!--
+
+/*==============================
+style the list
+==============================*/
+ol li
+{
+	/* Stipulate the height of each item so that 
+	vertical return = items * height */
+	line-height: 1.2em;
+
+	/* Clear the default margins & padding 
+	so we can style the list from scratch */
+	margin: 0;
+	padding: 0;
+}
+
+/* If li position is left static, Internet 
+Explorer disables hyperlinks in the list 
+in all but the final column.
+
+This rule will be processed only by 
+Internet Explorer because only IE believes 
+that there's a level above HTML: */
+
+* html ol li
+{
+	position: relative;
+}
+
+/* Bring the first item of each column 
+back up to the level of item 1.
+Vertical return = items * height.
+Here, 5 items * 1.2em line-height = 6em */
+
+ol li.feve,
+ol li.kava
+{
+	margin-top: -6em;
+}
+
+/* horizontal position of each column */
+ol li.aloe,
+ol li.berg,
+ol li.cale,
+ol li.dami,
+ol li.elde
+{
+	margin-left: 0em;
+}
+ol li.feve,
+ol li.ging,
+ol li.hops,
+ol li.iris,
+ol li.juni
+{
+	margin-left: 10em;
+}
+ol li.kava,
+ol li.lave,
+ol li.marj,
+ol li.nutm,
+ol li.oreg,
+ol li.penn
+{
+	margin-left: 20em;
+}
+
+/* anchor styling */
+ol li a
+{
+	display: block;
+	width: 7em;
+	text-decoration: none;
+}
+ol li a:hover
+{
+	color: #FFF; /* white */
+	background-color: #A52A2A; /* brown */
+}
+--></style>
+
+</head>
+<body>
+
+<p><a class="backlink" href="https://alistapart.com/articles/multicolumnlists/#method6">&laquo; back to <em>CSS Swag: Styling Multiple-Column Lists</em></a></p>
+
+<h1>Method 6: Wrapping a single list using normal flow</h1>
+
+<ol
+	><li class="aloe"><a href="#">Aloe</a></li
+	><li class="berg"><a href="#">Bergamot</a></li
+	><li class="cale"><a href="#">Calendula</a></li
+	><li class="dami"><a href="#">Damiana</a></li
+	><li class="elde"><a href="#">Elderflower</a></li
+	><li class="feve"><a href="#">Feverfew</a></li
+	><li class="ging"><a href="#">Ginger</a></li
+	><li class="hops"><a href="#">Hops</a></li
+	><li class="iris"><a href="#">Iris</a></li
+	><li class="juni"><a href="#">Juniper</a></li
+	><li class="kava"><a href="#">Kava kava</a></li
+	><li class="lave"><a href="#">Lavender</a></li
+	><li class="marj"><a href="#">Marjoram</a></li
+	><li class="nutm"><a href="#">Nutmeg</a></li
+	><li class="oreg"><a href="#">Oregano</a></li
+	><li class="penn"><a href="#">Pennyroyal</a></li
+></ol>
+
+<h2>The above markup should render like this:</h2>
+<div>
+	<img src="example6.jpg" alt="Method 6: Wrapping a single list using normal flow" />
+</div>
+
+<div class="notes">
+<h2>Notes:</h2>
+<ul>
+	<li>Each list item has a unique class name so that vertical wrap can be completely controlled from the stylesheet.</li>
+	
+	<li>Each item is positioned horizontally according to which column it belongs to.</li>
+
+	<li>Only the first item of each column is positioned vertically.  Subsequent items descend from that position by normal flow.</li>
+
+</ul>
+</div><!-- .notes -->
+
+<div class="block">
+<h2>XHTML:</h2>
+<pre>
+&lt;ol
+  &gt;&lt;li class=&quot;aloe&quot;&gt;Aloe&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;berg&quot;&gt;Bergamot&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;cale&quot;&gt;Calendula&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;dami&quot;&gt;Damiana&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;elde&quot;&gt;Elderflower&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;feve&quot;&gt;Feverfew&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;ging&quot;&gt;Ginger&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;hops&quot;&gt;Hops&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;iris&quot;&gt;Iris&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;juni&quot;&gt;Juniper&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;kava&quot;&gt;Kava kava&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;lave&quot;&gt;Lavender&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;marj&quot;&gt;Marjoram&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;nutm&quot;&gt;Nutmeg&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;oreg&quot;&gt;Oregano&lt;/a&gt;&lt;/li
+  &gt;&lt;li class=&quot;penn&quot;&gt;Pennyroyal&lt;/a&gt;&lt;/li
+&gt;&lt;/ol&gt;
+</pre>
+</div><!-- .block -->
+
+<div class="block">
+<h2>CSS:</h2>
+<pre>
+ol li
+{
+  /* Stipulate the height of each item so that 
+  vertical return = items * height */
+
+  line-height: 1.2em;
+
+  /* Clear the default margins & padding 
+  so we can style the list from scratch */
+
+  margin: 0;
+  padding: 0;
+}
+
+/* If li position is left static, Internet 
+Explorer disables hyperlinks in the list 
+in all but the final column.
+
+This rule will be processed only by 
+Internet Explorer because only IE believes 
+that there&#8217;s a level above HTML: */
+
+* html ol li
+{
+	position: relative;
+}
+</pre>
+
+<pre>
+/* Bring the first item of each column 
+back up to the level of item 1.
+Vertical return = items * height.
+Here, 5 items * 1.2em line-height = 6em */
+
+ol li.feve,
+ol li.kava
+{
+  margin-top: -6em;
+}
+</pre>
+
+<pre>
+/* horizontal position of each column */
+ol li.aloe,
+ol li.berg,
+ol li.cale,
+ol li.dami,
+ol li.elde
+{
+  margin-left: 0em;
+}
+ol li.feve,
+ol li.ging,
+ol li.hops,
+ol li.iris,
+ol li.juni
+{
+  margin-left: 10em;
+}
+ol li.kava,
+ol li.lave,
+ol li.marj,
+ol li.nutm,
+ol li.oreg,
+ol li.penn
+{
+  margin-left: 20em;
+}
+</pre>
+
+<pre>
+/* anchor styling */
+ol li a
+{
+  display: block;
+  width: 7em;
+  text-decoration: none;
+}
+ol li a:hover
+{
+  color: #FFF; /* white */
+  background-color: #A52A2A; /* brown */
+}
+</pre>
+</div><!-- .block -->
+
+</body>
+</html>

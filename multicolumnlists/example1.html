@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Method 1: Floating list items</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<style type="text/css"> @import "demo.css"; </style>
+
+<style type="text/css"><!--
+/*==============================
+style the list
+==============================*/
+div.wrapper
+{
+	margin-bottom: 1em;
+}
+ol
+{
+	width: 30em;  /* room for 3 columns */
+}
+ol li
+{
+	float: left;
+	width: 10em;  /* accommodate the widest item */
+}
+/* anchor styling */
+ol li a
+{
+	display: block;
+	width: 7em;
+	text-decoration: none;
+}
+ol li a:hover
+{
+	color: #FFF; /* white */
+	background-color: #A52A2A; /* brown */
+}
+/* stop the floating after the list */
+br
+{
+	clear: left;
+}
+--></style>
+
+</head>
+<body>
+
+<p><a class="backlink" href="https://alistapart.com/articles/multicolumnlists/#method1">&laquo; back to <em>CSS Swag: Styling Multiple-Column Lists</em></a></p>
+
+<h1>Method 1: Floating list items</h1>
+
+<div class="wrapper">
+	<ol
+		><li><a href="#">Aloe</a></li
+		><li><a href="#">Bergamot</a></li
+		><li><a href="#">Calendula</a></li
+		><li><a href="#">Damiana</a></li
+		><li><a href="#">Elderflower</a></li
+		><li><a href="#">Feverfew</a></li
+		><li><a href="#">Ginger</a></li
+		><li><a href="#">Hops</a></li
+		><li><a href="#">Iris</a></li
+		><li><a href="#">Juniper</a></li
+		><li><a href="#">Kava kava</a></li
+		><li><a href="#">Lavender</a></li
+		><li><a href="#">Marjoram</a></li
+		><li><a href="#">Nutmeg</a></li
+		><li><a href="#">Oregano</a></li
+		><li><a href="#">Pennyroyal</a></li
+	></ol>
+	<br />
+</div><!-- .wrapper -->
+
+<h2>The above markup should render like this:</h2>
+<div>
+	<img src="example1.jpg" alt="Method 1: Floating list items" />
+</div>
+
+<div class="notes">
+<h2>Notes:</h2>
+	<ul>
+		<li>Internet Explorer and Opera won&#8217;t display the list item numbers when, as in this case, list items are floated left or right or given an explicit width.</li>
+
+		<li>On first glance, list items may appear to fall into vertical columns, but they are actually arrayed horizontally.  The illusion of vertical columns is caused by the proportions of the list items that are much wider than they are tall.</li>
+
+	<li>After the list I&#8217;ve cleared the float with a <code>&lt;br /&gt;</code> styled <code>{ clear: left; }</code>.  This is non-semantic content (the clear should perhaps have been applied to the next element on the page that has purpose), but I wanted to highlight its necessity in keeping subsequent page elements from being affected by the float.</li>
+	</ul>
+</div><!-- .notes -->
+
+<div class="block">
+<h2>XHTML:</h2>
+<pre>
+&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;ol
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Aloe&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Bergamot&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Calendula&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Damiana&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Elderflower&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Feverfew&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Ginger&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Hops&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Iris&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Juniper&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Kava kava&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Lavender&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Marjoram&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Nutmeg&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Oregano&lt;/a&gt;&lt;/li
+    &gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Pennyroyal&lt;/a&gt;&lt;/li
+  &gt;&lt;/ol&gt;
+  &lt;br /&gt;
+&lt;/div&gt;&lt;!-- .wrapper --&gt;
+</pre>
+</div><!-- .block -->
+
+<div class="block">
+<h2>CSS:</h2>
+<pre>
+ol
+{
+  width: 30em;  /* room for 3 columns */
+}
+ol li
+{
+  float: left;
+  width: 10em;  /* accommodate the widest item */
+}
+/* stop the floating after the list */
+br
+{
+  clear: left;
+}
+/* separate the list from what follows it */
+div.wrapper
+{
+  margin-bottom: 1em;
+}
+</pre>
+
+<pre>
+/* anchor styling */
+ol li a
+{
+  display: block;
+  width: 7em;
+  text-decoration: none;
+}
+ol li a:hover
+{
+  color: #FFF; /* white */
+  background-color: #A52A2A; /* brown */
+}
+</pre>
+</div><!-- .block -->
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Example 7 - Gettin&#8217; fancy</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css"> @import "demo.css"; </style>
+
+<style type="text/css"><!--
+
+/*==============================
+style the list
+==============================*/
+/* separate list from subsequent content */
+div.wrapper
+{
+	margin-bottom: 1em;
+}
+ul#example7
+{
+	width: 30em;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #A52A2A; /* brown */
+	background-image: url("SophieAresPilonPale.jpg");
+}
+ul#example7 li
+{
+	/* list item dimensions */
+
+	width: 10em;
+	height: 2em;
+
+	/* Clear the default margins & padding 
+	for cross-browser efficiency */
+	margin: 0;
+	padding: 0;
+
+	/* suppress item markers */
+	list-style-type: none;
+}
+
+/* Purty it up */
+ul#example7 li a
+{
+	display: block;
+	width: 10em;
+	line-height: 2em;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	color: #A52A2A; /* brown */
+}
+/* mouseover gets the bright photo */
+ul#example7 li a:hover
+{
+	color: #FFF;	/* white */
+	background-image: url("SophieAresPilonBright.jpg");
+}
+
+/* give each list item a piece of the picture */
+
+li.aloe a { background-position: 0em -0em }
+li.berg a { background-position: 0em -2em }
+li.cale a { background-position: 0em -4em }
+li.dami a { background-position: 0em -6em }
+li.elde a { background-position: 0em -8em }
+
+li.feve a { background-position: -10em -0em }
+li.ging a { background-position: -10em -2em }
+li.hops a { background-position: -10em -4em }
+li.iris a { background-position: -10em -6em }
+li.juni a { background-position: -10em -8em }
+
+li.kava a { background-position: -20em -0em }
+li.lave a { background-position: -20em -2em }
+li.marj a { background-position: -20em -4em }
+li.nutm a { background-position: -20em -6em }
+li.oreg a { background-position: -20em -8em }
+li.penn a { background-position: -20em -10em }
+
+/* Bring the first item of each column 
+back up to the level of item 1.
+Vertical return = items * height.
+Here, 5 items * 2em line-height = 10em */
+
+ul#example7 li.feve,
+ul#example7 li.kava
+{
+	margin-top: -10em;
+}
+
+/* Horizontal positions of the columns */
+ul#example7 li.aloe,
+ul#example7 li.berg,
+ul#example7 li.cale,
+ul#example7 li.dami,
+ul#example7 li.elde
+{
+	margin-left: 0em;
+}
+ul#example7 li.feve,
+ul#example7 li.ging,
+ul#example7 li.hops,
+ul#example7 li.iris,
+ul#example7 li.juni
+{
+	margin-left: 10em;
+}
+ul#example7 li.kava,
+ul#example7 li.lave,
+ul#example7 li.marj,
+ul#example7 li.nutm,
+ul#example7 li.oreg,
+ul#example7 li.penn
+{
+	margin-left: 20em;
+}
+--></style>
+
+</head>
+<body>
+
+<p><a class="backlink" href="https://alistapart.com/articles/multicolumnlists/#method7">&laquo; back to <em>CSS Swag: Styling Multiple-Column Lists</em></a></p>
+
+<h1>Example 7: Gettin&#8217; fancy</h1>
+
+<div class="wrapper">
+	<ul id="example7"
+		><li class="aloe"><a href="#">Aloe</a></li
+		><li class="berg"><a href="#">Bergamot</a></li
+		><li class="cale"><a href="#">Calendula</a></li
+		><li class="dami"><a href="#">Damiana</a></li
+		><li class="elde"><a href="#">Elderflower</a></li
+		><li class="feve"><a href="#">Feverfew</a></li
+		><li class="ging"><a href="#">Ginger</a></li
+		><li class="hops"><a href="#">Hops</a></li
+		><li class="iris"><a href="#">Iris</a></li
+		><li class="juni"><a href="#">Juniper</a></li
+		><li class="kava"><a href="#">Kava kava</a></li
+		><li class="lave"><a href="#">Lavender</a></li
+		><li class="marj"><a href="#">Marjoram</a></li
+		><li class="nutm"><a href="#">Nutmeg</a></li
+		><li class="oreg"><a href="#">Oregano</a></li
+		><li class="penn"><a href="#">Pennyroyal</a></li
+	></ul>
+</div><!-- .wrapper -->
+
+<h2>The above markup should render like this:</h2>
+
+<div>
+	<img src="example7.jpg" alt="Example 7: Gettin&#8217; fancy" />
+</div>
+
+<!--
+<div class="notes">
+<h2>Notes:</h2>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+-->
+<div id="xhtmlBlock" class="block">
+<h2>XHTML:</h2>
+<pre>
+&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;ul id=&quot;example7&quot;
+    &gt;&lt;li class=&quot;aloe&quot;&gt;&lt;a href=&quot;#&quot;&gt;Aloe&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;berg&quot;&gt;&lt;a href=&quot;#&quot;&gt;Bergamot&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;cale&quot;&gt;&lt;a href=&quot;#&quot;&gt;Calendula&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;dami&quot;&gt;&lt;a href=&quot;#&quot;&gt;Damiana&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;elde&quot;&gt;&lt;a href=&quot;#&quot;&gt;Elderflower&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;feve&quot;&gt;&lt;a href=&quot;#&quot;&gt;Feverfew&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;ging&quot;&gt;&lt;a href=&quot;#&quot;&gt;Ginger&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;hops&quot;&gt;&lt;a href=&quot;#&quot;&gt;Hops&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;iris&quot;&gt;&lt;a href=&quot;#&quot;&gt;Iris&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;juni&quot;&gt;&lt;a href=&quot;#&quot;&gt;Juniper&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;kava&quot;&gt;&lt;a href=&quot;#&quot;&gt;Kava kava&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;lave&quot;&gt;&lt;a href=&quot;#&quot;&gt;Lavender&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;marj&quot;&gt;&lt;a href=&quot;#&quot;&gt;Marjoram&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;nutm&quot;&gt;&lt;a href=&quot;#&quot;&gt;Nutmeg&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;oreg&quot;&gt;&lt;a href=&quot;#&quot;&gt;Oregano&lt;/a&gt;&lt;/li
+    &gt;&lt;li class=&quot;penn&quot;&gt;&lt;a href=&quot;#&quot;&gt;Pennyroyal&lt;/a&gt;&lt;/li
+  &gt;&lt;/ul&gt;
+&lt;/div&gt;&lt;!-- .wrapper --&gt;
+</pre>
+</div><!-- .block -->
+
+<div class="block">
+<h2>CSS:</h2>
+<pre>
+/* separate list from subsequent content */
+div.wrapper
+{
+  margin-bottom: 1em;
+}
+</pre>
+
+<pre>
+ul#example7
+{
+  width: 30em;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #A52A2A; /* brown */
+  background-image: url(&quot;SophieAresPilonPale.jpg&quot;);
+}
+ul#example7 li
+{
+  /* list item dimensions */
+
+  width: 10em;
+  height: 2em;
+
+  /* Clear the default margins &amp; padding 
+  for cross-browser efficiency */
+  margin: 0;
+  padding: 0;
+
+  /* suppress item markers */
+  list-style-type: none;
+}
+
+/* Purty it up */
+ul#example7 li a
+{
+  display: block;
+  width: 10em;
+  line-height: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: #A52A2A; /* brown */
+}
+/* mouseover gets the bright photo */
+ul#example7 li a:hover
+{
+  color: #FFF; /* white */
+  background-image: url(&quot;SophieAresPilonBright.jpg&quot;);
+}
+
+/* give each list item a piece of the picture */
+
+li.aloe a { background-position: 0em -0em }
+li.berg a { background-position: 0em -2em }
+li.cale a { background-position: 0em -4em }
+li.dami a { background-position: 0em -6em }
+li.elde a { background-position: 0em -8em }
+
+li.feve a { background-position: -10em -0em }
+li.ging a { background-position: -10em -2em }
+li.hops a { background-position: -10em -4em }
+li.iris a { background-position: -10em -6em }
+li.juni a { background-position: -10em -8em }
+
+li.kava a { background-position: -20em -0em }
+li.lave a { background-position: -20em -2em }
+li.marj a { background-position: -20em -4em }
+li.nutm a { background-position: -20em -6em }
+li.oreg a { background-position: -20em -8em }
+li.penn a { background-position: -20em -10em }
+</pre>
+
+<pre>
+/* Bring the first item of each column 
+back up to the level of item 1.
+Vertical return = items * height.
+Here, 5 items * 2em line-height = 10em */
+
+ul#example7 li.feve,
+ul#example7 li.kava
+{
+  margin-top: -10em;
+}
+
+/* Horizontal positions of the columns */
+ul#example7 li.aloe,
+ul#example7 li.berg,
+ul#example7 li.cale,
+ul#example7 li.dami,
+ul#example7 li.elde
+{
+  margin-left: 0em;
+}
+ul#example7 li.feve,
+ul#example7 li.ging,
+ul#example7 li.hops,
+ul#example7 li.iris,
+ul#example7 li.juni
+{
+  margin-left: 10em;
+}
+ul#example7 li.kava,
+ul#example7 li.lave,
+ul#example7 li.marj,
+ul#example7 li.nutm,
+ul#example7 li.oreg,
+ul#example7 li.penn
+{
+  margin-left: 20em;
+}
+</pre>
+</div><!-- .block -->
+
+</body>
+</html>
