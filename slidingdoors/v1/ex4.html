@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Example 4: Sliding Doors of CSS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css" media="screen">
+    body {
+      background:#fff;
+      margin:0;
+      padding:0;
+      color:#000;
+      font:x-small/1.5em Georgia,Serif;
+      voice-family: "\"}\""; voice-family:inherit;
+      font-size:small;
+      } html>body {font-size:small;}
+    
+    #header {
+      float:left;
+      width:100%;
+      background:#DAE0D2 url("bg.gif") repeat-x bottom;
+      font-size:93%;
+      line-height:normal;
+      }
+    #header ul {
+      margin:0;
+      padding:10px 10px 0;
+      list-style:none;
+      }
+    #header li {
+      float:left;
+      background:url("left.gif") no-repeat left top;
+      margin:0;
+      padding:0 0 0 9px;
+      }
+    #header a {
+      display:block;
+      background:url("right.gif") no-repeat right top;
+      padding:5px 15px 4px 6px;
+      }
+    #header #current {
+      background-image:url("left_on.gif");
+      }
+    #header #current a {
+      background-image:url("right_on.gif");
+      padding-bottom:5px;
+      }
+  </style>
+</head>
+
+<body>
+
+<div id="header">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li id="current"><a href="#">News</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+<p style="margin:0; padding:1em 1em 0; clear:both;">We change the images so that they now have transparent corners. Instead of allowing the two images to slide over each other, we add left padding to the list item, equivalent to the width of the left-side image. The visible edges of the two background images now butt up against each other.</p>
+
+<p style="margin:0; padding:1em;">We also switch the elements that the left and right images are applied to so the left-side image can remain flush with the left edge of the list item.</p>
+
+</body>
+</html>

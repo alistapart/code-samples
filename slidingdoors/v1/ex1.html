@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Example 1: Sliding Doors of CSS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css" media="screen">
+    body {
+      background:#fff;
+      margin:0;
+      padding:20px;
+      color:#000;
+      font:x-small/1.5em Georgia,Serif;
+      voice-family: "\"}\""; voice-family:inherit;
+      font-size:small;
+      } html>body {font-size:small;}
+    
+    #header {
+      float:left;
+      width:100%;
+      background:yellow;
+      font-size:93%;
+      line-height:normal;
+      }
+    #header ul {
+      margin:0;
+      padding:0;
+      list-style:none;
+      }
+    #header li {
+      float:left;
+      background:url("norm_right.gif") no-repeat right top;
+      margin:0;
+      padding:0;
+      }
+    #header a {
+      display:block;
+      }
+  </style>
+</head>
+
+<body>
+
+<div id="header">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li id="current"><a href="#">News</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+<p style="margin:0; padding:1em 0; clear:both;">This example sets up our basic horizontal list by floating each list item, and setting margin/padding values to &#8220;0&#8221;. It also applies the right-side (back) image to the list item element.</p>
+
+</body>
+</html>
+

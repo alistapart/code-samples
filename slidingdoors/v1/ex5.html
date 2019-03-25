@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Example 5: Sliding Doors of CSS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css" media="screen">
+    body {
+      background:#fff;
+      margin:0;
+      padding:0;
+      color:#000;
+      font:x-small/1.5em Georgia,Serif;
+      voice-family: "\"}\""; voice-family:inherit;
+      font-size:small;
+      } html>body {font-size:small;}
+    
+    #header {
+      float:left;
+      width:100%;
+      background:#DAE0D2 url("bg.gif") repeat-x bottom;
+      font-size:93%;
+      line-height:normal;
+      }
+    #header ul {
+      margin:0;
+      padding:10px 10px 0;
+      list-style:none;
+      }
+    #header li {
+      float:left;
+      background:url("left.gif") no-repeat left top;
+      margin:0;
+      padding:0 0 0 9px;
+      }
+    #header a {
+      display:block;
+      background:url("right.gif") no-repeat right top;
+      padding:5px 15px 4px 6px;
+      text-decoration:none;
+      font-weight:bold;
+      color:#765;
+      }
+    #header a:hover {
+      color:#333;
+      }
+    #header #current {
+      background-image:url("left_on.gif");
+      }
+    #header #current a {
+      background-image:url("right_on.gif");
+      color:#333;
+      padding-bottom:5px;
+      }
+  </style>
+</head>
+
+<body>
+
+<div id="header">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li id="current"><a href="#">News</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+<p style="margin:0; padding:1em 1em 0; clear:both;">This example adds all final style changes:</p>
+
+<ul>
+  <li>bold all tab text</li>
+  <li>make normal tab text a brown color</li>
+  <li>make current tab text a dark gray color</li>
+  <li>remove link underline</li>
+  <li>change text color for the link hover state</li>
+</ul>
+
+</body>
+</html>
+
