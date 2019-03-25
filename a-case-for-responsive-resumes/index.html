@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<header>
+		<h1>A Case for Responsive Résumés</h1>
+	</header>
+	<article>
+		<p>Finding a job is easy. As a job seeker, having your résumé in <code>.pdf</code> format is all you'll ever need. Creating a clean résumé in HTML5/CSS3 which scales well to different viewport sizes is a futile exercise.</p>
+		<p>All lies! Tethering our résumés to <code>.pdf</code> format is outmoded. Here are four reasons why it's a great idea to author your résumé in HTML:</p>
+		<ol>
+			<li>Static résumés become quickly outdated. A single, unified URL assures a recruiter or agency that your résumé is always up to date.</li>
+			<li>A potential employer may view your résumé on a smartphone. Do you really want to trust a stiff, unresponsive <code>.pdf</code> to represent you?</li>
+			<li>Editing <code>.pdf</code> files can be a painful experience.</li>
+			<li>A DIY HTML résumé shows potential employers how much you love what you do, which can never hurt your chances.</li>
+		</ol>
+		<p>Let's look at the requirements for our <a href="demo.html">responsive résumé</a>.</p>
+		<ul>
+			<li>It must be easy to maintain.</li>
+			<li>It must look spiffy.</li>
+			<li>It must scale well to smaller devices.</li>
+		</ul>
+		<h2>It must be easy to maintain.</h2>
+		<p>Judging the maintainability of a document comes down to this: <em>How efficiently can we locate and update various parts of the document?</em> The easiest way to achieve maintainability is to create small and clear markup. So that's exactly what we're going to do.</p>
+		<p>Examining the source, you'll notice nothing shocking. After a simple <code>header</code>, we've established two columns, and each column houses various <code>article</code> elements. In just a few lines of HTML, we've completed our markup. As you probably know, small markup is key to maintainability, and we've honored that.</p>
+		<h2>It must look spiffy.</h2>
+		<p>Your résumé needs to look as awesome as you are, so we'll call upon the <code>CSS</code> cavalry for assistance. Using the mobile-first approach, we first define responsive rules for smaller viewports (less than 520px wide). Why did I choose 520 pixels as the media query <em>breaking point</em>? This particular design looks a bit too condensed at sizes smaller than 520px. The number is completely arbitrary and specific to your own design.</p>
+		<p>A little flare isn't a bad thing, so I added a simple <code>CSS</code> transition towards the bottom of our media query which adds a nice touch in supporting browsers. Browsers not supporting transitions will harmlessly ignore our transition. Enlarge your webkit browser from small (less than 520px) to large to view the transition.</p>
+		<pre>.date-ranges {
+    width: 15.4639%;
+    <strong>transition:all .3s ease;
+    -o-transition:all .3s ease; 
+    -moz-transition:all .3s ease;
+    -webkit-transition:all .3s ease;</strong>    
+}</pre>
+		<h2>It must scale well to smaller devices.</h2>
+		<p>Resize the <a href="demo.html">demo</a> and test liberally. Our design is mobile-friendly while still retaining its good looks.</p>
+		<h2>Where can I use this?</h2>
+		<p>If you have space on a server, you can store your résumé there, pointing a recruiter or agency to your always&ndash;current URL. <a href="http://www.linkedin.com/">Linkedin</a> users know that, at the time of this writing, no field exists in a user profile to add a résumé or CV URL. For now, we're stuck with the old meat and potatoes document upload. Sadly, this is the case on many other popular job-hunting sites as well. And that's exactly why I've written this article, to hopefully freshen the stale air we're breathing.</p>
+		<p>As many grizzled job veterans know, a sharp résumé and near-flawless interview may <em>still</em> leave you short of your dream job. Competition is fierce and never wanes. But finding new ways to distinguish ourselves in today's unforgiving economy is vital to a developer's survival.</p>
+		<h2>About the Author</h2>
+		<p><img src="img/profile.jpg" alt="">Andrew Hoffman is the founder of <a href="http://www.glasbrint.com">Glasbrint</a>, a web development company operating out of Pittsburgh, Pennsylvania. He can be spotted biking to various cafés on any day in which it's not severely raining. The only tables he can stomach are the kind on which physical objects are placed.</p>
+	</article>
+</body>
+</html>

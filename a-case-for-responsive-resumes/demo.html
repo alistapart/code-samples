@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="container">
+		<div id="inner-wrap">		
+		    <div id="main" role="main">
+				<div class="col col-one">
+					<div>
+					    <header>
+							<hgroup>							
+								<h1>Ernie Existential</h1>
+								<h2>Meandering Nobody</h2>
+							</hgroup>
+					    </header>						
+						<div id="contact-info">
+							<dl>
+								<dt>mobile</dt>
+								<dd>555-555-LOST</dd>
+								<dt>email</dt>
+								<dd><a href="mailto:nobody.special@nobodycares.com?subject=feedback">nobody.special@nobodycares.com</a></dd>
+								<dt>web</dt>
+								<dd><a href="#">my-boring-old-website.com</a></dd>
+							</dl>
+						</div>							
+						<article>
+							<div class="date-ranges">
+							    <span class="job-start">2010</span>
+							    <span class="job-end">present</span>
+							</div>						
+							<hgroup>
+								<h1 class="job-location">Anytown, USA</h1>
+								<h2 class="job-title">Café Dweller</h2>														
+							</hgroup>
+							<p class="job-details">Responsible for occupying the table near the window. Order mochas three times a week, every week. Pretend to be okay with where all the time went.</p>
+						</article>
+						<article>
+							<div class="date-ranges">
+							    <span class="job-start">Sept 1990</span>
+							    <span class="job-end">Feb 2002</span>
+							</div>							
+							<hgroup>
+								<h1 class="job-location">Parents' House</h1>
+								<h2 class="job-title">Big Toe Stubber</h2>								
+							</hgroup>							
+							<p class="job-details">It may not seem like a watershed moment for those of you reading this, but the pain I felt in my left foot's big toe was noteworthy during these twelve years.</p>
+						</article>
+						<article>
+							<div class="date-ranges">
+							    <span class="job-start">Mar 1980</span>
+							    <span class="job-end">Apr 1989</span>
+							</div>
+							<hgroup>
+								<h1 class="job-location">Various Couches</h1>
+								<h2 class="job-title">Executive Snacker&frasl;Sleep Coordinator</h2>								
+							</hgroup>							
+							<p class="job-details">Mastered the art of snacking on an extreme budget. Made thick cheese sandwiches in complete darkness on several occasions. Achieved elite status in being able to sleep soundly while housemates got ready for work.</p>
+						</article>
+						<article>
+							<div class="date-ranges">
+								<span class="job-start">Jun 1962</span>
+								<span class="job-end">Feb 1979</span>
+							</div>
+							<hgroup>
+								<h1 class="job-location">Crustville, AK</h1>
+								<h2 class="job-title">Soil Artist</h2>						
+							</hgroup>							
+							<p class="job-details">Prepared bags of generic "happy feed" for the lawns of the wealthy. Developed lasting resentment for outdoor work and the wealthy.</p>
+						</article>			
+					</div>
+				</div>
+				<div class="col col-two">	
+					<article>
+						<h1>Special Skills</h1>
+						<dl>
+							<dt>Language</dt>
+							<dd>High-school level Spanish speaker</dd>
+							<dt>Sports</dt>
+							<dd>Capable of imagining my own perfect body without exercising</dd>
+							<dt>Computers</dt>
+							<dd>I kind of like them.</dd>
+							<dt>Marriage</dt>
+							<dd>My mother insisted I add this. Ladies?</dd>																																			
+						</dl>
+					</article>
+					<article>
+						<h1>Interests</h1>
+						<ul>
+							<li>Laser Tag</li>
+							<li>Arcade Golfing</li>
+							<li>Sitting</li>
+						</ul>
+						<blockquote><p>Ernie, your mom and I are really concerned about your future.</p><span>Dad</span></blockquote>
+						<p><em>References available if I had them.</em></p>						
+					</article>			
+				</div>
+	    	</div>
+	    <footer></footer>
+		<div id="logo"><img src="img/logo.jpg" alt="Website logo"></div>
+	</div>
+  </div>
+</body>
+</html>
