@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+
+<title>My broken web app </title>
+<style type="text/css">
+.smallprint{ font-size: smaller; }
+form{ margin-left: 20%; width: 60%; border: 3px double #00a; padding: 1em; position:relative; padding-bottom: 2em; }
+h1{ background: #00a; color: #fff; font-weight: normal; font-size: 110%; position:absolute; top: -0.5em; left: 0em; right: 0em }
+.statusbar{ position: absolute; width: 100%; bottom: -1em; left: 0px; right: 0px; background: red; color: white }
+</style>
+
+</head>
+<body>
+
+<p>Application loading... (JavaScript must be enabled)</p>
+
+<script type="text/javascript">
+/* GENERAL NOTE -  IMPORTANT:
+*  this is demo code that is MEANT TO contain problems!
+*  Since this code is for a debugging demo it's broken on purpose.
+*  Don't use this code! They way it does things is often not a good way to do it!
+*/
+var anti_csrf_secret_number = 22647388192; /* random value also in cookie. Must be sent with forms, and must match cookie, to prevent CSRF */
+/* login form must send a version that is combined with the password, as an anti-brute-force-attack measure. */
+var lang; /*language*/
+
+function clearLoadingMessage() {
+	var loadingmsg=document.getElementsByTagName('p')[0].firstChild;
+	loadingmsg.nodeValue='';
+	getElements('p', {'class':'statusbar'})[0].firstChild.innerText = 'Login screen loaded! (Language detected: '+lang+')';
+	return true;
+}
+
+function init(e) {
+	e = e || event;
+	lang = getLanguage();
+	if (!lang || !phrases[lang]) {
+    lang = 'no';
+	}
+	var stringtable = phrases[lang];
+	var form = makeElement('form', { action:'/login', method:'post', name:'loginform' }, document.body);
+	makeElement('h1', {  }, form, stringtable[0]);
+	makeElement('br', { 'clear':'both' }, form);
+	form.appendChild(document.createTextNode(stringtable[1]));
+	makeElement('br', {}, form);
+	makeElement('br', {}, form);
+	form.appendChild(document.createTextNode( stringtable[2]+': '));
+	makeElement('input', { name:'username', is_required:'required', min_length:6 }, form);
+	makeElement('br', {}, form);
+	form.appendChild(document.createTextNode(stringtable[3]+': '));
+	makeElement('input', { name:'password', type:'password', is_required:'required' }, form);
+	makeElement('br', {}, form);
+	makeElement('button', { name:'send', type:'submit' }, form, stringtable[4]);
+	makeElement('input', { name:'anti_csrf_pw', type:'hidden'}, form);
+	makeElement('input', { name:'anti_csrf', type:'hidden'}, form).value=anti_csrf_secret_number;
+	makeElement('p', { 'class':'smallprint' }, form,  'For demo purposes, log in with \'demouser\' for user name and \'demopw\' for password.');
+	makeElement('p', { 'class':'statusbar' }, form,  'Loading...');
+	form.onsubmit = frmSubmit;
+	genericEventHook(e, this);
+}
+
+window.onload = init;
+
+function frmSubmit(event) {
+	event = event || window.event;
+	var form = this;
+	form.elements['anti_csrf_pw'].value = generateAntiCSRFPasswordValue(form.elements['password'].value);
+	return genericEventHook(event, form);
+}
+
+function validateRequiredElements(ev, form) {
+	if ((ev.target||ev.srcElement) != form) {
+		throw 'some error occurred when validating required elements';
+	}
+	var elements = getElements('input', {is_required:'required'}, form);
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].style.background = '#fff';
+		if ((elements[i].type=='text' && ! elements[i].value) || (elements[i].type=='radio' && ! elements[i].checked)) {
+			elements[i].focus();
+			elements[i].style.background = '#f66';
+			alert('This field is required');
+			return false;
+		}
+	}
+}
+
+function validateLengths(ev, form) {
+	var elements = getElements('input', {min_length:'*'}, form);
+	for (var i=0; i<elements.length; i++) {
+		elements[i].style.background = '#fff';
+		if (elements[i].type=='text' && elements[i].value.length < elements[i].getAttribute('min_length')) {
+			elements[i].focus();
+			elements[i].style.background = '#f66';
+			alert('The value of this field is too short');
+			return false;
+		}
+	}
+}
+
+function genericEventHook(evt, element) {
+	var returnValue=true;
+	for (var i = 0; i < genericEventHook[evt.type].length; i++) {
+		returnValue = returnValue && genericEventHook[evt.type][i](evt, element);
+		if (returnValue === window.undefined) {
+			returnValue = true;
+		}
+	}
+	if (evt.preventDefault && !returnValue) {
+		evt.preventDefault();
+	}
+	return returnValue;
+}
+
+genericEventHook.submit = [ validateRequiredElements, validateLengths, handleSubmit, ];
+genericEventHook.load = [clearLoadingMessage, ];
+
+function makeElement(name, attributes, parent, child) {
+	var el = document.createElement(name);
+	for (var prop in attributes) {
+		el.setAttribute(prop, attributes[prop]);
+	}
+	if (child) {
+		if ((window.Node && child instanceof Node) || child.nodeType) {
+			el.appendChild(child);
+		} else {
+			el.appendChild(document.createTextNode(child));
+		}
+	}
+	if (parent) {
+		parent.appendChild(el);
+	}
+	return el;
+}
+
+function getElements(name, attributes, parent) {
+	var ar=[], elements = (parent || document).getElementsByTagName(name), includeThisElement;
+	for (var i = 0, el; el = elements[i]; i++) {
+		includeThisElement = true;
+		for (prop in attributes) {
+			if (el.getAttribute(prop) != attributes[prop]) {
+				includeThisElement = false;
+			}
+			if (attributes[prop]=='*' && el.hasAttribute(prop)) {
+				continue; // wildcard
+			}
+		}
+		if (includeThisElement)ar.push(el);
+	}
+	return ar;
+}
+
+function getLanguage() {
+	try {
+		var str1 = navigator.userAgent.match(/\((.*)\)/)[1];
+		var ar1 = str1.split(/\s*;\s*/), lang;
+		for (var i = 0; i < ar1.length; i++) {
+			if (ar1[i].match(/^(.{2})$/)) {
+				lang = ar1[i];
+			}
+		}
+	} catch(e) {}
+	return lang;
+}
+
+function generateAntiCSRFPasswordValue(pw) {
+	// output string where every 2nd character is password, every 2nd is secret number
+	var output = '';
+	for (var i = 0; i < pw.length; i++) {
+		output += pw.substr(i, i+1);
+		output += (new String(anti_csrf_secret_number)).substr(i, i+1);
+	}
+	return output;
+}
+
+/* convenience function for cloning objects*/
+Object.prototype.clone = function() {
+	var obj={};
+	for (var prop in this) {
+		obj[prop] = this[prop];
+	}
+	return obj;
+}
+
+var phrases = { /* translation table for page */
+	en: [ 'DebugMe app','Please log in to edit your personal profile', 'User name (minimum 6 letters)', 'Password', 'Log in' ],
+	no: [ 'DebugMe app','Logg inn her for å endre profilen din','Brukernavn (minst 6 bokstaver)', 'Passord', 'Logg inn'  ]
+};
+
+function handleSubmit(ev,form) {
+	/* For the purposes of this debug demo, this function simulates the backend processing
+	*   that would take place when the form is submitted
+	*/
+	if (form.elements['anti_csrf_pw'].value != 'd2e2m6o4p7w3' || form.elements['anti_csrf'].value != '22647388192' ) {
+		alert('SERVER RESPONSE: Possible cross site request forgery (CSRF) attack detected. Login failed.'); return false;
+	}
+
+	if (form.elements['username'].value!='demouser' || form.elements['password'].value!='demopw') {
+		alert('SERVER RESPONSE: User name / password mismatch. Login failed.'); return false;
+	}
+
+	alert('SERVER RESPONSE: Login successful! DebugMe app demo over, thanks for the debugging.');
+	return false;
+}
+
+</script>
+
+</body>
+</html>
