@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <title>Setting Type on the Web to a Baseline Grid</title>
+  
+</head>
+
+<body>
+
+  <h1>Setting Type on the Web to a Baseline Grid</h1>
+
+  <p><em>Author&#8217;s Note: I've used pixel units for sizing text in the examples for this article. Recognizing that this may be a surprising recommendation for an article in this publication, I've addressed some of my reasons for doing so in the closing (as well as some alternate techniques that use relative units).</em></p>
+
+  <p>We web designers get excited about the littlest things. Our friends in the print world must get a kick out of watching us talk about finally being able to achieve layouts on the web that they&#8217;ve taken for granted for years. Let&#8217;s face it, it&#8217;s easier these days to embed a video on the web than it is to set type consistently or align elements to a universal grid.</p>
+
+  <p>But we&#8217;re scrappy folks, web designers. We don&#8217;t give up easy. In the long slow battle with browser support and platform inconsistencies, we&#8217;ve been able to bring more and more sophisticated print techniques onto the web, sometimes kicking and screaming.</p>
+
+  <h2>We have the technology</h2>
+
+  <p>Over the last year or so, there&#8217;s been a lot of talk about grid systems and using column grids for web site layouts. Mark gave us a <a href="http://www.markboulton.co.uk/articles/detail/five_simple_steps_to_designing_grid_systems/" title="Mark Boulton: Five Simple Steps to designing grid systems">lesson plan</a>, Khoi gave us a <a href="http://www.subtraction.com/archives/2005/0901_the_funniest.php" title="Khoi Vinh: The Funniest Grid You Ever Saw">case study</a> and Cameron gave us <a href="http://cameronmoll.com/archives/2006/12/gridding_the_960/" title="Cameron Moll: Gridding the 960">a toolkit</a>. The message is clear: we have the browser support, the know-how and the tools we need to create consistent multi-column grid layouts on the web.</p>
+
+  <p>We can apply the same principles of proportion and balance to the type within those columns by borrowing another technique from our print brethren: the baseline grid.
+    
+  <p>The basic principle of the baseline grid is that the bottom of every line of text (the baseline) falls on a vertical grid set in even increments all the way down the page. Imagine those old Big Chief ruled writing pads they gave you in grade school to practice penmanship and you&#8217;ve got the basic idea. The magical <a href="example.html">end result</a> is that all the text on your page lines up across all the columns, creating a harmonious vertical rhythm.</p>
+
+  <p>In print it&#8217;s not that hard. Just enable the baseline grid in Quark or InDesign and set the increment based on the line height you want. On the web of course, it&#8217;s another story. It&#8217;s hard enough to align things vertically with CSS because it&#8217;s tough to predict where every element will fall, and it only gets worse when we&#8217;re dealing with type, which is hard enough to size consistently on its own. But with a little math and a slightly obsessive attention to detail, we can make it work.</p>
+
+  <h2>Firing up the grid</h2>
+
+  <p>The first thing we have to do is set a line height for our grid. I&#8217;ve chosen a pretty standard base font size of 12 pixels, and set the line height at 18 pixels, which gives us a nice open leading of about 150%. It&#8217;s important to think about your line-heights up front. You want a ratio of font size to line height that&#8217;s a good balance for readability and that&#8217;s easily divisible into smaller units (more on this later).</p>
+
+  <p>I&#8217;ve also borrowed a trick from <a href="http://www.subtraction.com/archives/2005/0901_the_funniest.php">Khoi</a> and created a tiling background image that I can use on the page while I&#8217;m working to make sure everything lines up where I want it to. You can see the end result with the grid turned on in this <a href="example_grid.html">example</a>.</p>
+
+  <p>You&#8217;ll notice in the previous example that the text doesn&#8217;t fall directly on the grid lines. Because of the way CSS renders line height (by adding space above and below the letters) it&#8217;s a lot easier to line the text up <em>within</em> the grid lines rather than directly on them. It&#8217;s possible to adjust your background image to take this into account, or tweak the padding on certain elements so the text starts in a different place, but there&#8217;s no point making this more complicated than it needs to be.</p>
+
+  <h2>Paragraphs and headers</h2>
+
+  <p>I'll start by resetting the margin and padding on everything to zero so we don&#8217;t have to worry about default browser styles. In practice, you'll probably want to use something a little more precise, but for the purposes of this example a good old star selector will do just fine.</p>
+
+  <pre><code>* { 
+  margin: 0; 
+  padding: 0;
+}</code></pre>
+
+  <p>We want space between paragraphs, but the default top and bottom margins of 1em (which works out in this case to 12 pixels) won&#8217;t work with our 18 pixel grid, so we&#8217;ll set the bottom margin on paragraphs to 18 pixels. </p>
+
+  <pre><code>p { 
+  margin-bottom: 18px; 
+}</code></pre>
+
+  <p>As we set the font size for headers, we also need to set appropriate line heights in multiples of 18, as well as adding the 18 pixel bottom margin.</p>
+
+  <pre><code>h1 { 
+  font-size: 24px; 
+  line-height: 36px;
+  margin-bottom: 18px; 
+}
+h2 { 
+  font-size: 18px; 
+  line-height: 18px; 
+  margin-bottom: 18px;
+}
+h3 { 
+  font-size: 12px; 
+  line-height: 18px; 
+}</code></pre>
+
+  <p>The pattern is pretty simple. Any time you add vertical space, with a margin or padding, you need to add it in units of 18 pixels to maintain the baseline grid. You don&#8217;t always have to add it in one place, but you need to add it in pairs that add up to 18 pixels. For instance, you could set a top margin of 12 pixels and a bottom margin of 6 pixels.</p>
+
+  <h2>Lists</h2>
+
+  <p>Lists are a little bit tougher. We&#8217;re used to adding a little padding between each list item to differentiate them, as well as space before or after a nested list. Depending on your grid size, you may have to choose between adding a lot of extra space (adding a full grid line) or adding none at all and letting list items fall on the regular grid lines.</p> 
+  <p>Since the 18 pixel line height we started with is pretty generous, the &#8220;none at all&#8221; option works pretty well here. I&#8217;ll just add the bottom margin of 18 pixels.</p>
+
+  <pre><code>ul, 
+ol { 
+  margin-bottom: 18px; 
+}</code></pre>
+
+  <p>As for nested lists, it&#8217;s possible to add half of your line-height (in this case 9 pixels) of margin above and below nested lists. Adding half a line to the top and another half to the bottom means the contents of the list will be &#8220;off the grid&#8221; but the grid will get back on track once the list ends. It&#8217;s a compromise, but sometimes worth it for designs where you need to accommodate especially long or complicated nested lists.</p>
+
+  <h2>Floats and sidebars</h2>
+
+  <p>Here&#8217;s where a little discipline comes in. Images and other elements floated within your text need to be sized vertically in multiples of your grid increment, in this case multiples of 18. If they&#8217;re sized correctly, you can add margins around them that add up vertically to a multiple of 18, and the text will always break in the right place, directly under your image.</p>
+
+  <pre><code>.left { 
+  float: left; 
+  margin: 0 18px 18px 0; 
+}
+.right { 
+  float: right; 
+  margin: 0 0 18px 18px; 
+}</code></pre>
+
+  <p>Other floated elements like callout boxes are a little bit more complicated, since it&#8217;s harder to predict their height based on the content inside. As long as any text and images inside the float follow the 18 pixel rules, and you always add vertical padding and margins in groups that add up to 18, everything should line up no matter what you put inside.</p>
+
+  <pre><code>.callout {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  margin-bottom: 18px; 
+}</code></pre>
+
+  <p>Notice that I added 8 pixels of padding to the top and bottom of the floated element, since the border width already accounted for 2 pixels of added height (8 + 8 + 1 + 1 = 18).</p>
+
+  <p>I&#8217;m also going to suck out the bottom margin on the last element in the callout so we don&#8217;t get too much extra space inside. This isn&#8217;t a critical layout feature (the grid is still intact without it), so I&#8217;ll go ahead and use the :last-child pseudo class since it doesn&#8217;t require me to add any extra markup. IE6 won&#8217;t get it, but it won&#8217;t break the layout.</p>
+
+  <pre><code>.callout :last-child { 
+  margin-bottom: 0; 
+}</code></pre>
+
+  <p>The important thing to remember with callouts and sidebars is to keep the line-height the same even if you make the text smaller. You might be tempted to tighten it up, but even for for 11- or 10-pixel font sizes, 18 pixels is still a very readable line-height.</p>
+
+  <h2>All your baseline are belong to us</h2>
+
+  <p>You can see it all put together in this <a href="example.html">example</a>. If you don&#8217;t believe me, you can put your rulers away and check it out with the <a href="example_grid.html">background grid</a> visible.</p>
+
+  <p>You can start to see why baseline grids aren&#8217;t used very often on the web. It&#8217;s pretty tough to keep up with it &mdash; especially as your layouts get more complicated &mdash; and we&#8217;ve just touched the surface of some of the more manageable challenges. Just like in print, it&#8217;s not always the right choice for every layout, and sometimes you need to make exceptions or exclude certain elements from the grid to just make the layout work.</p>
+
+  <p>But it&#8217;s definitely possible, and something that&#8217;s worth experimenting with - especially in combination with a horizontal or column grid. A nice balanced baseline grid &mdash; even just within the main content area &mdash; can really add an extra element of polish and readability as we move typesetting on the web to the next generation with CSS3 and beyond.</p>
+
+  <h2>Don&#8217;t fear the pixel</h2>
+
+  <p>One final side note on font sizing. I&#8217;m using pixels instead of ems in this example for one reason: it makes everything simpler. I can set one base line height for the entire document and I don&#8217;t have to recalculate it whenever you use a smaller font size. When designing a practical system like this it&#8217;s important that it&#8217;s relatively easy (for yourself and others) to use and maintain.</p>
+
+  <p>You <em>can</em> use relative sizes, but it quickly becomes a lot more difficult to maintain as the math becomes more complicated. Twelve out of 18 is easy (just set the line height to 1.5em), but when you want to adjust the text size but keep the same line height, the fractions start to get messy, and predicting how browsers are going to round your values makes it hard to be exact. It&#8217;s certainly possible however, and if you&#8217;re interested in trying something similar with relative text sizes, I&#8217;d recommend checking out Richard Rutter&#8217;s excellent <em>24 ways</em> article, <a href="http://24ways.org/2006/compose-to-a-vertical-rhythm" title="Richard Rutter: Compost to a Vertical Rhythm">Compose to a Vertical Rhythm</a></p>
+
+  <p>In the end, it&#8217;s a tradeoff. Most browsers will scale pixel-based line-heights proportionally along with the text. Of course the margins don&#8217;t scale, and neither do the images. But is it worth making the system more complicated just to make the margins scale if the images don&#8217;t? It depends on the situation. In the end, it&#8217;s up to you.</p>
+
+  <p>At some point as designers we have to strike a balance between creating pixel-perfect layouts and infinitely flexible ones. When you get down to it, resizeable text is primarily an accessibility feature, not a design feature. Ideally it&#8217;s something that should be provided by the browser, no matter how the page is built, and in modern browsers (including IE7) it is. As long as all your content is readable and accessible at all sizes, it&#8217;s not necessarily true that the design must maintain integrity as you scale.</p>
+</body>
+</html>
