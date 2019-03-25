@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>CSS2 background 1280x960 center center fixed, CSS3 background-size cover, CSS3 @media to set min-scale</title>
+		<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background: #000 url(img/02067_fallenleaf_1280x960.jpg) center center fixed no-repeat;
+			-moz-background-size: cover;
+			background-size: cover;
+			color: #fff;
+		}
+		@media only all and (max-width: 1024px) and (max-height: 768px) { /* Important: 1024x768px has the same ratio as 1280x960px */
+			body {	
+				-moz-background-size: 1024px 768px;
+				background-size: 1024px 768px;
+			}
+		}
+		#container {
+			margin: 20px auto;
+			width: 600px;
+			padding: 25px;
+			background: transparent url(img/black50.png);
+			background: rgba(0, 0, 0, 0.5) none;
+			-moz-border-radius: 12px;
+			-webkit-border-radius: 12px;
+			border-radius: 12px;
+		}
+		h1 {
+			margin: 0;
+		}
+		p {
+			margin: 10px 0 0;
+		}
+		a {
+			color: #aaa;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<h1>CSS2 background 1280x960 center center fixed, CSS3 background-size cover, CSS3 @media to set min-scale</h1>
+			<p>Photo by <a href="http://interfacelift.com/wallpaper_beta/details/2067/fallen_leaf.html">Sven M&uuml;ller</a>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque porttitor tellus quis aliquam. Suspendisse in tristique nibh. Pellentesque iaculis purus ut sapien tempus vitae imperdiet ligula bibendum. Phasellus malesuada tellus erat, non pellentesque neque. Nullam erat odio, placerat ac tincidunt sit amet, consequat sit amet nibh. Aliquam mollis molestie bibendum. Maecenas non dolor nec risus ornare semper. Integer ut urna sit amet tortor tincidunt ornare. Vivamus et diam quis arcu interdum cursus et ut libero. Nam sed feugiat lorem. Proin rutrum aliquam molestie. Mauris sed vehicula arcu. Curabitur aliquam, orci ut ultrices lacinia, dolor libero faucibus nibh, eget fringilla risus nisi nec nibh. Integer vulputate urna a nunc semper eu egestas tortor dapibus. Etiam tempus hendrerit nibh id consequat. Fusce pretium gravida mauris, id bibendum nulla adipiscing sit amet. Morbi vestibulum lorem ligula, a elementum dolor. Aenean ac tempor turpis.</p>
+			<p>Nunc eu ante sit amet urna condimentum suscipit sed vitae nunc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse ultricies, metus eget egestas tincidunt, justo diam euismod nisi, id ultrices lorem est vitae sapien. Curabitur congue tortor ipsum, sed luctus nunc. Duis hendrerit commodo sapien vitae pulvinar. Aliquam erat volutpat. Morbi molestie, diam a sollicitudin sodales, augue diam volutpat ante, quis interdum erat orci vitae eros. Maecenas quam nulla, luctus laoreet venenatis ut, commodo ac justo. Ut malesuada nisl vitae elit malesuada mattis. Morbi velit nunc, lacinia ut laoreet at, mollis eget velit. Curabitur accumsan felis ut eros pharetra ornare.</p>
+			<p>Cras ut pulvinar nisl. In hac habitasse platea dictumst. Proin at justo vehicula dolor aliquam tincidunt at et augue. Ut dui dolor, luctus vitae vehicula eu, rhoncus ac urna. Mauris lacinia neque sit amet purus feugiat id laoreet mauris laoreet. Aliquam erat volutpat. Nulla venenatis, urna at molestie facilisis, enim elit ullamcorper lorem, interdum ornare lacus velit eu leo. Aliquam convallis interdum tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc eu neque sem, eget auctor libero.</p>
+			<p>Aenean vitae dictum lectus. Suspendisse at nisl metus, non elementum risus. Vestibulum rhoncus elementum sapien non fringilla. Ut nisl orci, feugiat sed sollicitudin at, lacinia quis quam. Nulla volutpat aliquet dui, quis fermentum erat bibendum ut. Donec non turpis in tellus posuere aliquet sit amet quis sapien. Nunc elementum commodo felis a sodales. Vivamus blandit neque ac quam pharetra vel egestas enim porttitor. Quisque est eros, dapibus sit amet lacinia vitae, consequat at risus. Quisque faucibus enim at enim ornare nec volutpat nulla venenatis.</p>
+			<p>Duis eu orci in diam pulvinar commodo. Phasellus lorem purus, mattis fringilla adipiscing vel, semper non erat. Vivamus nec nunc lacus, ac aliquam elit. Pellentesque sodales mollis scelerisque. Vestibulum cursus, turpis sit amet accumsan vehicula, risus ante consequat orci, et iaculis risus metus scelerisque nisi. Suspendisse potenti. Curabitur vestibulum, justo vel tincidunt facilisis, nisi nulla hendrerit lectus, iaculis fringilla nibh lorem et dolor. Integer auctor laoreet tellus vel ullamcorper. Donec dictum viverra nulla quis rhoncus. Sed eget risus metus. Cras scelerisque nunc eget ligula congue consectetur. Proin ut neque augue, iaculis ultricies libero. Proin vestibulum accumsan elit, eget fermentum leo imperdiet in. Ut interdum orci nec quam sagittis hendrerit. Donec at odio nec mi imperdiet dapibus vitae et ante. Duis semper varius volutpat. Vestibulum hendrerit dapibus turpis.</p>
+		</div>
+	</body>
+</html>
