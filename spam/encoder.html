@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<head>
+<title>A List Apart: Spam: Encoder Function</title>
+
+<style type="text/css">
+<!--
+
+body	{
+	color: #000;
+	background: #f9f9f9;
+	padding: 15px 30px;
+	}
+	
+pre	{
+	font-size: small;
+	}
+	
+-->
+</style>
+
+</head>
+<body>
+<html>
+
+
+<h1><a 
+href="https://alistapart.com/articles/spam/">Win the Spam Arms Race</a></h1>
+
+<pre>
+function safeAddress($emailAddress, $theText, $theTitle, $xhtml, $isItSafe) {
+// Version 1.5 - by Dan Benjamin - http://www.hivelogic.com/
+// set $isItSafe = 1 to get escaped HTML, 0 for normal HTML
+// set $xhtml = 1 if you want your page to be valid for XHTML 1.x
+// you can call it like this: 
+//&lt;?php echo safeAddress($entity, $linkText, $titleText, 1, 1); ?&gt;
+
+    $ent = &quot;&quot;;
+    $userName = &quot;&quot;;
+    $domainName = &quot;&quot;;
+    
+    for ($i = 0; $i &lt; strlen($emailAddress); $i++) {
+        $c = substr($emailAddress, $i, 1);
+        if ($c == &quot;@&quot;) {
+            $userName = $ent;
+            $ent = &quot;&quot;;
+            } else {
+            $ent .= &quot;&amp;#&quot; . ord($c) . &quot;;&quot;;
+            }
+    }
+
+    $domainName = $ent;
+    
+    if ($xhtml == 1) {
+
+    $endResult = &quot;&lt;script type=\&quot;text/javascript\&quot;&gt;
+&lt;!--
+document.write('&lt;a href=\&quot;mailto:$userName&amp;#64;$domainName\&quot; title=\&quot;$theTitle\&quot;&gt;$theText&lt;\/a&gt;');
+// --&gt;
+&lt;/script&gt;&quot;;
+
+    } else {
+        $endResult = &quot;&lt;script language=\&quot;JavaScript\&quot; type=\&quot;text/javascript\&quot;&gt;
+&lt;!--
+document.write('&lt;a href=\&quot;mailto:$userName&amp;#64;$domainName\&quot; title=\&quot;$theTitle\&quot;&gt;$theText&lt;\/a&gt;');
+// --&gt;
+&lt;/script&gt;&quot;;
+
+    }
+    if ($isItSafe) {
+        return(htmlentities($endResult));
+    } else {
+        return($endResult);
+    }
+}
+
+</pre>
+
+
+</body>
+</html>
