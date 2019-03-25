@@ -1,0 +1,73 @@
+/*
+	GHETTO RESET I CHOOSE YOU
+*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/*
+	Foundation styles
+*/
+body {
+	background: #1E1E1E;
+	color: #FFF;
+	font: normal 100% Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: #8FDFFD;
+}
+
+a:hover {
+	color: #36C;
+	text-decoration: none;
+}
+
+p {
+	margin-bottom: 1em;
+}
+
+/*
+	Type
+*/
+h1 {
+	font-size: 3em;			/* 48px / 16px = 3em */
+	line-height: 1.14583;	/* 55px / 48px = 1.14583 */
+	margin: 0 0 1.07em;
+	text-transform: uppercase;
+}
+
+.entry .info,
+.entry .meta {
+	font-size: 0.6875em;	/* 11px / 16px = 0.6875em */
+	font-weight: bold;
+	line-height: 1.45455;	/* 16px / 11px = 1.45455 */
+}
+
+.entry h2 {
+	font-size: 1.5em;			/* 24px / 16px = 1.5em */
+	margin-bottom: 0.66667em;	/* 16px / 24px = 0.66667em */
+}
+
+.entry .info {
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.entry .main {
+	font: normal 1em/1.375 Georgia, Times, serif;	/* 22px / 16px = 1.375 */
+}
+
+.entry .main p {
+	text-indent: 1.5em;	/* 24px / 16px = 1.5em */
+}
+
+.entry .main p:first-child {
+	text-indent: 0;
+}
+
+.entry .meta {
+	margin-top: 0.5em;
+	opacity: 0.7;
+}
