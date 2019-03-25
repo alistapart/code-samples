@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Example 11: Sliding Doors of CSS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css" media="screen">
+    body {
+      background:#fff;
+      margin:0;
+      padding:0;
+      color:#000;
+      font:x-small/1.4em Georgia,Serif;
+      voice-family: "\"}\""; voice-family:inherit;
+      font-size:small;
+      } html>body {font-size:small;}
+    
+    #header {
+      background:#DAE0D2 url("bg.gif") repeat-x bottom;
+      }
+    #header ul {
+      margin:0;
+      padding:10px 10px 4px;
+      list-style:none;
+      text-align:center;
+      }
+    #header li {
+      display:inline;
+      background:url("left_both.gif") no-repeat left top;
+      margin:0;
+      padding:0 0 0 9px;
+      border-bottom:1px solid #765;
+      }
+    #header > ul li {
+      padding-top:5px;
+      padding-bottom:4px
+      }
+    #header a {
+      width:.1em;
+      background:url("right_both.gif") no-repeat right top;
+      padding:5px 15px 4px 6px;
+      text-decoration:none;
+      font-weight:bold;
+      color:#765;
+      }
+    #header > ul a {width:auto;}
+    #header a:hover {
+      color:#333;
+      }
+    #home #nav-home, #news #nav-news,
+    #products #nav-products, #about #nav-about,
+    #contact #nav-contact {
+      background-position:0 -150px;
+      border-width:0;
+      }
+    #home ul > #nav-home, #news ul > #nav-news,
+    #products ul > #nav-products, #about ul > #nav-about,
+    #contact ul > #nav-contact {
+      padding-bottom:5px;
+      }
+    #home #nav-home a, #news #nav-news a,
+    #products #nav-products a, #about #nav-about a,
+    #contact #nav-contact a {
+      background-position:100% -150px;
+      padding-bottom:5px;
+      color:#333;
+      }
+    #header li:hover, #header li:hover a {
+      background-position:0% -150px;
+      color:#333;
+      }
+    #header li:hover a {
+      background-position:100% -150px;
+      }
+  </style>
+</head>
+
+<body id="products">
+
+<div id="header">
+  <ul><li id="nav-home"><a href="#">Home</a></li><li id="nav-news"><a href="#">News</a></li><li id="nav-products"><a href="#">Products</a></li><li id="nav-about"><a href="#">About</a></li><li id="nav-contact"><a href="#">Contact</a></li></ul>
+</div>
+
+<p style="margin:0; padding:1em; clear:both;">Text about inline method</p>
+
+</body>
+</html>
