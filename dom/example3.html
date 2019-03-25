@@ -1,0 +1,936 @@
+<html>
+
+<head>
+
+<title>CSS Properties Examples (1)</title>
+
+
+
+<style type="text/css">
+
+<!--
+
+#bodyTest { background-image: none; }
+
+#bgcTest { background-color: inherit; }
+
+#bgTest { background-image: none; }
+
+#borderTest { border: none; }
+
+#clipTest { background-color: #ffffcc; overflow: hidden; }
+
+#cursorTest { cursor: auto; }
+
+#directionTest { direction: rtl; }
+
+-->
+
+</style>
+
+
+
+<script language="JavaScript" src="example.js">
+
+</script>
+
+
+
+<script language="JavaScript">
+
+function changeCursor()
+
+{
+
+	var choice = document.cursorForm.cursorMenu.selectedIndex;
+
+	if (choice != 0)
+
+	{
+
+		setIdProperty("cursorTest", "cursor",
+
+			document.cursorForm.cursorMenu.options[choice].value );
+
+	}
+
+}
+
+
+
+function changeBGColor( n )
+
+{
+
+	if (n == 0)
+
+	{
+
+		setIdProperty( "bgcTest", "backgroundColor", 
+
+			"#" + document.bgcForm.bgHex.value );
+
+	}
+
+	else if (n == 1)
+
+	{
+
+		setIdProperty( "bgcTest", "backgroundColor", "rgb(" +
+
+			document.bgcForm.bgRed.value + "," +
+
+			document.bgcForm.bgGreen.value + "," +
+
+			document.bgcForm.bgBlue.value + ")" );
+
+	}
+
+	else if (n == 2)
+
+	{
+
+		var choice = document.bgcForm.bgcMenu.selectedIndex;
+
+		if (choice != 0)
+
+		{
+
+			setIdProperty("bgcTest", "backgroundColor",
+
+				document.bgcForm.bgcMenu.options[choice].value );
+
+		}
+
+	}
+
+}
+
+
+
+function changeBGImage( str )
+
+{
+
+	if (str != "none")
+
+	{
+
+		str = "url(\"" + str + "\")";
+
+	}
+
+	setIdProperty( "bgTest", "backgroundImage", str );
+
+}
+
+
+
+function changeBGRep( str )
+
+{
+
+	setIdProperty( "bgTest", "backgroundRepeat", str );
+
+}
+
+
+
+function changeBGAttach( str )
+
+{
+
+	setIdProperty( "bgTest", "backgroundAttach", str );
+
+}
+
+
+
+function changeBGPos( n )
+
+{
+
+	var	horiz, vert;
+
+
+
+	if (n == 0) // by number
+
+	{
+
+		setIdProperty( "bgTest", "backgroundPosition",
+
+			document.bgForm.bgX.value + " " +
+
+			document.bgForm.bgY.value );
+
+	}
+
+	else if (n == 1) // by position
+
+	{
+
+		horiz = document.bgForm.bgXMenu.selectedIndex;
+
+		vert = document.bgForm.bgYMenu.selectedIndex;
+
+		if (horiz != 0)
+
+		{
+
+			setIdProperty( "bgTest", "backgroundPosition",
+
+				document.bgForm.bgXMenu.options[horiz].value + " " +
+
+				document.bgForm.bgYMenu.options[vert].value );
+
+		}
+
+	}
+
+}
+
+
+
+/* this function changes a length value to "px" if it can't
+
+   find a percent sign or alphabetic character already there */
+
+function checkLength( val )
+
+{
+
+	var hasLengthExp = /[\w%]/;
+
+	if (!hasLengthExp.test(val))
+
+	{
+
+		val += "px";
+
+	}
+
+	return val;
+
+}
+
+
+
+function changeBorder( obj )
+
+{
+
+	var propName = "border" + obj.name;
+
+	var val;
+
+
+
+	if (obj.name.indexOf("Style") < 0)
+
+	{
+
+		val = obj.value;
+
+		if (obj.name.indexOf("Width") >= 0)
+
+		{
+
+			val = checkLength( val );
+
+		}
+
+		setIdProperty( "borderTest", propName, val );
+
+	}
+
+	else
+
+	{
+
+		var choice = obj.selectedIndex;
+
+		setIdProperty( "borderTest", propName, obj.options[choice].value );
+
+	}
+
+}
+
+
+
+function changeClip( which )
+
+{
+
+	if (which == "auto")
+
+	{
+
+		setIdProperty( "clipTest", "clip", "auto" );
+
+	}
+
+	else if (which == "rect")
+
+	{
+
+		var top, right, bottom, left;
+
+		top = checkLength(document.clipForm.clipTop.value);
+
+		right = checkLength(document.clipForm.clipRight.value);
+
+		bottom = checkLength(document.clipForm.clipBottom.value);
+
+		left = checkLength(document.clipForm.clipLeft.value);
+
+		setIdProperty( "clipTest", "clip",
+
+			"rect(" + top + "," + right + "," + bottom + "," + left + ")" );
+
+	}
+
+	else
+
+	{
+
+		var choice = document.clipForm.clipMenu.selectedIndex;
+
+		if (choice != 0)
+
+		{
+
+			setIdProperty( "clipTest", "overflow",
+
+				document.clipForm.clipMenu.options[choice].value );
+
+		}
+
+	}
+
+}
+
+
+
+setBrowser();
+
+
+
+</script>
+
+
+
+</head>
+
+<body id="bodyTest" bgcolor="#ffffff" >
+
+<h2>CSS Properties Examples</h2>
+
+<p>
+
+These pages show some of the effects that you can produce by
+
+manipulating the CSS properties of the parts of your document.
+
+Not all CSS level 2 properties are covered, and some of the properties
+
+are from CSS level 1.
+
+</p>
+
+
+
+<hr>
+
+
+
+<div id="bgcTest">
+
+<h3>background-color</h3>
+
+<form name="bgcForm">
+
+<p>
+
+Set the background color of this area as:
+
+</p>
+
+<p>
+
+Hex value #<input type="text" name="bgHex" size="7" maxlength="6"
+
+  onChange="changeBGColor( 0 )"> and press TAB, or...
+
+</p>
+
+<p>
+
+rgb( <input type="text" name="bgRed" size="5" maxlength="4"
+
+	value="255">,
+
+	<input type="text" name="bgGreen" size="5" maxlength="4"
+
+	 value="255">,
+
+	<input type="text" name="bgBlue" size="5" maxlength="4"
+
+	 value="255"> and click 
+
+	<input type="button" value="Set" onClick="changeBGColor( 1 )"> ) or...
+
+</p>
+
+<p>
+
+as system color:
+
+<select name="bgcMenu" onChange="changeBGColor( 2 )">
+
+<option value="">Choose a system color
+
+<option value="ActiveBorder">ActiveBorder
+
+<option value="ActiveCaption">ActiveCaption
+
+<option value="AppWorkspace">AppWorkspace
+
+<option value="Background">Background
+
+<option value="ButtonFace">ButtonFace
+
+<option value="ButtonHighlight">ButtonHighlight
+
+<option value="ButtonShadow">ButtonShadow
+
+<option value="ButtonText">ButtonText
+
+<option value="CaptionText">CaptionText
+
+<option value="GrayText">GrayText
+
+<option value="Highlight">Highlight
+
+<option value="HighlightText">HighlightText
+
+<option value="InactiveBorder">InactiveBorder
+
+<option value="InactiveCaption">InactiveCaption
+
+<option value="InactiveCaptionText">InactiveCaptionText
+
+<option value="InfoBackground">InfoBackground
+
+<option value="InfoText">InfoText
+
+<option value="Menu">Menu
+
+<option value="MenuText">MenuText
+
+<option value="Scrollbar">Scrollbar
+
+<option value="ThreeDDarkShadow">ThreeDDarkShadow
+
+<option value="ThreeDFace">ThreeDFace
+
+<option value="ThreeDHighlight">ThreeDHighlight
+
+<option value="ThreeDLightShadow">ThreeDLightShadow
+
+<option value="ThreeDShadow">ThreeDShadow
+
+<option value="Window">Window
+
+<option value="WindowFrame">WindowFrame
+
+<option value="WindowText">WindowText
+
+</select>
+
+</p>
+
+</form>
+
+</div>
+
+
+
+<hr>
+
+
+
+<div id="bgTest">
+
+<h3>background-image, background-repeat, background-attachment,
+
+  background-position</h3>
+
+<form name="bgForm">
+
+<p>
+
+Set the background image for this section to:
+
+<input type="radio" name="bgImg" value="0" checked
+
+   onClick="changeBGImage(&quot;none&quot;)"> None
+
+<input type="radio" name="bgImg" value="1"
+
+	onClick="changeBGImage(&quot;w3bg.gif&quot;)"> W3C logo
+
+<input type="radio" name="bgImg" value="2"
+
+	onClick="changeBGImage(&quot;misc_t16.jpg&quot;)"> Orange mesh
+
+</p>
+
+<p>
+
+Set background repeat to:
+
+<input type="radio" name="bgRep" value="0" checked
+
+	onClick="changeBGRep(&quot;repeat&quot;)"> repeat
+
+<input type="radio" name="bgRep" value="1"
+
+	onClick="changeBGRep(&quot;repeat-x&quot;)"> repeat-x
+
+<input type="radio" name="bgRep" value="2"
+
+	onClick="changeBGRep(&quot;repeat-y&quot;)"> repeat-y
+
+<input type="radio" name="bgRep" value="3"
+
+	onClick="changeBGRep(&quot;no-repeat&quot;)"> no-repeat
+
+</p>
+
+<p>
+
+Set background attachment to:
+
+<input type="radio" name="bgAttach" value="0" checked
+
+	onClick="changeBGAttach(&quot;fixed&quot;)"> fixed
+
+<input type="radio" name="bgAttach" value="1"
+
+	onClick="changeBGAttach(&quot;scroll&quot;)"> scroll 
+
+</p>
+
+<p>
+
+Specify position by number and length units (px, in, etc.)
+
+<input type="text" name="bgX" value="0px" size="8">,
+
+<input type="text" name="bgY" value="0px" size="8">
+
+<input type="button" value="Set" onClick="changeBGPos( 0 )">
+
+<br>
+
+or by horizontal position:
+
+<select name="bgXMenu" onChange="changeBGPos( 1 )">
+
+<option value="">
+
+<option value="left" selected>left
+
+<option value="center">center
+
+<option value="right">right
+
+</select>
+
+and vertical position:
+
+<select name="bgYMenu" onChange="changeBGPos( 1 )">
+
+<option value="">
+
+<option value="top" selected>top
+
+<option value="center"> center
+
+<option value="bottom"> bottom
+
+</select>
+
+</form>
+
+</div>
+
+
+
+<hr>
+
+
+
+<div id="borderTest">
+
+<h3>border-color, border-width, border-style</h3>
+
+<form name="borderForm">
+
+<p>
+
+For widths, you may use a length (such as <tt>3px</tt>)
+
+or one of <tt>thin</tt>, <tt>medium</tt>, and <tt>thick</tt>.
+
+</p>
+
+<p>
+
+For colors, please use a hex value with a preceding <tt>#</tt>,
+
+such as <tt>#ffffcc</tt>, or a color name, such as <tt>fuchsia</tt>.
+
+</p>
+
+<p>
+
+Note: in Mozilla 14, the borders may not
+
+always update immediately. If you scroll
+
+up and then down again, they will replot.
+
+</p>
+
+<table border="1">
+
+<tr> <th></th> <th>color</th> <th>width</th> <th>style</th> </tr>
+
+<tr>
+
+<th>top</th>
+
+<td><input type="text" name="TopColor" size="10"
+
+	onChange="changeBorder(this)"></td>
+
+<td><input type="text" name="TopWidth" size="10"
+
+	onChange="changeBorder(this)"></td>
+
+<td>
+
+<select name="TopStyle" onChange="changeBorder(this)">
+
+<option value="none">none
+
+<option value="hidden">hidden
+
+<option value="dotted">dotted
+
+<option value="dashed">dashed
+
+<option value="solid">solid
+
+<option value="double">double
+
+<option value="groove">groove
+
+<option value="ridge">ridge
+
+<option value="inset">inset
+
+<option value="outset">outset
+
+</select>
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>left</th>
+
+<td><input type="text" name="LeftColor" size="10"
+
+	onChange="changeBorder(this)"></td>
+
+<td><input type="text" name="LeftWidth" size="10"
+
+	onChange="changeBorder(this)"></td>
+
+<td>
+
+<select name="LeftStyle" onChange="changeBorder(this)">
+
+<option value="none">none
+
+<option value="hidden">hidden
+
+<option value="dotted">dotted
+
+<option value="dashed">dashed
+
+<option value="solid">solid
+
+<option value="double">double
+
+<option value="groove">groove
+
+<option value="ridge">ridge
+
+<option value="inset">inset
+
+<option value="outset">outset
+
+</select>
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>bottom</th>
+
+<td><input type="text" name="BottomColor" size="10"
+
+	onChange="changeBorder(this)"></td>
+
+<td><input type="text" name="BottomWidth" size="10"
+
+	onChange="changeBorder(this)"></td>
+
+<td>
+
+<select name="BottomStyle" onChange="changeBorder(this)">
+
+<option value="none">none
+
+<option value="hidden">hidden
+
+<option value="dotted">dotted
+
+<option value="dashed">dashed
+
+<option value="solid">solid
+
+<option value="double">double
+
+<option value="groove">groove
+
+<option value="ridge">ridge
+
+<option value="inset">inset
+
+<option value="outset">outset
+
+</select>
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>right</th>
+
+<td><input type="text" name="RightColor" size="10"
+
+	onChange="changeBorder(this)"></td>
+
+<td><input type="text" name="RightWidth" size="10"
+
+	onChange="changeBorder(this)"></td>
+
+<td>
+
+<select name="RightStyle" onChange="changeBorder(this)">
+
+<option value="none">none
+
+<option value="hidden">hidden
+
+<option value="dotted">dotted
+
+<option value="dashed">dashed
+
+<option value="solid">solid
+
+<option value="double">double
+
+<option value="groove">groove
+
+<option value="ridge">ridge
+
+<option value="inset">inset
+
+<option value="outset">outset
+
+</select>
+
+</td>
+
+</tr>
+
+</table>
+
+</form>
+
+</div>
+
+
+
+<hr>
+
+
+
+<div>
+
+<h3>clip, overflow</h3>
+
+<div id="clipTest">
+
+<img src="w3c_home.gif" align="left" alt="W3 Consortium logo"
+
+   width="72" height="48">
+
+This section contains a fairly large amount of text, so that
+
+we can see the effects of clipping.
+
+A clipping region defines what portion of an element's rendered
+
+content is visible. By default, the clipping region has the
+
+same size and shape as the element's box(es). However, the clipping
+
+region may be modified by the 'clip' property.
+
+The 'clip' property applies to elements that have an 'overflow' property
+
+with a value other than 'visible'.
+
+</div>
+
+<form name="clipForm">
+
+Set clip area to:<br>
+
+<input type="radio" name="clipRegion" value="0" checked
+
+  onClick="changeClip(&quot;auto&quot;)"> Auto <br>
+
+<input type="radio" name="clipRegion" value="1"
+
+	onClick="changeClip(&quot;rect&quot;)"> rectangle specified
+
+by these lengths [press TAB to update]:<br>
+
+top: <input type="text" name="clipTop" size="8"
+
+	value="0px" onChange="changeClip(&quot;rect&quot;)">
+
+left: <input type="text" name="clipLeft" size="8"
+
+	value="0px" onChange="changeClip(&quot;rect&quot;)">
+
+bottom: <input type="text" name="clipBottom" size="8"
+
+	value="0px" onChange="changeClip(&quot;rect&quot;)">
+
+right: <input type="text" name="clipRight" size="8"
+
+	value="0px" onChange="changeClip(&quot;rect&quot;)">
+
+<br>
+
+Text outside clip area should:
+
+<select name="clipMenu" onChange="changeClip(&quot;overflow&quot;)">
+
+<option value=""> (choose one)
+
+<option value="visible"> be visible
+
+<option value="hidden" selected> be hidden
+
+<option value="scroll"> scroll
+
+<option value="auto"> take default
+
+</select>
+
+</form>
+
+</div>
+
+
+
+<hr>
+
+
+
+<div id="cursorTest">
+
+<h3>cursor</h3>
+
+<p>
+
+Select cursor type for this area, then move the cursor around.
+
+If you move it outside this area, it will resume its normal shape.
+
+</p>
+
+<form name="cursorForm">
+
+<select name="cursorMenu" onChange="changeCursor()">
+
+<option value="">Choose a cursor type
+
+<option value="auto">auto
+
+<option value="crosshair">crosshair
+
+<option value="default">default
+
+<option value="pointer">pointer
+
+<option value="move">move
+
+<option value="e-resize">e-resize
+
+<option value="ne-resize ">ne-resize 
+
+<option value="nw-resize ">nw-resize 
+
+<option value="n-resize ">n-resize 
+
+<option value="se-resize">se-resize
+
+<option value="sw-resize">sw-resize
+
+<option value="s-resize">s-resize
+
+<option value="w-resize">w-resize
+
+<option value="text">text
+
+<option value="wait">wait
+
+<option value="help ">help 
+
+</select>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
+

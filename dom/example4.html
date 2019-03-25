@@ -1,0 +1,894 @@
+<html>
+
+<head>
+
+<title>CSS Properties Examples (2)</title>
+
+
+
+<style type="text/css">
+
+<!--
+
+#bodyTest { background-image: none; }
+
+
+
+#floatTest {
+
+	float: none;
+
+	width: 100;
+
+	background-color: #ffffcc;
+
+	border-style: solid;
+
+	border-color: red;
+
+}
+
+
+
+#clearTest { clear: none; }
+
+
+
+#fontTest {
+
+	font-size: 12pt;
+
+	font-weight: normal;
+
+	font-family: serif;
+
+	font-style: normal;
+
+	font-stretch: normal;
+
+}
+
+
+
+#lineTest {
+
+	line-height: normal;
+
+	letter-spacing: normal;
+
+	text-align: left;
+
+	text-indent: 0px;
+
+}
+
+
+
+#vertTest {
+
+	vertical-align: baseline;
+
+}
+
+
+
+#listTest {
+
+	list-style-type: decimal;
+
+	list-style-position: outside;
+
+	list-style-image: none;
+
+}
+
+
+
+#effectsTest {
+
+	text-decoration: none;
+
+}
+
+-->
+
+</style>
+
+
+
+<script language="JavaScript" src="example.js">
+
+</script>
+
+
+
+<script language="JavaScript">
+
+
+
+/* this function changes a length value to "px" if it can't
+
+   find a percent sign or alphabetic character already there */
+
+function checkLength( val )
+
+{
+
+	var hasLengthExp = /[\w%]/;
+
+	if (!hasLengthExp.test(val))
+
+	{
+
+		val += "px";
+
+	}
+
+	return val;
+
+}
+
+
+
+function changeFloat( button )
+
+{
+
+	setIdProperty( "floatTest", "cssFloat",
+
+		button.value );
+
+}
+
+
+
+function changeClear ( button )
+
+{
+
+	setIdProperty( "clearTest", "clear",
+
+		button.value );
+
+}
+
+
+
+function changeFontSize( n )
+
+{
+
+	var	choice;
+
+	if (n == 0)
+
+	{
+
+		document.fontForm.fontSize[0].checked = true;
+
+		choice = document.fontForm.fontSizeMenu.selectedIndex;
+
+		choice = document.fontForm.fontSizeMenu.options[choice].value;
+
+		if (choice != "")
+
+		{
+
+			setIdProperty( "fontTest", "fontSize", choice );
+
+		}
+
+	}
+
+	else
+
+	{
+
+		document.fontForm.fontSize[1].checked = true;
+
+		setIdProperty( "fontTest", "fontSize",
+
+			document.fontForm.fontSizeNum.value );
+
+	}
+
+}
+
+
+
+function changeFontFamily( n )
+
+{
+
+	var	choice;
+
+	if (n == 0)
+
+	{
+
+		document.fontForm.fontFamily[0].checked = true;
+
+		choice = document.fontForm.fontFamilyMenu.selectedIndex;
+
+		setIdProperty( "fontTest", "fontFamily", 
+
+			document.fontForm.fontFamilyMenu.options[choice].value );
+
+	}
+
+	else
+
+	{
+
+		document.fontForm.fontFamily[1].checked = true;
+
+		setIdProperty( "fontTest", "fontFamily",
+
+			document.fontForm.fontFamilyName.value );
+
+	}
+
+}
+
+
+
+function changeFontProp( menuObj )
+
+{
+
+	var	choice = menuObj.selectedIndex;
+
+	var propName = menuObj.name;
+
+	var pos = propName.indexOf("Menu");
+
+	propName = propName.substring( 0, pos );
+
+	setIdProperty( "fontTest", propName,
+
+		menuObj.options[choice].value );
+
+}
+
+
+
+function changeLineInfo( inputObj )
+
+{
+
+	setIdProperty( "lineTest", inputObj.name, inputObj.value );
+
+}
+
+
+
+function changeLineMenu( menuObj )
+
+{
+
+	var choice = menuObj.selectedIndex;
+
+	var whichDiv = (menuObj.name.indexOf("vertical") < 0) ?
+
+		"lineTest" : "vertTest";
+
+	setIdProperty( whichDiv, menuObj.name,
+
+		menuObj.options[choice].value );
+
+}
+
+
+
+function changeListStyle( menuObj )
+
+{
+
+	var choice = menuObj.selectedIndex;
+
+	var val = menuObj.options[choice].value;
+
+	if (val == "")
+
+	{
+
+		setIdProperty( "listTest", "listStyleType", "none");
+
+		setIdProperty( "listTest", "listStyleImage",
+
+			"url(\"r_arrow.gif\")" );
+
+	}
+
+	else
+
+	{
+
+		setIdProperty( "listTest", "listStyleImage", "none");
+
+		setIdProperty( "listTest", "listStyleType", val );
+
+	}
+
+}
+
+
+
+function changeListPos( menuObj )
+
+{
+
+	var	choice = menuObj.selectedIndex;
+
+	setIdProperty( "listTest", "listStylePosition",
+
+		menuObj.options[choice].value );
+
+}
+
+
+
+function changeDeco( menuObj )
+
+{
+
+	var	choice = menuObj.selectedIndex;
+
+	setIdProperty( "effectsTest", menuObj.name,
+
+		menuObj.options[choice].value );
+
+}
+
+
+
+function changeShadow()
+
+{
+
+	var str = document.effectsForm.shadowColor.value;
+
+	str = str + " " +
+
+		document.effectsForm.shadowX.value + " " +
+
+		document.effectsForm.shadowY.value + " " +
+
+		document.effectsForm.shadowBlur.value;
+
+	setIdProperty( "effectsTest", "textShadow", str );
+
+}
+
+
+
+setBrowser();
+
+
+
+</script>
+
+
+
+</head>
+
+<body id="bodyTest" bgcolor="#ffffff" >
+
+<h2>CSS Properties Examples (2)</h2>
+
+
+
+<hr>
+
+
+
+<h3>float</h3>
+
+<form name="floatForm">
+
+<div id="floatTest">
+
+<p>
+
+This part of the text can
+
+be made to float.
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+
+This text will flow around the red-bordered area when it's floated.
+
+The property is <tt>cssFloat</tt> in
+
+JavaScript, because <tt>float</tt> is a reserved word.
+
+</p>
+
+</div>
+
+<div id="clearTest">
+
+The text in this <tt>&lt;div&gt;</tt> normally participates
+
+in flowing around the floating text unless its <tt>clear</tt>
+
+attribute is set appropriately.
+
+Note: The <tt>cssFloat</tt> property 
+
+cannot be applied to text generated on the fly.
+
+</div>
+
+<p>
+
+Make floating text:
+
+<input type="radio" name="floatBtn" value="none" checked
+
+	onClick="changeFloat( this )"> non-floating
+
+<input type="radio" name="floatBtn" value="left"
+
+	onClick="changeFloat( this )"> float to left
+
+<input type="radio" name="floatBtn" value="right"
+
+	onClick="changeFloat( this )"> float to right
+
+<br>
+
+Make subsequent text:
+
+<input type="radio" name="clearBtn" value="none" checked
+
+	onClick="changeClear( this )"> non-clearing
+
+<input type="radio" name="clearBtn" value="left"
+
+	onClick="changeClear( this )"> clear to left
+
+<input type="radio" name="clearBtn" value="right"
+
+	onClick="changeClear( this )"> clear to right
+
+</p>
+
+</form>
+
+
+
+<hr>
+
+
+
+<h3>font-size, font-family, font-style, font-weight, font-stretch,
+
+	font-variant</h3>
+
+<div id="fontTest">
+
+<p>
+
+There is an incredible number of font properties to choose
+
+from. Click below to see this particular section of text change.
+
+</p>
+
+</div>
+
+<form name="fontForm">
+
+<p>
+
+Font size:
+
+<input type="radio" name="fontSize" value="0"
+
+   onClick="changeFontSize(0)"> By keyword:
+
+<select name="fontSizeMenu" onChange="changeFontSize(0)">
+
+<option value="xx-small">xx-small
+
+<option value="x-small">x-small
+
+<option value="small">small
+
+<option value="medium" selected>medium
+
+<option value="large">large
+
+<option value="x-large">x-large
+
+<option value="xx-large">xx-large
+
+<option value="">---
+
+<option value="smaller">smaller
+
+<option value="larger">larger
+
+</select>
+
+<input type="radio" name="fontSize" value="1" checked 
+
+	onClick="changeFontSize(1)"> By number:
+
+<input type="text" name="fontSizeNum" value="12pt"
+
+	onChange="changeFontSize(1)">
+
+</p>
+
+<p>
+
+Set font family:
+
+<input type="radio" name="fontFamily" value="0" checked
+
+   onClick="changeFontFamily(0)"> by generic name:
+
+<select name="fontFamilyMenu" onChange="changeFontFamily(0)">
+
+<option value="serif" selected>serif
+
+<option value="sans-serif">sans-serif
+
+<option value="cursive">cursive
+
+<option value="fantasy">fantasy
+
+<option value="monospace">monospace
+
+</select>
+
+<input type="radio" name="fontFamily" value="1"
+
+	onClick="changeFontFamily(1)"> By name:
+
+<input type="text" name="fontFamilyName" value="serif"
+
+	onChange="changeFontFamily(1)">
+
+</p>
+
+<p>
+
+Font style:
+
+<select name="fontStyleMenu" onChange="changeFontProp(this)">
+
+<option value="normal" selected>normal
+
+<option value="italic">italic
+
+<option value="oblique">oblique
+
+</select>
+
+
+
+Font weight:
+
+<select name="fontWeightMenu" onChange="changeFontProp(this)">
+
+<option value="bolder">bolder
+
+<option value="lighter">lighter
+
+<option value="100">100
+
+<option value="200">200
+
+<option value="300">300
+
+<option value="400" selected>400 (normal)
+
+<option value="500">500
+
+<option value="600">600
+
+<option value="700">700 (bold)
+
+<option value="800">800
+
+<option value="900">900
+
+</select>
+
+</p>
+
+<p>
+
+Font variant:
+
+<select name="fontVariantMenu" onChange="changeFontProp(this)">
+
+<option value="normal" selected>normal
+
+<option value="small-caps">small-caps
+
+</select>
+
+</form>
+
+
+
+Font stretch:
+
+<select name="fontStretchMenu" onChange="changeFontProp(this)">
+
+<option value="normal" selected>normal
+
+<option value="wider">wider
+
+<option value="narrower">narrower
+
+<option value="ultra-condensed">ultra-condensed
+
+<option value="extra-condensed">extra-condensed
+
+<option value="condensed">condensed
+
+<option value="semi-condensed">semi-condensed
+
+<option value="semi-expanded">semi-expanded
+
+<option value="expanded">expanded
+
+<option value="extra-expanded">extra-expanded
+
+<option value="ultra-expanded">ultra-expanded
+
+</select>
+
+</p>
+
+<hr>
+
+<h3>line-height, letter-spacing, text-indent, text-align, vertical-align</h3>
+
+<div id="lineTest">
+
+<p>
+
+This paragraph is designed to have word wrap so that you can see
+
+text-indent in action. <span id="vertTest">This sentence
+
+exercises vertical alignment.</span>
+
+When changing line-height and letter-spacing,
+
+you can use <tt>normal</tt> as input. If you put just a number for
+
+line-height (without a length like <tt>px</tt> or <tt>cm</tt>), that
+
+number will be <b>multiplied</b> by the current font size. 
+
+</p>
+
+<p>
+
+These short lines<br>
+
+show text align<br>
+
+in action. 
+
+</p>
+
+</div>
+
+<form name="lineForm">
+
+Line height: <input type="text" name="lineHeight" size="10"
+
+	onChange="changeLineInfo( this )"> 
+
+Letter spacing: <input type="text" name="letterSpacing" size="10"
+
+	value="0px" onChange="changeLineInfo( this )"> 
+
+Text indent: <input type="text" name="textIndent" size="10"
+
+	value="0px" onChange="changeLineInfo( this )">
+
+<br>
+
+Text align:
+
+<select name="textAlign" onChange="changeLineMenu(this)">
+
+<option value="left" selected>left
+
+<option value="right">right
+
+<option value="center">center
+
+<option value="justify">justify
+
+</select>
+
+Vertical align:
+
+<select name="verticalAlign" onChange="changeLineMenu(this)">
+
+<option value="baseline" selected>baseline
+
+<option value="sub">sub
+
+<option value="super">super
+
+<option value="top">top
+
+<option value="text-top">text-top
+
+<option value="middle">middle
+
+<option value="bottom">bottom
+
+<option value="text-bottom">text-bottom
+
+</select>
+
+</form>
+
+
+
+<hr>
+
+<h3>list-style-type, list-style-image, list-position</h3>
+
+<p>
+
+As of Mozilla 14, list-style-image does not appear to work,
+
+so graphic bullets still aren't possible. List position
+
+does not work either.
+
+</p>
+
+<ol id="listTest">
+
+<li>Item one
+
+<li>Item two<br>line two of item two
+
+<li>Item three
+
+</ol>
+
+<form name="listForm">
+
+List style type: 
+
+<select name="listMenu" onChange="changeListStyle(this)">
+
+<option value="disc">disc
+
+<option value="circle">circle
+
+<option value="square">square
+
+<option value="decimal" selected>decimal
+
+<option value="decimal-leading-zero">decimal-leading-zero
+
+<option value="lower-roman">lower-roman
+
+<option value="upper-roman">upper-roman
+
+<option value="lower-greek">lower-greek
+
+<option value="lower-alpha">lower-alpha
+
+<option value="upper-alpha">upper-alpha
+
+<option value="">** graphic bullet **
+
+</select>
+
+List position:
+
+<select name="listPosition" onChange="changeListPos( this )">
+
+<option value="outside">Markers outside (default)
+
+<option value="inside">Markers inside
+
+</select>
+
+
+
+<hr>
+
+<h3>text-decoration, text-transform, text-shadow</h3>
+
+<div id="effectsTest">
+
+This text will let you see text effects such as underlining
+
+and overlining, and text shadows. In Mozilla 14, the <tt>blink</tt>
+
+effect, thankfully, does <i>not</i> work. Text shadows
+
+do not work either.
+
+</div>
+
+<form name="effectsForm">
+
+Decoration:
+
+<select name="textDecoration" onChange="changeDeco( this )">
+
+<option value="none ">none (default)
+
+<option value="underline">underline
+
+<option value="overline">overline
+
+<option value="line-through">line-through
+
+<option value="blink">blink
+
+</select>
+
+Transform:
+
+<select name="textTransform" onChange="changeDeco( this )">
+
+<option value="none" selected>none
+
+<option value="capitalize">capitalize
+
+<option value="uppercase">uppercase
+
+<option value="lowercase">lowercase
+
+</select>
+
+<br>
+
+Text shadow color:
+
+<input type="text" name="shadowColor" onChange="changeShadow()"
+
+	size="12">
+
+X-offset:
+
+<input type="text" name="shadowX" value="0px" onChange="changeShadow()"
+
+	size="8">
+
+Y-offset:
+
+<input type="text" name="shadowY" value="0px" onChange="changeShadow()"
+
+	size="8">
+
+blur radius:
+
+<input type="text" name="shadowBlur" value="0px" onChange="changeShadow()"
+
+	size="8">
+
+</form>
+
+
+
+</body>
+
+</html>
+

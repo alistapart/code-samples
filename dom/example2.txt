@@ -1,0 +1,208 @@
+<html>
+<head>
+<title>Properties Test</title>
+<style type="text/css">
+<!--
+
+#d2 {
+   visibility: visible;
+   background-color: #ccccff;
+   position: absolute;
+   top: 10px; left: 110px;
+   width: 100px; height:100px;
+}
+
+#d3 {
+   position: absolute;
+   top: 10px; left: 210px;
+ }
+
+#d4 {
+   position:absolute;
+   top:120px;
+}
+-->
+</style>
+
+<script language="JavaScript">
+<!--
+var isNav4 = false;
+var isIE4 = false;
+var isNav5 = false;
+
+var doc;        // where to write our output to
+
+if (navigator.appVersion.charAt(0) == "4")
+{
+    if (navigator.appName.indexOf("Explorer") >= 0)
+    {
+        isIE4 = true;
+    }
+    else
+    {
+        isNav4 = true;
+    }
+}
+else if (navigator.appVersion.charAt(0) > "4")
+{
+    isNav5 = true;
+}
+
+function setDocument()
+{
+    if (isNav4)
+    {
+        doc = window.document.d4.document;
+    }
+    else if (isNav5)
+    {
+        doc = document;
+    }
+    else if (isIE4)
+    {
+        doc = document;
+    }
+}
+
+function showProperties( divName )
+{
+    var styleObject;
+    var bg, v;
+
+    if (isNav4)
+    {
+        styleObject = document[divName];
+    }
+    else if (isNav5)
+    {
+        styleObject = document.getElementById( divName ).style;
+    }
+    else if (isIE4)
+    {
+        styleObject = document.all[divName].style;
+    }
+    
+    if (styleObject != null)
+    {
+        if (isNav4)
+        {
+            bg = styleObject.bgColor;
+        }
+        else
+        {
+            bg = styleObject.backgroundColor;
+        }
+        if (bg == "")
+        {
+            bg = "\"\"";
+        }
+
+        v = (styleObject.visibility == "") ? "\"\"" : styleObject.visibility;
+        doc.writeln("visibility: " +
+           v + "<br>");
+
+        doc.writeln("background-color: " + bg + "<br>");
+
+        doc.write("left, top, width, height: ");
+        doc.write( styleObject.left == "" ? "\"\"" : styleObject.left );
+        doc.write(", ");
+        doc.write( styleObject.top == "" ? "\"\"" : styleObject.top );
+        doc.write(", ");
+        doc.write( styleObject.width == "" ? "\"\"" : styleObject.width );
+        doc.write(", ");
+        doc.write( styleObject.height == "" ? "\"\"" : styleObject.height );
+        doc.writeln("<br>");
+    }
+    else
+    {
+        doc.writeln( "Style object is null." );
+    }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#ffffff">
+
+<div id="d1" style=
+  "background-color: #ccffcc;
+   position: absolute;
+   top: 10px; left: 10px;
+   width:100px; height: 100px;">
+<tt>&lt;div&gt;</tt> with <tt>style</tt> inside
+tag. Height and width are 100px.
+</div>
+
+<div id="d2">
+<tt>&lt;div&gt;</tt> obtaining style from
+<tt>&lt;style&gt;</tt> element. Height
+and width are 100px.
+</div>
+
+<div id="d3" style="background-color: cyan">
+another <tt>&lt;div&gt;</tt> obtaining style from
+<tt>&lt;style&gt;</tt> element. (no width
+or height)
+</div>
+
+<div id="d4">
+<script language="JavaScript">
+<!--
+if (!(isNav4 || isNav5 || isIE4))
+{
+    document.writeln("<p>You need to use a version 4 browser or better.</p>");
+}
+else
+{
+    document.writeln("<p>Your current browser is: \&#147;" + navigator.appName
+      + "\&#148;<br> Version: " + navigator.appVersion + "<br>");
+    document.write("This script has categorized your browser as ");
+    if (isNav4) document.write("Navigator 4")
+    else if (isNav5) document.write("Navigator/Mozilla 6")
+    else if (isIE4) document.write("Explorer 4/5")
+    else document.write("Mystery Browser");
+    document.writeln(".</p>");
+}
+setDocument();
+//-->
+</script>
+<p>
+<h3>Properties for <tt>&lt;div&gt;</tt> one</h3>
+<p>
+<script language="JavaScript">
+<!--
+    showProperties( "d1" );
+// -->
+</script>
+</p>
+
+<h3>Properties for <tt>&lt;div&gt;</tt> two</h3>
+<p>
+<script language="JavaScript">
+<!--
+    showProperties( "d2" );
+// -->
+</script>
+</p>
+
+<h3>Properties for <tt>&lt;div&gt;</tt> three</h3>
+<p>
+<script language="JavaScript">
+<!--
+    showProperties( "d3" );
+// -->
+</script>
+</p>
+
+<h3>Properties for <tt>&lt;div&gt;</tt> four (this area)</h3>
+<p>
+<script language="JavaScript">
+<!--
+    showProperties( "d4" );
+// -->
+</script>
+</p>
+</div>
+
+</body>
+</html>

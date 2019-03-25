@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <title>Meet the DOM: A List Apart</title>
+
+<style type="text/css" media="screen">@import "https://alistapart.com/c/ala.css";</style>
+
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/c/print.css" />
+
+<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Language" content="en-us" />
+<meta name="ROBOTS" content="ALL" />
+<meta name="Copyright" content="Copyright (c) 2003 A List Apart Magazine, Happy Cog Studios LLC, Jeffrey Zeldman, and the respective authors" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+</head>
+<body>
+
+<h2><a href="https://alistapart.com/articles/dom/#bigtable">Return to &#8216;Meet the Dom&#8217;</a></h2>
+<table border="1">
+  <tr> 
+    <th></th>
+    <th>Property</th>
+    <th>Mozilla Output</th>
+    <th>Style</th>
+  </tr>
+  <tr> 
+    <td rowspan="3"><em>Div one</em></td>
+    <td>visibility</td>
+    <td>visibility</td>
+    <td rowspan="3"> <pre>
+	&lt;div id=&quot;d1&quot; style= <span class="linewrap">&#187;</span>
+	  &quot;background-color: #ccffcc;
+	   position: absolute;
+	   top: 10px; left: 10px;
+	   width:100px; height: 100px;&quot;&gt;
+	</pre> 
+    </td>
+  </tr>
+  <tr> 
+    <td>background-color</td>
+    <td>rgb(204,255,204)</td>
+  </tr>
+  <tr> 
+    <td>left, top, width, height</td>
+    <td>10px, 10px, 100px, 100px</td>
+  </tr>
+  <tr> 
+    <td rowspan="3"><em>Div two</em></td>
+    <td>visibility</td>
+    <td>visibility</td>
+    <td rowspan="3"> <pre>
+	&lt;style type="text/css"&gt;
+	#d2 {
+	   visibility: visible;
+	   background-color: #ccccff;
+	   position: absolute;
+	   top: 10px; left: 110px;
+	   width: 100px; height:100px;
+	}
+	&lt;/style&gt;
+	</pre> 
+    </td>
+  </tr>
+  <tr> 
+    <td>background-color</td>
+    <td>background-color</td>
+  </tr>
+  <tr> 
+    <td>left, top, width, height</td>
+    <td>left, top, width, height</td>
+  </tr>
+  <tr> 
+    <td rowspan="3"><em>Div three</em></td>
+    <td>visibility</td>
+    <td>visibility</td>
+    <td rowspan="3"> <pre>
+	&lt;style type="text/css"&gt;
+	#d3 {
+	   position: absolute;
+	   top: 10px; left: 210px;
+	&lt;/style&gt;
+	
+	&lt;div id=&quot;d3&quot;
+	   style=&quot;background-color: cyan&quot;&gt;
+	</pre> 
+    </td>
+  </tr>
+  <tr> 
+    <td>background-color</td>
+    <td>cyan</td>
+  </tr>
+  <tr> 
+    <td>left, top, width, height</td>
+    <td>left, top, width, height</td>
+  </tr>
+</table>
+
+</body>
+</html>
