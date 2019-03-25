@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+ <title>CSS Sprites: Image Slicing's Kiss of Death</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <style media="screen">
+
+#skyline {
+ width: 400px;
+ height: 200px;
+ background: url(test-3.jpg);
+ margin: 10px auto; padding: 0;
+ position: relative;
+}
+#skyline li {margin: 0; padding: 0; list-style: none; position: absolute; top: 0;}
+
+#skyline li, #skyline a {height: 200px; display: block;}
+#panel1b {left: 0; width: 95px;}
+#panel2b {left: 96px; width: 75px;}
+#panel3b {left: 172px; width: 110px;}
+#panel4b {left: 283px; width: 117px;}
+
+#panel1b a:hover {background: transparent url(test-3.jpg);}
+#panel2b a:hover {background: transparent url(test-3.jpg);}
+#panel3b a:hover {background: transparent url(test-3.jpg);}
+#panel4b a:hover {background: transparent url(test-3.jpg);}
+
+ </style>
+</head>
+
+<body>
+ <ul id="skyline">
+  <li id="panel1b"><a href="#"></a></li>
+  <li id="panel2b"><a href="#"></a></li>
+  <li id="panel3b"><a href="#"></a></li>
+  <li id="panel4b"><a href="#"></a></li>
+ </ul>
+</body>
+</html>

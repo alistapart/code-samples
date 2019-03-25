@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+ <title>CSS Sprites: Image Slicing's Kiss of Death</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <style media="screen">
+
+#blobs {
+ width: 300px;
+ height: 150px;
+ background: url(blobs.gif);
+ margin: 10px auto; padding: 0;
+ position: relative;
+}
+#blobs li {margin: 0; padding: 0; list-style: none; display: block; position: absolute;}
+
+#blobs a {display: block;}
+
+#blob1 {left: 9px; top: 7px; width: 86px; height: 130px;}
+#blob2 {left: 77px; top: 16px; width: 79px; height: 86px;}
+#blob3 {left: 160px; top: 0px; width: 112px; height: 77px;}
+#blob4 {left: 173px; top: 57px; width: 120px; height: 80px;}
+#blob5 {left: 110px; top: 102px; width: 98px; height: 45px;}
+#blob1 a {height: 130px;}
+#blob2 a {height: 86px;}
+#blob3 a {height: 77px;}
+#blob4 a {height: 80px;}
+#blob5 a {height: 45px;}
+
+#blob1 a:hover {background: url(blobs.gif) -10px -307px no-repeat;}
+#blob2 a:hover {background: url(blobs.gif) -77px -166px no-repeat;}
+#blob3 a:hover {background: url(blobs.gif) -160px -300px no-repeat;}
+#blob4 a:hover {background: url(blobs.gif) -173px -207px no-repeat;}
+#blob5 a:hover {background: url(blobs.gif) -110px -402px no-repeat;}
+
+ </style>
+</head>
+
+
+<body>
+ <ul id="blobs">
+  <li id="blob1"><a href="#"></a></li>
+  <li id="blob2"><a href="#"></a></li>
+  <li id="blob3"><a href="#"></a></li>
+  <li id="blob4"><a href="#"></a></li>
+  <li id="blob5"><a href="#"></a></li>
+ </ul>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+ <title>CSS Sprites: Image Slicing's Kiss of Death</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <style media="screen">
+
+#iconmenu {position: relative; margin: 10px auto; padding: 3px; width: 206px; height: 52px; background: url(pattern.gif);}
+#iconmenu li {width: 50px; height: 50px; position: absolute; top: 2px; background: url(icons.gif) 0 0 no-repeat; display: block; list-style: none;}
+#iconmenu a {width: 50px; height: 50px; display: block; border: solid 1px #fff;}
+#iconmenu a:hover {border: solid 1px #000;}
+#iconmenu #panel1c {left: 2px;}
+#iconmenu #panel2c {left: 54px; background-position: -51px 0;}
+#iconmenu #panel3c {left: 106px; background-position: -102px 0;}
+#iconmenu #panel4c {left: 158px; background-position: -153px 0;}
+
+#iconmenu #panel1c a:hover {background: url(icons.gif) -1px -52px no-repeat;}
+#iconmenu #panel2c a:hover {background: url(icons.gif) -52px -52px no-repeat;}
+#iconmenu #panel3c a:hover {background: url(icons.gif) -103px -52px no-repeat;}
+#iconmenu #panel4c a:hover {background: url(icons.gif) -154px -52px no-repeat;}
+
+ </style>
+</head>
+
+<body>
+ <ul id="iconmenu">
+  <li id="panel1c"><a href="#"></a></li>
+  <li id="panel2c"><a href="#"></a></li>
+  <li id="panel3c"><a href="#"></a></li>
+  <li id="panel4c"><a href="#"></a></li>
+ </ul>
+</body>
+</html>
