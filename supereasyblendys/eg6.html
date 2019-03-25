@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Super-Easy Blendy Backgrounds: Example 6</title>
+
+<style type="text/css">
+.gradwhite {
+  background-image: url(grad_white.png);
+}
+.gradblack {
+  background-image: url(grad_black.png);
+}
+
+.blue { 
+  background-color: #2382a1; 
+}
+.green { 
+  background-color: #4be22d; 
+}
+.pink { 
+  background-color: #ff009d;
+}
+
+.gradwhite img, .gradblack img {
+  background-color: transparent;
+  height: 100%;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  z-index:0;
+}
+
+.gradwhite * {
+  position: relative;
+  z-index: 1;
+}
+
+.gradwhite p {
+  margin: 0px;
+  padding: 3px;
+}
+
+.box3 {
+  border: solid orange 2px;
+  float: left;
+  margin: 1px;
+  position:relative;
+  width: 300px;
+}
+.gradwhite {
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader (src='grad_white.png', sizingMethod='scale');
+}
+</style>
+</head>
+
+<body>
+<div class="box gradwhite pink" style="width:300px;">
+    <p>
+      Wow, maybe this will actually work!
+    </p>
+</div>
+</body>
+</html>
