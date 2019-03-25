@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="description" content="PDF accessibility is not as straightforward as HTML." />
+<title>A List Apart: Articles: Facts and Opinions About PDF Accessibility: PDF Tags</title>
+
+<link rel="stylesheet" href="https://alistapart.com/css/article.css" type="text/css" media="all" />
+<style type="text/css">
+
+@import url(/css/201.css);
+
+#main {padding-left: 0; margin-left: 100px; background: none;}
+#content {margin-left: 0; padding-left: 0;}
+
+div#properties	{
+	margin: 10px 0;
+	padding: 0;
+	}
+
+div#properties img	{
+	padding: 0;
+	margin: 0 0 0 -20px;
+	border: 0;
+	}
+	
+blockquote {
+	font: normal 1.05em Georgia, Times, serif;
+	background: none;
+	margin: 0.25em 0;
+	}
+</style>
+
+</head>
+
+<body>
+
+
+<div id="main">
+
+<div id="content" class="column">
+
+<h2>Predefined PDF Tags</h2>
+
+
+<p>
+The following tags are predefined in tagged PDF.
+</p>
+
+<dl>
+	<dt>Article</dt>
+		<dd><code>&lt;Art&gt;</code></dd>
+	<dt>Annotation</dt>
+		<dd><code>&lt;Annot&gt;</code></dd>
+	<dt>Bibliography Entry</dt>
+		<dd><code>&lt;BibEntry&gt;</code></dd>
+	<dt>Block Quote</dt>
+		<dd><code>&lt;BlockQuote&gt;</code></dd>
+	<dt>Caption</dt>
+		<dd><code>&lt;Caption&gt;</code></dd>
+	<dt>Code</dt>
+		<dd><code>&lt;Code&gt;</code></dd>
+	<dt>Division</dt>
+		<dd><code>&lt;Div&gt;</code></dd>
+	<dt>Document                        </dt>
+		<dd><code>&lt;Document&gt;</code></dd>
+	<dt>Figure</dt>
+		<dd><code>&lt;Figure&gt;</code></dd>
+	<dt>Form</dt>
+		<dd><code>&lt;Form&gt;</code></dd>
+	<dt>Formula</dt>
+		<dd><code>&lt;Formula&gt;</code></dd>
+	<dt>Heading</dt>
+		<dd><code>&lt;H&gt;</code></dd>
+	<dt>Heading Level 1</dt>
+		<dd><code>&lt;H1&gt;</code></dd>
+	<dt>Heading Level 2</dt>
+		<dd><code>&lt;H2&gt;</code></dd>
+	<dt>Heading Level 3</dt>
+		<dd><code>&lt;H3&gt;</code></dd>
+	<dt>Heading Level 4</dt>
+		<dd><code>&lt;H4&gt;</code></dd>
+	<dt>Heading Level 5</dt>
+		<dd><code>&lt;H5&gt;</code></dd>
+	<dt>Heading Level 6</dt>
+		<dd><code>&lt;H6&gt;</code></dd>
+	<dt>Index</dt>
+		<dd><code>&lt;Index&gt;</code></dd>
+	<dt>Label</dt>
+		<dd><code>&lt;Lbl&gt;</code></dd>
+	<dt>Link</dt>
+		<dd><code>&lt;Link&gt;</code></dd>
+	<dt>List</dt>
+		<dd><code>&lt;L&gt;</code></dd>
+	<dt>List Item</dt>
+		<dd><code>&lt;LI&gt;</code></dd>
+	<dt>List Item Body</dt>
+		<dd><code>&lt;Lbody&gt;</code></dd>
+	<dt>Note</dt>
+		<dd><code>&lt;Note&gt;</code></dd>
+	<dt>Paragraph</dt>
+		<dd><code>&lt;P&gt;</code></dd>
+	<dt>Part</dt>
+		<dd><code>&lt;Part&gt;</code></dd>
+	<dt>Quote</dt>
+		<dd><code>&lt;Quote&gt;</code></dd>
+	<dt>Reference</dt>
+		<dd><code>&lt;Reference&gt;</code></dd>
+	<dt>Section</dt>
+		<dd><code>&lt;Sect&gt;</code></dd>
+	<dt>Span</dt>
+		<dd><code>&lt;Span&gt;</code></dd>
+	<dt>Table</dt>
+		<dd><code>&lt;Table&gt;</code></dd>
+	<dt>Table Data Cell</dt>
+		<dd><code>&lt;TD&gt;</code></dd>
+	<dt>Table Header Cell               </dt>
+		<dd><code>&lt;TH&gt;</code></dd>
+	<dt>Table of Contents</dt>
+		<dd><code>&lt;TOC&gt;</code></dd>
+	<dt>Table of Contents Item  </dt>
+		<dd><code>&lt;TOCI&gt;</code></dd>
+	<dt>Table Row</dt>
+		<dd><code>&lt;TR&gt;</code></dd>
+</dl>
+
+
+
+<h2>Explanation</h2>
+
+<p>
+Excerpted from <cite>Creating Accessible PDF Documents with Adobe Acrobat 7.0: A Guide for Publishing PDF Documents for Use by People with Disabilities</cite>, Appendix A (<a href="http://www.adobe.com/enterprise/accessibility/pdfs/acro7_pg_ue.pdf" title="Creating Accessible PDF Documents with Adobe Acrobat 7.0" type="application/pdf">PDF</a>), &#169; 2005 Adobe Systems.
+</p>
+
+<blockquote>
+
+
+<p>
+The following standard Adobe element tag types appear in the New Tag submenu
+in the Tags tab Options menu, as well as in the Tag Type pop-up menu in the TouchUp Properties dialog box.
+</p>
+
+<h3>Block-level elements</h3>
+
+<p>
+All page elements that consist of text laid out in paragraph-like forms are
+referred to as block-level elements. All block-level elements are part of
+the document&#8217;s logical structure and are represented in the tag tree. Such
+elements can be further classified as container elements, special text
+elements, heading and paragraph elements, and label and list elements.
+</p>
+
+<h4>Container elements</h4>
+
+<p>
+These are the highest level of elements and provide grouping of other
+block-level elements:
+</p>
+
+
+<dl>
+	<dt>Division element <code>&lt;Div&gt;</code></dt>
+		<dd>A generic block-level element or group of block-level elements</dd>
+	<dt>Section element <code>&lt;Sect&gt;</code></dt>
+		<dd>A general container element type, comparable to Division (<code>DIV Class="Sect"</code>) in HTML, which is usually a component of a part element or an article element</dd>
+	<dt>Article element <code>&lt;Art&gt;</code></dt>
+		<dd>A self-contained body of text considered to be a single narrative</dd>
+	<dt>Part element <code>&lt;Part&gt;</code></dt>
+		<dd>A part element defines a large division of a document, and may group smaller divisions together, such as article elements, division elements, or section elements</dd>
+	<dt>Document element <code>&lt;Document&gt;</code></dt>
+		<dd>The root element of a document&#8217;s tag tree</dd>
+</dl>
+
+
+<h4>Special text elements</h4>
+
+<p>
+These elements identify text that is not used in a narrative paragraph:
+</p>
+
+<dl>
+	<dt>Block quote element <code>&lt;BlockQuote&gt;</code></dt>
+		<dd>One or more paragraphs of text attributed to someone other than the author of the immediate surrounding text.</dd>
+	<dt>Caption element <code>&lt;Caption&gt;</code></dt>
+		<dd>A brief portion of text that describes a table or a figure. A caption element is different from a label element, which identifies but does not describe a table or a figure.</dd>
+	<dt>Index element <code>&lt;Index&gt;</code></dt>
+		<dd>A sequence of entries that contain identifying text and reference elements that point out the occurrence of the text in the main body of the document.</dd>
+	<dt>Table of contents element <code>&lt;TOC&gt;</code></dt>
+		<dd>An element that contains a structured list of items and labels identifying those items. A table of contents element has its own discrete hierarchy.</dd>
+	<dt>Table of contents item element <code>&lt;TOCI&gt;</code></dt>
+		<dd>An item contained in a list associated with a table of contents element.</dd>
+</dl>
+
+
+<h4>Heading and paragraph elements
+</h4>
+
+<p>
+These are paragraph-like block-level elements that include specific level
+headings and generic paragraphs <code>&lt;P&gt;</code>. A heading element <code>&lt;H&gt;</code> should appear as the first child of any higher level division. Six levels of headings <code>&lt;H1&gt;</code>&#8211;<code>&lt;H6&gt;</code> are available for applications that don&#8217;t hierarchically nest sections.
+</p>
+
+<h4>Label and list elements</h4>
+
+<p>
+These block-level elements are used for structuring lists:
+</p>
+
+
+<dl>
+	<dt>List element <code>&lt;L&gt;</code></dt>
+		<dd>A list can be any sequence of items of similar meaning or other relevance.</dd>
+	<dt>List item element <code>&lt;LI&gt;</code></dt>
+		<dd>Any one member of a List. The immediate child elements of a list element should be list item elements. A list item element may have a label element (optional) and a label body element (required) as a child.</dd>
+	<dt>Label element <code>&lt;LBL&gt;</code></dt>
+		<dd>A label can be a bullet, name, or number that identifies and distinguishes an element from others in the same list.</dd>
+	<dt>List body element <code>&lt;LBody&gt;</code></dt>
+		<dd>The descriptive content of a list item</dd>
+</dl>
+
+
+<h4>Table elements</h4>
+
+<p>
+These are special structural elements for structuring tables:
+</p>
+
+<dl>
+	<dt>Table element <code>&lt;Table&gt;</code></dt>
+		<dd>A table is a two-dimensional arrangement of data or text cells that contains table row elements as children and may have a caption element as its first or last child element.</dd>
+	<dt>Table row element <code>&lt;TR&gt;</code></dt>
+		<dd>One row of headings or data in a table. A table row element may contain table header cell elements and table data cell elements.</dd>
+	<dt>Table data cell element <code>&lt;TD&gt;</code></dt>
+		<dd>A table cell that contains non-header data.</dd>
+	<dt>Table header cell element <code>&lt;TH&gt;</code></dt>
+		<dd>A table cell that contains header text or data describing one or more rows or columns of a table.</dd>
+</dl>
+
+<h3>Inline-level elements</h3>
+
+<p>
+Inline-level elements are used to identify a span of text having specific
+styling or behavior. They are differentiated from block-level elements, and
+may be contained in or contain block-level elements. The standard
+inline-level elements are:
+</p>
+
+<dl>
+	<dt>Bibliography entry element <code>&lt;BibEntry&gt;</code></dt>
+		<dd>A description of where some cited information may be found, which may contain a label element as a child element.</dd>
+	<dt>Quote entry element <code>&lt;Quote&gt;</code></dt>
+		<dd>An inline portion of text attributed to someone other than the author of the text surrounding it. It is different from a block quote, which is a whole paragraph or multiple paragraphs, as opposed to inline text.</dd>
+	<dt>Span entry element <code>&lt;Span&gt;</code></dt>
+		<dd>Any inline segment of text. A common use of a span entry element is to delimit text associated with a given set of styling properties.</dd>
+</dl>
+
+
+<h4>Special inline-level elements</h4>
+
+<p>
+Similar to inline-level elements, these elements are used to describe an
+inline portion of text that has special styling or behavior:
+</p>
+
+
+<dl>
+	<dt>Code entry element <code>&lt;Code&gt;</code></dt>
+		<dd>Computer program text embedded within a document</dd>
+	<dt>Figure entry element <code>&lt;Figure&gt;</code></dt>
+		<dd>A graphic or graphic representation associated with text</dd>
+	<dt>Form entry element <code>&lt;Form&gt;</code></dt>
+		<dd>A PDF form annotation that can be or has been filled out</dd>
+	<dt>Formula entry element <code>&lt;Formula&gt;</code></dt>
+		<dd>A mathematical formula</dd>
+	<dt>Link entry element <code>&lt;Link&gt;</code></dt>
+		<dd>A hypertext link embedded within a document associated with a PDF link annotation that goes to another place in the same document or another document</dd>
+	<dt>Note entry element <code>&lt;Note&gt;</code></dt>
+		<dd>Explanatory text, such as a footnote or endnote, that is referred to in the main body of text</dd>
+	<dt>Reference entry element <code>&lt;Reference&gt;</code></dt>
+		<dd>A citation to text or data found elsewhere in the document</dd>
+</dl>
+</blockquote>
+
+<p>Back to <a href="https://alistapart.com/articles/pdf_accessibility/">Facts and Opinions About PDF Accessibility</a>.</p>
+  
+</div>
+
+</div>
+
+</body>
+</html>
