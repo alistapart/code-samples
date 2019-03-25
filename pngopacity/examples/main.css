@@ -1,0 +1,26 @@
+body {
+	color:#ffffff;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 11px;
+}
+
+/* redundant selectors */
+div, p, th, td, li, dd, dl, dt    {
+    font-family: arial, helvetica, sans-serif;
+	font-size: 11px;
+    }
+
+a:link	{
+	text-decoration: underline;
+	color: #ffffff;
+	}
+a:visited	{
+	text-decoration: underline;
+	color:	#cccccc;
+	}
+a:active	{
+	text-decoration: none;
+	}
+a:hover	{
+	text-decoration: none;
+	}

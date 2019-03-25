@@ -1,0 +1,55 @@
+<!-- The XHTML docytype has been removed on this page because it causes the Slider object to break. The Opacity Displayer, however, works with or without the doctype -->
+<html>
+<head>
+	<title>Opacity Displayer - Example 3</title>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<link rel="Stylesheet" href="main.css" type="text/css" media="screen" />
+	<script language="javascript" src="../browserdetect_lite.js" type="text/javascript"></script>
+	<script language="javascript" src="../opacity.js" type="text/javascript"></script>
+	<script language="javascript" src="sliding_content.js" type="text/javascript"></script>
+	<script language="javascript" type="text/javascript"><!--
+	//set objects to null
+	var objSlider = null;
+	var objMyImage = null;	
+
+	function init() {
+		objSlider = new SlidingContent('objSlider','mydiv',50,50,25,100);
+		objSlider.updateLayer();
+
+		objMyImage = new OpacityObject('mydiv','back');
+		objMyImage.setBackground();
+	}
+	// --></script>
+	<style type="text/css">
+	body {
+		background: url('homebkgd2.jpg') no-repeat;
+		background-color: #000000;
+	}
+	#mydiv {
+		position: absolute;
+		top: 50px;
+		left: 50px;
+		height: 100px;
+		width: 125px;
+		border: 1px solid #ffffff;
+		font-family: arial, helvetica;
+		font-size: 11px;
+		color: #ffffff;
+		padding: 5px;
+	}
+	a { color: #ffffff }
+	a:hover { text-decoration: none;}
+</style>
+</head>
+
+<body onload="init()">
+
+<div id="mydiv">This is the incredible floating translucent div.
+<br /><br />
+<a href="#" onclick="objSlider.slideTo(0,50,1)" class="linkSidebarU">&lt;&lt; left</a> | <a href="#" onclick="objSlider.slideTo(600,50,1)" class="linkSidebarU">right &gt;&gt;</a><br />
+</div>
+
+<br />
+
+</body>
+</html>

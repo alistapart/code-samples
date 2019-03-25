@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Opacity Displayer - Example 2</title>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<link rel="Stylesheet" href="main.css" type="text/css" media="screen" />
+	<script language="javascript" src="../browserdetect_lite.js" type="text/javascript"></script>
+	<script language="javascript" src="../opacity.js" type="text/javascript"></script>
+	<script language="javascript" type="text/javascript"><!--
+	var flag = false;
+	var intBack = 2;
+
+	function init() {
+		//image swapping - on-images
+		if (document.images) {
+			ex2aon = new Image();
+			ex2aon.src = "ex2a_over"+strExt;
+			ex2bon = new Image();
+			ex2bon.src = "ex2b_over"+strExt;
+			ex2con = new Image();
+			ex2con.src = "ex2c_over"+strExt;
+			back1 = new Image();
+			back1.src = "homebkgd1.jpg";
+			back2 = new Image();
+			back2.src = "homebkgd2.jpg";
+			back3 = new Image();
+			back3.src = "homebkgd2.jpg";
+			return (flag = true);  
+		}
+	}
+
+	//image swapping - off-images
+	if (document.images) {   
+		ex2aoff = new Image();
+		ex2aoff.src = "ex2a"+strExt;
+		ex2boff = new Image();
+		ex2boff.src = "ex2b"+strExt;
+		ex2coff = new Image();
+		ex2coff.src = "ex2c"+strExt;
+	}
+
+	//function for dynamically switching the background image
+	function changeBack(divId) {
+		if (intBack < 3) {
+			intBack = intBack + 1;
+		} else {
+			intBack = 1;
+		}
+		if (ns){
+			if (browserVersion>=5) {
+				layerObject = document.getElementById(divId).style;
+			} else { 
+				layerObject = eval("document."+divId);
+			}
+		} else {
+			layerObject = eval(divId + ".style");
+		}
+		layerObject.backgroundImage = 'url(homebkgd'+intBack+'.jpg)';
+	}
+	// --></script>
+	<style type="text/css">
+	.block {
+		display: block;
+	}
+	
+	.pngLink {
+		cursor: pointer;
+		display: block;
+	}
+
+	#myDiv {
+		background-image: url(homebkgd2.jpg);
+		width: 150px;
+	}
+	</style>
+</head>
+
+<body bgcolor="#666666" onload="init()">
+
+<table cellpadding="0" cellspacing="0" border="0" width="150" align="center">
+<tr>
+<td>
+
+<div id="myDiv">
+
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<img src="clear.gif" width="1" height="5" alt="" border="0" class="block" /></td>
+</tr>
+<tr>
+<td>
+<a href="#" onmouseover="od_rollOver('ex2a','#666666')" onmouseout="od_rollOut('ex2a','transparent')"><script language="javascript" type="text/javascript">
+od_displayImage('ex2a', 'ex2a', 100, 25, 'pngLink', 'Home');
+</script></a></td>
+</tr>
+<tr>
+<td>
+<img src="clear.gif" width="1" height="5" alt="" border="0" class="block" /></td>
+</tr>
+<tr>
+<td>
+<a href="#" onmouseover="od_rollOver('ex2b','#666666')" onmouseout="od_rollOut('ex2b','transparent')"><script language="javascript" type="text/javascript">
+od_displayImage('ex2b', 'ex2b', 100, 25, 'pngLink', 'Company');
+</script></a></td>
+</tr>
+<tr>
+<td>
+<img src="clear.gif" width="1" height="5" alt="" border="0" class="block" /></td>
+</tr>
+<tr>
+<td>
+<a href="#" onmouseover="od_rollOver('ex2c','#666666')" onmouseout="od_rollOut('ex2c','transparent')"><script language="javascript" type="text/javascript">
+od_displayImage('ex2c', 'ex2c', 100, 25, 'pngLink', 'Contact');
+</script></a></td>
+</tr>
+<tr>
+<td>
+<img src="clear.gif" width="1" height="5" alt="" border="0" class="block" /></td>
+</tr>
+</table>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+<br />
+
+<div align="center">
+<a href="#" class="linkSidebarU" onclick="changeBack('myDiv')">change background</a>
+</div>
+
+</body>
+</html>
