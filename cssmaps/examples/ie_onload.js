@@ -1,0 +1,1 @@
+mapMaker.init();

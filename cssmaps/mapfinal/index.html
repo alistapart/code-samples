@@ -1,0 +1,209 @@
+<!-- 
+	Seth Duffey
+	sethduffey@gmail.com
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>A More Accessible Map</title>
+
+<style media="all" type="text/css">
+/* GENERAL CSS */
+body {
+	text-align:center;
+	font-family:"Trebuchet ms",Arial,Helvetica,sans-serif;
+	font-size:.9em;
+	background:#f8f8f8;
+	color:#000;
+}
+h1,h2 {
+	margin:0px;
+	text-align:left;
+	font-size:1.2em;
+	color:#444;
+}
+h2 {
+	color:#666;
+	font-size:1em;
+}
+#holder {
+	width:620px;
+	margin:10px auto;
+}
+
+/* START OF CSS FOR MAP */
+dl.map.on {
+	position:relative;
+	width:550px;
+	height:275px;
+	background:url(worldmap.png) no-repeat;
+	text-align:left;
+	margin:0px;
+	padding:0px;
+	border:#999 1px solid;
+}
+dl.map.on dt {
+	list-style:none;
+	display:inline;
+}
+dl.map.on dd {
+	position:absolute;
+	left:-9999px;
+	width:200px;
+	padding:4px;
+	border:#222 2px solid;
+	background:#666;
+	color:#fff;
+	-moz-border-radius:8px;
+	border-radius:8px;
+	z-index:11;
+	font-size:0.8em;
+}
+dl.map.on dd img {
+	position:relative;
+	float:right;
+	border:#000 1px solid;
+	margin:2px;
+}
+dl.map.on a.location {
+	display:block;
+	position:absolute;
+	text-indent:-9999px;
+	background:url(point.png) no-repeat;
+	width:10px;
+	height:10px;
+	outline:none;
+	z-index:10;
+	text-decoration:none;
+}
+dl.map.on a.location:hover {
+	background:url(point-hover.png) no-repeat -1px -1px;
+}
+dl.map.on dd a {
+	text-decoration:none;
+	color:#000;
+}
+
+/* START OF CSS FOR MAP POINTS */
+dl.map.on a#location01 {
+	top:80px;
+	left:484px;
+}
+dl.map.on a#location02 {
+	top:105px;
+	left:121px;
+}
+dl.map.on a#location03 {
+	top:105px;
+	left:383px;
+}
+dl.map.on a#location04 {
+	top:170px;
+	left:201px;
+}
+dl.map.on a#location05 {
+	top:72px;
+	left:159px;
+}
+dl.map.on a#location06 {
+	top:86px;
+	left:457px;
+}
+dl.map.on a#location07 {
+	top:124px;
+	left:276px;
+}
+dl.map.on a#location08 {
+	top:82px;
+	left:91px;
+}
+dl.map.on a#location09 {
+	top:100px;
+	left:406px;
+}
+dl.map.on a#location10 {
+	top:186px;
+	left:183px;
+}
+
+</style>
+
+<script type="text/javascript" src="mapevents.js"></script>
+
+</head>
+
+<body>
+
+<div id="holder">
+<h1>A More Accessible Map</h1>
+<h2>The World's Ten Most Populated Cities</h2>
+<dl class="map">
+	<dt><a href="http://en.wikipedia.org/wiki/Tokyo" class="location" id="location01">Tokyo, Japan</a></dt>
+	<dd>
+		<img src="photos/tokyo.jpg" width="100" height="75" alt="Photograph of the city of Tokyo, Japan" />
+		<strong>Tokyo, Japan</strong> the most populated city in the world, with a population of 28025000 people.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/Mexico_City" class="location" id="location02">Mexico City, Mexico</a></dt>
+	<dd>
+		<img src="photos/mexico_city.jpg" width="75" height="100" alt="Photograph of the city of Mexico City, Mexico" />
+		<strong>Mexico City, Mexico</strong> the second most populated city in the world, with a population of 18131000 people.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/Mumbai%2C_India" class="location" id="location03">Mumbai, India</a></dt>
+	<dd>
+		<img src="photos/mumbai.jpg" width="100" height="81" alt="Photograph of the city of Mumbai, India" />
+		<strong>Mumbai, India</strong> formerly known as Bombay has the third largest population of 18042000 people.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/Sao_Paulo%2C_Brazil" class="location" id="location04">Sao Paulo, Brazil</a></dt>
+	<dd>
+		<img src="photos/sao_paulo.jpg" width="100" height="85" alt="Photograph of the city of Sao Paulo, Brazil" />
+		<strong>Sao Paulo, Brazil</strong> has the fourth largest population in the world with 17711000 people.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/New_York_City" class="location" id="location05">New York City, USA</a></dt>
+	<dd>
+		<img src="photos/new_york.jpg" width="100" height="64" alt="Photograph of the city of New York City, USA" />
+		<strong>New York City, USA</strong> the fifth most populous city in the world, with a population of 16626000 people.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/Shanghai%2C_China" class="location" id="location06">Shanghai, China</a></dt>
+	<dd>
+		<img src="photos/shanghai.jpg" width="100" height="80" alt="Photograph of the city of Shanghai, China" />
+		<strong>Shanghai, China</strong> situated on the banks of the Yangtze River has a city population of 14173000, making it the sixth most populated city.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/Lagos%2C_Nigeria" class="location" id="location07">Lagos, Nigeria</a></dt>
+	<dd>
+		<img src="photos/lagos.jpg" width="100" height="80" alt="Photograph of the city of Lagos, Nigeria" />
+		<strong>Lagos, Nigeria</strong> has the seventh largest city population with 13488000 people.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/Los_Angeles" class="location" id="location08">Los Angeles, USA</a></dt>
+	<dd>
+		<img src="photos/los_angeles.jpg" width="100" height="67" alt="Photograph of the city of Los Angeles, USA" />
+		<strong>Los Angeles, USA</strong> has the eighth largest city population with 13129000 people.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/Calcutta%2C_India" class="location" id="location09">Calcutta, India</a></dt>
+	<dd>
+		<img src="photos/kolkata.jpg" width="80" height="94" alt="Photograph of the city of Kolkata, India" />
+		<strong>Kolkata, India</strong> with a population of 12900000 it is the ninth most populous city in the world.
+	</dd>
+	
+	<dt><a href="http://en.wikipedia.org/wiki/Buenos_Aires" class="location" id="location10">Buenos Aires, Argentina</a></dt>
+	<dd>
+		<img src="photos/buenos_aires.jpg" width="100" height="75" alt="Photograph of the city of Kolkata, India" />
+		<strong>Buenos Aires, Argentina</strong> has the tenth largest city population of 12431000 people.
+	</dd>
+	
+</dl>
+</div>
+
+</body>
+</html>
