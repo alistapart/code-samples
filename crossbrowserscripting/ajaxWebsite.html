@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>An Ajax Website Example</title>
+		<meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta name="author" content="Anthony T. Holdener III" />
+		<meta name="copyright" content="Copyright (C) 2007 Anthony T. Holdener III.  All Rights Reserved." />
+		<meta name="keywords" content="importNode, example, DOM, cross-browser, Ajax, website" />
+		<meta name="description" content="This is an example of using my document._importNode() method in an Ajax website." />
+		<meta name="robots" content="NOINDEX" />
+		<script type="text/javascript" src="xbImportNode.js"> </script>
+		<script type="text/javascript">
+			//<![CDATA[
+			var xhr = false;
+
+			function gotoPage(p_url) {
+				if (window.XMLHttpRequest) {
+					xhr = new XMLHttpRequest();
+				} else {
+					try {
+						xhr = new ActiveXObject('Msxml2.XMLHTTP');
+					} catch (ex) {
+						try {
+							xhr = new ActiveXObject('Microsoft.XMLHTTP');
+						} catch (ex) {
+							xhr = false;
+						}
+					}
+				}
+				if (!xhr)
+					return (false);
+				else {
+					xhr.open('get', p_url, true);
+					xhr.onreadystatechange = showPageContent;
+					xhr.send(null);
+				}
+				return (false);
+			}
+
+			function showPageContent() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var newNode = null, tempNode = null, importedNode = null;
+
+					/* IE is "special" */
+					if (xhr.responseXML.childNodes.length == 0) {
+						var tempString = xhr.responseText;
+
+						var start = 0, end = 0;
+						start = tempString.indexOf('<div id="documentBodyContent"');
+						end = tempString.indexOf('<div id="documentFooter"');
+						tempString = tempString.substring(start, end);
+						tempNode = new ActiveXObject('Microsoft.XMLDOM');
+						tempNode.async = false;
+						tempNode.loadXML(tempString);
+						tempNode = tempNode.getElementsByTagName('div');
+					} else
+						tempNode = xhr.responseXML.getElementsByTagName('div');
+					for (var i = 0, il = tempNode.length; i < il; i++)
+						if (tempNode[i].getAttribute('id') == 'documentBodyContent') {
+							newNode = tempNode[i];
+							break;
+						}
+					if (newNode.nodeType != document.ELEMENT_NODE)
+						newNode = newNode.nextSibling;
+					if (newNode) {
+						importedNode = document._importNode(newNode, true);
+						document.getElementById('xhrFrame').innerHTML = '';
+						document.getElementById('xhrFrame').appendChild(importedNode);
+						if (!document.importNode)
+							document.getElementById('xhrFrame').innerHTML = document.getElementById('xhrFrame').innerHTML;
+					}
+				}
+			}
+			//]]>
+		</script>
+		<style type="text/css">
+			body { background-color: #fff; color: #000; font-family: Geneva, sans-serif; font-size: 1em; }
+			#documentHeader { margin-bottom: 40px; }
+			#documentFooter { position: fixed; left: 10px; bottom: 5px; }
+			.underline { text-decoration: underline; }
+			.announce { background-color: #ff0; color: #000; }
+		</style>
+	</head>
+	<body>
+		<div id="documentHeader">
+			<h1>An Ajax Website Example</h1>
+		</div>
+		<div id="menuContainer">
+			<ul id="listContainer">
+				<li><a href="page2.xhtml" onclick="return gotoPage(this.href);">Page 2</a></li>
+				<li><a href="page3.xhtml" onclick="return gotoPage(this.href);">Page 3</a></li>
+				<li>Page 4</li>
+				<li>Page 5</li>
+			</ul>
+		</div>
+		<div id="documentBodyContent">
+			<div id="xhrFrame">
+				Welcome to the Ajax Website Example.
+			</div>
+		</div>
+		<div id="documentFooter">
+			Copyright &copy; 2007 Anthony T. Holdener III.  All Rights Reserved.
+		</div>
+	</body>
+</html>

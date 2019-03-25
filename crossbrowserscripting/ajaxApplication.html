@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>An Ajax Application Example</title>
+		<meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta name="author" content="Anthony T. Holdener III" />
+		<meta name="copyright" content="Copyright (C) 2007 Anthony T. Holdener III.  All Rights Reserved." />
+		<meta name="keywords" content="importNode, example, DOM, cross-browser, Ajax, application" />
+		<meta name="description" content="This is an example of using my document._importNode() method in an Ajax application." />
+		<meta name="robots" content="NOINDEX" />
+		<script type="text/javascript" src="xbImportNode.js"> </script>
+		<script type="text/javascript">
+			//<![CDATA[
+			var xhr = false;
+
+			function applicationButton_onclick() {
+				if (window.XMLHttpRequest) {
+					xhr = new XMLHttpRequest();
+				} else {
+					try {
+						xhr = new ActiveXObject('Msxml2.XMLHTTP');
+					} catch (ex) {
+						try {
+							xhr = new ActiveXObject('Microsoft.XMLHTTP');
+						} catch (ex) {
+							xhr = false;
+						}
+					}
+				}
+				if (!xhr)
+					return (false);
+				else {
+					xhr.open('post', 'simulatedServerResponse.xml', true);
+					xhr.onreadystatechange = displayAjaxApp;
+					xhr.send('param1=data1');
+				}
+				return (false);
+			}
+			
+			function displayAjaxApp() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+					var newNode = null, importedNode = null;
+
+					newNode = xhr.responseXML.getElementsByTagName('response')[0].childNodes[0];
+					if (newNode.nodeType != document.ELEMENT_NODE)
+						newNode = newNode.nextSibling;
+					if (newNode) {
+						importedNode = document._importNode(newNode, true);
+						document.getElementById('xhrText').innerHTML = '';
+						document.getElementById('xhrText').appendChild(importedNode);
+						if (!document.importNode)
+							document.getElementById('xhrText').innerHTML = document.getElementById('xhrText').innerHTML;
+						document.getElementById('xhrText').style.display = 'block';
+					}
+				}
+			}
+			//]]>
+		</script>
+		<style type="text/css">
+			body { background-color: #fff; color: #000; font-family: Geneva, sans-serif; font-size: 1em; }
+			#documentHeader { margin-bottom: 40px; }
+			#documentFooter { position: fixed; left: 10px; bottom: 5px; }
+			#xhrText { border: 2px solid #f00; margin-top: 20px; display: none; }
+			.underline { text-decoration: underline; }
+			.announce { background-color: #ff0; color: #000; }
+		</style>
+	</head>
+	<body>
+		<div id="documentHeader">
+			<h1>An Ajax Application Example</h1>
+		</div>
+		<div id="documentBodyContent">
+			<div id="applicationFunction">
+				<form id="applicationForm" action="self" method="post">
+					<div>
+						<label for="applicationButton">Press this button for example: <input id="applicationButton" type="button" value="Go!" onclick="return applicationButton_onclick();"/></label>
+					</div>
+				</form>
+			</div>
+			<div id="xhrText"></div>
+		</div>
+		<div id="documentFooter">
+			Copyright &copy; 2007 Anthony T. Holdener III.  All Rights Reserved.
+		</div>
+	</body>
+</html>

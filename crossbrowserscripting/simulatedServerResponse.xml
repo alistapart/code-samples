@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<div>
+		<div class="announce">
+			This is the XHTML response from the server.
+		</div>
+		<br />
+		<div>
+			<div class="underline" onclick="alert('events work');">Click Me</div>
+			<p>
+				If everything imported correctly, then the first line should be highlighted yellow, and
+				an alert should pop up if you click on the <em>Click Me</em>.
+			</p>
+		</div>
+	</div>
+</response>
