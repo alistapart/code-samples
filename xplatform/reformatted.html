@@ -1,0 +1,593 @@
+<p>EVERYONE TALKS ABOUT TESTING but there&#8217;s precious little information about what specifically to do. There&#8217;s <a href="https://alistapart.com/stories/testing/">Julia Hayden&#8217;s</a>  ALA article, (May 1999), <a href="https://alistapart.com/stories/testers/">Matthew Haughey&#8217;s</a>  ALA article (September 1999), and this  evolt.org <a href="http://evolt.org/article/Browser_testing_list/20/548/index.html" target="ala">item</a> from November 1999,  but I haven&#8217;t seen any nuts&#8211;and&#8211;bolts descriptions of how to set up a cross&#8211;browser, cross&#8211;platform testing station.</p>
+
+<p>In this article, I describe how to set up a G3 (or faster) Macintosh to enable you to:</p>
+
+<ul>
+<li>test your web pages in multiple Windows95 browsers from your Macintosh</li>
+<li>test your web pages in multiple Macintosh browsers without confounding your personal browser&#8217;s preferences with those of your testing browsers</li>
+<li>package these elements onto a set of CDs so that if they become corrupted, they can be quickly and easily restored</li>
+</ul>
+
+<p>Obviously there are some hardware requirements involved (starting with a G3 or faster Macintosh). There are also software requirements (most importantly, a copy of RealPC to put a virtual Intel machine into your Mac). All the hardware and software requirements are described in the next section.</p>
+
+<p>The general outline of topics we cover after that is:</p>
+
+<ul>
+<li>Selecting and downloading the browsers</li>
+<li>Setting up your Mac for Windows95</li>
+<li>Installing and updating RealPC</li>
+<li>Installing Windows95 (and IE 3.02)</li>
+<li>Milestone 1, in which we burn a CD</li>
+<li>Preparing a Windows95 virtual hard disk template</li>
+<li>Milestone 2, in which we prepare virtual hard disks and burn another CD</li>
+<li>Installing Internet Explorer
+<ul>
+	<li>Internet Explorer 4.01</li>
+	<li>Internet Explorer 5.0</li>
+	<li>Internet Explorer 5.5</li>
+	</ul>
+</li>
+<li>Installing the other browsers
+	<ul>
+	<li>Lynx 2.8.4p5</li>
+	<li>Netscape 3.04</li>
+	<li>Netscape 4.08</li>
+	<li>Netscape 4.51</li>
+	<li>Netscape 4.61</li>
+	<li>Netscape 4.78</li>
+	<li>Netscape 6.1</li>
+	<li>Netscape 6.2</li>
+	<li>Opera 5.12</li>
+	<li>Opera 6.0</li>
+	</ul>
+</li>
+<li>Cleaning up</li>
+<li>Milestone 3, in which we burn a third CD</li>
+<li>Setting up for Mac browsers, in which we burn a fourth CD</li>
+</ul>
+
+<p>Before you start this project, please understand that all of this takes a while. Depending mostly on the speed of your Internet connection, it might even take a few days to get everything downloaded and installed. The good news is that you&#8217;ll only have to do it once, and with these handy instructions, you can be pretty sure of getting it right the first time.</p>
+
+<h2>WHAT YOU&#8217;LL NEED</h2>
+<p class="vs0">The computer I&#8217;m using in this article is a Macintosh 7100/66 with a 250MB internal hard drive and a stock CD-ROM drive. It&#8217;s been upgraded with a Newer MAXPowr G3/250MHz PDS card, 136MB RAM, an external 4GB SCSI hard drive, an external Yamaha 4x CD-RW unit, and an external Global Village 56K modem. It has a 17&#8221; multisync monitor and is running MacOS 8.6.</p> 
+
+<p>You&#8217;ll need about 2GB of free disk space while the testing station is being set up, and about half that later. You&#8217;ll also need two Macintosh volumes that you can install MacOS on. These can be separate physical devices (as they are in this article), partitions on a single physical device, or even read/write removable media. You&#8217;ll also need a CD burner with its software and blank CDs, a monitor set to at least 1024 x 768, and a modem and Internet connection.</p>
+
+<p>Since we&#8217;ll be installing Windows95, you&#8217;ll need a full install of the Windows95 operating system (in this article we&#8217;ll be installing from a CD).</p>
+
+<p>We&#8217;ll be working with RealPC 1.0.3 with RealPC upgrade 1.0.9 since that&#8217;s what I have available, although RealPC 1.1 is available from <a href="http://www.fwb.com/emu/SW_RealPC.html" target="ala">FWB Software</a>.</p>
+
+<p>Requirements summary:</p>
+
+<ul>
+<li>G3 (or faster) Macintosh</li>
+<li>96MB RAM</li>
+<li>2GB free hard drive space</li>
+<li>200MB bootable volume (separate from the one above)</li>
+<li>CD-R/W unit with CD burning software</li>
+<li>several blank CDs</li>
+<li>monitor that&#8217;s at least 1024 x 768 </li>
+<li>Internet connection</li>
+<li>RealPC 1.0.3 or higher + upgrade to 1.0.9</li>
+<li>full install of Windows95</li>
+</ul>
+
+<h3>SELECTING AND DOWNLOADING BROWSERS</h3>
+<p class="vs0">I picked these browsers by selecting what appears to be the last release (for Windows95 and MacOS) of each major version of Internet Explorer and of Netscape&#8217;s offerings, both starting with version 3. I&#8217;ve added the versions of Lynx that are most recent at the time of this writing (in fact, the ones I&#8217;ve chosen are pre-release versions so you may want to select something a little less fresh). I&#8217;ve also added Opera starting with version 5 and, for the Mac only, the latest release of iCab. Finally, I&#8217;ve included the Macintosh edition of WebTV Viewer (version 2). All together, the testing station described here includes 29 browsers, split about evenly across Windows95 and MacOS.</p>
+
+<p>That&#8217;s a lot of browsers. Why so many? Well, you can use this station to help you design for older browsers or for the newer standards-compliant ones. Even if you choose the latter, you may well be interested in how your standards-compliant design degrades in some of the older browsers, so you may find them useful to have around.</p>
+
+<p>Since your needs may be different from mine, you may wish to ignore some of these browsers and/or include others. Perhaps the most important omission is the entire world of Unix browsers. Although I haven&#8217;t tried it, it should be possible to use RealPC to install a Unix or Linux virtual PC in your Macintosh if for some reason a PPC version isn&#8217;t what you need. If you try it, please let us all know about your experience.</p>
+
+<h4>A HANDY CHART</h4>
+
+<p class="vs0">In this chart of  <a href="https://alistapart.com/stories/xplatform/cross-browser_tables.html">browser source tables</a>, I list each browser, the name and size of its download file, and a reference URL for downloading it.</p>
+
+<p>Obviously, the specific filename and file size will probably be different if you&#8217;re downloading international editions of the browsers (like, say, the French Netscape 4.78). The reference URLs range from very specific to somewhat general where more general seemed more useful. Please note that these URLs are valid as I write this (January 2002) but through time I&#8217;m afraid most of them will stop functioning. That may not be a bad thing if it means that so many newer (and presumably standards-compliant) browsers have been released that no one wants or needs the older ones. To those of you reading this in the future, your best bet for locating older browsers may be some kind of archive similar to the one available today at <a href="http://browsers.evolt.org/" target="ala">evolt.org</a>.</p>
+
+<p>Before downloading the browsers, you might find it convenient to set up a series of folders, starting with one for MacOS browsers and one for Windows95 browsers. Here&#8217;s the organization scheme I use in this article (each item listed here is a folder):</p>
+
+<ul>
+<li>mac browsers
+<ul>
+	<li>icab
+	<ul>
+		<li>2.6</li>
+	</ul>
+	</li>
+	<li>ie
+	<ul>
+		<li>3.01</li>
+		<li>4.01</li>
+		<li>4.5</li>
+		<li>5.0</li>
+		<li>5.1</li>
+	</ul>
+	</li>
+	<li>lynx
+	<ul>
+		<li>2.7.1</li>
+	</ul>
+	</li>
+	<li>netscape
+	<ul>
+		<li>3.04</li>
+		<li>4.08</li>
+		<li>4.51</li>
+		<li>4.61</li>
+		<li>4.78</li>
+		<li>6.1</li>
+		<li>6.2</li>
+	</ul>	
+	</li>
+	<li>opera
+	<ul>
+		<li>5.0</li>
+	</ul>	
+	</li>
+	<li>webtv
+	<ul>
+		<li>2.0</li>
+	</ul>	
+	</li>
+</ul>
+</li>
+
+<li>win95 browsers
+<ul>
+	<li>ie
+	<ul>
+		<li>3.02</li>
+		<li>4.01</li>
+		<li>5.0</li>
+		<li>5.5 service pack 2</li>
+	</ul>
+	</li>
+	<li>lynx
+	<ul>
+		<li>2.8.4</li>
+	</ul>
+	</li>
+	<li>netscape
+	<ul>
+		<li>3.04</li>
+		<li>4.08</li>
+		<li>4.51</li>
+		<li>4.61</li>
+		<li>4.78</li>
+		<li>6.1x</li>
+		<li>6.2x</li>	
+	</ul>
+	</li>
+	<li>opera
+	<ul>
+		<li>5.12</li>
+		<li>6.00 release</li>
+	</ul>
+	</li>
+</ul>
+</li>
+</ul>	
+
+<p>Each browser download can be saved directly to its respective folder.</p>
+
+<p>Downloading these can take quite a long time, but hopefully the URLs and specific filenames I&#8217;ve provided will at least reduce some of the search time.</p>
+
+<p>Although it&#8217;s not an official step in setting up the testing station, after you&#8217;ve downloaded the browsers, you might want to burn them to a CD so that you won&#8217;t have to repeat the downloading if you accidentally delete any of them.</p>
+
+<p>One last detail: Because of the order we&#8217;ll be installing things in this article, there won&#8217;t be a zip utility available in Windows when we install Lynx, so expand the zipped Lynx 2.8.4 into its folder now.</p>
+
+<h3>SETUP FOR WINDOWS95 BROWSERS</h3>
+
+<h4>SETTING UP YOUR MAC FOR WINDOWS95</h4>
+<p class="vs0">Set your Mac to at least thousands of colors and 1024 x 768. Why not 256 colors? Because we&#8217;re setting up Windows for 256 colors. When Windows takes over, the color map used by your Mac will be changed and the non-Windows part of your screen may become painful to look at. With your Mac set to thousands of colors, this doesn&#8217;t happen. Why 1024 x 768? Our virtual PC will have an 800 x 600 screen. You can make this smaller (or larger), but 800 x 600 is quite common as I write this.</p>
+
+<p>On your Mac, create a folder called &#8220;drives.&#8221;.&#8221; You can name it whatever you like, but this is the name I&#8217;ll use throughout this article. The &#8220;drives&#8221; folder will be where we put all the virtual hard drives we create for RealPC. The names of the drive files and folder will begin with C, D, or E, corresponding to the C:, D:, and E: drives of DOS/Windows.</p>
+
+<p>Move the &#8220;mac browsers&#8221; folder into the &#8220;drives&#8221; folder, then in the &#8220;drives&#8221; folder, create another called &#8220;E shared.&#8221; Copy the &#8220;win95 browsers&#8221; folder into &#8220;E shared&#8221; so that we&#8217;ll be able to access the browser installation packages from inside Windows.</p>
+			
+<p>RealPC 1.0.9 adds support for MacOS 9 and Windows98. If you want to install IE 6.0, you&#8217;ll have to install Windows98 onto a RealPC virtual hard drive. In this article, we&#8217;ll set up four virtual hard drives, but we won&#8217;t set up one with Windows98. But after you&#8217;ve set up a testing station as described in this article, taking that extra step should not be too difficult.</p>
+
+<h4>INSTALLING REALPC</h4>
+<p class="vs0">Insert the &#8220;RealPC Install CD&#8221; that came with your RealPC package and launch the installer. In my case, this installed RealPC 1.0.3. RealPC asks you to set up a virtual hard drive. We&#8217;ll be deleting it, so the defaults are fine. Next RealPC will ask you to personalize your copy of the program. Do that, then skip the next section of this article unless you need to update your copy of RealPC.</p>
+
+<h4>UPDATING REALPC</h4>
+<p class="vs0">Since I had version 1.0.3 of RealPC, I had to download the <a href="http://www.fwb.com/dc/emu/rpc109update.html" target="ala">RealPC 1.0.9 updater</a>. I added it to the RealPC folder. After deleting some things, here&#8217;s what we have there:</p>
+	
+<ul>
+<li>HD Expander</li>
+<li>RealPC Guide</li>
+<li>RealPC Hard Disk File C</li>
+<li>RealPC Upgrade Disk</li>
+<li>RealPC_Update109.sea</li>
+<li>RealPC</li>
+</ul>
+		
+<p>Launch the RealPC updater. This will create the RealPC_Update109 folder within the RealPC folder. Delete &#8220;HD Expander&#8221; and &#8220;RealPC Upgrade Disk&#8221; from the RealPC folder, then copy &#8220;HD Expander&#8221; and &#8220;RealPC Upgrade Disk&#8221; from the RealPC_Update109 folder into the RealPC folder.</p>
+
+<h4>INSTALLING REALPC (CONTINUED)</h4>
+<p class="vs0">From the &#8220;Install 3&#8221; folder on &#8220;RealPC Install CD&#8221;, copy HDData to the RealPC folder. Rename &#8220;RealPC Upgrade Disk&#8221; to &#8220;D Win95&#8221; and move it to the &#8220;drives&#8221; folder. Delete everything else from the RealPC folder (including &#8220;RealPC Hard Disk File C&#8221;) so that it contains only</p>
+
+<ul>
+<li>RealPC Guide</li>
+<li>HD Expander</li>
+<li>RealPC</li>
+<li>HDData</li>
+</ul>
+
+<p>Set RealPC&#8217;s memory allocation to 60MB. You may be able to get by with less, particularly running the early browsers, but for the later all-singing, all-dancing browsers, you&#8217;ll find that more RAM is helpful. In fact, even with 60MB, if you don&#8217;t have the patience to wait and see what happens after you launch Netscape 6.1, you&#8217;d swear this gecko was dead.</p>
+
+<p>Launch RealPC. Since we deleted the virtual hard drive, RealPC gives us the opportunity to create a new one. Create it in the &#8220;drives&#8221; folder, allocating 200MB for it, and name it &#8220;C Win95 256 colors.&#8221; We&#8217;ll trim back the size of the virtual hard drives later, but the browsers require more disk space during installation.</p>
+
+<p>Screenshots:  [<a href="https://alistapart.com/stories/xplatform/nuts/019.gif" target="ala">019</a>]  [<a href="https://alistapart.com/stories/xplatform/nuts/020.gif" target="ala">020</a>] In the Setup menu, adjust RealPC&#8217;s display and memory settings. <em>Warning: After this and until you&#8217;ve made a backup, don&#8217;t mess with the display setting or with Windows95&#8217;s Display control panel.</em> You may end up with a permanently corrupted color map in Windows (and you&#8217;ll have to repeat all your installations). After you&#8217;ve completed all your installations and burned everything to CD, then go ahead and experiment.</p>
+
+<p>Restart the PC (not the Mac). RealPC will ask you where &#8220;RealPC Upgrade Disk&#8221; is. Select &#8220;D Win95.&#8221; In the Setup menu, select RealPC Setup then set shared drive E: to the &#8220;E shared&#8221; folder in the &#8220;drives&#8221; folder.</p>
+
+<p>And that&#8217;s it for the first part of the setup. Next we&#8217;ll install Windows95.</p>
+
+<h4>INSTALLING WINDOWS95</h4>
+<p class="vs0">Insert your Windows95 installation CD into the internal CD drive on your Mac. After it appears on your Mac desktop, at the DOS prompt in the RealPC window, type</p>
+
+<kbd>f:\setup</kbd>
+
+<p>If RealPC has trouble finding your CD and you have more than one CD drive attached, try using another drive. If all else fails, try adjusting the settings in RealPC&#8217;s Setup menu (see your RealPC manual for hints).</p>
+
+<p>Assuming that your CD was recognized, press the return key when Windows95 Setup announces that it will perform a routine check on your system. Assuming (again) that it found no errors, press the &#8220;x&#8221; key to continue. </p>
+
+<p>Eventually, a dialog box will appear. Press Command-M to activate the Windows mouse, then click Continue.</p>
+
+<p>After a while, the Windows95 Software License Agreement will appear. Click &#8220;Yes&#8221; if you agree to it.</p>
+
+<p>The Windows95 Setup Wizard will start. Click &#8220;Next.&#8221; Accept the default Windows95 location of C:\WINDOWS then click &#8220;Next.&#8221; Select Typical install then click &#8220;Next.&#8221; Enter your Windows95 access code then click &#8220;Next.&#8221;</p>
+
+<p>Provide the Setup Wizard with a name, then click &#8220;Next.&#8221; In the Analyzing Your Computer dialog, check the checkbox then click &#8220;Next.&#8221; In the Windows Components dialog, select the first radio button (&#8220;Install the most common components&#8221;) then click &#8220;Next.&#8221; In the Startup Disk dialog, select &#8220;No, I do not want a startup disk&#8221;, then click &#8220;Next.&#8221; In the Start Copying Files dialog, click &#8220;Next.&#8221;</p>
+
+<p>Go get some coffee and come back in about 15 minutes. Alakef Coffee Roasters, right here in Duluth makes a very nice Kenya, and Dunn Brothers, down in the Twin Cities has a delightful organic Mexico. And the Positively Third Street Bakery co-op, a three minute walk from here, makes killer Mocha Madness chocolate chip cookies&#8212;definitely worth a visit if you&#8217;re in town.</p>
+
+<p>After Windows has copied the files it needs, the Finishing Setup dialog will appear. Click &#8220;Finish.&#8221; Your PC (not your Mac) will reboot and RealPC will then ask you again to locate the &#8220;RealPC Update Disk.&#8221; Select &#8220;D Win95&#8221; in the &#8220;drives&#8221; folder. Windows then will begin its actual setup.</p>
+
+<p>After a few minutes, Windows will ask you to select your time zone in the Date/Time Properties control panel. Make an appropriate selection then continue by clicking &#8220;Close.&#8221;</p>
+
+<p>Windows will next ask you to set up your printer. Start by clicking &#8220;Next&#8221; and click &#8220;Next&#8221; for each window until you&#8217;re prompted for the name of your printer. Type it into the textbox then click &#8220;Next.&#8221; Finally, select the &#8220;No&#8221; radio button when you&#8217;re asked whether you&#8217;d like to print a test page then click &#8220;Finish.&#8221;</p>
+
+<p>Windows will ask you to click OK to restart your computer. Click &#8220;OK.&#8221; Your PC will restart again and Windows will spend a few minutes configuring itself. Eventually, a &#8220;Welcome to Windows95&#8221; dialog will appear. Click Close. Windows will restart again.</p>
+
+<p>Log in to Windows, but don&#8217;t set any passwords. I have a theory that if Windows thinks I&#8217;m Bill, it will try extra hard to be nice to me, so that&#8217;s how I log in. Again, a Welcome to Windows95 dialog will appear. Uncheck the &#8220;Show this Welcome screen&#8221; checkbox in the bottom left corner and click &#8220;Close.&#8221;</p>
+
+<p>From the Windows Start menu, in the bottom left corner of the Windows desktop, select Shutdown.</p>
+
+<p>Congratulations, Windows 95 is installed in your virtual PC and we&#8217;ve reached Milestone 1.</p>
+
+<h4>MILESTONE 1</h4>
+<p class="vs0">Burn a copy of your &#8220;D Win95&#8221; and &#8220;C Win95 256 colors&#8221; files onto a CD. Now, if anything becomes corrupted in Windows, you can start again at this point without having to re-install Windows: simply copy the &#8220;D Win95&#8221; and &#8220;C Win95 256 colors&#8221; files from the CD you just burned to the &#8220;drives&#8221; folder on your hard drive, replacing the versions that are there.</p>
+
+<h4>PREPARING THE WINDOWS95 TEMPLATE</h4>
+<p class="vs0">Double-click the &#8220;C Win95 256 colors&#8221; icon to launch Windows again. In the Windows desktop, delete &#8220;Online Services&#8221; and &#8220;Set Up The Microsoft Network.&#8221;</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/052.gif" target="ala">052</a>] In &#8220;My Computer/Realpc (C:)/Program Files&#8221;, delete &#8220;NetMeeting&#8221;, &#8220;Online Services&#8221;, &#8220;The Microsoft Network&#8221;, and &#8220;Windows Messaging.&#8221;</p>
+
+<p>In &#8220;My Computer/Realpc (C:)/Windows/Start Menu/Programs&#8221;, delete &#8220;Microsoft NetMeeting&#8221;, &#8220;Online Services&#8221;, &#8220;Internet Mail&#8221;, and &#8220;Internet News.&#8221;</p>
+
+<p>In &#8220;My Computer/Realpc (C:)&#8221; select File > New > Folder to create a new folder. Name it &#8220;documents.&#8221;</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/062.gif" target="ala">062</a>] In the &#8220;My Computer&#8221; window, open your &#8220;E shared&#8221; drive then select View > Options. </p>
+
+<p>In the Options dialog, select the View panel, then uncheck the bottom checkbox that says &#8220;Hide MS-DOS file extensions.&#8221; Click &#8220;OK.&#8221; Drag the file &#8220;blank.html&#8221; from &#8220;E shared&#8221; to the &#8220;documents&#8221; folder. Since we just unchecked the &#8220;Hide MS-DOS file extensions&#8221; checkbox, the &#8220;.html&#8221; extension should be visible. Close all the Windows windows.</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/065.gif" target="ala">065</a>] Now, empty the recycle bin. Do this by clicking on it, then when it&#8217;s selected, press Command-R (this is the mouse-right-button equivalent in RealPC). Select &#8220;Empty recycle bin&#8221; from the pop-up menu.</p>
+
+<p>Find out how much free space you have on &#8220;C Win95 256 colors&#8221; (your virtual C: drive) by double-clicking on the &#8220;My Computer&#8221; icon on the Windows desktop, then single-clicking on the &#8220;Realpc (C:)&#8221; icon in the &#8220;My Computer&#8221; window. Press Command-R to see the pop-up menu and click Properties. Windows will show you how much of the hard disk is used and how much is free. </p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/066.gif" target="ala">066</a>] Notice the numbers on the right (74.9MB and 124MB). When we resize hard disks later, these are the values we&#8217;ll need to determine how small we can make the hard drives. I&#8217;ll come back to this later.</p>
+
+<p>Click &#8220;Cancel&#8221; then close the &#8220;My Computer&#8221; window, and shutdown the PC. We&#8217;ve now made it to Milestone 2.</p>
+
+<h4>MILESTONE 2</h4>
+<p class="vs0">Again, burn the two hard drive files (&#8220;D Win95&#8221; and &#8220;C Win95 256 colors&#8221;) to a CD (these should fit on your first CD). The latest version of the &#8220;C Win95 256 colors&#8221; file will be a kind of template that we&#8217;ll copy several times and install various browsers on.</p>
+
+<p>So, make three copies of the &#8220;C Win95 256 colors&#8221; file and name them</p>
+
+<ul>
+<li>C Win95 256 colors IE 4.01</li>
+<li>C Win95 256 colors IE 5.0</li>
+<li>C Win95 256 colors IE 5.5s2</li>
+</ul>
+
+<p>Rename the original to:</p>
+<ul>
+<li>C Win95 256 colors others</li>
+</ul>
+
+<p>Now, the &#8220;drives&#8221; folder should have six items (the four just mentioned, &#8220;mac browsers&#8221;, and &#8220;E shared&#8221;, which itself contains the two items &#8220;blank.html&#8221; and the &#8220;win95 browsers&#8221; folder).</p>
+
+<p>Since in Windows each installation of Internet Explorer replaces the previous version, we&#8217;ll use a separate virtual hard drive for each version except version 3.02 which was installed automatically with Windows95. We&#8217;ll leave 3.02 on the &#8220;C Win95 256 colors other&#8221; disk and install the other, non-Microsoft browsers there with it. Internet Explorer 4.01, 5.0, and 5.5s2 will go onto the three other hard drives we prepared above.</p>
+
+<h4>INSTALLING INTERNET EXPLORER</h4>
+<p class="vs0">Log onto your ISP with your Mac. Some of the installations require a live connection, and if you&#8217;re not logged in before you launch RealPC, your computer may freeze.</p>
+
+<p>Although some of the details are different, here&#8217;s a summary of what we&#8217;ll do with each version of Internet Explorer we install:</p>
+
+<ul>
+<li>Make sure you&#8217;re logged on to the Internet.</li>
+<li>Install the browser.</li>
+<li>Set options (turn off caching and automatic updates, set our own start page).</li>
+<li>Resize the browser window.</li>
+<li>Quit the browser, then restart it to make sure the option settings have been recognized and the browser remembers your preferred window size.</li>
+<li>Setup shortcuts to the browser on the Windows desktop and in C:\Windows\Start Menu\Program Files\StartUp so that it launches automatically.</li>
+<li>Check how much of the space on the virtual hard disk is used then use shrink it with RealPC&#8217;s HD Expander.</li>
+</ul>
+
+<h4>INTERNET EXPLORER 4.01</h4>
+<p class="vs0">Launch RealPC by double-clicking the &#8220;C Win95 256 colors IE 4.01&#8221; icon in the &#8220;drives&#8221; folder.</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/072.gif" target="ala">072</a>] In Windows, navigate to &#8220;E shared\win95 browsers\ie\5.0\ie4install.exe.&#8221; Double-click it. After it decompresses itself, the Setup dialog will appear. Click &#8220;Next.&#8221; When the license agreement appears, select &#8220;I accept the agreement&#8221; then click &#8220;Next.&#8221; Make sure that &#8220;C:\Program Files\Internet Explorer&#8221; appears in the Destination Folder window, then click &#8220;Next.&#8221;</p>
+
+<p>A short while later, IE Setup will tell you to disconnect. Don&#8217;t. Just click &#8220;OK.&#8221; Setup will then spend a few minutes configuring your system. You&#8217;ll then get a message that says &#8220;Setup must restart your computer.&#8221; Click &#8220;OK.&#8221; Your PC will restart.</p>
+
+<p>Sit back for a few minutes as IE Setup initializes some things. Soon the Setup message window will go away and for a while only a green desktop will be visible. Eventually the desktop icons will appear with another setup message, then an IE Welcome window and a channels window will appear. Close both. You&#8217;ll be asked &#8220;Do you want the Channel Bar to be displayed next time you restart your computer?&#8221; Click &#8220;No&#8221; then restart your PC (not your Mac).</p>
+
+<p>Uncheck the &#8220;Show this next time&#8221; checkbox at the bottom of the IE Welcome window then close the window. Rename the IE alias on the desktop from &#8220;Internet Explorer&#8221; to &#8220;Internet Explorer 4.01.&#8221;</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/084.gif" target="ala">084</a>] In &#8220;My Computer\Realpc (C:)\Program Files\Internet Explorer&#8221; make an alias of &#8220;Iexplore.exe.&#8221; To do this single-click &#8220;Iexplore.exe.&#8221; While it&#8217;s highlighted, press Command-R to get the Windows popup menu. In the popup menu select &#8220;Create Shortcut.&#8221; Drag this alias to &#8220;My Computer\Realpc (C:)\Windows\Start Menu\Programs\StartUp&#8221;, then close all the windows and launch IE.</p>
+
+<p>When it launches, IE will try to contact microsoft.com where it will encounter a script error. You will be asked &#8220;Do you want to continue running scripts on this page?&#8221; Click &#8220;No.&#8221; In IE&#8217;s address bar type <kbd>C:\documents\blank.html</kbd> then press return.</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/090.gif" target="ala">090</a>] In IE&#8217;s View menu, select Internet Options, then in the Internet Options window, under &#8220;Home Page&#8221; in the General tab, click &#8220;Use Current.&#8221; Under &#8220;Temporary Internet files&#8221;, click &#8220;Settings.&#8221; In the Settings window select the top radio button &#8220;Every visit to the page&#8221; and drag the &#8220;Amount of disk space to use&#8221; slider all the way to the left then click &#8220;OK.&#8221; Back at the original Internet Options window, click &#8220;OK&#8221;, then quit IE.</p>
+
+<p>Relaunch IE to check that the startup page is &#8220;blank.html&#8221; then quit IE again.</p>
+
+<p>Get the amount of used space on the C: drive. On my machine, it shows that 108MB are used. So we&#8217;ll soon resize this drive to a little more than that (to 110MB). Close all the windows, then restart your PC to make sure that IE launches automatically. Then quit IE and shutdown your PC.</p>
+
+<p>Duplicate &#8220;C Win95 256 colors IE 4.01&#8221; in case anything goes wrong during resizing. In the RealPC folder, launch &#8220;HD Expander.&#8221; Navigate to &#8220;C Win95 256 colors IE 4.01&#8221; then click &#8220;Open.&#8221; Set the New Size to 110MB then click &#8220;Shrink.&#8221; &#8220;HD Expander&#8221; will defragment the drive and copy the contents to a new, smaller file. When it finishes, quit &#8220;HD Expander.&#8221;</p>
+
+<p>Launch Windows95 and IE 4.01 by double-clicking &#8220;C Win95 256 colors IE 4.01.&#8221; If all goes well, shutdown Windows then delete &#8220;C Win95 256 colors IE 4.01 copy.&#8221;</p>
+
+<p>That&#8217;s it! You&#8217;re done installing the first browser.</p>
+
+<h4>INTERNET EXPLORER 5.0</h4>
+<p class="vs0">Make sure you&#8217;re connected to the Internet before you launch RealPC, then double-click &#8220;C Win95 256 colors IE 5.0&#8221; in the &#8220;drive&#8221; folder.</p>
+
+<p>In Windows, navigate to &#8220;E shared\win95 browsers\ie\5.0\ie5setup.exe.&#8221; Double-click it. In the Windows Update window, select the top radio button (&#8220;I accept the agreement&#8221;) then click &#8220;Next.&#8221;</p>
+
+<p>After a few moments, a window will appear asking which type of install to do. Select the top radio button &#8220;Install Now - Typical set of components&#8221;, then click &#8220;Next.&#8221; In the Download Sites window select whatever is appropriate for your location then click &#8220;Next.&#8221; Go for another cup o&#8217; joe and come back 19 megs later, when the download is complete.</p>
+
+<p>When the download is done, a window saying &#8220;Restart Computer&#8221; will appear. When you click &#8220;Finish&#8221; your PC will restart.</p>
+
+<p>The Windows Update message will appear and Windows will spend a few minutes performing updates, then personalizing settings for IE 5. When it&#8217;s done, delete &#8220;Connect to the Internet&#8221; and &#8220;Outlook Express&#8221; from the Windows desktop. From &#8220;My Computer\Realpc (C:)&#8221;, delete the &#8220;Windows Update Setup Files&#8221; folder. From &#8220;My Computer\Realpc (C:)\Program Files&#8221;, delete the &#8220;Outlook Express&#8221; folder.</p>
+
+<p>Navigate to &#8220;My Computer\Realpc (C:)\Program Files\Internet Explorer&#8221; and make an alias of &#8220;Iexplore.exe&#8221;, then drag it to the Windows desktop. Close the &#8220;Internet Explorer&#8221; and &#8220;Program Files&#8221; windows, then open &#8220;My Computer\Realpc (C:)\Windows\Start Menu\Programs.&#8221; Drag the alias into the &#8220;StartUp&#8221; folder there.</p>
+
+<p>Rename &#8220;My Computer\Realpc (C:)\Windows\Start Menu\Programs\Internet Explorer&#8221; to &#8220;Internet Explorer 5.0.&#8221; Delete the &#8220;Outlook Express&#8221; shortcut from there then close all the windows.</p>
+
+<p>On the Windows desktop, rename &#8220;Internet Explorer&#8221; to &#8220;Internet Explorer 5.0&#8221; then launch IE. The Internet Connection Wizard will start up. Click &#8220;Cancel&#8221;, then in the next dialog, check the checkbox (&#8220;Do not show the Internet Connection wizard in the future&#8221;), then click &#8220;Yes.&#8221;</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/115.gif" target="ala">115</a>] After IE starts up, resize the browser window, then open &#8220;C:\documents\blank.html.&#8221; From IE&#8217;s Tools menu select Internet Options. In the &#8220;Home Page&#8221; section of the &#8220;General&#8221; tab click &#8220;Use Current.&#8221; In the &#8220;Temporary Internet Files&#8221; section, click &#8220;Settings&#8221;, then in the Settings window, select the first radio button &#8220;Every visit to the page&#8221;, and slide the &#8220;Amount of disk space to use&#8221; slider all the way to the left. Click &#8220;OK.&#8221; In the &#8220;Advanced&#8221; tab, uncheck &#8220;Automatically check for Internet Explorer updates&#8221;, &#8220;Disable script debugging&#8221;, and &#8220;Enable Install On Demand&#8221;, then click &#8220;OK.&#8221;</p>
+
+<p>Quit IE, then restart Windows to check that IE loads up automatically and that your window position and start page have been remembered.</p>
+
+<p>Quit IE again then empty the &#8220;Recycle Bin.&#8221; </p>
+
+<p>Check the amount of disk space used. In my case, 121MB of the virtual C: drive is full, so in just a minute we&#8217;ll resize it to 125MB. Close all the Windows windows, then shut down your PC. Duplicate &#8220;C Win95 256 colors IE 5.0&#8221; in case anything goes wrong during resizing. Use &#8220;HD Expander&#8221; to resize the original &#8220;C Win95 256 colors IE 5.0&#8221; to 125MB.</p>
+
+<p>Launch Windows95 and IE 5.0 by double-clicking &#8220;C Win95 256 colors IE 5.0.&#8221; If all goes well, shutdown Windows then delete &#8220;C Win95 256 colors IE 5.0 copy.&#8221;</p>
+
+<p>Two down, one to go. Next we&#8217;ll install IE 5.5.</p>
+
+<h4>INTERNET EXPLORER 5.5</h4>
+<p class="vs0">Installing IE 5.5 is practically identical to installing version 5.0. Other than using the IE 5.5 installer and &#8220;C Win95 256 colors IE 5.5s2&#8221;, and renaming the desktop icon with &#8220;5.5&#8221; instead of &#8220;5.0&#8221;, the only difference is that the virtual C: drive is resized to 130MB instead of 125MB.</p>
+
+<p>Once you&#8217;ve installed IE 5.5 that&#8217;s it for Internet Explorer. But if you want to add a virtual hard drive with IE 6, you&#8217;ll need to install a copy of Windows98 there. We won&#8217;t do that in this article, but don&#8217;t let that stop you!</p>
+
+<h4>INSTALLING THE OTHER BROWSERS</h4>
+<p class="vs0">First, we&#8217;ll have to expand our virtual hard drive &#8220;C Win95 256 colors others&#8221; to 500MB.</p>
+
+<p>As always, make sure you&#8217;re connected to the Internet before you launch RealPC, then double-click &#8220;C Win95 256 colors others&#8221; in the &#8220;drive&#8221; folder.</p>
+
+<p>In Windows, navigate to &#8220;My Computer\Realpc (C:)\Program Files&#8221; and under the File menu, select New > Folder. Name the new folder &#8220;browsers.&#8221; </p>
+
+<p>Within the &#8220;browsers&#8221; folder, create ten new folders named:</p>
+
+<ul>
+<li>Lynx 2.8.4p5</li>
+<li>Netscape 3.04</li>
+<li>Netscape 4.08</li>
+<li>Netscape 4.51</li>
+<li>Netscape 4.61</li>
+<li>Netscape 4.78</li>
+<li>Netscape 6.1</li>
+<li>Netscape 6.2</li>
+<li>Opera 5.12</li>
+<li>Opera 6.0</li>
+</ul>
+
+<p>Create one more folder and name it &#8220;browsers.&#8221; Drag this folder onto the Windows desktop then close all the windows. This new &#8220;browsers&#8221; folder is where we&#8217;ll keep aliases to each browser we install. You could keep these aliases in your Start menu if you like, giving you a slightly cleaner desktop, but I like being able to see at a glance (without clicking the Start menu) what browsers are installed.</p>
+
+<h4>LYNX 2.8.4</h4>
+<p class="vs0">In Windows, navigate to &#8220;E shared\win95 browsers\lynx\2.8.4.&#8221; Copy the contents of that folder into &#8220;Realpc (C:)\Program Files\browsers\Lynx 2.8.4p5.&#8221;</p>
+
+<p>In the &#8220;Realpc (C:)\Program Files\browsers\Lynx 2.8.4p5&#8221; folder, make an alias of &#8220;lynx.exe&#8221; and rename it &#8220;Lynx 2.8.4p5.&#8221; Drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/126.gif" target="ala">126</a>] Launch Lynx to make sure it works then quit by typing &#8220;q&#8221; in the Lynx window. Type &#8220;y&#8221; when Lynx asks &#8220;Are you sure you want to quit?&#8221;.</p>
+
+<h4>NETSCAPE 3.04</h4>
+<p class="vs0">In Windows, navigate to &#8220;E shared\win95 browsers\netscape\3.04\n32e304.exe.&#8221; Double-click it.</p>
+
+<p>A dialog box will appear. Click &#8220;Yes&#8221; to confirm that you want to install Navigator Version 3.04. In the Welcome window that appears, click &#8220;Next.&#8221; In the Choose Destination Location window, click the &#8220;Browse&#8221; button and navigate to &#8220;My Computer\Realpc (C:)\Program Files\browsers\Netscape 3.04.&#8221; Click &#8220;OK&#8221; in the Choose Directory window, then click &#8220;Next&#8221; in the Choose Destination Location window.</p>
+
+<p>After a few moments, a Question window will appear asking if you would like to connect to Netscape to configure Navigator. Click &#8220;No.&#8221; In the next Question dialog, click &#8220;No&#8221; to avoid reading the readme file. Finally, when the &#8220;Setup is complete&#8221; dialog appears, click &#8220;OK.&#8221;</p>
+
+<p>In the Netscape License Agreement window, click &#8220;Accept.&#8221; Netscape will then launch. It may not be able to find a bookmark file. If that happens, a dialog box telling you so will appear. Click &#8220;OK.&#8221;</p>
+
+<p>Relocate and resize the browser window.</p>
+
+<p>In Netscape&#8217;s Options menu, select General Preferences. Under the Appearance tab, in the Startup section, in the &#8220;Browser Starts With&#8221; textbox type <kbd>C:\documents\blank.html</kbd> then click &#8220;OK.&#8221;</p>
+
+<p>In Netscape&#8217;s Options menu, select Network Preferences. Under the Cache tab, type 0 (zero) into the Disk Cache textbox, and click the &#8220;Every Time&#8221; radio button in the Verify Documents item. Click &#8220;Clear Disk Cache Now.&#8221;</p>
+
+<p>Confirm that you want to clear the disk cache by clicking &#8220;OK&#8221;, then back in the Preferences window, click &#8220;OK.&#8221;</p>
+
+<p>Quit Netscape then re-launch it to make sure it remembered your preferred window size and location, and your start page. Quit Netscape again.</p>
+
+<p>Rename the &#8220;Netscape Navigator&#8221; icon on the Windows desktop to &#8220;Netscape 3.04&#8221; and drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h4>NETSCAPE 4.08</h4>
+<p class="vs0">In Windows, navigate to &#8220;E shared\win95 browsers\netscape\4.08\n32e408.exe.&#8221; Double-click it.</p>
+
+<p>In the Welcome window that appears, click &#8220;Next.&#8221; When the Software License Agreement window appears, click &#8220;Yes.&#8221; In the Setup Type window, click &#8220;Browse&#8221; then navigate to &#8220;C:\Program Files\browsers\Netscape 4.08.&#8221; Click &#8220;OK&#8221; in the Choose Directory window, then &#8220;Next&#8221; in the Setup Type window.</p>
+
+<p>An Information dialog box mentioning the previous installations of Navigator will appear. Click &#8220;OK.&#8221; In the Select Program Folder window, click &#8220;Next.&#8221; In the Start Copying Files window, click &#8220;Install.&#8221;</p>
+
+<p>After the installation, a dialog will appear asking if you want to read the readme file. Click &#8220;No.&#8221; Click &#8220;OK&#8221; in the &#8220;Setup is complete&#8221; dialog.</p>
+
+<p>Launch Netscape, then in the New Profile Window, click &#8220;Next.&#8221; Click &#8220;Next&#8221; twice more (until you get to a window with three radio buttons). Select the second radio button &#8220;Copy my existing user files&#8221;, then click &#8220;Finish.&#8221;</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/151.gif" target="ala">151</a>] Relocate and resize your browser window.</p>
+
+<p>Under the Edit menu, choose Preferences. In the Navigator section of the Preferences window, select the &#8220;Home page&#8221; radio button under &#8220;Navigator starts with&#8221;, then click &#8220;OK.&#8221; (The cache preferences should be retained from the Netscape 3.04 settings, but you can check this if you wish.)</p>
+
+<p>Quit Netscape then re-launch it to make sure it remembered your preferred window size and location, and your start page. In my installation, the browser window will not stay quite as tall as I would like, but it will do. Quit Netscape again.</p>
+
+<p>Rename the &#8220;Netscape Navigator&#8221; icon on the Windows desktop to &#8220;Netscape 4.08&#8221; and drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h4>NETSCAPE 4.51</h4>
+<p class="vs0">Installing Netscape 4.51 is very similar to the installing version 4.08. Start by launching &#8220;E shared\win95 browsers\netscape\4.51\cc32e451.exe.&#8221; But after the Information dialog box mentioning the previous installations of Navigator, a Netscape Desktop Preference Options window will appear. Uncheck all three boxes (&#8220;default browser&#8221;, &#8220;home page&#8221;, &#8220;search the Web&#8221;) then click &#8220;Next.&#8221;</p>
+ 
+ <p>The installation then proceeds just as Netscape 4.08 did except that at the end, after the &#8220;Setup is complete&#8221; dialog box, you&#8217;re given the option of restarting Windows. Select the top radio button (&#8220;Yes, I want to restart my computer now&#8221;) then click &#8220;OK.&#8221;</p>
+
+<p>After the restart, launch Netscape. Close the Communicator floating palette then resize your browser window.</p>
+
+<p>Under the Edit menu, choose Preferences.</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/160.gif" target="ala">160</a>] Expand the Advanced category in the Preferences window, then select the SmartUpdate item. In the SmartUpdate section of the window, uncheck the &#8220;Enable SmartUpdate&#8221; checkbox, then click &#8220;OK.&#8221; (The start page and cache preferences should be retained from the Netscape 4.08 settings, but you can check this if you wish.)</p>
+
+<p>Quit Netscape then re-launch it to make sure it remembered your preferred window size and location, and your start page. In Netscape 4.51, the browser window does remember my preferred window size (unlike in 4.08; see above). Quit Netscape again.</p>
+
+<p>Rename the &#8220;Netscape Communicator&#8221; icon on the Windows desktop to &#8220;Netscape 4.51&#8221; and drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h4>NETSCAPE 4.61</h4>
+<p class="vs0">Again, this installation is very similar to the last. Start by launching &#8220;E shared\win95 browsers\netscape\4.61\cc32e461.exe.&#8221; Everything proceeds as above, except that after the Start Copying Files window, a message about an old version of RealPlayer being uninstalled will appear. A newer one will be installed, then installation again proceeds as above.</p>
+
+<p>After restarting, launch Netscape. A notice relating to RealPlayer will appear but then be covered up by Netscape. We&#8217;ll see it later.</p>
+
+<p>Netscape will be unable to find home.netscape.com and you&#8217;ll get a message to that effect. Click &#8220;OK&#8221; then quit Netscape. That notice about RealPlayer&#8217;s color preferences will now be visible. Click &#8220;OK.&#8221;</p>
+
+<p>Launch Netscape again. This time it will open with our &#8220;blank.html&#8221; file. All our other preferences should also be retained from our previous installations of Netscape, but you can check this if you like. Quit Netscape again.</p>
+
+<p>Rename the &#8220;Netscape Communicator&#8221; icon on the Windows desktop to &#8220;Netscape 4.61&#8221; and drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h4>NETSCAPE 4.78</h4>
+<p class="vs0">Yet again, this installation is similar to the last. Start by launching &#8220;E shared\win95 browsers\netscape\4.78\cc32d478.exe.&#8221; After this, the only significant difference with respect to the Netscape 4.61 installation is that the RealPlayer installation isn&#8217;t repeated, so nothing related to that (including the restart option) happens in this installation.</p>
+
+<p>As usual, you may wish to launch Netscape to check that our preferences were carried over from previous installations, and that our window location and size preferences have been remembered.</p>
+
+<p>Rename the &#8220;Netscape Communicator&#8221; icon on the Windows desktop to &#8220;Netscape 4.78&#8221; and drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h4>NETSCAPE 6.1</h4>
+<p class="vs0">In Windows, navigate to &#8220;E shared\win95 browsers\netscape\6.1x\N6SetupB.exe.&#8221; Double-click it.</p>
+
+<p>In the Netscape 6 (6.1) Setup - Welcome window that appears, click &#8220;Next.&#8221; When the Software License Agreement window appears, click &#8220;Accept.&#8221; In the Setup Type window, click &#8220;Browse&#8221; then navigate to &#8220;C:\Program Files\browsers\Netscape 6.1.&#8221; Click &#8220;OK&#8221; in the &#8220;Select a directory&#8221; window, then &#8220;Next&#8221; in the Setup Type window. (Leave the &#8220;Recommended&#8221; setup radio button selected.) In the Start Install window, click &#8220;Install.&#8221; Several windows will then come and go.</p>
+
+<p>Launch Netscape. After a long time (on my machine), a Windows Integration dialog will appear asking about making Netscape 6.1 the default application to use for related documents. Click &#8220;No.&#8221; An Activation window will appear. Click &#8220;Cancel.&#8221; In the Confirm dialog, click &#8220;Cancel.&#8221;</p>
+
+<p>Relocate and resize the browser window.</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/174.gif" target="ala">174</a>] Under the Edit menu, select Preferences. In the Category section of the Preferences window, expand &#8220;Privacy and Security&#8221; then select the &#8220;Forms&#8221; item. In the Forms section of the window, uncheck the &#8220;Save form data&#8221; checkbox.</p>
+
+<p>In the Category section of the Preferences window, expand &#8220;Advanced&#8221; then select the &#8220;Software Installati...&#8221; item. In the Software Installation section of the window, uncheck the &#8220;Enable software installation&#8221; checkbox. Click &#8220;OK&#8221; then quit Netscape.</p>
+
+<p>Launch Netscape again. This time it should open with our &#8220;blank.html&#8221; file. Quit Netscape again.</p>
+
+<p>Rename the &#8220;Netscape 6&#8221; icon on the Windows desktop to &#8220;Netscape 6.1&#8221; and drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h4>NETSCAPE 6.2</h4>
+<p class="vs0">This installation is similar to the one for Netscape 6.1. Start by launching &#8220;E shared\win95 browsers\netscape\6.2x\N6SetupB.exe.&#8221; Proceed as above, but when the Quick Launch window appears, click &#8220;Next.&#8221; Then, in the Start Install window, click &#8220;Install.&#8221; After installation Netscape should launch automatically.</p>
+
+<p>Under the Edit menu, select Preferences. In the Category section of the Preferences window, expand &#8220;Advanced&#8221; then select the &#8220;Cache&#8221; item. Type a 0 (zero) in the Disk Cache textbox. Click &#8220;OK&#8221; then quit Netscape.</p>
+
+<p>Launch Netscape again. This time it should open with our &#8220;blank.html&#8221; file. Quit Netscape again then drag the &#8220;Netscape 6.2&#8221; icon from the Windows desktop into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h4>OPERA 5.12</h4>
+<p class="vs0">In Windows, navigate to &#8220;E shared\win95 browsers\opera\5.12\ow32enen512.exe.&#8221; Double-click it.</p>
+
+<p>In the Opera 5 (Win32) Installation window, click &#8220;Next.&#8221; In the Software License Agreement window, click &#8220;I Accept.&#8221; In the Select Destination Directory window, click &#8220;Browse&#8221; then in the Select Destination Directory window navigate to &#8220;C:\Program Files\browsers\Opera 5.12.&#8221; Click &#8220;OK.&#8221; A dialog box will appear asking you to confirm that installation location. Click &#8220;Yes.&#8221; Back in the Select Destination Directory window, click &#8220;Next.&#8221;</p>
+
+<p>In the Icon Creation window, click the &#8220;Next&#8221; button. (We&#8217;ll delete the icon from the Start Menu later along with a bunch of others, but we&#8217;ll use the desktop icon.)</p>
+
+<p>In the Select Group window, click &#8220;Next.&#8221; In the Ready to Install! window, click &#8220;Next&#8221; to begin the installation.</p>
+
+<p>After the installation, in the Installation Completed! window, click &#8220;Finish.&#8221; Opera will launch.</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/189.gif" target="ala">189</a>] In Opera&#8217;s File menu, select Preferences. From the list on the left side of the window, select &#8220;History and cache.&#8221; In the &#8220;Disk cache&#8221; area on the right side of the window, type 0 (zero) in the KB textbox, uncheck the first three checkboxes (&#8220;Cache documents&#8221;, &#8220;Cache images&#8221;, &#8220;Cache other&#8221;) and check the fourth (&#8220;Empty on exit&#8221;). You may as well click the &#8220;Empty now&#8221; button too. In the &#8220;Check modified&#8221; section in the bottom half of the window, select the &#8220;Always&#8221; radio buttons under &#8220;Documents&#8221;, &#8220;Images&#8221;, and &#8220;Other.&#8221; In the &#8220;RAM cache&#8221; section near the middle of the window, uncheck the &#8220;Enable automatic RAM cache&#8221; checkbox, and then uncheck the other checkboxes in that section as well (&#8220;Cache documents&#8221;, &#8220;Cache images&#8221;, &#8220;Cache rendered images&#8221;).</p>
+
+<p>From the list on the left side of the window, select &#8220;Plugins.&#8221; In the &#8220;JavaScript&#8221; section at the bottom of the right side of the window, check the &#8220;Report JavaScript errors&#8221; checkbox, then click &#8220;OK.&#8221;</p>
+
+<p>After a moment, a warning dialog related to email clients may appear. Click &#8220;Yes&#8221; to continue applying the new preferences.</p>
+
+<p>In Opera&#8217;s Navigation menu, select &#8220;Set home page.&#8221; In the &#8220;Global home page&#8221; textbox in the &#8220;Set home page&#8221; dialog, type <kbd>C:\documents\blank.html</kbd> then click OK.</p>
+
+<p>You could relocate and resize the browser window, but in my experience Opera will maximize its application window the next time it starts up. Quit Opera.</p>
+
+<p>After you relaunch Opera, a dialog box will appear asking whether Opera should be made the default browser. Check the &#8220;Do not show this dialog again&#8221; checkbox, then click &#8220;No.&#8221; The &#8220;Tip of the day&#8221; dialog will appear. Uncheck the &#8220;Show tips at startup&#8221; checkbox at the bottom of the dialog box, then click &#8220;Close.&#8221; Quit Opera again.</p>
+
+<p>Rename the &#8220;Opera 5&#8221; icon on the Windows desktop to &#8220;Opera 5.12&#8221; and drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h4>OPERA 6.0</h4>
+<p class="vs0">The actual installation of Opera 6.0 is practically identical to that of Opera 5.12. Start by launching &#8220;E shared\win95 browsers\opera\6.00 release\ow32enen600.exe.&#8221; Proceed as above until the installation is complete and Opera launches.</p>
+
+<p>A welcome dialog will give you the option of  selecting &#8220;Windows on desktop.&#8221; Click that item, then check the &#8220;Do not ask me again&#8221; checkbox at the bottom of the window. Click &#8220;Start.&#8221;</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/200.gif" target="ala">200</a>] In this version of Opera, your preferred location and size for the browser window will be remembered, so go ahead and relocate and resize it.</p>
+
+<p>In the browser&#8217;s address bar, type <kbd>C:\documents\blank.html</kbd> then press return. Opera will change the URL to <kbd>file://localhost/c:/documents/blank.html</kbd>. In Opera&#8217;s File menu, select Preferences. From the list on the left side of the window, select &#8220;Start and exit.&#8221; In the &#8220;Start&#8221; area on the right side of the window, click the &#8220;Use active&#8221; button.</p>
+
+<p>Since Opera doesn&#8217;t import preferences from earlier versions of itself, we&#8217;ll have to set them all again for this version. From the list on the left side of the Preferences window, select &#8220;Multimedia.&#8221; In the &#8220;JavaScript&#8221; section at the bottom of the right side of the window, check the &#8220;Report JavaScript errors&#8221; checkbox.</p>
+
+<p>From the list on the left side of the window, select &#8220;Default browser.&#8221; Uncheck the &#8220;Check if Opera is default browser&#8221; checkbox at the bottom of the window.</p>
+
+<p>From the list on the left side of the window, select &#8220;History and cache.&#8221; In the &#8220;Disk cache&#8221; area on the right side of the window, type 0 (zero) in the KB textbox, uncheck the first three checkboxes (&#8220;Cache documents&#8221;, &#8220;Cache images&#8221;, &#8220;Cache other&#8221;) and check the fourth (&#8220;Empty on exit&#8221;). You may as well click the &#8220;Empty now&#8221; button too. In the &#8220;Check modified&#8221; section in the bottom half of the window, select the &#8220;Always&#8221; radio buttons under &#8220;Documents&#8221;, &#8220;Images&#8221;, and &#8220;Other.&#8221; In the &#8220;RAM cache&#8221; section near the middle of the window, uncheck the &#8220;Enable automatic RAM cache&#8221; checkbox, and then uncheck the other checkboxes in that section (&#8220;Cache documents&#8221; and &#8220;Cache images&#8221;). Click &#8220;OK&#8221; then quit Opera.</p>
+
+<p>Re-launch Opera. The &#8220;Tip of the day&#8221; dialog will appear. Uncheck the &#8220;Show tips at startup&#8221; checkbox at the bottom of the dialog box, then click &#8220;Close.&#8221; Quit Opera again.</p>
+
+<p>Rename the &#8220;Opera&#8221; icon on the Windows desktop to &#8220;Opera 6.0&#8221; and drag it into the desktop &#8220;browsers&#8221; folder.</p>
+
+<h3>CLEANING UP</h3>
+<p class="vs0">In the Windows desktop, select the AOL 700 hours icon, the AOL Instant Messenger icon, the RealPlayer Basic icon, and the Take5 icon. Drag them all to the Recycle Bin.</p>
+
+<p>Navigate to &#8220;My Computer\Realpc (C:)\Windows\Start Menu.&#8221; Select the Free AOL icon, then press Command-R. In the popup menu, select &#8220;Delete&#8221; then confirm the deletion by clicking &#8220;Yes&#8221; in the confirmation dialog. Do the same thing with the Netscape SmartUpdate icon.</p>
+
+<p>In the Start Menu folder open the Programs folder then delete everything except &#8220;Accessories&#8221;, &#8220;StartUp&#8221;, &#8220;MS-DOS Prompt&#8221;, and &#8220;Windows Explorer.&#8221;</p>
+
+<p>Empty the Recycle Bin.</p>
+
+<p>Screenshot: [<a href="https://alistapart.com/stories/xplatform/nuts/209.gif" target="ala">209</a>] Open the desktop &#8220;browsers&#8221; folder and in the View menu, select List. Then resize and relocate the &#8220;browsers&#8221; window to just above the Start Menu.</p>
+
+<p>Check to see how much space is used on the virtual hard drive. In my case, 247MB is used, so in just a minute I&#8217;ll resize &#8220;C Win95 256 colors other&#8221; to 250MB.</p>
+
+<p>Shutdown your PC, then duplicate the &#8220;C Win95 256 colors other&#8221; hard drive file. After making a backup, resize it using HD Expander. Launch it to make sure it works before deleting the backup.</p>
+
+<h4>MILESTONE 3</h4>
+<p class="vs0">Finally, burn the four virtual hard disks in the &#8220;drives&#8221; folder onto a CD. They should all fit onto one 700MB blank without any difficulty.</p>
+
+<h3>SETUP FOR MAC BROWSERS</h3>
+<p class="vs0">Setting up the Mac browsers is much easier.</p>
+
+<p>I wanted to keep my personal browsing preferences separate from my testing browsers: I prefer a lean browser but I wanted the test ones to have all their chrome and default preferences intact. To do that, I dedicated my Mac&#8217;s old internal 250MB hard drive to testing. It has a full install of MacOS 8.6 and some utilities on it but little else. If you don&#8217;t have a second physical hard drive, you might consider creating a new partition on the hard drive you do have, or using a removable bootable read/write medium.</p>
+
+<p>On the second volume do a clean OS install, then reboot from that volume. You may find it useful to reset the desktop color to one very different from the one you use on your main hard drive (in my case, one is bluish, the other yellowish). Next, install and launch each Macintosh browser in sequence. As with the Windows95 browsers, turn off caching and automatic software updates, turn on JavaScript error reporting, and set the default open page to a blank HTML document.</p>
+
+<p>Why not just select &#8220;start with blank page&#8221; when it&#8217;s available? Simply for this: by replacing the &#8220;blank.html&#8221; file with an alias to whatever I&#8217;m working on (while retaining the &#8220;blank.html&#8221; filename), in some circumstances all I have to do to see how the page looks is launch a browser and the page loads up automatically. You could do something similar using symbolic links on a Unix web server and have the full web server functionality available if your pages are CGI intensive (or otherwise dynamic, like being generated with PHP or ASP).</p>
+
+<p>Having installed the MacOS and set the preferences of all your Mac browsers, you might want to burn the system folder with those preferences to a CD. That way you can easily restore all defaults and clean out unwanted extensions and preference files that may accumulate there. But when you do that, if you include the &#8220;mac browsers&#8221; folder that contains all the expanded browsers, you&#8217;ll have your main Macintosh testing materials all on one CD.</p>
+
+<p>If, like me, your second volume is rather small, you may not be able to store the Macintosh browsers there. Instead, I keep the Macintosh browsers on the 4GB hard drive even though when I use them I&#8217;m booting from the smaller volume. In any case, make an alias of each browser and put them all in a single folder for convenient access.</p>
+
+<p>When you want to test, boot from the second volume, and all of the browsers will have their default settings. When you&#8217;re done, boot from the first and your personal settings for your favorite browser will be available.</p>
+
+<p>One last detail that&#8217;s useful for testing page designs without resizing your screen is the Small Screen program by Daniel Schaerer. It&#8217;s free and small, and sometimes quite useful: on your monitor it will draw the outline of one or more other screen sizes. By placing your browser in the upper left corner of your screen, you can easily see how much of your page design is available (without scrolling) to folks with displays smaller than yours.</p>
+
+<h3>CONCLUSION</h3>
+<p class="vs0">Yes, <a href="http://one-pla.net/screenshots/design3.5/" target="ala">it works</a>.</p>
+<p>Yes, it can be slow, particularly with Netscape 6.x in Windows95, but generally the performance isn&#8217;t bad.</p>
+<p>Yes, it takes a long time to set up but once everything is burned to CD, restoring parts of the setup is as simple as copying the relevant items from the CD.</p>
+<p>There are other bells and whistles that can be added to the testing station including other browsers and other x86 operating systems that could run under RealPC. One other potential enhancement that goes way beyond the scope of this article is using AppleScript to automate your testing (of scriptable browsers at least).</p>
+<p>So, developers who use Macs and who can meet the modest hardware and software requirements described here can now thoroughly test their work without the hassle of leaving their offices. (For some that might not necessarily be a good thing, but that too is beyond the scope of this article.)</p>
