@@ -1,0 +1,313 @@
+
+<html>
+<title>ALA: Dom Tricks 3: Source For Sort</title>
+
+<body>
+
+
+<pre>
+
+
+&lt;script language="JavaScript" src="domutils.js"&gt;
+&lt;/script&gt;
+
+&lt;script language="JavaScript"&gt;
+&lt;!--
+setBrowser();
+
+var ready = false;
+
+var city;
+var highTemp;
+var lowTemp;
+var order;
+var nRows;
+var sortedColumn;
+var sortedAscending;
+var centigrade = false;
+
+function getObject( nameStr )
+{
+    if (isNav6)
+    {
+        return document.getElementById( nameStr );
+    }
+    else if (isIE4)
+    {
+        return document.all[nameStr];
+    }
+}
+
+function makeDynamicText( tableDataCell, datum, columnNumber )
+{
+    var newNode, newText;
+
+    /* numbers may have to be converted to centigrade */
+    if (columnNumber &gt; 0 && centigrade)
+    {
+        datum = Math.floor( (datum-32)/9*5 );
+    }
+
+    /* if this isn't the sorted column, just create a
+       text node. If it's the sorted column, then create
+       a bold node with a child text node */
+
+    if (columnNumber != sortedColumn)
+    {
+        newNode = document.createTextNode( datum );
+    }
+    else
+    {
+        newNode = document.createElement("B");
+        newText = document.createTextNode( datum );
+        newNode.appendChild( newText );
+    }
+    tableDataCell.replaceChild( newNode,
+        tableDataCell.firstChild );
+}
+
+/******************************************************
+    Sort an array into ascending or descending order.
+    This uses the classical "bubble sort" algorithm,
+    which is good for short arrays but bad for
+    huge ones
+*******************************************************/
+function sort( whichColumn, ascending )
+{
+    var i, j, n, temp;
+    var wTable = document.getElementById( "wTable" );
+    var tRows = wTable.childNodes;
+    var arrayRef;
+
+    if (isNav4)
+    {
+        return;
+    }
+
+    /* determine which array needs to be sorted */
+    if (whichColumn == 0)
+    {
+        arrayRef = city;
+    }
+    else if (whichColumn == 1)
+    {
+        arrayRef = highTemp;
+    }
+    else
+    {
+        arrayRef = lowTemp;
+    }
+    if (!ready)
+    {
+        return;
+    }
+
+    window.status = "Sorting...please wait.";
+    n = order.length;
+    for (i=0; i &lt; n; i++)
+    {
+        order[i] = i;
+    }
+    for (i=0; i&lt;n-1; i++)
+    {
+        for (j=i+1; j&lt;n; j++)
+        {
+            mustSwap = (ascending) ?
+                arrayRef[order[i]] &gt; arrayRef[order[j]]:
+                arrayRef[order[i]] &lt; arrayRef[order[j]];
+            if (mustSwap)
+            {
+                temp = order[i];
+                order[i] = order[j];
+                order[j] = temp;
+            }
+        }
+    }
+    window.status = "";
+
+    /* set all images to light blue */
+    for (i=0; i&lt;3; i++)
+    {
+        document["u"+i].src = "up0.gif";
+        document["d"+i].src = "dn0.gif";
+    }
+
+    /* then set this particular sorted column to solid blue */
+    if (ascending)
+    {
+        document["d"+whichColumn].src = "dn.gif";
+    }
+    else
+    {
+        document["u"+whichColumn].src = "up.gif";
+    }
+
+    /* globally store the current column and its sort status */
+    sortedColumn = whichColumn;
+    sortedAscending = ascending;
+
+    /* Now recreate the table nodes in sorted order */
+
+    for (i=0; i &lt; nRows-1; i++)
+    {
+        /*  Retrieve the child nodes of a table row.
+            Each of these nodes will correspond to a &lt;td&gt; */
+        thisRow = tRows[i+1].childNodes;
+
+        makeDynamicText( thisRow[0], city[order[i]], 0 );
+        makeDynamicText( thisRow[1], highTemp[order[i]], 1 );
+        makeDynamicText( thisRow[2], lowTemp[order[i]], 2 );
+    }
+}
+/*********************************************
+    Puts up text showing the scale in which
+    temperatures are displayed.
+**********************************************/
+function showCentigrade( whichWay )
+{
+    var divNode;
+    var newText;
+
+    if (isNav4)
+    {
+        return;
+    }
+    
+    /* If no change, ignore it */
+    if (centigrade == whichWay)
+    {
+        return;
+    }
+
+    divNode = getObject( "tempScale" );
+    centigrade = whichWay;
+    sort( sortedColumn, sortedAscending );
+    newText = document.createTextNode(
+        "Temperatures are shown in " +
+        ((centigrade) ? "Centigrade." : "Fahrenheit.")
+    );
+    divNode.replaceChild( newText, divNode.firstChild );        
+}
+
+function setupArrays()
+{
+    var wTable = document.getElementById( "wTable" );
+    var tRows = wTable.childNodes;
+    var i;
+
+    if (isNav4)
+    {
+        return;
+    }
+    nRows = tRows.length;
+
+    city = new Array( nRows-1 );
+    highTemp = new Array( nRows-1 );
+    lowTemp = new Array( nRows - 1 );
+    order = new Array( nRows - 1 );
+
+    for (i=0; i &lt; nRows-1; i++)
+    {
+        // get the children of this row
+        thisRow = tRows[i+1].childNodes;
+        city[i] = thisRow[0].firstChild.data;
+        highTemp[i] = parseInt(thisRow[1].firstChild.data);
+        lowTemp[i] = parseInt(thisRow[2].firstChild.data);
+    }
+    ready = true;
+    sort( 0, true );
+}
+// --&gt;
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor="#ffffff" onLoad="setupArrays();"&gt;
+&lt;p&gt;
+Click the blue arrows to select a column to sort, and the order
+in which to sort it. Up arrows put the highest item at the top;
+down arrows put the lowest item at the top.
+&lt;script language="JavaScript"&gt;
+&lt;!--
+if (isNav4)
+{
+    document.writeln("This example does not work with Netscape 4.");
+}
+//--&gt;
+&lt;/script&gt;
+&lt;/p&gt;
+&lt;table border="0"&gt;
+&lt;tr&gt;
+&lt;td&gt;
+    &lt;h3 align="center"&gt;International Weather Reports&lt;/h3&gt;
+    &lt;table border="1"&gt;
+    &lt;tbody id="wTable"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;
+        &lt;a href="javascript:sort(0,false)"&gt;&lt;img src="up0.gif"
+            name="u0" border="0"
+            align="middle" alt="sort descending" width="25" height="25"&gt;&lt;/a&gt;
+        &lt;br&gt; City &lt;br&gt;
+        &lt;a href="javascript:sort(0,true)"&gt;&lt;img src="dn0.gif"
+            name="d0" border="0"
+            align="middle" alt="sort ascending" width="25" height="25"&gt;&lt;/a&gt;
+        &lt;/th&gt;
+        &lt;th&gt;
+        &lt;a href="javascript:sort(1,false)"&gt;&lt;img src="up0.gif"
+            name="u1" border="0"
+            align="middle" alt="sort descending" width="25" height="25"&gt;&lt;/a&gt;
+        &lt;br&gt; High &lt;br&gt;  
+        &lt;a href="javascript:sort(1,true)"&gt;&lt;img src="dn0.gif"
+            name="d1" border="0"
+            align="middle" alt="sort ascending" width="25" height="25"&gt;&lt;/a&gt;
+        &lt;/th&gt;
+        &lt;th&gt;
+        &lt;a href="javascript:sort(2,false)"&gt;&lt;img src="up0.gif"
+            name="u2" border="0"
+            align="middle" alt="sort descending" width="25" height="25"&gt;&lt;/a&gt;
+        &lt;br&gt; Low &lt;br&gt;   
+        &lt;a href="javascript:sort(2,true)"&gt;&lt;img src="dn0.gif"
+            name="d2" border="0"
+            align="middle" alt="sort ascending" width="25" height="25"&gt;&lt;/a&gt;
+        &lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr class="shaded"&gt;
+    &lt;td&gt;Bangkok&lt;/td&gt; &lt;td&gt;91&lt;/td&gt; &lt;td&gt;75&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;Cairo&lt;/td&gt;&lt;td&gt;97&lt;/td&gt;&lt;td&gt;72&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="shaded"&gt;
+    &lt;td&gt;Helsinki&lt;/td&gt;&lt;td&gt;59&lt;/td&gt;&lt;td&gt;48&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;Mexico City&lt;/td&gt;&lt;td&gt;72&lt;/td&gt;&lt;td&gt;57&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="shaded"&gt;
+    &lt;td&gt;Sydney&lt;/td&gt;&lt;td&gt;57&lt;/td&gt;&lt;td&gt;46&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;div id="tempScale"&gt;
+    Temperatures are shown in Fahrenheit.
+    &lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;form&gt;
+&lt;p&gt;
+&lt;input type="button" value="Show Fahrenheit"
+    onClick="showCentigrade( false );"&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;input type="button" value="Show Centigrade"
+    onClick="showCentigrade( true );"&gt;
+&lt;/p&gt;
+&lt;/form&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+</pre>
+
+<body></html>
