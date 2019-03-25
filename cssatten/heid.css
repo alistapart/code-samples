@@ -1,0 +1,66 @@
+@import url(http://www.princexml.com/fonts/larabie/index.css) all;
+
+html { margin: 0; padding: 0; background: white; }
+
+@page {
+  size: 12cm 12cm;
+  padding: 0;
+  margin: 0;
+}
+
+body { 
+  background: #131; color: white; 
+  margin: 2em auto;
+  position: relative; width: 12cm; height: 12cm; 
+}
+
+@media print {
+  body { display: block; margin: 0; padding: 0; border: none }
+}
+
+h1 { 
+  position: absolute; top: 0.7cm; left: 0; right: 0;
+  margin: 0; padding: 0;
+  font: 1.1cm/1.7 "Tinsnips", "Georgia", serif; 
+  color: #fb0; 
+  word-spacing: -0.1em; letter-spacing: 0.2em; text-align: center; 
+  text-transform: uppercase; 
+}
+
+h2 { 
+  position: absolute; top: 2.3cm; left: 0; right: 0; 
+  margin: 0; padding: 0;
+  font: 0.6cm "Fluoride Beings", "Trebuchet MS", sans-serif;  
+  color: #e53; 
+  text-align: center;
+}
+
+h3 { 
+  position: absolute; bottom: 3.8cm; right: 0;
+  font: 0.5cm/1.2 "Pakenham", sans-serif; 
+  text-align: right; 
+  padding: 0.2em 2em 0.2em 0.6em;
+  border: solid thin;
+  border-radius: 0.3em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  letter-spacing: 0.3em;
+  color: #cc7; 
+}
+
+#preamble { 
+  font: 0.4cm/1 "Forgotten Futurist", sans-serif;  
+  prince-hyphens: auto; text-align: justify; 
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0 1em 0.7em;
+}
+
+p { display: inline }
+
+a, acronym { text-decoration: none; text-transform: none; border: none }
+
+#quickSummary, #supportingText, #linkList { display: none }
+
+#preamble { columns: 2 }
+

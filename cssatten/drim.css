@@ -1,0 +1,63 @@
+@import url(http://www.princexml.com/fonts/steffmann/index.css) all;
+
+html { margin: 0; padding: 0; background: white; }
+
+@page {
+  size: 12cm 12cm;
+  padding: 0;
+  margin: 0;
+}
+
+body { 
+  background: #262; color: white; 
+  margin: 2em auto;
+  position: relative; width: 12cm; height: 12cm; 
+}
+
+@media print {
+  body { display: block; margin: 0; padding: 0; border: none }
+}
+
+h1 { 
+  position: absolute; top: 1.5cm; left: 0; right: 0; 
+  padding: 0; margin: 0;
+  font: 2.3cm/0.84 "Decorated Roman Initials", fantasy; 
+  color: #010; 
+  word-spacing: -0.5em; text-align: center; 
+  text-transform: uppercase;
+}
+
+h2 { 
+  position: absolute; top: 0.7cm; left: 0; right: 0; 
+  margin: 0; padding: 0;
+  font: 0.65cm/1 "Enge Holzschrift", "Trebuchet MS", sans-serif;
+  color: #7f3; letter-spacing: 0.2em; text-align: center; 
+}
+
+h3 { 
+  position: absolute; bottom: 5cm; right: 0cm; 
+  margin: 0; padding: 0;
+  font: 0.8cm/1 "Gabrielle", "Trebuchet MS", sans-serif; 
+  text-align: right; 
+  color: #cc7; 
+}
+
+h3:after { 
+  content: "... ";
+}
+
+#preamble { 
+  font: 0.32cm/1.2em "Fette Steinschrift";  
+  prince-hyphens: auto; text-align: justify; 
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0 1em 0.7em;
+}
+
+p { display: inline }
+
+a, acronym { text-decoration: none; text-transform: none; border: none }
+
+#quickSummary, #supportingText, #linkList { display: none }
+
+#preamble { columns: 2 }
+

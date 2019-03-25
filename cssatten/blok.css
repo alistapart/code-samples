@@ -1,0 +1,64 @@
+@import url(http://www.princexml.com/fonts/steffmann/index.css) all;
+
+html { margin: 0; padding: 0; background: white; }
+
+@page {
+  size: 12cm 12cm;
+  padding: 0;
+  margin: 0;
+}
+
+body { 
+  background: #d60; color: white; 
+  margin: 2em auto;
+  position: relative; width: 12cm; height: 12cm; 
+}
+
+@media print {
+  body { display: block; margin: 0; padding: 0; border: none }
+}
+
+h1 { 
+  position: absolute; top: 0.4cm; left: 0; right: 0;
+  margin: 0; padding: 0;
+  font: 2.1cm/1.2 "Starburst", "Trebuchet MS";
+  color: #d95; 
+  word-spacing: -0.35em; text-align: center; 
+  text-transform: uppercase;
+}
+
+h2 { 
+  position: absolute; top: 1.9cm; left: 0; right: 0; 
+  font: 0.5cm "Parsons", "Trebuchet MS";
+  color: #ef0; text-align: center;
+}
+
+h3 { 
+  position: absolute; bottom: 3.5cm; right: 0cm; 
+  padding: 0 0.8cm 0 0; width: 60%; 
+  font: italic 1cm/1cm "Marketing Script"; 
+  text-align: right; 
+  color: #cc7; background: #881;
+  border: 0.1em solid #881; border-right: none; 
+  border-radius: 0.3em 0.4em; 
+  border-top-left-radius: 2em 1.5em; 
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0; 
+  border-bottom-right-radius: 0; 
+}
+
+#preamble { 
+  font: bold 0.31cm/1.2em "Brian James Condensed";  
+  prince-hyphens: auto; text-align: justify; 
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0 1em 0.7em;
+}
+
+p { display: inline }
+
+a, acronym { text-decoration: none; text-transform: none; border: none }
+
+#quickSummary, #supportingText, #linkList { display: none }
+
+#preamble { columns: 2 }
+

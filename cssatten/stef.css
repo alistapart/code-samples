@@ -1,0 +1,58 @@
+@import url(http://www.princexml.com/fonts/steffmann/index.css) all;
+
+html { margin: 0; padding: 0; background: white; }
+
+@page {
+  size: 12cm 12cm;
+  padding: 0;
+  margin: 0;
+}
+
+body { 
+  background: #157; color: white; 
+  margin: 2em auto;
+  position: relative; width: 12cm; height: 12cm; 
+}
+
+@media print {
+  body { display: block; margin: 0; padding: 0; border: none }
+}
+
+h1 { 
+  position: absolute; top: 0.5cm; left: 0; right: 0;
+  padding: 0; margin: -0.2em 0 0; 
+  font: 2.8cm/1.14 "Kalenderblatt Grotesk"; 
+  color: #478; 
+  word-spacing: -0.08em; text-align: center; 
+  text-transform: uppercase;
+}
+
+h2 { 
+  position: absolute; top: 3cm; left: 0; right: 0; 
+  padding: 0; margin: 0;
+  font: 0.6cm "Typographer Rotunda", "Trebuchet MS";
+  color: #7f3; letter-spacing: 0.2em; text-align: center;
+}
+
+h3 { 
+  position: absolute; bottom: 3.3cm; right: 0cm; left: 0cm; 
+  padding: 0.1em 0.8cm 0 0.3cm; margin: 0;
+  font: 1cm/1cm "Direction", "Verdana"; 
+  text-align: right; 
+  color: white; background: #bc7; 
+}
+
+#preamble { 
+  font: 0.32cm/1 "Chelsea";  
+  prince-hyphens: auto; text-align: justify; 
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0 1em 0.7em;
+}
+
+p { display: inline }
+
+a, acronym { text-decoration: none; text-transform: none; border: none }
+
+#quickSummary, #supportingText, #linkList { display: none }
+
+#preamble { columns: 2 }
