@@ -1,0 +1,101 @@
+body {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+font: 0.7em/1.5 Geneva, Arial, Helvetica, sans-serif;
+	color: #000;
+background: #fff url(../images/gruff/bg.gif) repeat fixed;
+	}
+.ahem {
+	display: none;
+	}
+#top h1 {color:#fff;}
+#top {
+	margin: 20px 20px 0px 20px;
+	padding: 10px;
+	border: 5px solid #fff;
+	
+	height: 100px; /* ie5win fudge begins */
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	height: 70px;
+	}
+html>body #top {
+	height: 70px; /* ie5win fudge ends */
+	}
+#left {
+	position: absolute;
+	top: 120px;
+	left: 0px;
+	margin: 20px;
+	width: 150px; /* ie5win fudge begins */
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	width: 120px;
+	}
+html>body #left {
+	width: 120px; /* ie5win fudge ends */
+	}
+#middle {
+	margin: 20px 195px 20px 190px;
+	}
+#right {
+	position: absolute;
+	top: 120px;
+	right: 5px; /* Opera5.02 will show a space at right when there is no scroll bar */
+	margin: 20px;
+	width: 150px; /* ie5win fudge begins */
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	width: 120px;
+	}
+html>body #right {
+	width: 120px; /* ie5win fudge ends */
+	}
+pre {
+	font-size: 12px;
+	line-height: 22px;
+	margin-top: 20px;
+	margin-bottom: 10px; 
+	}
+
+/* Custom corners addition */
+div.Article {
+  background:  url("../images/gruff/custom_corners_topleft.gif") top left no-repeat;
+  position:relative;
+  } 
+div.Article h3 {
+  position:relative;
+  background:  url("../images/gruff/custom_corners_topright.gif") top right no-repeat;
+  font-size:1.3em;
+  padding:15px;
+  padding-left:0;
+  margin:0;
+  right:-8px;
+  }
+div.ArticleBody {
+  background:  url("../images/gruff/custom_corners_rightborder.gif") top right repeat-y;
+  margin:0;
+  margin-top:-2em;
+  padding:15px;
+  padding-left:0;
+  position:relative;
+  right:-8px;
+  }
+div.ArticleFooter {
+  background:  url("../images/gruff/custom_corners_bottomleft.gif") bottom left no-repeat;
+  position:relative;
+  top:8px;
+  
+  }
+div.ArticleFooter p {
+  background:  url("../images/gruff/custom_corners_bottomright.gif") bottom right no-repeat;
+  padding:15px;
+  padding-left:0;
+  display:block;
+  margin:-2em 0 0 0;
+  position:relative;
+  right:-8px;
+  }
+ div.ArticleLongContent {
+ background: url("../images/gruff/custom_corners_leftborder.gif") top left repeat-y;
+ }
