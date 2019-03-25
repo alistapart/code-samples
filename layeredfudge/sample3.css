@@ -1,0 +1,31 @@
+#div {width: 800px;}
+
+ul.left {
+	float: left;
+	width: 400px;	
+	margin: 0px;
+	padding: 15px 0px;
+	border: 0px none;	
+	list-style-position: inside;
+	list-style-type: square;
+}
+
+ul.right {
+	float: right;
+	width: 400px;	
+	margin: 0px;
+	padding: 15px 0px;
+	border: 0px none;	
+	list-style-position: inside;
+	list-style-type: square;
+}
+
+
+
+
+
+
+
+
+
+
