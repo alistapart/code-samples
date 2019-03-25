@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN"><html>
+<title>Source of windowsupdate.microsoft.com/index.html</title>
+<pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;META HTTP-EQUIV="PICS-Label" CONTENT='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l comment "RSACi North America Server" by "inet@microsoft.com" r (n 0 s 0 v 0 l 0))'&gt;
+&lt;META name="description" content="The Microsoft Windows Update Consumer site provides critical updates, security fixes, software downloads, and Microsoft Windows Hardware Quality Lab (WHQL) device drivers for your Windows operating system and Internet Explorer browser."&gt;
+&lt;META name="keywords" content="windows update consumer site, update, updates, hotfix, QFE, patch, patches, fix, fixes, features, Microsoft, TechNet, download, downloads, service, services, software, service pack, service packs, windows 2000, win2k, windows 98, 95, ME, Millennium, Internet, Internet Explorer, support, network, administrator, technology, tech, Security, Security Bulletin, security vulnerability, critical, critical updates, security update, outlook, Outlook Express, Windows NT 4.0, windowsnt, windows nt , interoperability, vulnerability, technical, y2k, year2000, year 2000, resource guide, maintenance, planning, exchange, maintain, networking, migration, resource kit, support, help, dialup, migration, windows media player"&gt;
+&lt;TITLE&gt;Microsoft Windows Update&lt;/TITLE&gt;
+&lt;Script Language="JavaScript"&gt;
+/* &lt;!-- */
+var szLang = "";
+var strPage = "";
+var VarUsrAgt = navigator.userAgent.toLowerCase();
+var sQuery = location.search;
+if( VarUsrAgt.indexOf("windows nt 5.1") != -1 )
+{
+	location.replace( "http://v4.windowsupdate.microsoft.com/default.asp" + sQuery );
+}
+if ( ( (VarUsrAgt.indexOf("windows ce") != -1) || (VarUsrAgt.indexOf("msie 4.0") == -1)) && (VarUsrAgt.indexOf("msie 5.") == -1) && (VarUsrAgt.indexOf("msie 6.") == -1) )
+{
+ szLang = "en";
+	if (VarUsrAgt.indexOf("windows ce") == -1)
+	{
+ if ( ( (VarUsrAgt.indexOf("compatible") != -1) || ((VarUsrAgt.indexOf("mozilla/3") == -1)) && (VarUsrAgt.indexOf("msie 3") == -1)) || (VarUsrAgt.indexOf("netscape") != -1) )
+ {
+ szLang = navigator.language.toLowerCase();
+ if (szLang.indexOf("-") != -1)
+ {
+ if (szLang.indexOf("cn") != -1)
+ {
+ szLang = "zhcn"
+ }
+ else if (szLang.indexOf("tw") != -1)
+ {
+ szLang = "zhtw"
+ }
+ else
+ {
+ szLang = szLang.substring(0, szLang.indexOf("-"));
+ }
+ }
+ }
+	}
+	location.href = "R836/v31site/x86/w98/" + szLang + "/thanksstart.htm";
+	if (VarUsrAgt.indexOf("netscape") != -1)
+	{
+ window.navigate ();
+	}
+}
+ var g_bIsWinUpdate = true;
+ document.open();
+ document.write("&lt;FRAMESET ROWS=100%&gt;");
+ if(location.search == "" || location.search == null)
+ {
+ document.write("&lt;FRAME SRC=\"scripts/redir.dll?\"&gt;");
+ }
+ else
+ {
+ document.write("&lt;FRAME SRC=\"R836/V31site/default.htm" + location.search + "\"&gt;");
+ }
+	document.write("&lt;/FRAMESET&gt;");
+	document.close();
+	/* --&gt; */
+ &lt;/Script&gt;
+&lt;/HEAD&gt;
+&lt;NOFRAMES&gt;You have tried to visit Windows Update with a browser that does not support Frames or ActiveX&#174; technology. To learn more about browsers that do support these technologies, please visit the &lt;A HREF="http://microsoft.com/windows/ie"&gt;&lt;B&gt;Microsoft&lt;/b&gt;&lt;/a&gt; Web site.&lt;/NOFRAMES&gt;
+&lt;NOSCRIPT&gt;
+&lt;FONT FACE="Verdana, Arial, Helvetica" SIZE="3"&gt;
+&lt;p&gt;
+&lt;FONT color=#000080 face="" size=5&gt;Windows Update&lt;/FONT&gt; is the online extension of Windows that helps you get the most out of your computer.
+&lt;/p&gt;
+&lt;p&gt;
+Windows Update uses ActiveX Controls and active scripting to display content correctly and to determine which updates apply to your computer.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;To view and download updates for your computer, your Internet Explorer security settings must meet the following requirements:&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;Security must be set to medium or lower
+&lt;li&gt;Active scripting must be set to enabled
+&lt;li&gt;The download and initialization of ActiveX Controls must be set to enabled
+&lt;/ul&gt;
+&lt;b&gt;Note&lt;b&gt; These are default settings for Internet Explorer.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;To check your Internet Explorer security settings&lt;/b&gt;
+&lt;ol&gt;
+&lt;li&gt;On the Tools menu in Internet Explorer, click &lt;b&gt;Internet Options&lt;/b&gt;.
+&lt;li&gt;Click the &lt;b&gt;Security&lt;/b&gt; tab.
+&lt;li&gt;Click the Internet icon, and then click &lt;b&gt;Custom Level&lt;/b&gt;.
+&lt;li&gt;Make sure the following settings are set to Enable or Prompt:
+	&lt;ul&gt;
+ &lt;li&gt;Download signed ActiveX Controls
+ &lt;li&gt;Run ActiveX Controls and plug-ins
+ &lt;li&gt;Script ActiveX Controls marked safe for scripting
+ &lt;li&gt;Active scripting
+	&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/p&gt;
+&lt;CENTER&gt;
+&lt;A HREF="http://www.microsoft.com/misc/cpyright.htm" target=_top&gt;&lt;FONT color= #00319C&gt;(c) 2001 Microsoft Corporation. All rights reserved. Terms of Use&lt;/FONT&gt;&lt;/A&gt;.&lt;BR&gt;
+&lt;/CENTER&gt;
+&lt;/FONT&gt;
+&lt;/NOSCRIPT&gt;
+&lt;/HTML&gt;
+</pre>
+</html>

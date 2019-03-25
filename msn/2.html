@@ -1,0 +1,567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>A List Apart: MSN, Opera, &amp; "Web Standards"</title>
+
+
+<style type="text/css" media="all">
+<!--
+
+body {background: #fff; color: #000; margin: 5%;}
+table {border: 1px dotted #666; margin: 1.5em 0 1.5em 0;}
+th {border-bottom: 1px solid #666; border-right: 1px dotted #c30; text-align: left;}
+strong {font-weight: bold; border-bottom: 1px dotted #666;}
+td {border-bottom: 1px dotted #666; border-right: 1px dotted #666;}
+.ednote {background: #f9f9f9; color: #333; padding: 1em; border: 1px dotted #999; margin: 15px 0 15px 0; font: 11px/1.5em verdana, arial, sans-serif;}
+
+-->
+</style>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta name="description" content="MSN.com, the Opera browser, and Microsoft's claims about compliance with W3C recommendations a.k.a. 'web standards'." />
+<meta name="keywords" content="MSN, msn.com, opera, browser, microsoft, web, standards, w3c, recommendations" />
+</head>
+<body onload="window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<a href="https://alistapart.com/articles/msn/">MSN, Opera, and Web Standards</a>
+
+<p id="outdated">You&#8217;re looking at an archive of old, outdated material, maintained for historical reasons and to avoid linkrot. Contents may have settled during shipping.</p>
+
+<div class="ednote">
+
+<h2 class="vs10">Validation Errors at MSN.com</h2>
+
+
+<p style="width: 450px;">THE CHART BELOW provides detailed information about each file that was tested. Opera users, Opera offers a convenient validation feature behind the right button if you want to try validating the documents yourself. [<a href="#notes">Notes</a>]</p>
+
+<h5>Key to Abbreviations Used</h5>
+<p style="vs0"><strong>src</strong>=Source code file  <strong>X</strong>=XHTML 1.0 Strict <strong>U</strong>=unspecified DTD <strong>H</strong>=HTML 4.0 Transitional <strong>H.1</strong>=HTML 4.01 Transitional</p>
+
+</div>
+
+<table border="0" cellpadding="5" cellspacing="0">
+
+<tr>
+<th>URL</th>
+<th>Source code</th>
+<th>DTD</th>
+<th>First error message</th>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.msn.com:80/">http://www.msn.com:80/</a></td>
+<td valign="top"><a href="http://www.msn.com/index.html">src</a></td>
+<td valign="top">X</td>
+<td valign="top">Error: there is no attribute "border" for this element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://encarta.msn.com:80/features/onThisDay.asp">http://encarta.msn.com:80/<br />features/onThisDay.asp</a></td>
+<td valign="top"><a href="http://encarta.msn.com/features/onThisDay.asp">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">Error: unknown entity "MSID"</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://search.msn.com:80/">http://search.msn.com:80/</a></td>
+<td valign="top"><a href="http://search.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">Error: text is not allowed here; try wrapping the text in a
+more descriptive container</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://eshop.msn.com:80/">http://eshop.msn.com:80/</a></td>
+<td valign="top"><a href="http://eshop.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">Error: element "LINK" not allowed here; check which elements
+this element may be contained within</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://moneycentral.msn.com:80/home.asp">http://moneycentral.msn.com:80/<br />home.asp</a></td>
+<td valign="top"><a href="http://moneycentral.msn.com/home.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">8,27: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://communities.msn.com:80/people">http://communities.msn.com:80/<br />people</a></td>
+<td valign="top"><a href="http://communities.msn.com/people">src</a></td>
+<td valign="top">U</td>
+<td valign="top">23,14: Error: an attribute value must be quoted if it contains
+any character other than letters (A-Za-z), digits, hyphens, and
+periods; use quotes if in doubt</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://specials.msn.com:80/america/">http://specials.msn.com:80/<br />america/</a></td>
+<td valign="top"><a href="http://specials.msn.com/america/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">10,6: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://carpoint.msn.com:80/homepage/default.asp">http://carpoint.msn.com:80/<br />homepage/default.asp</a></td>
+<td valign="top"><a href="http://carpoint.msn.com/homepage/default.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">29,7: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://careers.msn.com:80/">http://careers.msn.com:80/</a></td>
+<td valign="top"><a href="http://careers.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">15,29: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://local.msn.com:80/default.asp">http://local.msn.com:80/<br />default.asp</a></td>
+<td valign="top"><a href="http://local.msn.com/default.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">fatal error occured when transcoding document</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://entertainment.msn.com:80/">http://entertainment.msn.com:80/</a></td>
+<td valign="top"><a href="http://entertainment.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">9,39: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://zone.msn.com:80/">http://zone.msn.com:80/</a></td>
+<td valign="top"><a href="http://zone.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">18,6: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://health.msn.com:80/">http://health.msn.com:80/</a></td>
+<td valign="top"><a href="http://health.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">11,5: Error: element "HEAD" not allowed here; check which
+elements this element may be contained within</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://encarta.msn.com:80/">http://encarta.msn.com:80/</a></td>
+<td valign="top"><a href="http://encarta.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">3,50: Error: unknown entity "MSID"</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://love.msn.com:80/">http://love.msn.com:80/</a></td>
+<td valign="top"><a href="http://love.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">fatal error occured when transcoding document</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://pets.msn.com:80/">http://pets.msn.com:80/</a></td>
+<td valign="top"><a href="http://pets.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">27,6: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://msn.espn.go.com:80/main.html">http://msn.espn.go.com:80/<br />main.html</a></td>
+<td valign="top"><a href="http://msn.espn.go.com/main.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">4,50: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://tech.msn.com:80/">http://tech.msn.com:80/</a></td>
+<td valign="top"><a href="http://tech.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">10,29: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://tech.msn.com:80/guides/windowsxp/music.asp">http://tech.msn.com:80/<br />guides/windowsxp/music.asp</a></td>
+<td valign="top"><a href="http://tech.msn.com/guides/windowsxp/music.asp">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">16,12: Error: value of attribute "NAME" must be a single
+token</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://womencentral.msn.com:80/">http://womencentral.msn.com:80/</a></td>
+<td valign="top"><a href="http://womencentral.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">5, 6: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://tech.msn.com:80/FDL/">http://tech.msn.com:80/<br />FDL/</a></td>
+<td valign="top"><a href="http://tech.msn.com/FDL/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">3:39; Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://mobile.msn.com:80/">http://mobile.msn.com:80/</a></td>
+<td valign="top"><a href="http://mobile.msn.com/index.html">src</a></td>
+<td valign="top">H</td>
+<td valign="top">5,50: Error: text is not allowed here; try wrapping the text in
+a more descriptive container</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://supportservices.msn.com:80/us/help.asp">http://supportservices.msn.com:80/<br />us/help.asp</a></td>
+<td valign="top"><a href="http://supportservices.msn.com/us/help.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">30,6: Error: invalid comment declaration; check your comment
+syntax</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://specials.msn.com:80/msnmore/moreql.asp">http://specials.msn.com:80/<br />msnmore/moreql.asp</a></td>
+<td valign="top"><a href="http://specials.msn.com/msnmore/moreql.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">9,51: Error: element "LINK" not allowed here; check which
+elements this element may be contained within</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://zone.msn.com:80/ql.asp">http://zone.msn.com:80/<br />ql.asp</a></td>
+<td valign="top"><a href="http://zone.msn.com/ql.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">6,17: Error: there is no attribute "LANGUAGE" for this
+element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://specials.msn.com:80/MSNBroadband/MSNBroadband.asp">http://specials.msn.com:80/<br />MSNBroadband/<br />MSNBroadband.asp</a></td>
+<td valign="top"><a href="http://specials.msn.com/MSNBroadband/MSNBroadband.asp">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">2,50: Error: end tag for element "HEAD" which is not open; try
+removing the end tag or check for improper nesting of elements</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://greetingcards.msn.com:80/">http://greetingcards.msn.com:80/</a></td>
+<td valign="top"><a href="http://greetingcards.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">11,6: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://astrology.msn.com:80/">http://astrology.msn.com:80/</a></td>
+<td valign="top"><a href="http://astrology.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">5,7: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://love.msn.com:80/personals/">http://love.msn.com:80/<br />personals/</a></td>
+<td valign="top"><a href="http://love.msn.com/personals/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">fatal error occured when transcoding document</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://chat.msn.com:80/">http://chat.msn.com:80/</a></td>
+<td valign="top"><a href="http://chat.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">fatal error occured when transcoding document</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://messenger.msn.com:80/">http://messenger.msn.com:80/</a></td>
+<td valign="top"><a href="http://messenger.msn.com/index.html">src</a></td>
+<td valign="top">H.1</td>
+<td valign="top">22,35: Error: there is no attribute "TOPMARGIN" for this
+element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://specials.msn.com:80/msnmore/moreql.asp">http://specials.msn.com:80/<br />msnmore/moreql.asp</a></td>
+<td valign="top"><a href="http://specials.msn.com/msnmore/moreql.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">9,51: Error: element "LINK" not allowed here; check which
+elements this element may be contained within</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://yellowpages.msn.com:80/">http://yellowpages.msn.com:80/</a></td>
+<td valign="top"><a href="http://yellowpages.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">14,42: yellowpages.msn.com/index.html</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://calendar.msn.com:80/CalendarNorm.html">http://calendar.msn.com:80/<br />CalendarNorm.html</a></td>
+<td valign="top"><a href="http://calendar.msn.com/CalendarNorm.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">8,34: Error: there is no attribute "LEFTMARGIN" for this
+element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.ticketmaster.com:80/">http://www.ticketmaster.com:80/</a></td>
+<td valign="top"><a href="http://www.ticketmaster.com/index.html">src</a></td>
+<td valign="top">H</td>
+<td valign="top">7,29: www.ticketmaster.com/index.html</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://careers.msn.com:80/">http://careers.msn.com:80/</a></td>
+<td valign="top"><a href="http://careers.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">15,29: careers.msn.com/index.html</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://homeadvisor.msn.com:80/classifieds/">http://homeadvisor.msn.com:80/<br />classifieds/</a></td>
+<td valign="top"><a href="http://homeadvisor.msn.com/classifieds/index.html">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://sports.espn.go.com:80/espn/complete">http://sports.espn.go.com:80/<br />espn/complete</a></td>
+<td valign="top"><a href="http://sports.espn.go.com/espn/complete">src</a></td>
+<td valign="top">U</td>
+<td valign="top">34,33: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://specials.msn.com:80/msnmore/moreql.asp">http://specials.msn.com:80/<br />msnmore/moreql.asp</a></td>
+<td valign="top"><a href="http://specials.msn.com/msnmore/moreql.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">9,51: Error: element "LINK" not allowed here; check which
+elements this element may be contained within</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://usa.yupimsn.com:80/">http://usa.yupimsn.com:80/</a></td>
+<td valign="top"><a href="http://usa.yupimsn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">7,7: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.msn.com:80/worldwide.ashx">http://www.msn.com:80/<br />worldwide.ashx</a></td>
+<td valign="top"><a href="http://www.msn.com/worldwide.ashx">src</a></td>
+<td valign="top">X</td>
+<td valign="top">1,50: Error: there is no attribute "border" for this
+element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://moneycentral.msn.com:80/home.asp">http://moneycentral.msn.com:80/<br />home.asp</a></td>
+<td valign="top"><a href="http://moneycentral.msn.com/home.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">8,27: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://moneycentral.msn.com:80/investor/market/msnbc.asp">http://moneycentral.msn.com:80/<br />investor/market/msnbc.asp</a></td>
+<td valign="top"><a href="http://moneycentral.msn.com/investor/market/msnbc.asp">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">4,15: moneycentral.msn.com/investor/market/msnbc.asp</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://moneycentral.msn.com:80/investor/market/top10.asp">http://moneycentral.msn.com:80/<br />investor/market/top10.asp</a></td>
+<td valign="top"><a href="http://moneycentral.msn.com/investor/market/top10.asp">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">9,27: moneycentral.msn.com/investor/market/msnbc.asp</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://moneycentral.msn.com:80/investor/trading/main.asp">http://moneycentral.msn.com:80/<br />investor/trading/main.asp</a></td>
+<td valign="top"><a href="http://moneycentral.msn.com/investor/trading/main.asp">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">4,9: Error: there is no attribute "ID" for this element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://eshop.msn.com:80/">http://eshop.msn.com:80/</a></td>
+<td valign="top"><a href="http://eshop.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">4,50: Error: element "LINK" not allowed here; check which
+elements this element may be contained within</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://specials.msn.com:80/msnmore/moreql.asp">http://specials.msn.com:80/<br />msnmore/moreql.asp</a></td>
+<td valign="top"><a href="http://specials.msn.com/msnmore/moreql.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">9,51: specials.msn.com/msnmore/moreql.asp</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://msntv.com:80/">http://msntv.com:80/</a></td>
+<td valign="top"><a href="http://msntv.com/index.html">src</a></td>
+<td valign="top">H</td>
+<td valign="top">7,29: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://calendar.msn.com:80/calendarnorm.html">http://calendar.msn.com:80/<br />calendarnorm.html</a></td>
+<td valign="top"><a href="http://calendar.msn.com/calendarnorm.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">Error: there is no attribute "LEFTMARGIN" for this element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://msnc.msn.com:80/v2/companion/default.asp">http://msnc.msn.com:80/<br />v2/companion/default.asp</a></td>
+<td valign="top"><a href="http://www.msncompanion.com/v2/companion/default.asp">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">9,6: Error: end tag for element "LINK" which is not open; try
+removing the end tag or check for improper nesting of elements</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://mobile.msn.com:80/">http://mobile.msn.com:80/</a></td>
+<td valign="top"><a href="http://mobile.msn.com/index.html">src</a></td>
+<td valign="top">H</td>
+<td valign="top">5,50: Error: text is not allowed here; try wrapping the text in
+a more descriptive container</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://messenger.msn.com:80/">http://messenger.msn.com:80/</a></td>
+<td valign="top"><a href="http://messenger.msn.com/index.html">src</a></td>
+<td valign="top">H.1</td>
+<td valign="top">22,35: Error: there is no attribute "TOPMARGIN" for this
+element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://explorer.msn.de:80/intl.asp">http://explorer.msn.de:80/<br />intl.asp</a></td>
+<td valign="top"><a href="http://explorer.msn.de/intl.as">src</a></td>
+<td valign="top">U</td>
+<td valign="top">7,10: Error: there is no attribute "ID" for this element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.microsoft.com:80/">http://www.microsoft.com:80/</a></td>
+<td valign="top"><a href="http://www.microsoft.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">4,50: Error: text is not allowed here; try wrapping the text in
+a more descriptive container</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://windowsupdate.microsoft.com:80/">http://windowsupdate.microsoft.com:80/</a></td>
+<td valign="top"><a href="http://windowsupdate.microsoft.com/index.html">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">8,29: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://office.microsoft.com:80/">http://office.microsoft.com:80/</a></td>
+<td valign="top"><a href="http://office.microsoft.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.microsoft.com:80/mobile/pocketpc/default.asp">http://www.microsoft.com:80/<br />mobile/pocketpc/<br />default.asp</a></td>
+<td valign="top"><a href="http://www.microsoft.com/mobile/pocketpc/default.asp">
+src</a></td>
+<td valign="top">U</td>
+<td valign="top">12,6: Error: end tag for element "LINK" which is not open; try
+removing the end tag or check for improper nesting of elements</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.xbox.com:80/">http://www.xbox.com:80/</a></td>
+<td valign="top"><a href="http://www.xbox.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.msn.com:80/contactus.ashx">http://www.msn.com:80/<br />contactus.ashx</a></td>
+<td valign="top"><a href="http://www.msn.com/contactus.ashx">src</a></td>
+<td valign="top">X</td>
+<td valign="top">1, 50: Error: there is no attribute "border" for this
+element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://advantage.msn.com:80/HOME/HOME.asp">http://advantage.msn.com:80/<br />HOME/HOME.asp</a></td>
+<td valign="top"><a href="http://advantage.msn.com/home/home.asp">src</a></td>
+<td valign="top">U</td>
+<td valign="top">10,5: Error: element "HEAD" not allowed here; check which
+elements this element may be contained within</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.msn.com:80/legalterms.ashx">http://www.msn.com:80/<br />legalterms.ashx</a></td>
+<td valign="top"><a href="http://www.msn.com/legalterms.ashx">src</a></td>
+<td valign="top">X</td>
+<td valign="top">1, 50: Error: there is no attribute "border" for this
+element</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://privacy.msn.com:80/">http://privacy.msn.com:80/</a></td>
+<td valign="top"><a href="http://privacy.msn.com/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">10,10: Error: required attribute "TYPE" not specified</td>
+</tr>
+
+<tr>
+<td valign="top"><a href="http://www.getnetwise.org:80/">http://www.getnetwise.org:80/</a></td>
+<td valign="top"><a href="http://www.getnetwise.org/index.html">src</a></td>
+<td valign="top">U</td>
+<td valign="top">7,0: Error: an attribute specification must start with a name
+or name token</td>
+</tr>
+</table>
+
+<a id="notes"><br /></a>
+
+<div class="ednote" style="margin-bottom: 300px;">
+
+<h3>Notes:</h3>
+
+<p class="vs0" style="width: 450px;">When no document type was indicated in the file, HTML 4.01 was used for validating purposes since it has the most liberal DTD.</p>
+
+<p style="width: 450px;">The files were fetched from the various sites using <tt>
+wget</tt>, a convenient Linux utility. The full command
+was <tt>wget -H -nv --output-file=log.txt -r --level=1
+--user-agent="Mozilla/4.0 (compatible; MSIE 5.0; Windows 98) Opera
+5.5 [en]" http://www.msn.com</tt>.</p>
+
+<p style="width: 450px;">The MSN home page contained a few more links that did not result in any usable files being generated and were therefore not
+examined in this study.</p>
+
+<h5><a href="https://alistapart.com/articles/msn/">&laquo;</a> Back to <a href="https://alistapart.com/articles/msn/">MSN, Opera &amp; Standards</a></h5>
+
+<h5 style="margin-top: 100px;">Permanent address:<br />
+<a href="https://alistapart.com/articles/msn/" title="Permanent address for this article.">www.alistapart.com/articles/msn/</a></h5>
+
+<p class="fine">&copy; 1998  - 2001 <a href="http://www.alistapart.com/" target="_top" title="Design. Code. Content. A List Apart, for people who make websites.">A List Apart</a><br /><br />
+</p>
+
+
+</div>
+
+
+
+
+</body>
+</html>

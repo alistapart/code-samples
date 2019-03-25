@@ -1,0 +1,895 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN"><html>
+<title>Source of msn.espn.go.com/main.html</title>
+<pre>
+&lt;html&gt;&lt;head&gt;&lt;title&gt;ESPN.com&lt;/title&gt;
+&lt;!-- Generated on 10/30/2001 at 02:25:52 PM - by ESPNFrontPage.tea --&gt;
+&lt;script language="javascript" src="http://espn.go.com/insertfiles/javascript/flash.js"&gt;&lt;/script&gt;
+
+&lt;script language=JavaScript&gt;
+&lt;!--
+
+// SET WINDOW NAME
+	window.name='main';
+
+// NEEDED FOR FRAME REFRESH
+	self.focus();
+
+// BROWSER CHECK
+	browser = navigator.appName;
+	appVer = parseInt(navigator.appVersion);
+	ie = "Microsoft Internet Explorer";
+	ns = "Netscape";
+	if (navigator.appVersion.indexOf("Macintosh") != -1) {
+		isMac = true;
+	} else {
+		isMac = false;
+	}
+	if (browser == ns && isMac == false) {
+		if (appVer &gt; 3) {
+			document.write('&lt;link rel="stylesheet" type="text/css" href="http://espn.go.com/insertfiles/fp/css/nn.css" title="master"&gt;');
+		}
+	} 	else if (browser == ie && isMac == true) {
+	   document.write('&lt;link rel="stylesheet" type="text/css" href="http://espn.go.com/insertfiles/fp/css/ie_mac.css" title="master"&gt;');
+	} else if (browser == ns && isMac == true) {
+	   document.write('&lt;link rel="stylesheet" type="text/css" href="http://espn.go.com/insertfiles/fp/css/nn_mac.css" title="master"&gt;');
+	} else {
+		document.write('&lt;link rel="stylesheet" type="text/css" href="http://espn.go.com/insertfiles/fp/css/ie.css" title="master"&gt;');
+	} 
+
+// ROLLOUT NAV CODE
+
+	// Declaring variables for setting and manipulating navigation
+	var navActive   //Name of active navigation
+	var timerID     //Timer variable
+
+	// Creating a custom object called nav with the methods "name" and "menuExist"
+	function nav(name, menuExist) {
+		this.name = name;
+		this.menuExist = menuExist;
+	}
+
+	// Array of all navigation objects with variables "name" and "menuExist"
+	navItem = new Array()
+	navItem[0] = new nav('ms', 'yes');
+	navItem[1] = new nav('tal', 'yes');
+
+	// Simple function to turn on a &lt;DIV&gt;
+	function showMenu(navInput) {
+		if (browser == ns) {
+			document.layers['M' + navInput].visibility = 'visible';
+		} else if (browser == ie) {
+			document.all['M' + navInput].style.visibility = 'visible';
+		}
+	}
+
+	// Simple function to turn off a &lt;DIV&gt;
+	function hideMenu(navInput) {
+		if (browser == ns) {
+			document.layers['M' + navInput].visibility = 'hidden';
+		} else if (browser == ie) {
+			document.all['M' + navInput].style.visibility = 'hidden';
+		}
+	}
+
+	// Simple function to turn on an image
+	function showNav(navInput) {
+		if (browser == ns) {
+			document['V' + navInput].document[navInput].src = '/i/fp/' + navInput + '_on.gif';
+		} else if (browser == ie) {
+			document.all[navInput].src = '/i/fp/' + navInput + '_on.gif';
+		}
+	}
+
+	// Simple function to turn off an image
+	function hideNav(navInput) {
+		if (browser == ns) {
+			document['V' + navInput].document[navInput].src = '/i/fp/' + navInput + '.gif';
+		} else if (browser == ie) {
+			document.all[navInput].src = '/i/fp/' + navInput + '.gif';
+		}
+	}
+
+	function activateMenu(navInput) {
+		stopTimer()
+		for (i = 0; i &lt; navItem.length; i++) {
+			if (navItem[i].name == navInput) {
+				showNav(navItem[i].name);
+				if (navItem[i].menuExist == 'yes') {
+					showMenu(navItem[i].name);
+				}
+			} else {
+				hideNav(navItem[i].name);
+				if (navItem[i].menuExist == 'yes') {
+					hideMenu(navItem[i].name);
+				}
+			}
+		}
+	}
+
+	function setTimer(navInput) {
+		for (i = 0; i &lt; navItem.length; i++) {
+			if (navItem[i].name == navInput && navItem[i].menuExist == 'yes') {
+				navActive = navItem[i].name;
+				timerID = setTimeout('hideNav(navActive),hideMenu(navActive)', 100);
+			} else if (navItem[i].name == navInput) {
+				navActive = navItem[i].name;
+				timerID = setTimeout('hideNav(navActive)', 100);
+			}
+		}
+	}
+
+	function stopTimer() {
+		clearTimeout(timerID);
+	}
+
+// END ROLLOUT NAV CODE
+
+// BOTTOM LINE CODE
+
+	// this is the script for the BottomLine SwapImages
+	imag = new Array ()
+	imag[0] = "/i/fp/bl/rolloverbig_livescores.gif"
+	imag[1] = "/i/fp/bl/rolloverbig_popup.gif"
+	imag[2] = "/i/fp/bl/rolloverbig_frame.gif"
+	imag[3] = "/i/fp/bl/rolloverbig_close.gif"
+	imag[4] = "/i/fp/bl/rolloverbig_configure.gif"
+
+	function swtch(num, imgname) {
+		imgname.src = im[num].src;
+	}
+
+	im = new Array()
+	for (var i = 0; i &lt; imag.length; i++) {
+	  im[i] = new Image ()
+	  im[i].src = imag[i]
+	}
+
+function setCookie(NameOfCookie, value, expiredays) {
+	var ExpireDate = new Date();
+	ExpireDate.setTime(ExpireDate.getTime() + (expiredays * 24 * 3600 * 1000));
+
+	  document.cookie = NameOfCookie + "=" + escape(value) +
+	  ((expiredays == null) ? "" : "; expires=" + ExpireDate.toGMTString());
+}
+
+	// this is the code to pop the BottomLine up
+	var sc = 0;
+	var st = 0;
+	var w = 0;
+	var h = 0;
+      var n = 0;
+
+	function popbottomline(w,h,url) {
+        if (window.screen) {
+			var chasm = screen.availWidth;
+			var mount = screen.availHeight;
+			windowhandle = window.open(url,'espnbottomline','width=' + w + ',height=' + h + ',scrollbars=' + sc + ',status=' + st + ',left=' + ((chasm - w - 10)) + ',top=' + ((mount - 54)));
+        }
+	}
+
+	function popconfigure() {
+        if (window.screen) {
+			var chasm = screen.availWidth;
+			var mount = screen.availHeight;
+			windowhandleconfigure = window.open('/bottomline/bottomline_configure.html','configure','width=504' + ',height=480' + ',scrollbars=no' + ',status=no' + ',left=' + ((chasm - 504 - 10) * .5) + ',top=' + ((mount - 480 - 30) * .5));
+        }
+	}
+
+function popupgrade() {
+        if (window.screen) {
+			var chasm = screen.availWidth;
+			var mount = screen.availHeight;
+			windowhandleconfigure = window.open('/browserupgrade.html','upgrade','width=530' + ',height=400' + ',scrollbars=yes' + ',status=no' + ',left=' + ((chasm - 530 - 10) * .5) + ',top=' + ((mount - 400 - 30) * .5));
+        }
+	}
+
+	function unframebottomline() {
+		setCookie("bottomline", "popup", 900);
+            popbottomline(683,29,'/bottomline/bottomline_popped.html');
+            var holder = window.location.href;
+		if (self != top) top.location.replace(holder);
+	}
+
+	function framebottomline() {
+            setCookie("bottomline", "frame", 900);
+		popbottomline(1,1,'/bottomline/dummy.html');
+		top.location.replace('index.html');
+
+	}
+
+	function closebottomline() {
+            setCookie("bottomline", "none", 900);
+            var holdertwo = window.location.href;
+		if (self != top) top.location.replace(holdertwo);
+		popbottomline(1,1,'/bottomline/dummy.html');
+	}
+
+
+// END BOTTOM LINE CODE
+
+// 3 PLAY CODE
+	function loginWindow() {
+        var version = parseInt(navigator.appVersion);
+        if (version &gt;= 4)
+        var loginWindow = window.open('http://games.espn.go.com/threeplay/threePC','3Play','height=550,width=350');
+	}
+
+// LAUNCH WINDOW
+	function launchWindow(url, name, width, height) {
+		var x = 0;
+		var y = 0;
+		if(navigator.appVersion.length &gt; 0 && navigator.appVersion.charAt(0) &gt; '3' && navigator.appVersion.charAt(0) &lt;= '9') {
+			if(width &gt; screen.availWidth - 12) {
+				width = screen.availWidth - 12;
+			}
+			if(height &gt; screen.availHeight - 48) {
+				height = screen.availHeight - 48;
+			}
+			x = (screen.availWidth - 12 - width) / 2;
+			y = (screen.availHeight - 48 - height) / 2;
+		}
+		var params =  "status=1,scrollbars=1,resizable=1,screenX=" + x + ",screenY=" + y + ",width=" + width + ",height=" + height + ")";
+		var windowvar = window.open(url, name, params);
+	}
+
+// RANDOMIZE SPORTSMALL AD
+	randad = 0;
+	ad = new Array(randad);
+
+
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/?ad=sportsmall&name=9703E&srvc=sz&SOURCE=9703E\"&gt;&lt;img border=0 src=\"http://a12.g.akamaitech.net/7/12/621/000/espn-os2.teamstore.espn.com/ts_front1.gif\"&gt;&lt;/a&gt;"
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/?ad=sportsmall&name=9703E&srvc=sz&SOURCE=9703E\"&gt;&lt;img border=0 src=\"http://a12.g.akamaitech.net/7/12/621/000/espn-os2.teamstore.espn.com/ts_front2.gif\"&gt;&lt;/a&gt;"
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/?ad=sportsmall&name=9703E&srvc=sz&SOURCE=9703E\"&gt;&lt;img border=0 src=\"http://a12.g.akamaitech.net/7/12/621/000/espn-os2.teamstore.espn.com/ts_front3.gif\"&gt;&lt;/a&gt;"
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/?ad=sportsmall&name=9703E&srvc=sz&SOURCE=9703E\"&gt;&lt;img border=0 src=\"http://a12.g.akamaitech.net/7/12/621/000/espn-os2.teamstore.espn.com/ts_front4.gif\"&gt;&lt;/a&gt;"
+	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://niketown.espn.com/&name=9704E&srvc=sz&SOURCE=9704E\"&gt;&lt;img border=0 src=\"http://espn-i.starwave.com/i/promo/nt_front1.gif\"&gt;&lt;/a&gt;"
+	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://niketown.espn.com/&name=9704E&srvc=sz&SOURCE=9704E\"&gt;&lt;img border=0 src=\"http://espn-i.starwave.com/i/promo/nt_front2.gif\"&gt;&lt;/a&gt;"
+	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://niketown.espn.com/&name=9704E&srvc=sz&SOURCE=9704E\"&gt;&lt;img border=0 src=\"http://espn-i.starwave.com/i/promo/nt_front3.gif\"&gt;&lt;/a&gt;"
+	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://niketown.espn.com/&name=9704E&srvc=sz&SOURCE=9704E\"&gt;&lt;img border=0 src=\"http://espn-i.starwave.com/i/promo/nt_front4.gif\"&gt;&lt;/a&gt;"
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?name=a298&srvc=pro&SOURCE=a298&goto=http://teamstore.espn.com/team_products/%3fteam=Rose%2520Bowl\"&gt;&lt;img border=0 src=\"http://espn-i.starwave.com/i/promo/ToR_sportsmall.gif\"&gt;&lt;/a&gt;"
+	
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/?ad=sportsmall&name=9703E&srvc=sz&SOURCE=9703E\"&gt;&lt;img border=0 src=\"http://Front-shop-TS.starwave.com/espn-os2.teamstore.espn.com/ts_front1.gif\"&gt;&lt;/a&gt;"
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/?ad=sportsmall&name=9703E&srvc=sz&SOURCE=9703E\"&gt;&lt;img border=0 src=\"http://Front-shop-TS.starwave.com/espn-os2.teamstore.espn.com/ts_front2.gif\"&gt;&lt;/a&gt;"
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/?ad=sportsmall&name=9703E&srvc=sz&SOURCE=9703E\"&gt;&lt;img border=0 src=\"http://Front-shop-TS.starwave.com/espn-os2.teamstore.espn.com/ts_front3.gif\"&gt;&lt;/a&gt;"
+//	ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/?ad=sportsmall&name=9703E&srvc=sz&SOURCE=9703E\"&gt;&lt;img border=0 src=\"http://Front-shop-TS.starwave.com/espn-os2.teamstore.espn.com/ts_front4.gif\"&gt;&lt;/a&gt;"
+	// ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://shop.espn.go.com/shop&name=9705E&srvc=sz&SOURCE=9705E\"&gt;&lt;img border=0 src=\"http://espn-i.starwave.com/i/promo/shop_front1.gif\"&gt;&lt;/a&gt;"
+	// ad[randad++] = "&lt;a target=\"_top\" href=\"http://x.go.com/cgi/x.pl?goto=http://shop.expn.com\"&gt;&lt;img border=0 src=\"http://espn-i.starwave.com/i/promo/expn_front1.gif\"&gt;&lt;/a&gt;"
+	doodad = Math.floor(Math.random()*(randad));
+
+// --&gt;
+
+// BOBBLE
+function popBobble(bobbleurl) {
+	var chasm = screen.availWidth;
+	var mount = screen.availHeight;
+	windowhandlebobble = window.open(bobbleurl,'bobble','width=500' + ',height=425' + ',scrollbars=no' + ',status=no' + ',left=' + ((chasm - 500 - 10) * .5) + ',top=' + ((mount - 425 - 30) * .5));
+}
+&lt;/script&gt;
+
+&lt;script language=javascript1.2&gt;
+&lt;!--
+
+// NETSCAPE AUTO-RELOAD ON RESIZE
+	if(document.layers) {
+		origWidth = window.innerWidth;
+		origHeight = window.innerHeight;
+		onresize = function() {
+		if(innerWidth != origWidth || innerHeight != origHeight)
+			location.reload();
+		}
+	}
+
+//--&gt;
+&lt;/script&gt;&lt;style type="text/css"&gt;
+&lt;!--
+#best {visibility: visible;padding: 0px;border-width: 0px;border-style: none;margin: 0px;position: absolute;top: 663px;left:157px; width: 332;}
+#grey {visibility: visible;padding: 0px;border-width: 0px;border-style: none;margin: 0px;position: absolute;top: 203px;left:512px; width: 260; height: 465; overflow: hidden; z-index: 4;}
+#polltv {visibility: visible;padding: 0px;border-width: 0px;border-style: none;margin: 0px;position: absolute;top: 765px;left:512px; width: 261;}
+#twin {position: absolute;top: 208px;left:519px; width: 247; height: 140; z-index: 11; overflow: hidden;}
+#headbox {position: absolute;top: 353px;left:519px; width: 247; height: 180; z-index: 10; overflow: hidden;}
+#tabs {visibility: visible;padding: 0px;border-width: 0px;border-style: none;margin: 0px;position: absolute;top: 531px;left:512px; width: 260; overflow: hidden; z-index: 5;}
+--&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body bgcolor=#FFFFFF leftmargin=0 marginwidth=0 topmargin=0 marginheight=0 onLoad="self.focus();" onUnload="self.focus();"&gt;&lt;script language=javascript&gt;
+var _pn="ESPN+Front+Page";    //page name
+var _mlc="/gen;/ESPNsite/gen;/ESPN/ESPNsite/gen;/EIV/ESPN/ESPNsite/gen";    //content category
+&lt;/script&gt;
+&lt;!-- BEGIN WEBSIDESTORY CODE v6.5 (no 1.0)--&gt;
+&lt;!-- COPYRIGHT 1997-2001 WEBSIDESTORY, INC. ALL RIGHTS RESERVED. U.S.PATENT PENDING. Privacy notice at: http://websidestory.com/privacy --&gt;
+&lt;script language="javascript" id="_hbc"&gt;
+var _cp="null"; 		//campaign
+var _acct="DM5104129LMA95EN3;DM5010177GVA95EN3;DM51041271MD95EN3;DM5103083LCA38EN3"; 	//account number(s)
+var _pndef="title"; 		//default page name
+var _ctdef="full"; 		//default content category
+var _dlf="n";			//download filter
+var _elf="n";			//exit link filter
+var _epg="n"; 			//event page identifier
+var _hcv=65;			//code version
+var _mn="localagg";			//machine name
+var _gn="ehg-espn.hitbox.com";			//gateway name
+&lt;/script&gt;
+&lt;script language="javascript1.2" defer src="http://a1604.g.akamai.net/f/1604/2007/1h/stats.hitbox.com/js/hbe-v65-no10.js"&gt;&lt;/script&gt;
+&lt;script language="javascript"&gt;document.write("&lt;\!--");&lt;/script&gt;
+&lt;!--//--&gt;
+&lt;!-- END WEBSIDESTORY CODE  --&gt;
+
+
+
+&lt;noscript&gt;&lt;img src="http://ehg-espn.hitbox.com/HG?hc=localagg&cd=1&hv=6&ce=u&hb=DM5104129LMA95EN3;DM5010177GVA95EN3;DM51041271MD95EN3;DM5103083LCA38EN3&n=ESPN+Front+Page&vcon=/gen;/ESPNsite/gen;/ESPN/ESPNsite/gen;/EIV/ESPN/ESPNsite/gen" border='0' width='1' height='1'&gt;&lt;/noscript&gt;
+
+
+&lt;!-- "MSN Header Starts" --&gt;
+&lt;STYLE&gt;
+&lt;!--
+	.msnB { background-color:#686B6E;}
+
+	.msnH { font-family:Tahoma, Arial, sans-serif; font-size: 11px; color:#FFFFFF; text-decoration:none; padding: 5px 5px 8px 5px;}
+
+	A.msnHL { font-family:Tahoma, Arial, sans-serif; font-size: 11px; color:#FFFFFF; text-decoration:none; font-weight:bold;}
+	A.msnHL:hover { color:#ffffcc; text-decoration:underline;}
+	A.msnHL:active { color:#FFFFFF;}
+	A.msnHL:visited { color:#FFFFFF;}
+	A.msnHL:visited:hover { color:#ffffcc; text-decoration:underline;}
+
+	.msnLT { font-family:Arial; color:#FFFFFF; font-size:12px; font-weight:bold;}
+
+	.msnFB { background-color: #686B6E;}
+	.msnF { font-family:Tahoma, Arial, sans-serif; font-size: 11px; color:#FFFFFF; text-decoration:none;}
+
+	A.msnFL { font-family:Tahoma, Arial, sans-serif; color:#ffffff; text-decoration:none; font-size:11px;}
+	A.msnFL:hover { color:#FFFFFF; text-decoration:underline;}
+	A.msnFL:active { color:#FFFFFF;}
+	A.msnFL:visited { color:#FFFFFF;}
+	A.msnFL:visited:hover { color:#FFFFFF; text-decoration:underline;}
+
+	.msnS { font-family:Tahoma, Arial, sans-serif; color:#FFFFFF; font-size:11px;}
+
+	#msnST { margin-bottom:19px;}
+	#msnSB { margin-left:-17px;}
+
+	.msnD{ font-family:arial; color:#FFFFFF; font-size:11px; text-decoration:none;}
+	TD.msnTD { font-family:Tahoma, Arial, sans-serif; font-size:10px;}
+//--&gt;
+&lt;/STYLE&gt;
+
+ &lt;SCRIPT LANGUAGE="JavaScript"&gt;
+	if ( navigator.appVersion.indexOf( "MSN 6.") != -1) {
+		document.write( '&lt;table cellpadding="0" cellspacing="0" border="0" width="772" class="msnB"&gt;&lt;tr&gt;&lt;td HEIGHT="5"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;');
+	}
+
+	document.write( '&lt;div class="dMSNME_1"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" width="772" class="msnB"&gt;&lt;tr&gt;&lt;td width="525"&gt;&lt;div class="msnH"&gt;&lt;a href="http://go.msn.com/AK/1/1.asp" CLASS="msnHL"&gt;&lt;b&gt;MSN Home&lt;/b&gt;&lt;/a&gt;&lt;!-- "Temporary Comment Starts" --&gt;&lt;!--&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A13/11/" CLASS="msnHL"&gt;&lt;b&gt;My MSN&lt;/b&gt;&lt;/a&gt;--&gt;&lt;!-- "Temporary Comment Ends" --&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/2.asp" CLASS="msnHL"&gt;&lt;b&gt;Hotmail&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/3.asp" CLASS="msnHL"&gt;&lt;b&gt;Search&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/10.asp" CLASS="msnHL"&gt;&lt;b&gt;Shopping&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/4.asp" CLASS="msnHL"&gt;&lt;b&gt;Money&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/5.asp" CLASS="msnHL"&gt;&lt;b&gt;People &amp; Chat&lt;/b&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;');
+&lt;/SCRIPT&gt;
+
+&lt;table border="0" cellpadding="0" cellspacing="0" width="772" height="37" bgcolor="#CCCCCC"&gt;
+	&lt;tr&gt;
+		&lt;td valign="top"&gt;
+			&lt;table border="0" cellpadding="0" cellspacing="0" width="65" bgcolor="#CCCCCC"&gt;
+				&lt;tr&gt;&lt;td width="138" height="37" valign="top"&gt;
+&lt;SCRIPT language="Javascript"&gt;
+	document.write( '&lt;A HREF="http://go.msn.com/AK/1/1.asp"&gt;');
+&lt;/SCRIPT&gt;
+				&lt;img src="http://espn-i.starwave.com/i/msn/v2/logo.gif" alt="go to MSN.com" border="0" width="138" height="37"&gt;&lt;/a&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+		&lt;/td&gt;
+
+		&lt;td valign="top"&gt;
+			&lt;table border="0" cellpadding="0" cellspacing="0" width="634" height="37" bgcolor="#CCCCCC"&gt;
+				&lt;tr&gt;
+					&lt;td valign="top" HEIGHT="7" COLSPAN="2"&gt;&lt;IMG SRC="http://espn-i.starwave.com/i/msn/v2/pix1.gif" BORDER="0" WIDTH="628" HEIGHT="7"&gt;&lt;IMG SRC="http://espn-i.starwave.com/i/msn/v2/fincor.gif" BORDER="0" WIDTH="6" HEIGHT="7"&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+
+				&lt;tr&gt;
+					&lt;!-- "Partner Site Specific Starts" --&gt; &lt;td VALIGN="top" WIDTH="628" HEIGHT="30"&gt;&lt;IMG SRC="http://espn-i.starwave.com/i/spacer.gif" BORDER="0" WIDTH="628" HEIGHT="30"&gt;&lt;/td&gt; &lt;!-- "Partner Site Specific Ends" --&gt;
+
+					&lt;TD VALIGN="top" WIDTH="6" HEIGHT="30"&gt;&lt;IMG SRC="http://espn-i.starwave.com/i/msn/v2/pix2.gif" BORDER="0" WIDTH="6" HEIGHT="30"&gt;&lt;/TD&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- "MSN Header Ends" --&gt;
+
+
+
+&lt;!-- HEADER TABLE --&gt;
+    &lt;table cellpadding=0 width=772 cellspacing=0 border=0&gt;&lt;tr&gt;
+
+&lt;!-- LEFT TD --&gt;
+    &lt;td width=512&gt;
+
+&lt;!-- HEADER & NETWORK NAV SWF FILE --&gt;
+    &lt;script language=javascript&gt;&lt;!--
+        var SOB=new flashObj();
+        SOB.flashFile = "http://espn.starwave.com/1M.espn.go.com/swf/fp/header_30.swf";
+        SOB.DenyIEdl = "TRUE";
+        SOB.width = "512";
+        SOB.height = "112";
+        SOB.cabVersion = "4,0,0,0";
+        SOB.altTxt = "&lt;table width=512 cellpadding=0 cellspacing=0 border=0&gt;&lt;tr&gt;&lt;td width=512 valign=top bgcolor=d01717&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;font face=\"verdana, tahoma, sans-sarif\" size=1 color=ffffff&gt;&lt;a href=http://x.go.com/cgi/x.pl?goto=http://www.nba.com/index.html&name=9436E&srvc=sz&SOURCE=9436E&gt;&lt;font color=#ffffff&gt;NBA.com&lt;/font&gt;&lt;/a&gt; | &lt;a href=http://www.wnba.com/&gt;&lt;font color=#ffffff&gt;WNBA.com&lt;/font&gt;&lt;/a&gt; | &lt;a href=http://x.go.com/cgi/x.pl?goto=http://www.nhl.com&name=9437E&srvc=sz&SOURCE=9437E&gt;&lt;font color=#ffffff&gt;NHL.com&lt;/font&gt;&lt;/a&gt; | &lt;a href=http://x.go.com/cgi/x.pl?goto=http://rpm.espn.go.com/rpm/index&name=9438E&srvc=sz&SOURCE=9438E&gt;&lt;font color=#ffffff&gt;RPM&lt;/font&gt;&lt;/a&gt; | &lt;a href=http://x.go.com/cgi/x.pl?goto=http://abcsports.go.com&name=9439E&srvc=sz&SOURCE=9439E&gt;&lt;font color=#ffffff&gt;ABC&lt;/font&gt;&lt;/a&gt; | &lt;a href=http://x.go.com/cgi/x.pl?goto=http://expn.go.com&name=EXPN&srvc=sz&SOURCE=EXPN&gt;&lt;font color=#ffffff&gt;EXPN&lt;/font&gt;&lt;/a&gt; | &lt;a href=http://jas.disney.go.com/cgi-bin/Click.cgi?code=21579&url=http://insider.espn.go.com/insider/index&gt;&lt;font color=#ffffff&gt;INSIDER&lt;/font&gt;&lt;/a&gt; | &lt;a href=http://x.go.com/cgi/x.pl?goto=http://games.espn.go.com&name=9442E&srvc=sz&SOURCE=9442E&gt;&lt;font color=#ffffff&gt;FANTASY&lt;/font&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;a href=\"javascript:popupgrade();\"&gt;&lt;img src=/i/fp/header_alt_html.gif width=512 height=90 alt=ESPN.com border=0&gt;&lt;/a&gt;";
+        document.write(SOB.render());
+    //--&gt;&lt;/script&gt;&lt;br clear=all&gt;
+
+&lt;!-- INSIDE TABLE --&gt;
+    &lt;table cellpadding=0 width=512 cellspacing=0 border=0&gt;&lt;tr&gt;
+
+&lt;!-- TD WIDTH SPACER --&gt;
+    &lt;td width=140 bgcolor=#636363&gt;&lt;spacer type=block width=140&gt;&lt;/td&gt;
+
+&lt;!-- CORNER GIF --&gt;
+    &lt;td width=17 colspan=2&gt;&lt;img src="http://espn-i.starwave.com/@v=0803803@/i/fp/corner.gif" border=0&gt;&lt;/td&gt;
+
+&lt;!-- DATE --&gt;
+    
+    &lt;td width=236 valign=bottom class=date&gt;Tuesday, October 30&lt;/td&gt;
+
+&lt;!-- PHOTO GALLERY LINK --&gt;
+
+            &lt;td width=119&gt;&lt;a href="#" onClick="openWin=window.open('http://x.go.com/cgi/x.pl?goto=http://espn.go.com/gen/gallery/12700180.html&name=9447E&srvc=sz&SOURCE=9447E', 'Gallery', 'noresizable,noscrollbars,width=400,height=430');" onMouseOut="window.status='';return true" onMouseOver="window.status='Daily Gallery';return true"&gt;&lt;img src="http://espn-i.starwave.com/@v=0816140@/i/fp/photos/1.gif" border=0&gt;&lt;/a&gt;&lt;/td&gt;
+
+
+&lt;!-- NEW INSIDE ROW --&gt;
+    &lt;/tr&gt;&lt;tr&gt;
+
+&lt;!-- COMPAQ LOGO --&gt;
+    &lt;td width=140 height=40 bgcolor=#636363 valign=top&gt;&lt;A HREF="#" onClick="window.open('http://transfer.go.com/cgi/aftransfer.pl?name=97076&srvc=sz&guid=21436171-920F-464C-B673-8DB4DEE1A1D3&context=183&goto=http://promotions.go.com/partners/compaq/disney_landing.html', 'newWnd', 'toolbar=no,scrollbars=no,location=no,width=700,height=450')"&gt;&lt;img src="http://ad.espn.starwave.com/ad/sponsors/compaq/comp-log0090.gif" border="0" width=125 height=30&gt;&lt;/A&gt;&lt;/td&gt;
+
+&lt;!-- TD WIDTH SPACERS --&gt;
+    &lt;td width=1 bgcolor=#000000&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;
+    &lt;td width=16&gt;&lt;spacer type=block width=16&gt;&lt;/td&gt;
+
+&lt;!-- HEADLINE SWF FILE --&gt;
+    
+
+
+    &lt;td colspan=2 class=topheadline&gt;&lt;table border=0 cellpadding=0 cellspacing=0&gt;&lt;tr&gt;&lt;td width=1 height=8&gt;&lt;spacer type=block width=1 height=8&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;script language=javascript&gt;&lt;!--
+        var SOB=new flashObj();
+        SOB.flashFile = "http://espn.starwave.com/5S.espn.go.com/swf/fp/headline.swf?h=Yankees+Turn+to+Clemens";
+        SOB.DenyIEdl = "TRUE";
+        SOB.width = "332";
+        SOB.height = "35";
+        SOB.cabVersion = "4,0,0,0";
+        SOB.altTxt = "Yankees Turn to Clemens";
+        document.write(SOB.render());
+    //--&gt;&lt;/script&gt;&lt;br clear=all&gt;&lt;/td&gt;
+
+&lt;!-- END INSIDE TABLE --&gt;
+    &lt;/tr&gt;&lt;/table&gt;
+
+&lt;!-- RIGHT TD --&gt;
+    &lt;/td&gt;&lt;td width=260 valign=top&gt;
+
+&lt;!-- BIG UNIT --&gt;
+    &lt;a href="http://transfer.go.com/cgi/atransfer.pl?goto=http://jas.disney.go.com/cgi-bin/Click.cgi%3Fcode=23087%26url=http://games.espn.go.com/cgi/fba/Request.dll%3FTOUR&name=101314&srvc=sz&context=183&guid=41201C3B-23E8-48D6-B857-AE3744EBCF32" target="_top"&gt;&lt;img src="http://ad.espn.starwave.com/ad/sponsors/house/espn/espn-big0318.gif" width=260 height=140 border="0" alt="ESPN Fantasy Basketball" align=&gt;&lt;font face="verdana,arial,helvetica" SIZE="1"&gt;&lt;b&gt;&lt;/b&gt;&lt;/font&gt;&lt;/a&gt;
+
+&lt;!-- END HEADER TABLE --&gt;
+    &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+
+
+&lt;!-- NAV TABLE --&gt;
+	&lt;table cellpadding=0 width=141 height=1000 cellspacing=0 border=0 bgcolor=#000000&gt;&lt;tr&gt;&lt;td valign=top&gt;
+
+&lt;!-- INSIDE TABLE --&gt;
+	&lt;table cellpadding=0 width=141 cellspacing=1 border=0 bgcolor=#000000&gt;
+
+&lt;!-- SEARCH --&gt;
+	&lt;tr bgcolor=#636363&gt;&lt;form method=post name=seeklight action="http://apps.espn.go.com/keyword/lookup"&gt;&lt;td align=center height=30 class=v&gt;&lt;img src="http://espn-i.starwave.com/@v=0142126@/i/fp/keyword.gif" width=96 height=9&gt;&lt;br&gt;
+
+&lt;script language=Javascript&gt;
+if (browser == ie && !isMac) {
+	document.write('&lt;INPUT type=text name=qt size=14 maxlength=511 class=v&gt;');
+} else { 
+	document.write('&lt;INPUT type=text name=qt size=8 maxlength=511 class=v&gt;'); 
+}    
+&lt;/script&gt;
+
+&lt;input type=submit value=Find class=v&gt;&lt;/td&gt;&lt;/form&gt;&lt;/tr&gt;
+
+&lt;!-- BOTTOM LINE --&gt;
+	&lt;tr&gt;&lt;td height=27 class=box&gt;&lt;img src="http://espn-i.starwave.com/@v=0184461@/i/fp/bl/shim.gif" width=1 height=5&gt;&lt;br&gt;&lt;img src="http://espn-i.starwave.com/@v=0184461@/i/fp/bl/shim.gif" width=5 height=1&gt;&lt;img src="http://espn-i.starwave.com/@v=0597639@/i/fp/bl/getthebottomline.gif" width=128 height=9&gt;&lt;br&gt;&lt;img src="http://espn-i.starwave.com/@v=0184461@/i/fp/bl/shim.gif" width=5 height=1&gt;&lt;a href="javascript:framebottomline();" onMouseOver="swtch(2,rolloverbig); return true" onMouseOut="swtch(0,rolloverbig); return true"&gt;&lt;img src="http://espn-i.starwave.com/@v=0020512@/i/fp/bl/frame.gif" width=14 height=15 name=frame border=0 alt="Click here to display the BottomLine in a frame at the bottom of the page"&gt;&lt;/a&gt;&lt;a href="javascript:unframebottomline();" onMouseOver="swtch(1,rolloverbig); return true" onMouseOut="swtch(0,rolloverbig); return true"&gt;&lt;img src="http://espn-i.starwave.com/@v=0750444@/i/fp/bl/popup.gif" width=14 height=15 name=popup border=0 alt="Click here to pop up the BottomLine"&gt;&lt;/a&gt;&lt;a href="javascript:closebottomline();" onMouseOver="swtch(3,rolloverbig); return true" onMouseOut="swtch(0,rolloverbig); return true"&gt;&lt;img src="http://espn-i.starwave.com/@v=0018942@/i/fp/bl/close.gif" width=14 height=15 name=close border=0 alt="Click here to close the BottomLine"&gt;&lt;/a&gt;&lt;a href="javascript:popconfigure();" onMouseOver="swtch(4,rolloverbig); return true" onMouseOut="swtch(0,rolloverbig); return true"&gt;&lt;img src="http://espn-i.starwave.com/@v=0879564@/i/fp/bl/configure.gif" width=14 height=15 name=configure border=0 alt="Click here to configure the BottomLine"&gt;&lt;/a&gt;&lt;img src="http://espn-i.starwave.com/@v=0847701@/i/fp/bl/rolloverbig_livescores.gif" width=72 height=15 name=rolloverbig&gt;&lt;br&gt;&lt;img src="http://espn-i.starwave.com/@v=0184461@/i/fp/bl/shim.gif" width=1 height=5&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;!-- SPORTSNAV  --&gt;
+	&lt;tr&gt;&lt;td height=27 class=box1&gt;&lt;a
+href="http://sports.espn.go.com/mlb/index"&gt;MLB&lt;/a&gt; | &lt;a href="http://msn.sports.espn.go.com/mlb/playoffs2001/worldseries"&gt;World Series&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://sports.espn.go.com/mlb/scoreboard" style="color: #ffffff;"&gt;&nbsp;&nbsp;&nbsp;Scores&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt; 
+&lt;tr&gt;&lt;td height=27 class=box1&gt;&lt;a href="http://sports.espn.go.com/nfl/index"&gt;NFL&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://sports.espn.go.com/nfl/scoreboard" style="color: #ffffff;"&gt;&nbsp;&nbsp;&nbsp;Scores&lt;/a&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=27 class=box1&gt;&lt;a href="http://sports.espn.go.com/ncf/index"&gt;College Football&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://sports.espn.go.com/ncf/scoreboard" style="color: #ffffff;"&gt;&nbsp;&nbsp;&nbsp;Scores&lt;/a&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=27 class=box1&gt;&lt;a href="http://sports.espn.go.com/nba/index"&gt;NBA&lt;/a&gt; | &lt;a href="http://espn.go.com/nba/preview2001/s/index.html"&gt;Season preview&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://sports.espn.go.com/nba/scoreboard" style="color: #ffffff;"&gt;&nbsp;&nbsp;&nbsp;Scores&lt;/a&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=27 class=box1&gt;&lt;a href="http://sports.espn.go.com/nhl/index"&gt;NHL&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://sports.espn.go.com/nhl/scoreboard" style="color: #ffffff;"&gt;&nbsp;&nbsp;&nbsp;Scores&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box1&gt;&lt;a href="http://rpm.espn.go.com/rpm/index"&gt;RPM.ESPN.com&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box1&gt;&lt;a href="http://sports.espn.go.com/ncaa/mbasketball/index"&gt;M. Col. BB&lt;/a&gt; | &lt;a href="http://espn.go.com/ncb/01preview/index.html"&gt;Preview&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=27 class=box1&gt;&lt;a href="http://sports.espn.go.com/golf/index"&gt;Golf&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://sports.espn.go.com/golf/leaderboard" style="color: #ffffff;"&gt;&nbsp;&nbsp;&nbsp;Scores&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://x.go.com/cgi/x.pl?goto=http://espn.go.com/soccer/index.html&name=5088E&srvc=sz&SOURCE=5088E"&gt;Soccer&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://espn.go.com/outdoors/index.html"&gt;Outdoors&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://espn.go.com/horse/index.html"&gt;Horses&lt;/a&gt; | &lt;a href="http://espn.go.com/horse/breederscup01/index.html"&gt;Breeders' Cup&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://espn.go.com/boxing/index.html"&gt;Boxing&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://espn.go.com/tennis/index.html"&gt;Tennis&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://espn.go.com/oly/index.html"&gt;Olympic Sports&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://espn.go.com/recruiting/index.html"&gt;Recruiting&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://sports.espn.go.com/sports/pba/index"&gt;PBA Bowling&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://espn.go.com/ncaa/index.html"&gt;College Sports&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://expn.go.com/"&gt;Action Sports&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://sports.espn.go.com/ncaa/wbasketball/index"&gt;W. College Basketball&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://sports.espn.go.com/wnba/index"&gt;WNBA&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://www.soccernet.com/"&gt;Soccernet.com&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;a href="http://www.espndeportes.com/"&gt;ESPNDeportes.com&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;!-- MORE SPORTS --&gt;
+	&lt;tr&gt;&lt;td height=15 class=box&gt;&lt;div id=Vms&gt;&lt;a href="http://espn.go.com/moresports/index.html" onMouseover="activateMenu('ms')" onMouseout="setTimer('ms')"&gt;&lt;img src="http://espn-i.starwave.com/@v=0858604@/i/fp/ms.gif" width=123 height=9 border=0 name=ms&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;!-- SHOP@ESPN --&gt;
+	&lt;tr&gt;&lt;td height=15 class=box3&gt;&lt;a href="http://shop.espn.go.com/shop"&gt;SHOP@ESPN.COM&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://x.go.com/cgi/x.pl?goto=http://niketown.espn.com&name=5887E&srvc=sz&SOURCE=5887E"&gt;NikeTown&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://x.go.com/cgi/x.pl?goto=http://teamstore.espn.com/%3fad=navigation&name=5888E&srvc=sz&SOURCE=5888E"&gt;TeamStore&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+
+&lt;!-- ESPN NATION --&gt;
+	&lt;tr&gt;&lt;td height=15 class=box3&gt;&lt;a href="http://dynamic.espn.go.com/espn/nation/index"&gt;ESPNATION&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://community.espn.go.com/cgi/community/request.dll?FRONTPAGE"&gt;Sign In&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://community.espn.go.com/cgi/community/request.dll?BOARDS"&gt;Message Boards&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://espn.go.com/community/chat/index.html"&gt;Chat Schedule&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;!-- ESPN --&gt;
+	&lt;tr&gt;&lt;td height=15 class=box3&gt;ESPN&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://espn.go.com/thisissportscenter/index.html"&gt;This is SportsCenter&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://espn.go.com/espnradio/index.html"&gt;ESPN Radio&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://sports.espn.go.com/espn/espnews"&gt;ESPNEWS&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://espn.go.com/wireless/s/index.html"&gt;ESPN Wireless&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://sports.espn.go.com/sports/tvlistings/index"&gt;ESPN TV Listings&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://www.espnabcsportscms.com"&gt;Customer Marketing&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://espn.go.com/espninc/zone/"&gt;ESPN Zone&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;div id=Vtal&gt;&lt;a href="#" onMouseover="activateMenu('tal')" onMouseout="setTimer('tal')"&gt;&lt;img src="http://espn-i.starwave.com/i/fp/tal.gif" width=123 height=9 border=0 name=tal&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;!-- SPECIAL SECTIONS --&gt;
+	&lt;tr&gt;&lt;td height=15 class=box3&gt;SPECIAL SECTIONS&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://x.go.com/cgi/x.pl?goto=http://espn.monster.com&name=9029MonsterBridgeE&srvc=sz&SOURCE=9029MonsterBridgeE"&gt;Monster Sports Jobs&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://sportsfigures.espn.com/"&gt;SportsFigures&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://espn.go.com/trainingroom/index.html"&gt;Training Room&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+
+&lt;!-- CONTESTS --&gt;
+	&lt;tr&gt;&lt;td height=15 class=box3&gt;&lt;a href="http://transfer.go.com/cgi/transfer.pl?name=contests_edit_espnfront&srvc=pro&goto=http://espn.go.com/contests/index.html"&gt;CONTESTS&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://x.go.com/cgi/x.pl?goto=http://promotions.go.com/apps/espn/attwireless/entry&name=a263&srvc=pro&SOURCE=a263"&gt;SportsCenter Sweeps&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;td height=15 class=box4&gt;&lt;a href="http://x.go.com/cgi/x.pl?goto=http://promotions.go.com/apps/espn/att/entry&name=a229&srvc=pro&SOURCE=a229"&gt;Pass Run Predictions&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+
+
+
+&lt;!-- END INSIDE TABLE --&gt;
+	&lt;/table&gt;
+
+&lt;!-- END NAV TABLE --&gt;
+	&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;!-- TOPSTORY DIV --&gt;
+&lt;div id=lead&gt;
+&lt;!-- PHOTO --&gt;
+&lt;img src="http://espn-i.starwave.com/@v=0295106@/media/mlb/2001/1030/photo/wseries_ht.gif" width=332 height=170 border=0 alt="Brian Anderson & Roger Clemens"&gt;&lt;br&gt;
+&lt;font class=caption&gt;It's Brian Anderson vs. Roger Clemens in Game 3.&lt;/font&gt;&lt;br&gt;
+&lt;font class=height&gt;&nbsp;&lt;/font&gt;&lt;br&gt;
+&lt;!-- TOPSTORY COPY & BULLETS --&gt;
+&lt;font class=lead&gt;
+The &lt;a href="http://espn.go.com/mlb/playoffs2001/s/2001/1029/1270781.html"&gt;Yankees turn to Roger Clemens&lt;/a&gt; for Game 3 of the World Series tonight (ESPN Radio, 7:45 ET). Clemens and the &lt;a href="http://espn.go.com/mlb/playoffs2001/s/2001/1029/1270736.html"&gt;Yankees are in trouble&lt;/a&gt;, writes Jayson Stark. But even though they're down 0-2 to the Diamondbacks, &lt;a href="http://sports.espn.go.com/mlb/preview?date=20011030&team=ari"&gt;don't count them out&lt;/a&gt;, writes Sean McAdam.&lt;/font&gt;&lt;br&gt;&lt;font class=height&gt;&nbsp;&lt;/font&gt;&lt;br&gt;&lt;font class=bullet&gt;&#8226;&nbsp;&lt;a href="http://sports.espn.go.com/mlb/playoffs2001/worldseries"&gt;World Series&lt;/a&gt; | &lt;a href="http://espn.go.com/mlb/columns/neyer_rob/42798.html"&gt;Neyer: Anderson is D-Backs' surprise&lt;/a&gt;&lt;br&gt;&#8226;&nbsp;&lt;a href="#" onClick="window.open('http://espn.go.com/mlb/playoffs2001/s/cross-clemens.html','Clemens_Crosshairs', 'noresizable,noscrollbars,width=475,height=510');" onMouseOver="window.status='Clemens Crosshairs';return true"&gt;Clemens Crosshairs&lt;/a&gt; | &lt;a href="http://play.rbn.com/?espn/espn/g2demand/2001/m10/dp_011030lg1a_g2_56_audio.rm"&gt;ESPN Radio: Gonzo on Game 3&lt;/a&gt;&nbsp;&lt;img src="http://espn-i.starwave.com/@v=0205996@/i/aas.gif" width=8 height=7 border="0"&gt; &lt;br&gt;&lt;/font&gt;
+&lt;!-- END TOPSTORY DIV --&gt;
+&lt;/div&gt;
+&lt;!-- PROMO DIV --&gt;
+&lt;div id=promo&gt;
+&lt;a href="http://sports.espn.go.com/sports/tvlistings/index"&gt;&lt;img src="http://www.espn.go.com/i/promo/1030_jordan_6et.gif" border=0&gt;&lt;/a&gt;
+&lt;!-- END PROMO DIV --&gt;
+&lt;/div&gt;
+&lt;!-- GREY BOX DIV --&gt;
+&lt;div id=grey&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=260 bgcolor=#787878&gt;&lt;tr&gt;&lt;td width=260 height=450&gt;&lt;spacer type=block width=260 height=450&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;!-- TWINTOP DIV --&gt;
+&lt;div id=twin&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=247 height=140 bgcolor=#ffffff&gt;
+&lt;tr&gt;&lt;td width=247 height=5 colspan=3&gt;&lt;img src="http://espn-i.starwave.com/@v=0258741@/i/spacer.gif" width=247 height=5 border=0&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;&lt;td valign=top width=237 class=twin&gt;
+&lt;b class=subhead&gt;MJ on Broadway&lt;/b&gt;&lt;br&gt;&lt;font class=height&gt;&nbsp;&lt;/font&gt;&lt;br&gt;Michael Jordan returns to the NBA when the &lt;a href="http://espn.go.com/nba/news/2001/1030/1271118.html"&gt;Wizards play the Knicks&lt;/a&gt; in New York tonight.  Jordan has a wonderful and &lt;a href="http://espn.go.com/columns/wojnarowski/1270916.html"&gt;rich history at Madison Square Garden&lt;/a&gt;, writes Adrian Wojnarowski.  But as this season tips off, David Aldridge is quick to point out &lt;a href="http://msn.espn.go.com/nba/preview2001/columns/aldridge/1270944.html"&gt;there is a lot more to the NBA&lt;/a&gt; than just Michael Jordan.&lt;li&gt;&lt;a href="http://espn.go.com/nba/preview2001/s/index.html"&gt;Season preview&lt;/a&gt; | &lt;a href="http://espn.go.com/magazine/bucher_20011030.html"&gt;Bucher: The old bald guy&lt;/a&gt;&lt;li&gt;&lt;a href="http://espn.go.com/page2/s/simmons/011030.html"&gt;Sports Guy: NBA East&lt;/a&gt; | &lt;a href="http://msn.espn.go.com/nba/preview2001/s/talent.html"&gt;ESPN experts' picks&lt;/a&gt;  &lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=5 colspan=3&gt;&lt;spacer type=block height=5&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;!-- END TWINTOP DIV --&gt;
+&lt;/div&gt;
+&lt;!-- TABS DIV --&gt;
+&lt;div id=tabs&gt;
+&lt;script language=javascript&gt;
+&lt;!--
+   var SOB=new flashObj();
+   SOB.flashFile = "http://espn.starwave.com/5S.espn.go.com/swf/fp/tabs/main.swf?Tp1=33&Tp3=67&Lp1=40&Lp3=65&Lp4=90&";
+      SOB.DenyIEdl = "TRUE";
+        SOB.width = "260";
+        SOB.height = "225";
+        SOB.cabVersion = "4,0,0,0";
+        SOB.altTxt = "&lt;center&gt;&lt;table cellpadding=5 cellspacing=0 border=0 width=247 height=225 bgcolor=#ffffff&gt;&lt;tr&gt;&lt;td width=247 height=5 colspan=3 valign=top&gt;&lt;font class=features&gt;&lt;a href=\"http://insider.espn.go.com/insider\"&gt;ESPN Insider&lt;/a&gt;&lt;br&gt;Sign up to be an ESPN Insider and you\'ll enjoy daily cutting-edge editorial not found anywhere else.&lt;br&gt;&lt;a href=\"http://espn.go.com/page2/\"&gt;Page 2&lt;/a&gt;&lt;br&gt;All the news that\'s &lt;B&gt;not&lt;/B&gt; fit to print, and scathing editorials to boot... it\'s all on Page Two!&lt;br&gt;&lt;a href=\"http://games.espn.go.com/cgi/home/request.dll?FRONTPAGE\"&gt;Fantasy Games&lt;/a&gt;&lt;br&gt;Be your own GM without getting off of the couch. Who could ask for anything more?&lt;br&gt;&lt;br&gt;&lt;a href=\"http://espn.go.com/magazine/\"&gt;ESPN MAG&lt;/a&gt; | &lt;a href=\"http://espn.go.com/espnradio/\"&gt;ESPN RADIO&lt;/a&gt; | &lt;a href=\"http://expn.go.com/\"&gt;EXPN&lt;/a&gt; | &lt;a href=\"http://espn.go.com/classic/\"&gt;CLASSIC&lt;/a&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/center&gt;";
+        document.write(SOB.render());
+    //--&gt;
+    &lt;/script&gt;
+    &lt;!-- END TABS DIV --&gt;
+    &lt;/div&gt;
+
+&lt;!-- NEWS DIV --&gt;
+&lt;div id=headbox&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=247&gt;
+&lt;tr&gt;&lt;td colspan=3&gt;&lt;img src="http://espn-i.starwave.com/@v=0117824@/i/fp/headlines.gif" width=247 height=21 border=0&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr bgcolor=#d3d3d3&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/spacer&gt;&lt;/td&gt;&lt;td valign=top width=237 height=160 class=headlines&gt;
+&#8226;&nbsp;&lt;a href="/nba/news/2001/1030/1270809.html"&gt;Super Tuesday in NYC&lt;/a&gt;
+ | &lt;a href="http://espn.go.com/gen/news/2001/1030/1271011.html"&gt;&lt;b&gt;Eyes on TV ratings&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&#8226;&nbsp;&lt;a href="/nfl/columns/pasquarelli_len/1271103.html"&gt;Weighty decision: Lions cut former top pick&lt;/a&gt;
+&lt;br&gt;&#8226;&nbsp;&lt;a href="/nhl/news/2001/1030/1270964.html"&gt;March return to ice? Koivu 'feeling great'&lt;/a&gt;
+&lt;br&gt;&#8226;&nbsp;&lt;a href="/rpm/cart/2001/1030/1270879.html"&gt;Zanardi leaves hospital hoping to race again&lt;/a&gt;
+&lt;br&gt;&#8226;&nbsp;&lt;a href="/ncf/news/2001/1030/1271067.html"&gt;Run on sons: Riggs Jr. picks Tennessee&lt;/a&gt;
+&lt;br&gt;&nbsp;&nbsp;&lt;a href="http://espn.go.com/recruiting/s/olsonriggs.html"&gt;&lt;b&gt;Lemming: Two recruiting coups&lt;/b&gt;&lt;/a&gt;
+&lt;br&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="http://espn.go.com/gen/news/more.html"&gt;More Headlines&lt;/a&gt;&lt;br&gt;
+&lt;img src="http://espn-i.starwave.com/@v=0552049@/i/in.gif" width=11 height=11 border=0&gt;&nbsp;&lt;a href="http://jas.disney.go.com/cgi-bin/Click.cgi?code=21584&url=http://insider.espn.go.com/insider/archive?sport=nba"&gt;Who's more pumped? MJ or the media?&lt;/a&gt;
+
+
+
+
+
+
+
+&lt;!--
+PLEASE DON'T REMOVE THESE "HIDE" BRACKETS
+&lt;img src="http://espn-i.starwave.com/@v=0552049@/i/in.gif" width=11 height=11 border=0&gt;&nbsp;&lt;a href="http://jas.disney.go.com/cgi-bin/Click.cgi?code=21584&url=http://insider.espn.go.com/insider/archive?sport=nba"&gt;The point is, Jordan wants the ball&lt;/a&gt;
+--&gt;
+
+
+&lt;/td&gt;&lt;td width=3&gt;&lt;spacer type=block width=3&gt;&lt;/spacer&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr bgcolor=#d3d3d3&gt;&lt;td height=3 colspan=3&gt;&lt;spacer type=block height=3&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- END NEWS DIV --&gt;
+&lt;/div&gt;
+&lt;!-- TODAYS BEST DIV --&gt;
+&lt;div id=best&gt;
+&lt;!-- TODAYS BEST TABLE --&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=332&gt;&lt;tr bgcolor=#283888 height=17&gt;&lt;td&gt;&lt;img src="http://espn-i.starwave.com/@v=0295872@/i/fp/tbest.gif" width=120 height=17 border=0 alt="Todays Best"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=8&gt;&lt;spacer type=block height=8&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width=332&gt;
+&lt;!-- COLUMNIST TABLE --&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=332&gt;&lt;tr&gt;&lt;td valign=top&gt;
+&lt;!-- COLUMN BOX 1 --&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=162&gt;
+&lt;tr&gt;&lt;td colspan=5&gt;&lt;a href="http://sports.espn.go.com/abcsports/mnf/s/annotatedmiller/index.html"&gt;&lt;img src="http://espn.go.com/i/columnists/annotated_miller_fpo.gif" border=0&gt;&lt;/a&gt;&lt;br&gt;&lt;img src="http://espn-i.starwave.com/i/fp/cspace.gif" width=162 height=2 border=0&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width=1 bgcolor=#a8a8a8&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;&lt;td width=150 valign=top class=columnist&gt;
+Dennis Miller's comments from last night's game are interpreted.&lt;br&gt;&#8226;&nbsp;&lt;a href="/abcsports/mnf/s/annotatedmiller/index.html"&gt;The Annotated Dennis Miller&lt;/a&gt;
+&lt;spacer type=block width=150&gt;&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;&lt;td width=1 bgcolor=#a8a8a8&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width=1 bgcolor=#a8a8a8&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;&lt;td colspan=3 width=160 height=4&gt;&lt;spacer type=block width=4&gt;&lt;/td&gt;&lt;td width=1 bgcolor=#a8a8a8&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr bgcolor=#a8a8a8&gt;&lt;td colspan=5 width=162 height=1&gt;&lt;spacer type=block width=162 height=1&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- COLUMNIST SPACER --&gt;
+&lt;/td&gt;&lt;td width=8&gt;&lt;spacer type=block width=8&gt;&lt;/td&gt;&lt;td valign=top&gt;
+&lt;!-- COLUMN BOX 2 --&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=162&gt;
+&lt;tr&gt;&lt;td colspan=5&gt;&lt;a href="http://espn.go.com/chrismortensen/"&gt;&lt;img src="http://a12.g.akamaitech.net/f/12/621/300s/espn.go.com/i/columnists/mortensen_chris_fpo.gif" border=0&gt;&lt;/a&gt;&lt;br&gt;&lt;img src="http://espn-i.starwave.com/i/fp/cspace.gif" width=162 height=2 border=0&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width=1 bgcolor=#a8a8a8&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;&lt;td width=150 valign=top class=columnist&gt;
+Yes, the Steelers are for real -- and it appears they're the team to beat in the AFC Central.&lt;br&gt;&#8226;&nbsp;&lt;a href="No matching template"&gt;Mort: Week 7 NFL review&lt;/a&gt;
+&lt;spacer type=block width=150&gt;&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;&lt;td width=1 bgcolor=#a8a8a8&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width=1 bgcolor=#a8a8a8&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;&lt;td colspan=3 width=160 height=4&gt;&lt;spacer type=block width=4&gt;&lt;/td&gt;&lt;td width=1 bgcolor=#a8a8a8&gt;&lt;spacer type=block width=1&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr bgcolor=#a8a8a8&gt;&lt;td colspan=5 width=162 height=1&gt;&lt;spacer type=block width=162 height=1&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- END COLUMNIST TABLE --&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;
+&lt;!-- FEATURES --&gt;
+&lt;table width=332 cellpadding=0 cellspacing=0 border=0&gt;
+&lt;tr valign=top&gt;&lt;td&gt;&lt;a href="/nfl/s/011030pfw/whispers.html"&gt;&lt;img src="http://espn-i.starwave.com/@v=0589851@/media/nfl/2001/1030/photo/s_russell_s.gif" width=55 height=55 border=0&gt;&lt;/a&gt;&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;
+&lt;td class=features&gt;&lt;a href="/nfl/s/011030pfw/whispers.html"&gt;PFW: Whispers from around the NFL&lt;/a&gt; &lt;br&gt;The Jets reconsidered trading for Darrell Russell after considering the salary cap ramifications.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=8 colspan=3&gt;&lt;spacer type=block height=8&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=top&gt;&lt;td&gt;&lt;a href="/magazine/flemfile_20011030.html"&gt;&lt;img src="http://espn-i.starwave.com/@v=0554282@/i/magazine/thumbnails/elvis_1030.jpg" width=55 height=55 border=0&gt;&lt;/a&gt;&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;
+&lt;td class=features&gt;&lt;a href="/magazine/flemfile_20011030.html"&gt;Fleming File: Heartbreak Hotel&lt;/a&gt; &lt;br&gt;David Fleming spotted Elvis in the upper deck at the Silverdome. Turns out the King is a Lions fan, and he is one unhappy dead man.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=8 colspan=3&gt;&lt;spacer type=block height=8&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=top&gt;&lt;td&gt;&lt;a href="/rpm/wc/2001/1029/1270668.html"&gt;&lt;img src="http://espn-i.starwave.com/@v=0939880@/media/rpm/2001/1021/photo/s_gordon_s.gif" width=55 height=55 border=0&gt;&lt;/a&gt;&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;
+&lt;td class=features&gt;&lt;a href="/rpm/wc/2001/1029/1270668.html"&gt;Arute dreams of a NASCAR salary cap&lt;/a&gt; &lt;br&gt;ESPN.com's Jack Arute examines what NASCAR's world might look like with a salary cap.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=8 colspan=3&gt;&lt;spacer type=block height=8&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=top&gt;&lt;td&gt;&lt;a href="/ncb/columns/doyel_gregg/1268456.html"&gt;&lt;img src="http://espn-i.starwave.com/@v=0978454@/media/ncb/2001/1030/photo/s_beilein_s.gif" width=55 height=55 border=0&gt;&lt;/a&gt;&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;
+&lt;td class=features&gt;&lt;a href="/ncb/columns/doyel_gregg/1268456.html"&gt;Doyel: A-10 richer for adding Spiders&lt;/a&gt; &lt;br&gt;The A-10's status among conferences will only be helped by the addition of Richmond this season.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=8 colspan=3&gt;&lt;spacer type=block height=8&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=3 class=links align=center&gt;&lt;a href="http://espn.go.com/gen/features/"&gt;More Features and Columns&lt;/a&gt; | &lt;a href="http://sports.espn.go.com/sports/gen/dailyline"&gt;Daily Line&lt;/a&gt; | &lt;a href="http://sports.espn.go.com/sports/mostsent"&gt;Most Sent&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;
+&lt;!-- SPECIAL SECTIONS --&gt;
+&lt;table width=332 cellpadding=0 cellspacing=0 border=0&gt;&lt;tr bgcolor=#283888&gt;&lt;td width=332 height=17&gt;&lt;img src="http://espn-i.starwave.com/@v=0242983@/i/fp/special.gif" width=150 height=17 alt="Special Sections" border=0&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td height=8&gt;&lt;spacer type=block height=8&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=features&gt;
+&lt;a href="/special/s/weeksbest.html"&gt;Who was 'The Week's Best'?&lt;/a&gt; &lt;br&gt;Vote now and help choose the top performance from the past seven days in sports.&lt;br&gt;
+&lt;a href="http://x.go.com/cgi/x.pl?goto=http://promotions.go.com/apps/espn/lexus/entry&name=a313&srvc=pro&SOURCE=a313"&gt;Skins Scorecard Challenge&lt;/a&gt; &lt;br&gt;Predict the outcome of this year's Skins Game for your shot at scoring some skins cash of your own.&lt;br&gt;
+&lt;a href="http://x.go.com/cgi/x.pl?goto=http://promotions.go.com/espn/tostitos/frontpage.html&name=a173&srvc=pro&SOURCE=a173"&gt;Contests: Tostitos Great Rivalry Challenge&lt;/a&gt; &lt;br&gt;Texas vs. Texas A&M or Michigan vs. Ohio State? Cast your vote for the best college football rivalry.&lt;br&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;!-- END TODAYS BEST TABLE --&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;
+&lt;!-- FOOTER --&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;table cellpadding=0 cellspacing=0 border=0 width=480&gt;
+&lt;tr bgcolor=#a8a8a8&gt;&lt;td height=1&gt;&lt;spacer type=block height=1&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=foot&gt;&lt;b&gt;ESPN.com:&lt;/b&gt; &lt;a href="/sitetools/s/help/index.html"&gt;Help&lt;/a&gt; | &lt;a href="/sitetools/s/sponsors_index.html"&gt;Advertiser Info&lt;/a&gt; | &lt;a href="/sitetools/s/contact/index.html"&gt;Contact Us&lt;/a&gt; | &lt;a href="/sitetools/s/tools/index.html"&gt;Tools&lt;/a&gt; | &lt;a href="/sitetools/s/sitemap/index.html"&gt;Site Map&lt;/a&gt; | &lt;a href="/pr/index.html"&gt;PR&lt;/a&gt;&lt;br&gt;Copyright &copy;2001 ESPN. &lt;a href="http://disney.go.com/legal/conditions_of_use.html"&gt;Terms of Use&lt;/a&gt; and &lt;a href="http://disney.go.com/legal/privacy_policy.html" class="links"&gt;Privacy Policy and Safety Information&lt;/a&gt; are applicable to this site. &lt;a href="/sitetools/s/help/jobs.html"&gt;Employment opportunities&lt;/a&gt; at ESPN.com.&lt;br&gt;
+&lt;a href=http://sports.espn.go.com/espn/lite/index&gt;Click here&lt;/a&gt; if you're having problems with this page.
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;
+
+&lt;!-- "MSN Footer Starts" --&gt;
+ &lt;div class="dMSNME_1"&gt;
+	&lt;table border="0" cellpadding="0" cellspacing="0" width="501" class="msnB"&gt;
+		&lt;tr&gt;
+			&lt;td colspan="3"&gt;&lt;IMG BORDER="0" SRC="http://espn-i.starwave.com/i/msn/spacer.gif" WIDTH="1" HEIGHT="1"&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td valign="bottom" height="39" width="97"&gt;
+&lt;SCRIPT language="Javascript"&gt;
+	document.write('&lt;A HREF="http://go.msn.com/AK/1/1.asp"&gt;');
+&lt;/SCRIPT&gt;
+			&lt;IMG src="http://espn-i.starwave.com/i/msn/v2/logo_min.gif" ALT="go to MSN.com" BORDER="0" height="39" width="97"&gt;&lt;/A&gt;&lt;/td&gt;
+			&lt;td width="2" valign="bottom"&gt;&lt;IMG BORDER="0" SRC="http://espn-i.starwave.com/i/msn/spacer.gif" WIDTH="4" HEIGHT="1"&gt;&lt;/td&gt;
+			&lt;td class="msnLT" valign="bottom" align="left" width="400"&gt;Make it Your Home&lt;/td&gt;
+		&lt;/tr&gt;
+
+		&lt;tr&gt;
+			&lt;td colspan="3" height="5"&gt;&lt;img SRC="http://espn-i.starwave.com/i/msn/spacer.gif" width="1" height="5"&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+	document.write('&lt;tr&gt;&lt;td colspan="3"&gt;&lt;div class="msnH"&gt;&nbsp;&lt;a href="http://go.msn.com/AK/1/1.asp" CLASS="msnHL"&gt;MSN Home&lt;/a&gt;&lt;!-- "Temporary Comment Starts" --&gt;&lt;!--&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A13/11/" CLASS="msnHL"&gt;&lt;b&gt;My MSN&lt;/b&gt;&lt;/a&gt;--&gt;&lt;!-- "Temporary Comment Ends" --&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/2.asp" CLASS="msnHL"&gt;Hotmail&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/3.asp" CLASS="msnHL"&gt;Search&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/10.asp" CLASS="msnHL"&gt;Shopping&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/4.asp" CLASS="msnHL"&gt;Money&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/AK/1/5.asp" CLASS="msnHL"&gt;People &amp; Chat&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img src="http://espn-i.starwave.com/i/msn/spacer.gif" width="1" height="5"&gt;&lt;/td&gt;&lt;/tr&gt;');
+&lt;/script&gt;
+	&lt;/table&gt;
+	&lt;table cellpadding=0 cellspacing=0 border=0 width=501 class="msnFB"&gt;
+		&lt;tr&gt;
+			&lt;td VALIGN="top" ROWSPAN="2"&gt;&lt;img SRC="http://espn-i.starwave.com/i/msn/spacer.gif" BORDER="0" width="10" height="1"&gt;&lt;/td&gt;
+
+			&lt;td VALIGN="top"&gt;&lt;img SRC="http://espn-i.starwave.com/i/msn/v2/hor.gif" BORDER="0" width="490" height="1"&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+
+		&lt;tr&gt;
+			&lt;td width=501 height=25&gt;&lt;font class="msnF"&gt;©2001 Microsoft Corporation. All rights reserved.&lt;/font&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/table&gt;
+&lt;/div&gt;
+&lt;!-- "MSN Footer Ends" --&gt;
+&lt;!-- END TODAYS BEST DIV --&gt;
+&lt;/div&gt;
+&lt;!-- POLL DIV --&gt;
+&lt;DIV id=polltv&gt;
+&lt;!-- OUTER TABLE --&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=261&gt;&lt;tr&gt;
+&lt;!-- LEFT COLUMN --&gt;
+&lt;td width=131 valign=top&gt;
+&lt;!-- ESPN TV IMAGE --&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=131&gt;&lt;tr bgcolor=#283888&gt;&lt;td height=17&gt;&lt;img src="http://espn-i.starwave.com/@v=0847689@/i/fp/espntv.gif" width=120 height=17 border=0 alt="ESPN TV"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;!-- ESPN TV TABLE --&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=131&gt;&lt;tr&gt;&lt;td&gt;
+&lt;font class=espntvhd&gt;ESPN,  5 p.m. ET&lt;/font&gt;&lt;br&gt;&lt;font class=height&gt;&nbsp;&lt;/font&gt;&lt;br&gt;
+&lt;font class=espntvhd2&gt;Unscripted with Chris Connelly&lt;/font&gt;&lt;br&gt;
+&lt;font class=espntv&gt;&lt;a href="http://espn.go.com/page2/tvlistings/unscripted.html"&gt;Send in your questions&lt;/a&gt;&lt;/font&gt;&lt;br&gt;
+&lt;img src="http://espn-i.starwave.com/@v=0763657@/i/fp/line.gif" width=131 height=11 border=0&gt;&lt;br&gt;
+&lt;font class=espntvhd&gt;ESPN,  5:30 p.m. ET&lt;/font&gt;&lt;br&gt;&lt;font class=height&gt;&nbsp;&lt;/font&gt;&lt;br&gt;
+&lt;font class=espntvhd2&gt;Pardon The Interruption&lt;/font&gt;&lt;br&gt;
+&lt;font class=espntv&gt;With Kornheiser & Wilbon &lt;/font&gt;&lt;br&gt;
+&lt;img src="http://espn-i.starwave.com/@v=0763657@/i/fp/line.gif" width=131 height=11 border=0&gt;&lt;br&gt;
+&lt;!-- COMPLETE LISTINGS LINK --&gt;
+&lt;font class=height&gt;&nbsp;&lt;/font&gt;&lt;br&gt;&lt;font class=espntvhd&gt;&lt;a href="http://sports.espn.go.com/sports/tvlistings/index"&gt;Complete TV Listings&lt;/a&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;img src="http://espn-i.starwave.com/@v=0304154@/media/nfl/2001/1029/photo/bc1a.jpg" border=0 alt=Audio vspace=5&gt;&lt;br clear=all&gt;
+&lt;img src="http://espn-i.starwave.com/@v=0318037@/i/a.gif" border=0&gt;&lt;font class=espntvhd&gt;&nbsp;&lt;/font&gt;&lt;font class=espntvhd&gt;Hot streak&lt;/font&gt;&lt;br&gt;&lt;font class=espntv&gt;Bill Cowher talks to Melissa Stark following the Steelers 34-7 victory.&lt;/font&gt;&lt;br&gt;
+&lt;font class=espntvhd&gt;wav:&nbsp;&lt;/font&gt;&lt;font class=espntv&gt;&lt;a href="http://espn.go.com/media/2001/m10/nfl_011029bc1a.wav"&gt;273 k&lt;/a&gt;&lt;/font&gt;&lt;font class=espntv&gt; | &lt;/font&gt;
+&lt;a href="#" class=espntv onClick="window.open('http://sports.espn.go.com/espn/broadband/players/audiochoose?id=1270764','Choose_Audio','width=228,height=267,scrollbars=no,noresize');"&gt;RealAudio&lt;/a&gt;&lt;br clear=all&gt;&lt;br&gt;
+
+&lt;br&gt;&lt;br&gt;&lt;img src="http://espn-i.starwave.com/@v=0604795@/i/fp/video.gif" border=0&gt;&lt;font class=espntvhd&gt;&nbsp;Create your own &lt;a href="http://espn.go.com/broadcast/video.html"&gt;highlight reel&lt;/a&gt;&lt;br&gt;&lt;/font&gt;
+&lt;!-- ESPN RADIO LINK --&gt;
+&lt;script language=javascript src=http://espn.go.com/insertfiles/fp/espnradio.js&gt;&lt;/script&gt;&lt;!-- END ESPN TV TABLE --&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;!-- RIGHT COLUMN --&gt;
+&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/td&gt;&lt;td valign=top&gt;
+&lt;!--  SPORTSMAL --&gt;
+&lt;!-- POLL --&gt;
+&lt;!-- SPORTSMALL --&gt;
+	&lt;table cellpadding=0 cellspacing=0 border=0 width=125&gt;
+	&lt;tr bgcolor=#283888&gt;&lt;td height=17&gt;&lt;img src="http://espn-i.starwave.com/@v=0305561@/i/fp/sportsmall.gif" width=120 height=17 border=0 alt=SportsMall&gt;&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr bgcolor=dddddd&gt;&lt;td align=center width=125 height=100&gt;
+	&lt;script&gt;document.write(ad[doodad]);&lt;/script&gt;&lt;br&gt;
+	&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;!-- POLL --&gt;
+	&lt;center&gt;&lt;br&gt;&lt;br&gt;&lt;table width=120 cellpadding=2 cellspacing=0 border=0&gt;    &lt;tr&gt;&lt;td bgcolor=#000000 width=120&gt;&lt;center&gt;&lt;img src="http://espn.go.com/i/polls/sportscenter.gif" border=0&gt;&lt;/center&gt;&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;&lt;td bgcolor=#ecece4&gt;  &lt;img src=http://espn.go.com/poll/images/poll11937_0.gif&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/center&gt;&lt;!-- END OUTER TABLE --&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;!-- END POLL DIV --&gt;
+&lt;/div&gt;
+&lt;div id=Mms onMouseover="stopTimer()" onMouseout="setTimer('ms')"&gt;
+&lt;layer top=0 left=0 onMouseover="stopTimer()" onMouseout="setTimer('ms')"&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=115 bgcolor=#636363&gt;&lt;tr&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/spacer&gt;&lt;/td&gt;&lt;td valign=top width=105 class=v2&gt;
+&nbsp;&lt;br&gt;
+
+&lt;a href="http://espn.go.com/minorlbb/index.html"&gt;Baseball-min.&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://sports.espn.go.com/otherfb/index"&gt;Football&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://espn.go.com/highschool/index.html"&gt;High School&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://espn.go.com/minorlh/index.html"&gt;Hockey-min.&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://espn.go.com/oly/index.html"&gt;Olympics&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://espn.go.com/moresports/index.html"&gt;Other sports&lt;/a&gt;&lt;br&gt;
+
+&lt;br&gt;&nbsp;
+&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/spacer&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/layer&gt;
+&lt;/div&gt;&lt;div id=Mtal onMouseover="stopTimer()" onMouseout="setTimer('tal')"&gt;
+&lt;layer top=0 left=0 onMouseover="stopTimer()" onMouseout="setTimer('tal')"&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=115 bgcolor=#636363&gt;&lt;tr&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/spacer&gt;&lt;/td&gt;&lt;td valign=top width=105 class=v2&gt;
+&nbsp;&lt;br&gt;
+
+&lt;a href="http://espn.go.com/danpatrick/index.html"&gt;Dan Patrick&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://espn.go.com/gammons/"&gt;Peter Gammons&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://espn.go.com/chrismortensen/"&gt;Chris Mortensen&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://espn.go.com/dickvitale/index2.html"&gt;Dick Vitale&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://espn.go.com/melkiper/index.html"&gt;Mel Kiper Jr.&lt;/a&gt;&lt;br&gt;
+
+&lt;br&gt;&nbsp;
+&lt;/td&gt;&lt;td width=5&gt;&lt;spacer type=block width=5&gt;&lt;/spacer&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/layer&gt;
+&lt;/div&gt;&lt;!-- MSN Sidebar --&gt;
+&lt;style type=text/css&gt;
+&lt;!--
+#msnsidebar {visibility: visible; padding: 0px;border-width: 0px;border-style: none;margin: 0px;position: absolute;top: 0px;left: 772px;  z-index: 1; width:150px;}
+--&gt;
+&lt;/style&gt;
+&lt;div id=msnsidebar&gt;
+&lt;!-- "MSN SideBar Starts" --&gt;
+&lt;script language="javascript"&gt;
+
+	showSideBarCol();
+	showHideSidebar();
+
+
+function showSideBarCol() {
+	var mstrSideBarCol;
+
+	mstrSideBarCol = '&lt;div id=sidecol&gt;&lt;table cellpadding="0" cellspacing="0" border="0" width="160" height="92" class="msnB"&gt;&lt;tr&gt;&lt;td width="14" rowspan="3"&gt;&lt;img src="http://espn-i.starwave.com/spacer.gif" width="14" height="1"&gt;&lt;/td&gt;';
+
+	if (navigator.appName == "Netscape") {
+		document.write( '&lt;div class="dMSNME_1"&gt;' + mstrSideBarCol + '&lt;td align="right" colspan="2" valign="top"&gt;&nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="128" HEIGHT="44" valign="bottom" colspan="2"&gt;&lt;div class="msnS"&gt;&lt;b&gt;Search the Web&lt;/b&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;form action="http://go.msn.com/AK/2/searchsubmit.asp" method="get" id=form1 name=form1&gt;&lt;tr&gt;&lt;td valign="top" CLASS="msnTD"&gt;&lt;input type="hidden" name="FORM" value="AK"&gt;&lt;input id="msnST" type="text" name="q" size="12" maxlength="150"&gt;&lt;/td&gt;&lt;td valign="top"&gt;&lt;input type="submit" value="Go" id=submit1 name=submit1&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/form&gt;&lt;/table&gt;&lt;/div&gt;&lt;a href="http://arc1.msn.com/Clicker/ADSClicker31.dll?Redirect?PG=PROSPT?AN=1.0"&gt;&lt;img src="http://arc1.msn.com/ADSAdClient31.dll?GetImage?PG=PROSPT?SC=D1?AN=1.0" width=160 height=600 border=0&gt;&lt;/a&gt;&lt;/div&gt;');
+	}
+	else {
+		document.write( '&lt;div class="dMSNME_1"&gt;' + mstrSideBarCol + '&lt;td align="right" valign="top"&gt;&nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="128" HEIGHT="44" valign="bottom"&gt;&lt;div class="msnS"&gt;&lt;b&gt;Search the Web&lt;/b&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td valign=top&gt;&lt;form action="http://go.msn.com/AK/2/searchsubmit.asp" method="get" id=form1 name=form1&gt;&lt;input type="hidden" name="FORM" value="AK"&gt;&lt;input id="msnST" type="text" name="q" maxlength="150" STYLE="width:99px;"&gt;&lt;input id="msnSB" type="image" alt="Begin your Web search" src="http://espn-i.starwave.com/i/msn/v2/sea.gif"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/form&gt;&lt;/table&gt;&lt;/div&gt;&lt;!-- "Partner Site Specific Starts" --&gt;&lt;iframe id=sidebar style="display: none" src="http://arc1.msn.com/ADSAdClient31.dll?GetAd?PG=PROSPT?SC=D1" border=0 frameborder=0 scrolling=no marginheight=0 marginwidth=0 width=160 height=600&gt;&lt;/iframe&gt;&lt;!-- "Partner Site Specific Ends" --&gt;&lt;/div&gt;');
+	}
+}
+
+
+function showHideSidebar() {
+	if( document.body) {
+		var mColTags;
+
+		mColTags = document.all;
+
+		if( mColTags) {
+			var mintWidth;
+
+			mintWidth = document.body.clientWidth;
+
+			mColTags.sidecol.style.display = ( mintWidth &gt; 853 ? "" : "none");
+			mColTags.sidebar.style.display = ( mintWidth &gt; 853 ? "" : "none");
+		}
+	}
+}
+
+
+function errortrap( msg,url,line){
+    return true;
+}
+&lt;/script&gt;
+
+&lt;script language="javascript" type="text/javascript" for="window" event="onresize"&gt;
+	showHideSidebar();
+
+	onerror = errortrap;
+&lt;/script&gt;
+&lt;!-- "MSN SideBar Ends" --&gt;
+&lt;/div&gt;
+
+&lt;!-- Tracking  --&gt;
+&lt;a href="http://transfer.go.com/cgi/atransfer.pl?goto=&name=82657&srvc=sz&context=183&guid=CE1E0B36-4DFC-405D-9602-AA2E08975438" target="_top"&gt;&lt;img src="http://ad.espn.starwave.com/ad/sponsors/blank/blank.gif" width=0 height=0 border="0" alt=" " align=&gt;&lt;font face="verdana,arial,helvetica" SIZE="1"&gt;&lt;b&gt;&lt;/b&gt;&lt;/font&gt;&lt;/a&gt;
+
+&lt;!-- necessary for scrollbars to appear in certain versions of netscape --&gt;
+&lt;font color=#000000&gt;.&lt;/font&gt;
+
+&lt;!-- 3play popoff 
+&lt;iframe name=threeplay src="http://games.espn.go.com/threeplay/check" width=1 height=1 marginwidth=0 marginheight=0 scrolling=no frameborder=no&gt;&lt;/iframe&gt;
+&lt;layer name=threeplay src="http://games.espn.go.com/threeplay/check"&gt;&lt;/layer&gt;
+--&gt;
+
+&lt;!-- more bottom line code --&gt;
+&lt;script language=JavaScript&gt;
+&lt;!--
+if (parent.bottomlineframe) {
+	parent.bottomlineframe.location.replace('/bottomline/bottomline_framed.html');
+}
+// --&gt;
+&lt;/script&gt;
+
+&lt;/body&gt;&lt;/html&gt;
+</pre>
+</html>

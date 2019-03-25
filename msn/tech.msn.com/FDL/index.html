@@ -1,0 +1,1126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN"><html>
+<title>Source of tech.msn.com/FDL/index.html</title>
+<pre>
+
+&lt;script src="http://hs.msn.com/pres.js"&gt;&lt;/script&gt;
+&lt;!-- Placeholder --&gt;
+&lt;!-- Placeholder --&gt;
+&lt;!-- Placeholder --&gt;
+&lt;!-- Placeholder --&gt;
+ 
+
+&lt;!-- javascript functions --&gt;
+&lt;script language="Javascript"&gt;
+&lt;!--
+function callinsite()
+{
+	var em;
+	var type;  //1 -&gt; html, 2 -&gt; text
+	var snid = "";
+	var cn = "Computing";
+	var re = "http://tech.msn.com/newsletter/confirm.asp";
+	var emailaddr="";
+
+	em = document.newsform.txtemail.value;
+    for (var i=0;i&lt;document.newsform.radiohtml.length;i++)
+        {
+			if(document.newsform.radiohtml[i].checked)
+			{
+			 type = document.newsform.radiohtml[i].value;
+			}
+	}
+	if(document.newsform.check1.checked)
+	{
+	  snid += "3";
+	  }
+
+	if(document.newsform.check2.checked)
+		{
+		  if(snid!="")
+			{  snid += ",155"; }
+			else
+			{snid += "155";}
+		  }
+
+	var str1 = "http://newsletters.msn.com/xs-v3/insite.asp?EM=" + em + "&PC=" + type + "&SNID=" + snid + "&CN=" + cn + "&RE="+re;
+	if(snid!="")
+	{
+		emailaddr = document.newsform.txtemail.value;
+		var i_flag=1;
+
+		var i = emailaddr.indexOf("@");
+		var j = emailaddr.indexOf(".");
+		if(i==-1)
+		{
+			i = emailaddr.indexOf("@",i+1);
+			if(i==-1)
+			{ i_flag = -1;}
+
+		}
+		if(i_flag==-1 || j ==-1)
+		  {
+		    alert("The email address you have entered is not valid. Please make sure it's in the form: Joe@msn.com");
+		    document.newsform.txtemail.focus();
+		  }
+		  else
+		  {
+			document.location.href=str1;
+		  }
+		}
+	else
+	{
+		alert("Please select a newsletter to be subscribed.");
+	}
+
+
+}
+--&gt;
+&lt;/script&gt;
+
+ &lt;!-- include file="inc_subNavs.asp" --&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0"&gt;
+&lt;TITLE&gt;MSN Tech & Gadgets / Downloads&lt;/TITLE&gt; 
+&lt;meta name="keywords" content="Computing, beginners, new computer user"&gt;
+&lt;meta name="description" content="content here."&gt;
+
+&lt;meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l comment "RSACi North America Server" by "Microsoft Network" r (n 0 s 0 v 0 l 0))'&gt;
+&lt;meta name="MS.Model" content="MSN sample={b51512c3-f118-11cf-b764-0020afc2cd6f}"&gt;
+&lt;meta name="MSA.Place of Publication" content="Regions=North America=851"&gt;
+&lt;meta name="MS.Place of Publication" content="Locations=USA=837"&gt;
+&lt;meta name="MS.Language" content="Languages=English=25"&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"&gt;
+  
+  
+&lt;/HEAD&gt;
+&lt;LINK REL="STYLESHEET" HREF="https://alistapart.com/CCStyle_new.css"&gt;
+
+&lt;BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"&gt;
+
+&lt;SCRIPT LANGUAGE="javascript"&gt;
+	var imgTax = new Image();
+
+	imgTax.src = "http://c.msn.com/c.gif?PS=10292&PI=7327&DI=21&NC=1200&NA=1161";
+&lt;/SCRIPT&gt;
+
+&lt;!--Network Container Table //--&gt;
+&lt;TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0&gt;
+	&lt;TR&gt;
+		&lt;TD VALIGN="TOP"&gt;
+
+&lt;LINK REL="STYLESHEET" HREF="https://alistapart.com/sty/css/c/mi3/mi3.css"&gt;
+
+&lt;TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 &gt;
+	&lt;TR&gt;
+		&lt;TD VALIGN="TOP" width="608"&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+	var mblnWebTV;
+
+	mblnWebTV = ( navigator.appName.indexOf( "WebTV") != -1) ? true : false;
+
+	if ( mblnWebTV) {
+		document.write( '&lt;embed src="wtv-tricks:/msndispatch?type=tv-navbar-insert&loc=top-navbar&requestor=A4" height="33" width="544"&gt;&lt;/embed&gt;');
+	}
+	else {
+		if ( navigator.appVersion.indexOf( "MSN 6.") != -1) {
+			document.write( '&lt;table cellpadding="0" cellspacing="0" border="0" width="608" class="msnB"&gt;&lt;tr&gt;&lt;td HEIGHT="5"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;');
+		}
+
+		document.write( '&lt;div class="dMSNME_1"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" width="608" class="msnB"&gt;&lt;tr&gt;&lt;td&gt;&lt;div class="msnH"&gt;&lt;a href="http://go.msn.com/A4/0" CLASS="msnHL"&gt;&lt;b&gt;MSN Home&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/11/" CLASS="msnHL"&gt;&lt;b&gt;My MSN&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/8" CLASS="msnHL"&gt;&lt;b&gt;Hotmail&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/A" CLASS="msnHL"&gt;&lt;b&gt;Search&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/9" CLASS="msnHL"&gt;&lt;b&gt;Shopping&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/C" CLASS="msnHL"&gt;&lt;b&gt;Money&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/B" CLASS="msnHL"&gt;&lt;b&gt;People &amp; Chat&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|Ý&lt;/div&gt;&lt;/td&gt;');
+		document.write( '&lt;td&gt;&lt;A HREF="http://login.passport.com/login.asp?id=5799&RU=http%3A%2F%2Fchannels%2Emsn%2Ecom%2Fasp%2Fc%2Fact%2Freturn%2Easp%3Fdom%3Dtech%2Emsn%2Ecom%26port%3D80%26url%3D%2FFDL%2FDefault%2Easp%26que%3D&tw=10000&fs=0&kv=2&ct=1004472595&cb=&ns=0&KPP=3&ver=1.990.1052.1"&gt;&lt;IMG SRC=http://www.passportimages.com/signin.gif ALT="Passport" WIDTH=67 HEIGHT=19 BORDER=0 HSPACE=10&gt;&lt;/A&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;');
+	}
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT language= "Javascript"&gt;
+	var min_val = 1000000000;
+	var max_val = 9999999999;
+	var random_number = Math.random() * (max_val - min_val) + min_val;
+	var any_ten = Math.round(random_number);
+&lt;/SCRIPT&gt;
+
+&lt;table cellpadding=0 cellspacing=0 border=0 width=608&gt;
+	&lt;tr&gt;
+		&lt;td class="msnB"&gt;
+			&lt;table cellpadding="0" cellspacing="0" border="0"&gt;
+				&lt;tr&gt;
+					&lt;td WIDTH=140&gt;
+&lt;SCRIPT language="Javascript"&gt;
+	if ( mblnWebTV) {
+		document.write( '&lt;a href="wtv-tricks:/home"&gt;');
+	}
+	else {
+		document.write( '&lt;A HREF="http://go.msn.com/A4/0/"&gt;');
+	}
+&lt;/SCRIPT&gt;
+					&lt;IMG src="https://alistapart.com/i/ds/c/mi3/logo.gif" WIDTH=139 HEIGHT=60 BORDER=0 ALT="go to MSN.com" align=middle class="logo"&gt;&lt;/A&gt; &lt;/td&gt;
+
+					&lt;td height=60 width=468&gt;&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+var adMousedOver = 0;
+function adDoDrop (obj){
+adtechhideElement();
+obj.style.clip='rect(auto)'; 
+if (adMousedOver == 0) {adMousedOver = 1; document.cktrackingimg.src = 'http://ads.msn.com/ads/MSNCOM/0034660007_MO.gif?time=37194563183'; }}
+function adtechhideElement() {
+for (i = 0; i &lt; document.all.tags('SELECT').length; i++){obj = document.all.tags('SELECT')[i]; if (! obj || ! obj.offsetParent) continue; obj.style.visibility = "hidden";}
+for (i = 0; i &lt; document.all.tags('OBJECT').length; i++){obj = document.all.tags('OBJECT')[i]; if (! obj || ! obj.offsetParent) continue; obj.style.visibility = "hidden";}
+for (i = 0; i &lt; document.all.tags('APPLET').length; i++){obj = document.all.tags('APPLET')[i]; if (! obj || ! obj.offsetParent) continue; obj.style.visibility = "hidden";}
+}
+function adtechshowElement() {
+for (i = 0; i &lt; document.all.tags('SELECT').length; i++){obj = document.all.tags('SELECT')[i]; if (! obj || ! obj.offsetParent) continue; obj.style.visibility = "";}
+for (i = 0; i &lt; document.all.tags('OBJECT').length; i++){obj = document.all.tags('OBJECT')[i]; if (! obj || ! obj.offsetParent) continue; obj.style.visibility = "";}
+for (i = 0; i &lt; document.all.tags('APPLET').length; i++){obj = document.all.tags('APPLET')[i]; if (! obj || ! obj.offsetParent) continue; obj.style.visibility = "hidden";}
+}
+function adUnDoDrop (obj) {adtechshowElement(); obj.style.clip='rect(auto, auto, 60, auto)';}
+if (parseFloat(navigator.appVersion.substr( navigator.appVersion.indexOf("MSIE")+5))&gt;=5.0) {
+document.write('&lt;div style="height:60; width:464;"&gt;&lt;table border=0 bgcolor="#FFFFFF" cellpadding=0 cellspacing=0 style="position:absolute; clip:rect(auto, auto, 60, auto);z-index:200;" onmouseover="adDoDrop(this);" onmouseout="adUnDoDrop(this);"&gt;&lt;tr&gt;&lt;td&gt;&lt;A TARGET="_top" HREF="http://ads.msn.com/ads/adredir.asp?image=/ads/MSNCOM/0034660011_LG.asp&url=http://ad.doubleclick.net/clk;3248585;6231735;n%3Fhttp://www.toyota.com/camry"&gt;&lt;IMG BORDER="0" WIDTH="468" HEIGHT="400" SRC="http://ads.msn.com/ads/abuimg/toyota_02cy_safe1_468x400_enrich.jpg" ALT=""&gt;&lt;/A&gt;&lt;br&gt;&lt;a target="_top" href="http://ad.doubleclick.net/clk;3248585;6231735;n?http://www.toyota.com/camry"&gt;&lt;IMG SRC="http://ad.doubleclick.net/ad/N2724.msn/B43686.16;sz=1x1;ord=37194563183?" BORDER=0 WIDTH=1 HEIGHT=1&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;img name="cktrackingimg" src="http://ads.msn.com/ads/abuimg/clear1.gif" height=8 width=1&gt;&lt;/div&gt;'); }
+else {
+document.write('&lt;A TARGET="_top" HREF="http://ads.msn.com/ads/adredir.asp?image=/ads/MSNCOM/0034660011_LG.asp&url=http://ad.doubleclick.net/clk;3248585;6231735;n%3Fhttp://www.toyota.com/camry"&gt;&lt;img BORDER="0" src="http://ads.msn.com/ads/abuimg/toyota_02cy_safe1_468x60_bkup_3l.gif" width="468" height="60" ALT=""&gt;&lt;/A&gt;'); document.close();}
+&lt;/SCRIPT&gt;&lt;noscript&gt;&lt;A TARGET="_top" HREF="http://ads.msn.com/ads/adredir.asp?image=/ads/MSNCOM/0034660011_LG.asp&url=http://ad.doubleclick.net/clk;3248585;6231735;n%3Fhttp://www.toyota.com/camry"&gt;&lt;img BORDER="0" src="http://ads.msn.com/ads/abuimg/toyota_02cy_safe1_468x60_bkup_3l.gif" width="468" height="60" ALT=""&gt;&lt;/A&gt;&lt;/noscript&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+
+				&lt;tr&gt;
+					&lt;td height="5" colspan=2&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;!--Code Ends here--&gt;
+&lt;!-- include file="HeaderNTBlips.asp"--&gt;
+
+&lt;TABLE WIDTH=608 border=0 bordercolor="#006699" cellpadding=0 cellspacing=0 BGCOLOR="#FFFFFF"&gt;
+ &lt;TR&gt;&lt;TD colspan=5 WIDTH=608&gt;&lt;!--Header4 Title Gif and Ads //--&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0" width="608" height="45" bgcolor="#8428BB"&gt;
+	&lt;tr&gt;
+		&lt;td valign="top"&gt;
+			&lt;table border="0" cellpadding="0" cellspacing="0" width="80" bgcolor="#8428BB"&gt;
+				&lt;tr&gt;
+					&lt;td width="80" valign="top" height="32"&gt;
+						&lt;a href="https://alistapart.com/"&gt;&lt;img src="https://alistapart.com/i/ds/c/mi3/cha.gif" alt="tech.msn.com" border="0" width="80" height="32"&gt;&lt;/a&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+
+				&lt;tr&gt;
+					&lt;td width="80" valign="top" height="13" bgcolor="#003366"&gt;
+						&lt;img border="0" src="https://alistapart.com/i/ds/c/mi3/pix1.gif" width="80" height="8"&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+		&lt;/td&gt;
+
+		&lt;td width="60" valign="top"&gt;&lt;img src="https://alistapart.com/i/ds/c/mi3/sha.gif" BORDER="0" height="45" width="60"&gt;&lt;/td&gt;
+
+		&lt;td valign="top"&gt;
+			&lt;table border="0" cellpadding="0" cellspacing="0" width="468" height="45" bgcolor="#003366"&gt;
+				&lt;tr&gt;
+					&lt;td valign="top" COLSPAN="4" HEIGHT="8"&gt;&lt;img border="0" src="https://alistapart.com/i/ds/c/mi3/pix1.gif" width="468" height="8"&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+
+				&lt;tr&gt;
+				  	&lt;td width="337" HEIGHT="37" ALIGN="right"&gt;
+				  		&lt;IMG WIDTH=120 height=30 SRC="https://alistapart.com/chan/images/ZDNet.gif" ALT="ZDLogo" BORDER="0"&gt;&lt;/td&gt;
+
+				  	&lt;td width="5" VALIGN="top"&gt;
+				  		&lt;img src="https://alistapart.com/i/ds/c/spacer.gif" BORDER="0" height="1" width="5"&gt;&lt;/td&gt;
+
+				  	&lt;td width="125" ALIGN="right"&gt;&lt;IMG SRC="http://global.msads.net/ads/COMHRL/HDCM0008_S3.GIF" ALT="." BORDER=0 WIDTH=120 HEIGHT=30&gt;&lt;/td&gt;
+
+				  	&lt;td width="1" VALIGN="top"&gt;
+				  		&lt;img src="https://alistapart.com/i/ds/c/spacer.gif" BORDER="0" height="1" width="1"&gt;&lt;/td&gt;
+ 				&lt;/tr&gt;
+			&lt;/table&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+
+	&lt;tr&gt;
+		&lt;td bgcolor="#FFFFFF" COLSPAN="3"&gt;
+			&lt;img src="https://alistapart.com/i/ds/c/spacer.gif" BORDER="0" width="608" height="1"&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;&lt;!--  include file="inc_ChanName.asp" --&gt;
+  &lt;/TD&gt;&lt;/TR&gt;
+ &lt;TR valign=top&gt;
+
+    &lt;TD WIDTH=150  bgcolor="#E7E7E7"&gt;
+	&lt;TABLE WIDTH=150 border=0 cellpadding=0 cellspacing=0&gt;
+	   &lt;TR bgcolor="#003366"&gt;&lt;TD&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;TD colspan="2" valign=bottom&gt;&lt;!--Network ToolBar Functions//--&gt; 	 
+	 &lt;script language="Javascript"&gt; 
+	  &lt;!--   
+	 function mOvr(src,clrOver){ 
+ 		if (!src.contains(event.fromElement)){ 
+ 		src.style.cursor = 'hand'; src.bgColor = clrOver; 
+ 		} 
+ 		} 
+ 	function mOut(src,clrIn){ 
+ 		if (!src.contains(event.toElement)){ 
+ 		src.style.cursor = 'default'; 
+ 		src.bgColor = clrIn; 
+ 		} 
+ 		} 
+ 	function mClk(src){ 
+ 		if(event.srcElement.tagName=='TD'){ 
+ 		src.children.tags('A')[0].click(); 
+ 		} 
+ 		} 
+ 	 //--&gt; 
+	 &lt;/script&gt;
+&lt;!--Network ToolBar//--&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=146 bgcolor="#003366"&gt;
+	&lt;tr&gt;
+		&lt;td width="2" height="21"&gt;
+			&lt;img src="https://alistapart.com/i/ds/c/spacer.gif" width="2" height="21" border="0"&gt;&lt;/td&gt;
+
+		&lt;td valign=center width="144" height="21"&gt;
+			&lt;font class="msnD"&gt;OCTOBER 30, 2001&lt;/font&gt;&lt;/TD&gt;
+	&lt;/tr&gt;
+
+	&lt;tr&gt;
+		&lt;td valign="top" width="144" COLSPAN="2" bgcolor="#FFFFFF"&gt;
+			&lt;img src="https://alistapart.com/i/ds/c/spacer.gif"border="0" width="144" height="1"&gt;&lt;/TD&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+
+         &lt;TABLE WIDTH=146 bgCOLOR="#003366"  cellpadding=0 cellspacing=0&gt;
+ &lt;FORM ACTION="https://alistapart.com/FDL/search_dispatch.asp" id=form1 name=form1&gt;
+          &lt;TR&gt;
+			 &lt;TD COLSPAN="2"&gt;&lt;font color=#ffff00 class="Content4"&gt;&lt;b&gt;Search&lt;/b&gt;&lt;/font&gt;&lt;/TD&gt;
+			&lt;/TR&gt;
+
+				&lt;TR&gt;
+				 &lt;TD class="Content2" WIDTH="60"&gt;&lt;INPUT TYPE="radio" NAME="mode" VALUE="site" CHECKED&gt;&lt;font color="#FFFFFF"&gt; Site&lt;/font&gt;
+				 &lt;/TD&gt;
+				 &lt;TD class="Content2"&gt;&lt;INPUT TYPE="radio" NAME="mode" VALUE="downloads"&gt;&lt;font color="#FFFFFF"&gt; Downloads&lt;/font&gt;
+				 &lt;/TD&gt;
+				&lt;/TR&gt;
+				&lt;TR align=left&gt;
+				 &lt;TD align=left COLSPAN="2"&gt;
+			 	 &lt;INPUT TYPE="text" NAME="qu" VALUE=""
+				   
+				   SIZE="15"
+				   
+				   Maxlength="90"&gt;&lt;A HREF="javascript: ValidateSearch();"&gt;&lt;img width="5" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;IMG SRC="https://alistapart.com/images/GoButton.gif" ALT="" BORDER="0"&gt;&lt;/A&gt;
+				 &lt;/TD&gt;
+				 &lt;/TR&gt;
+		 &lt;/FORM&gt;
+				&lt;/TABLE&gt;
+
+&lt;SCRIPT language="JavaScript"&gt;
+		function LTrim(x)
+		{
+		//while first character of string is whitespace (blank, tab, carriage return or line feed
+			while((x.indexOf(" ")==0) || (x.indexOf("\t")==0) || (x.indexOf("\r")==0) || (x.indexOf("\n")==0))
+			{
+				//alert('removing a space');
+				//remove first character
+				x=x.substring(1, x.length);
+				}
+			return(x);
+		}
+	
+		function ValidateSearch()
+			{	 
+				 theForm = document.forms[0];
+					 
+				v = theForm.elements[2].value;
+				v=LTrim(v);
+				if (v == "")
+					{ alert('Please enter keywords describing your search in the field provided.');	
+					}
+				else
+					{ document.forms[0].submit();
+					}
+			}
+			
+&lt;/SCRIPT&gt;
+&lt;!--  include file="inc_search.asp" --&gt;&lt;/TD&gt;&lt;/TR&gt;
+	   &lt;TR bgcolor="#003366"&gt;&lt;TD&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;TD colspan="2" valign=top&gt;&lt;TABLE border=0 cellPadding=0 cellSpacing=0 width=146&gt;
+
+     
+		&lt;tr height="1"&gt;
+		    &lt;td height="1" colspan="4"  bgcolor="#003366"&gt; &lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr height="19"&gt;
+		    &lt;td width="1" height="19"&gt;&lt;/td&gt;
+		    &lt;td width="5" height="19" bgcolor="#336699"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;/td&gt;
+		    &lt;td height="19" colspan="2" bgcolor="#336699" valign="middle"&gt;
+		      &lt;a href="https://alistapart.com/" class="navbuttons"&gt;
+		      &lt;img height="9" width="10" src="https://alistapart.com/chan/images/Arw_Blue.gif" border="0"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;Home&lt;/a&gt;
+		    &lt;/td&gt;
+		&lt;/tr&gt;
+    
+     
+		&lt;tr height="1"&gt;
+		    &lt;td height="1" colspan="4"  bgcolor="#003366"&gt; &lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr height="19"&gt;
+		    &lt;td width="1" height="19"&gt;&lt;/td&gt;
+		    &lt;td width="5" height="19" bgcolor="#336699"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;/td&gt;
+		    &lt;td height="19" colspan="2" bgcolor="#336699" valign="middle"&gt;
+		      &lt;a href="https://alistapart.com/Electronics" class="navbuttons"&gt;
+		      &lt;img height="9" width="10" src="https://alistapart.com/chan/images/Arw_Blue.gif" border="0"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;Electronics&lt;/a&gt;
+		    &lt;/td&gt;
+		&lt;/tr&gt;
+    
+     
+		&lt;tr height="1"&gt;
+		    &lt;td height="1" colspan="4"  bgcolor="#003366"&gt; &lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr height="19"&gt;
+		    &lt;td width="1" height="19"&gt;&lt;/td&gt;
+		    &lt;td width="5" height="19" bgcolor="#336699"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;/td&gt;
+		    &lt;td height="19" colspan="2" bgcolor="#336699" valign="middle"&gt;
+		      &lt;a href="https://alistapart.com/Hardware" class="navbuttons"&gt;
+		      &lt;img height="9" width="10" src="https://alistapart.com/chan/images/Arw_Blue.gif" border="0"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;Hardware&lt;/a&gt;
+		    &lt;/td&gt;
+		&lt;/tr&gt;
+    
+     
+		&lt;tr height="1"&gt;
+		    &lt;td height="1" colspan="4"  bgcolor="#003366"&gt; &lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr height="19"&gt;
+		    &lt;td width="1" height="19"&gt;&lt;/td&gt;
+		    &lt;td width="5" height="19" bgcolor="#336699"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;/td&gt;
+		    &lt;td height="19" colspan="2" bgcolor="#336699" valign="middle"&gt;
+		      &lt;a href="https://alistapart.com/Internet" class="navbuttons"&gt;
+		      &lt;img height="9" width="10" src="https://alistapart.com/chan/images/Arw_Blue.gif" border="0"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;Internet&lt;/a&gt;
+		    &lt;/td&gt;
+		&lt;/tr&gt;
+    
+     
+		&lt;tr height="1"&gt;
+		    &lt;td height="1" colspan="4"  bgcolor="#003366"&gt; &lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr height="19"&gt;
+		    &lt;td width="1" height="19"&gt;&lt;/td&gt;
+		    &lt;td width="5" height="19" bgcolor="#336699"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;/td&gt;
+		    &lt;td height="19" colspan="2" bgcolor="#336699" valign="middle"&gt;
+		      &lt;a href="https://alistapart.com/News" class="navbuttons"&gt;
+		      &lt;img height="9" width="10" src="https://alistapart.com/chan/images/Arw_Blue.gif" border="0"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;News&lt;/a&gt;
+		    &lt;/td&gt;
+		&lt;/tr&gt;
+    
+     
+		&lt;tr height="1"&gt;
+		    &lt;td height="1" colspan="4"  bgcolor="#003366"&gt; &lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr height="19"&gt;
+		    &lt;td width="1" height="19"&gt;&lt;/td&gt;
+		    &lt;td width="5" height="19" bgcolor="#336699"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;/td&gt;
+		    &lt;td height="19" colspan="2" bgcolor="#336699" valign="middle"&gt;
+		      &lt;a href="https://alistapart.com/Software" class="navbuttons"&gt;
+		      &lt;img height="9" width="10" src="https://alistapart.com/chan/images/Arw_Blue.gif" border="0"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;Software&lt;/a&gt;
+		    &lt;/td&gt;
+		&lt;/tr&gt;
+    
+     
+		&lt;tr height="1"&gt;
+		    &lt;td height="1" colspan="4"  bgcolor="#003366"&gt; &lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr height="19"&gt;
+		    &lt;td width="1" height="19"&gt;&lt;/td&gt;
+		    &lt;td width="5" height="19" bgcolor="#336699"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;/td&gt;
+		    &lt;td height="19" colspan="2" bgcolor="#336699" valign="middle"&gt;
+		      &lt;a href="http://eshop.msn.com/partnercategory.aspx?catId=419&ptnrId=7" class="navbuttons"&gt;
+		      &lt;img height="9" width="10" src="https://alistapart.com/chan/images/Arw_Blue.gif" border="0"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;Shopping&lt;/a&gt;
+		    &lt;/td&gt;
+		&lt;/tr&gt;
+     
+
+&lt;/TABLE&gt;
+&lt;!--  include file="inc_vNav_home.asp" --&gt;&lt;/TD&gt;&lt;/TR&gt;
+	   &lt;TR&gt;&lt;TD bgcolor="#003366" colspan=3  valign=bottom&gt;&lt;img src="https://alistapart.com/images/corner8_out.gif" align=right  hspace=0 vspace=0&gt; &lt;/TD&gt;&lt;/TR&gt;
+	   &lt;TR bgcolor="#FFFFFF"&gt;&lt;TD height=5 colspan="3"&gt;
+	   &lt;IMG border=0 height=1 src="https://alistapart.com/images/spacer01.gif" width=1&gt;&lt;/TD&gt;
+	   &lt;/TR&gt;
+	   &lt;!--&lt;TR bgColor="#FFFFFF"&gt;
+	   &lt;TD align="left" valign="top" colspan="3"&gt;--&gt;
+	   &lt;tr bgColor="#cccc00" width="150"&gt;
+	   &lt;TD align="left" valign="top"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;/TD&gt;
+	   &lt;TD CLASS=Content1 align="left"&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif" border="0"&gt;&lt;font color="#666600"&gt;&lt;b&gt;OUR SPONSORS&lt;/b&gt;&lt;/font&gt;&lt;/TD&gt;
+	   &lt;TD align=right valign=top&gt;
+       &lt;IMG border="0" src="https://alistapart.com/images/corner6_out.gif" width="5" height="5" align="right"  hspace="0" vspace="0"&gt;
+       &lt;/TD&gt;
+       &lt;/TR&gt;
+	   &lt;TR bgcolor="#E7E7E7"&gt;&lt;TD colspan="3"&gt;
+
+&lt;TABLE border="0" WIDTH="141"&gt;
+&lt;TR&gt;&lt;TD bgColor="#e7e7e7" CLASS="Content2" &gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;a class="content2" href="http://ads.msn.com/ads/adredir.asp?image=/ads/CMCAT1/001394180006_TR.gif&url=http://www.qwest.com/totalcare/ms"&gt;Qwest Managed Solutions&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;	
+&lt;TR&gt;
+	 &lt;TD bgColor="#e7e7e7" CLASS="Content2" &gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;a href="http://ads.msn.com/ads/adredir.asp?url=http://www.cdw.com/r.asp?n=17406&image=http://ads.msn.com/ads/COMRES/00456060002_TX.GIF"&gt;CDW.com&lt;/a&gt;--Total Computing Solutions  &lt;img border="0" src="http://ads.msn.com/ads/COMRES/00456060002_TX.GIF?TIME=37194602951" alt=""&gt;&lt;/TD&gt;&lt;/TR&gt;    
+ 	
+&lt;TR&gt;    
+	 &lt;TD bgColor="#e7e7e7" class="content2"&gt;&lt;table cellpadding="0" cellspacing="0"&gt;&lt;tr&gt;&lt;td&gt;&lt;img width="4" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;a class="content2" href="http://ads.msn.com/ads/adredir.asp?image=http://ads.msn.com/ads/COMRES/004399670014_TR.gif&url=http://ad.doubleclick.net/clk;2570235;5625444;f%3Fhttp://dellapp.us.dell.com/landingstrip/ls.asp%3FDGC%3DDC%26DGU%3D%m%26DGSite%3DMSN%26DGStor%3DDHS%26RURL%3DDellDim%26DURL%3Dhttp://www.dell.com/us/en/dhs/products/series_dimen_desktops.htm%3FDGVCode%3DDC%26mc%3D%m/"&gt;Get a Dell ô  system&lt;/a&gt;&lt;/TD&gt;
+	 &lt;/tr&gt;
+ 	&lt;/table&gt;
+ 	&lt;/td&gt;
+ 	&lt;/TR&gt;
+
+&lt;/TABLE&gt;    
+&lt;/TD&gt;&lt;/TR&gt;
+
+	   &lt;TR bgcolor="#e7e7e7"&gt;
+	   &lt;TD align=right colspan="3" valign="top"&gt;
+	   &lt;img src="https://alistapart.com/images/spacer01.gif" width="5" height="5" align="right"  hspace="0" vspace="0"&gt;
+	   &lt;/TD&gt;
+	   &lt;/TR&gt;&lt;!--  include file="inc_OurSponsors.asp" --&gt;&lt;!-- &lt;/TD&gt;&lt;/TR&gt; --&gt;
+
+
+
+&lt;SCRIPT LANGUAGE="JavaScript" SRC="http://channels.msn.com/asp/c/act/mylinks.asp?dom=tech.msn.com&port=80&url=/FDL/Default.asp&que=&exp="&gt;
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT LANGUAGE="JavaScript" SRC="https://alistapart.com/scr/dn/com/mycom.js"&gt;&lt;/SCRIPT&gt;
+	   
+
+	&lt;/TABLE&gt;
+	&lt;/TD&gt;
+	&lt;TD WIDTH=15&gt;
+         &lt;TABLE WIDTH=15 height=100% border=0  cellpadding=0 cellspacing=0&gt;
+	     &lt;TR bgcolor="#cccc33" height=20&gt;&lt;TD bgcolor="#cccc33" height=20 align=left valign=top &gt;&lt;img src="https://alistapart.com/images/Corner_SubDpt.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+	     &lt;TR&gt;&lt;TD&gt;&lt;/TD&gt;&lt;/TR&gt;
+    	&lt;/TABLE&gt;
+   &lt;/TD&gt;
+	&lt;TD WIDTH=308&gt;
+			&lt;TABLE  border=0  cellpadding=0 cellspacing=0&gt;
+				&lt;TR bgcolor="#cccc33" height=20&gt;
+				  &lt;TD bgcolor="#cccc33" height=20&gt;
+				   
+
+&lt;font class=content2&gt;&lt;a href='/'&gt;Home&lt;/a&gt;&lt;img height='9' width='10' src='/chan/images/Arw_Blue.gif' border=0&gt;&lt;b&gt;All Downloads&lt;/b&gt; &lt;/font&gt;
+ 				   &lt;!--  bread crumbs --&gt;
+				  &lt;/TD&gt;
+ 				 &lt;/TR&gt;
+				&lt;TR height=5&gt;
+				  &lt;TD&gt;
+
+				  &lt;/TD&gt;
+ 				 &lt;/TR&gt;
+				&lt;TR&gt;
+				  &lt;TD&gt;
+				   &lt;TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="308"&gt;	
+        &lt;TR&gt; 
+		 	&lt;TD width="33%"&gt;&lt;a href="https://alistapart.com/Beginners"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;Beginners&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+		  	&lt;TD width="45%"&gt;&lt;a href="https://alistapart.com/FDL/"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;All Downloads&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+		 	&lt;TD width="22%" &gt;&lt;a href="https://alistapart.com/games"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;Games&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+		&lt;/TR&gt;
+		&lt;TR&gt;
+		 	&lt;TD width="33%"&gt;&lt;a href="https://alistapart.com/Developers"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;Developers&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+			&lt;TD width="45%"&gt;&lt;a href="https://alistapart.com/AllMessageBoards"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;All Message Boards&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+		 	&lt;TD width="22%" &gt;&lt;a href="https://alistapart.com/Music"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;Music&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+		&lt;/TR&gt;
+		&lt;TR&gt;  
+		    &lt;TD width="33%"&gt;&lt;a href="https://alistapart.com/AllChats"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;All Chats&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+		  	&lt;TD width="45%"&gt;&lt;a href="https://alistapart.com/Antivirus"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;Antivirus&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+		  	&lt;TD width="22%" &gt;
+            &lt;a href="http://go.msn.com/3/06/default.asp?target=http://entertainment.msn.com/music/top10cds/"&gt;&lt;FONT face="arial" size="1" color="#000000"&gt;
+            Top 10 CDs&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;  
+		&lt;/TR&gt;
+&lt;/TABLE&gt;&lt;br&gt;
+
+
+ 				   &lt;!--  include file="inc_QuickLinks.asp" --&gt;
+				  &lt;/TD&gt;
+ 				 &lt;/TR&gt;
+
+				&lt;TR&gt;&lt;TD&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0" width="308" height="240"&gt;
+&lt;tr&gt;
+&lt;td colspan="3" valign="top" height="24"&gt;&lt;b&gt;
+&lt;font face="Arial,Helvetica" size="3"&gt;
+&lt;a class="head2" href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl1a/www.zdnet.com/feeds/cgi/framer/hud0002500/hotfiles.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?link=1%26Usrt=date%26Ufcode=55813,55815,55816,55817,55818,55821,55822,55824,55825,55826,55828,55829,55832,55834,55835,55837,55842,55833,55836,55827" &gt;Screensavers you'll want to pet!&lt;/a&gt;&lt;/font&gt;&lt;/b&gt;&lt;/td&gt; 
+&lt;/tr&gt; 
+&lt;tr&gt; 
+&lt;td valign="top" height="95"&gt;
+&lt;p align="left"&gt;
+&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dla/www.zdnet.com/feeds/cgi/framer/hud0002500/hotfiles.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?link=1%26Usrt=date%26Ufcode=55813,55815,55816,55817,55818,55821,55822,55824,55825,55826,55828,55829,55832,55834,55835,55837,55842,55833,55836,55827" &gt;
+&lt;img src="https://alistapart.com/images/puppies1029_130.jpg" alt="puppies" vspace="3" border="0"&gt;&lt;/a&gt;&lt;br&gt;&lt;center&gt;&lt;font face="verdana" size="1"&gt;No Mess!&lt;/center&gt;&lt;/font&gt;&lt;/td&gt; 
+&lt;td width="8" align="left" height="95"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="8"&gt;&lt;/td&gt; 
+&lt;td valign="top" width="170" align="left" height="95"&gt;
+&lt;font face="Arial,Helvetica" size="2"&gt;Pick from a litter of favorite breeds.&lt;a class="navbuttonActive" href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025hm3/www.zdnet.com/feeds/cgi/framer/hud0002500/hotfiles.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?link=1%26Usrt=date%26Ufcode=55813,55815,55816,55817,55818,55821,55822,55824,55825,55826,55828,55829,55832,55834,55835,55837,55842,55833,55836,55827" &gt;
+&lt;img border="0" src="https://alistapart.com/images/hs.gif"&gt;&lt;u&gt;Download now!&lt;/u&gt;&lt;/a&gt;&lt;p&gt; 
+
+&lt;font face="Arial,Helvetica" size="1"&gt;&lt;b&gt;Don't Miss&lt;/b&gt;&lt;/font&gt;&lt;br&gt;        
+&lt;b&gt;
+    … &lt;/b&gt;
+&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl1a/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,83339,00.html" &gt;
+Get a virtual planetarium&lt;/a&gt;&lt;b&gt;&lt;br&gt;
+    … &lt;/b&gt;&lt;a href="http://tech.msn.com/fdl/msndl14.asp"&gt;Download &lt;i&gt;scream&lt;/i&gt;savers&lt;/a&gt;&lt;a class="subhead2" href="http://msn.zdnet.com/framer/hud00025A0/techupdate.zdnet.com/techupdate/stories/main/0,14179,2811962,00.html"&gt; 
+    &lt;/a&gt;&lt;p&gt;
+&lt;/td&gt;
+
+&lt;/tr&gt;
+
+
+ 
+&lt;tr&gt; 
+&lt;td colSpan="3" valign="top" width="308" height="107"&gt; 
+&lt;table cellspacing="0" cellpadding="0" border="0" &gt; 
+&lt;tr&gt; 
+&lt;td width="155"&gt;&lt;font face="verdana" size="1"&gt;&lt;b&gt;Tech Shopping Buys&lt;/b&gt;&lt;/font&gt;&lt;br&gt; 
+&lt;b&gt;… &lt;/b&gt;&lt;font face="Arial" size="2"&gt;
+&lt;SCRIPT language = "JavaScript"&gt;
+&lt;!-- //
+var EshopOfferHTML = '';
+// --&gt;
+&lt;/SCRIPT&gt;
+&lt;SCRIPT language = "JavaScript" src="http://xml.eshop.msn.com/xmlbuddy/eShopOffer.aspx?formatType=4&ptnrId=7&ptnrData=0&merchId1=2422&invMerchModel1=115914&offername1=&merchId2=2422&invMerchModel2=292461&offername2=&merchId3=2422&invMerchModel3=167431&offername3=HP+Amplified+Speakers&merchId4=2422&invMerchModel4=141366&offername4=6.1+GB+Hard+Drive&merchId5=2422&invMerchModel5=140244&offername5=&offercount=5&pcId=1167&pmpType=1"&gt;
+&lt;/SCRIPT&gt;
+&lt;SCRIPT language = "JavaScript"&gt;
+&lt;!-- //
+if (EshopOfferHTML != '') 
+document.write(EshopOfferHTML); 
+else 
+document.write('&lt;A href="http://eshop.msn.com"&gt;&lt;FONT size="1" family="Verdana"&gt;MSN Shopping&lt;/FONT&gt;&lt;/A&gt;'); 
+// --&gt;
+&lt;/SCRIPT&gt;
+
+
+&lt;br&gt;&lt;b&gt;… &lt;/b&gt;
+&lt;SCRIPT language = "JavaScript"&gt;
+&lt;!-- //
+var EshopOfferStyle = '';
+var EshopOfferHTML = '';
+// --&gt;
+&lt;/SCRIPT&gt;
+&lt;SCRIPT language = "JavaScript" src="http://xml.eshop.msn.com/xmlbuddy/eShopOffer.aspx?formatType=4&ptnrId=7&ptnrData=0&mpId=2667&pmpType=0"&gt;
+&lt;/SCRIPT&gt;
+&lt;SCRIPT language = "JavaScript"&gt;
+&lt;!-- //
+if (EshopOfferStyle != '') 
+document.write(EshopOfferStyle); 
+if (EshopOfferHTML != '') 
+document.write(EshopOfferHTML); 
+else 
+document.write('&lt;A href="http://eshop.msn.com"&gt;&lt;FONT size="1" family="Verdana"&gt;MSN Shopping&lt;/FONT&gt;&lt;/A&gt;'); 
+// --&gt;
+&lt;/SCRIPT&gt;
+
+
+&lt;br&gt; &lt;/td&gt;
+&lt;td width="8"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="8"&gt;&lt;/td&gt; 
+&lt;td valign="top"&gt; 
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt; 
+&lt;tr&gt;&lt;td&gt;
+&lt;/tr&gt; 
+
+&lt;tr&gt;&lt;td&gt;
+
+
+
+
+
+
+&lt;SCRIPT language = "JavaScript"&gt;
+&lt;!-- //
+var EshopOfferStyle = '';
+var EshopOfferHTML = '';
+// --&gt;
+&lt;/SCRIPT&gt;
+&lt;SCRIPT language = "JavaScript" src="http://xml.eshop.msn.com/xmlbuddy/eShopOffer.aspx?formatType=3&ptnrId=7&ptnrData=0&merchId1=2422&invMerchModel1=183741&offername1=&merchId2=2406&invMerchModel2=20039147&offername2=&merchId3=2422&invMerchModel3=217472&offername3=&merchId4=1951&invMerchModel4=PEGN710C&offername4=&merchId5=2422&invMerchModel5=316345&offername5=&merchId6=2595&invMerchModel6=561221&offername6=&merchId7=2422&invMerchModel7=247391&offername7=&merchId8=2406&invMerchModel8=20018320&offername8=&merchId9=2422&invMerchModel9=206708&offername9=NEC+Moblie+Pro+880&merchId10=2406&invMerchModel10=02231374&offername10=Palm+V+Slim+Leather+Carrying+Case&offercount=10&pcId=190&pmpType=1"&gt;
+&lt;/SCRIPT&gt;
+&lt;SCRIPT language = "JavaScript"&gt;
+&lt;!-- //
+if (EshopOfferStyle != '') 
+document.write(EshopOfferStyle); 
+if (EshopOfferHTML != '') 
+document.write(EshopOfferHTML); 
+else 
+document.write('&lt;A href="http://eshop.msn.com"&gt;&lt;FONT size="1" family="Verdana"&gt;MSN Shopping&lt;/FONT&gt;&lt;/A&gt;'); 
+// --&gt;
+&lt;/SCRIPT&gt;
+
+
+
+
+
+
+
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" height="15"&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="3"&gt;
+&lt;a class="T11verdanaBU" href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl3a/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/" &gt;See all downloads&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; 
+&lt;/td&gt; 
+&lt;/tr&gt; 
+&lt;/table&gt; 
+&lt;/td&gt; 
+&lt;/tr&gt; 
+&lt;/table&gt;
+
+
+				   &lt;!-- zd feed --&gt;
+				 &lt;/TD&gt;
+ 				 &lt;/TR&gt;
+				 &lt;tr&gt;&lt;td&gt;&lt;img  src="https://alistapart.com/images/spacer01.gif" height="10"&gt;&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td&gt;
+&lt;table width="308"  cellpadding="0" cellspacing="0" bgcolor="#6699CC"&gt;
+&lt;tr&gt;&lt;td colspan="3" bgcolor="#CCCC00" width="308" &gt;
+       &lt;table width="308" bgcolor="#CCCC00"  cellpadding="0" cellspacing="0"&gt;
+        &lt;tr&gt;&lt;td  align="left" valign="top" width="6" bgcolor="#CCCC00"&gt;&lt;img src="https://alistapart.com/images/corner-grn-lft.gif" hspace=0 vspace=0&gt;&lt;/td&gt;
+        &lt;td width="296" align="center" bgcolor="#CCCC00"&gt;&lt;font class="T18ArialB"&gt;Popular Downloads&lt;/font&gt;&lt;/td&gt;
+        &lt;td  valign="top" align="right" width="6" bgcolor="#CCCC00"&gt;&lt;img src="https://alistapart.com/images/corner-grn-right.gif" hspace=0 vspace=0 align="right"&gt;&lt;/td&gt;
+       &lt;/tr&gt;
+      &lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td width="152" valign="top" bgcolor="#6699CC"&gt;
+				&lt;table width="152" cellpadding="0" cellspacing="0" bgcolor="#6699CC"&gt;
+&lt;tr&gt;&lt;td rowspan="4"&gt;&lt;img height="80" src="https://alistapart.com/images/spacer01.gif" width="15"&gt;&lt;/TD&gt;
+&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td class="navbuttons" align="center"&gt;FUN STUFF&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;
+  &lt;a class="content2" height="70" href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.msn.zdnet.com/downloads/epicks.html" &gt;Editor's Picks&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8j/www.zdnet.com/feeds/cgi/framer/hud0002500/www.msn.zdnet.com/downloads/games.html" class="content2"&gt;Games&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/mp3.html" class="content2"&gt;MP3s&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="https://alistapart.com/fdl/msndl14.asp"&gt;Spooky screensavers&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="2" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td bgcolor="#CCCC00" colspan="3" valign="bottom"&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+
+&lt;tr&gt;&lt;td rowspan="4"&gt;&lt;img height="80" src="https://alistapart.com/images/spacer01.gif" width="15"&gt;&lt;/TD&gt;
+&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td class="navbuttons" align="center"&gt;HOME &amp; EDUCATION&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;
+  &lt;a class="content2" height="70" href="http://go.msn.com/a4/e/2.asp?target=http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/business.html" &gt;
+  Business&lt;/a&gt;&lt;br&gt;
+&lt;!--a href="http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/hotfiles.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?link=1&UTcat=business+%26+finance&UTsubcat=personal+finance&Usrt=date&Usubp=Business_Personal_Finance" class="content2"&gt;Finance&lt;/a&gt;&lt;br--&gt;
+&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/hotfiles.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?link=1%26UTcat=home+education%26UTsubcat=kids+%26+parenting%26Usrt=date%26Usubp=Home_Kids_and_Parenting" class="content2"&gt;Kids and Parenting&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/help/index.html" &gt;Tutorials & Help&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="5" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td bgcolor="#CCCC00" colspan="2"&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+
+&lt;tr&gt;&lt;td rowspan="4"&gt;&lt;img height="80" src="https://alistapart.com/images/spacer01.gif" width="15"&gt;&lt;/TD&gt;
+&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td class="navbuttons" align="center"&gt;INTERNET&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/hotfiles.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?link=1%26UTcat=utilities%26UTsubcat=antivirus%26Usrt=date%26Usubp=Utilities_Antivirus" class="content2" height="70"&gt;Antivirus Software&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/hotfiles.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?link=1%26UTcat=internet%26UTsubcat=browsers%26Usrt=date%26Usubp=Internet_Browsers" class="content2"&gt;Browsers&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/hotfiles.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?link=1%26UTcat=internet%26UTsubcat=online+privacy%26Usrt=date%26Usubp=Internet_Online_Privacy" class="content2"&gt;Online Privacy&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/internet.html" class="content2"&gt;Web Power Tools&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td bgcolor="#CCCC00" colspan="2" width="152"&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif" &gt;&lt;/TD&gt;&lt;/TR&gt;
+
+&lt;/table&gt;
+
+
+				   &lt;!-- left column --&gt;
+				 &lt;/TD&gt;
+	&lt;td  bgcolor="#CCCC00"&gt;&lt;img height="4" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/td&gt;
+&lt;td width="152" height="90" bgcolor="#6699CC" valign="top"&gt;
+&lt;table width="152"  cellpadding="0" cellspacing="0" bgcolor="#6699CC" height="100%"&gt;
+&lt;tr&gt;&lt;td rowspan="5" valign="top"&gt;&lt;img height="168" src="https://alistapart.com/images/spacer01.gif" width="10"&gt;&lt;/TD&gt;
+&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif" valign="top"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td class="navbuttons" align="center" valign="top"&gt;MICROSOFT&lt;BR&gt; BEST BETS
+&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="10" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td height="117"&gt;
+  &lt;a class="content2" href="http://messenger.msn.com/"&gt;Instant Messenger&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="http://www.microsoft.com/windows/ie/preview/default.asp"&gt;
+  Internet Explorer 6.0&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="http://www.microsoft.com/downloads/search.asp?"&gt;
+  Microsoft Downloads&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="http://calendar.msn.com/"&gt;MSN Calendar&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="http://explorer.msn.com/home.htm"&gt;MSN Explorer&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="http://essentials.msn.com/access/switch.asp"&gt;MSN Internet 
+  Access&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="http://mobile.msn.com/"&gt;MSN Mobile&lt;/a&gt;&lt;br&gt;
+  &lt;a class="content2" href="http://www.microsoft.com/windows/windowsmedia/en/default.asp"&gt;WindowsMedia Player 
+  7.1&lt;/a&gt;&lt;br&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="10" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td bgcolor="#CCCC00" colspan="2" align="left"&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+
+&lt;tr&gt;&lt;td rowspan="8"&gt;&lt;img height="80" src="https://alistapart.com/images/spacer01.gif" width="15"&gt;&lt;/TD&gt;
+&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td class="navbuttons" align="center"&gt;SOFTWARE&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;
+  &lt;a class="content2" height="70"  &lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/specials/free.html" class="content2"&gt;Demos&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/graphics.html" class="content2"&gt;Graphics&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/lpad/lpad.html" class="content2"&gt;Launch Pad&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl8/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/utilities.html" class="content2"&gt;Utilities&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td bgcolor="#CCCC00" colspan="2"&gt;&lt;img height="3" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+
+&lt;/table&gt;
+
+&lt;!-- right column --&gt;&lt;/td&gt;
+ 				 &lt;/TR&gt;
+ 	&lt;/table&gt;
+	&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="18" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;
+&lt;table width="308"  cellpadding="0" cellspacing="0"&gt;
+&lt;tr&gt;&lt;td  width="308" colspan="3"&gt;&lt;font class="T16ArialBo"&gt;Spotlight on Music&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width="53"&gt;
+  &lt;a href="http://go.msn.com/A4/A17/default.asp?target=http://music.windowsmedia.msn.com/preview/?preview=592673"&gt;
+  &lt;img src="https://alistapart.com/images/Jay_Z_60x65.jpg" border="0"&gt;&lt;/a&gt;&lt;/TD&gt;
+    &lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" height="1" width="10"&gt;&lt;/TD&gt;
+    &lt;td width="245"&gt;&lt;b&gt;… &lt;/b&gt;    
+            &lt;FONT face=Arial size=2&gt;    
+          &lt;a class="content1" href="http://go.msn.com/A4/A17/default.asp?target=http://music.windowsmedia.msn.com/preview/?preview=592673"&gt;&lt;SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial"&gt;Why Jay-Z's &lt;i&gt;Blueprint&lt;/i&gt; is No. 1&lt;/span&gt; &lt;/a&gt;&lt;SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial"&gt;&lt;br&gt;                               
+            &lt;b&gt;… &lt;/b&gt;    
+              
+          &lt;a class="content1" href="http://go.msn.com/A4/A17/default.asp?target=http://music.windowsmedia.msn.com/preview/?preview=618935"&gt;Brooke Allison joins teen-pop race&lt;/a&gt;&lt;br&gt;                               
+            &lt;b&gt;… &lt;/b&gt;    
+              
+          &lt;a class="content1" href="http://go.msn.com/A4/A17/default.asp?target=http://music.windowsmedia.msn.com/preview/?preview=618889"&gt;Elton John returns to roots&lt;/i&gt;&lt;/a&gt;
+     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td width="53"&gt;
+  &nbsp;&lt;/TD&gt;
+    &lt;td width="10"&gt;&nbsp;&lt;/TD&gt;
+    &lt;td width="245"&gt;&nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img height="18" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td&gt;&lt;!--  Bottom2 Blip--&gt;
+&lt;table width="308"  cellpadding="0" cellspacing="0"&gt;
+&lt;tr&gt;&lt;td  width="308" colspan="3"&gt;&lt;font class="T16ArialBo"&gt;More Fun with Downloads&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width="53"&gt; 
+  &lt;a href="http://go.msn.com/intg/539.asp?target=http://zone.msn.com/universal/horror/"&gt;
+  &lt;img src="https://alistapart.com/images/werewolf_small_animate_2images.gif" border="0"&gt;&lt;/a&gt;&lt;/TD&gt;
+    &lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" height="1" width="10"&gt;&lt;/TD&gt;
+    &lt;td width="245"&gt;&lt;b&gt;… &lt;/b&gt;&lt;img border="0" src="https://alistapart.com/images/hs.gif"&gt;    
+            &lt;FONT face=Arial size=2&gt;    
+          &lt;a class="content1" href="http://go.msn.com/intg/539.asp?target=http://zone.msn.com/universal/horror/"&gt;American Werewolf in London?&lt;/span&gt; &lt;/a&gt;&lt;SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial"&gt;&lt;br&gt;                               
+            &lt;b&gt;… &lt;/b&gt;&lt;img border="0" src="https://alistapart.com/images/hs.gif"&gt;    
+              
+          &lt;a class="content1" href="http://go.msn.com/intg/539.asp?target=http://zone.msn.com/hub_kids.asp "&gt;New games for kids&lt;/a&gt;&lt;br&gt;                               
+            &lt;b&gt;… &lt;/b&gt;&lt;img border="0" src="https://alistapart.com/images/hs.gif"&gt;    
+            
+          &lt;a class="content1" href="http://go.msn.com/intg/539.asp?target=http://zone.msn.com/casinoslots1/"&gt;Hit the jackpot with Casino slots&lt;/a&gt;
+     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+
+&lt;/td&gt;&lt;/tr&gt;
+
+&lt;TR&gt;&lt;TD&gt;&lt;!-- PlaceHolder --&gt;&lt;!-- Placeholder--&gt;&lt;/TD&gt;&lt;/TR&gt;
+
+&lt;/TABLE&gt;
+     &lt;/TD&gt;
+
+
+
+
+	 &lt;TD WIDTH=15 valign=top&gt;
+		   &lt;TABLE WIDTH=15  border=0  cellpadding=0 cellspacing=0&gt;
+		    &lt;TR height=20 bgcolor=#CCCC33 width="7"&gt;
+		     &lt;TD height=20 bgcolor=#CCCC33 width=8 valign=top&gt;&lt;img src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;
+		     &lt;TD bgcolor=#CCCC33&gt;&lt;img src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;
+		    &lt;/TR&gt;
+
+		    &lt;TR height=240&gt;
+		     &lt;TD width=8 valign=top height=240&gt;&lt;img src="https://alistapart.com/images/cornerYelo_top.gif" align=right  hspace=0
+               vspace=0&gt;&lt;/TD&gt;
+		     &lt;TD bgcolor=#CCCC33 height=423&gt;&lt;img src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;
+		    &lt;/TR&gt;
+
+		    &lt;TR valign=top&gt;
+		     &lt;TD width=6 valign=bottom&gt;&lt;img src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;
+		     &lt;TD&gt;&lt;img src="https://alistapart.com/images/cornerBlue_bot.gif" height=6 align=right hspace=0  vspace=0&gt;&lt;/TD&gt;
+		    &lt;/TR&gt;
+		   &lt;/TABLE&gt;
+	 &lt;/TD&gt;
+	 &lt;TD WIDTH=120&gt;
+		    &lt;TABLE WIDTH=120 cellpadding=0 cellspacing=0 bgcolor=#336699 border="0" &gt;
+			     &lt;TR bgcolor= #CCCC33&gt;&lt;TD&gt;&lt;style&gt;
+&lt;!--
+.intext{font-family:Arial;font-size:11px;color:#FFFF99;}
+
+.inchecktxt{font-family:Arial;font-size:11px;color:#FFFFFF;}
+
+.abttextlnk{font-family:Arial;font-size:11px;color:#99CCFF;}
+.abttextlnk:hover{color:#99CCFF;}
+.abttextlnk:visited{color:#99CCFF;}
+.abttextlnk:visited:hover{color:#99CCFF;}
+--&gt;
+&lt;/style&gt;
+&lt;form name="newsform" onsubmit="javascript:callinsite();return false;"&gt;
+ &lt;TABLE   WIDTH=120 border=0 cellpadding=0 cellspacing=0&gt;
+	&lt;TR&gt;&lt;TD valign="top" align="right"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" height="5"&gt;&lt;br&gt;&lt;a target="_top" href="http://ads.msn.com/ads/adredir.asp?image=/ads/COMCDL/006596070010_S4.asp&url=http://ad.doubleclick.net/jump/N1684.msnss.com/B42436.5;sz%3D120x90;ord%3D37194562477%3F"&gt;&lt;img border="0" width="120" height="90" src="http://ad.doubleclick.net/ad/N1684.msnss.com/B42436.5;sz=120x90;ord=37194562477?" alt="Click Here!"&gt;&lt;/a&gt;&lt;br&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" height="5"&gt;&lt;br&gt;&lt;a target="_top" href="http://ads.msn.com/ads/adredir.asp?image=/ads/COMDNL/006596070013_SM.asp&url=http://ad.doubleclick.net/jump/N1684.msnss.com/B42436.3;sz%3D120x60;ord%3D37194562477%3F"&gt;&lt;img border="0" width="120" height="60" src="http://ad.doubleclick.net/ad/N1684.msnss.com/B42436.3;sz=120x60;ord=37194562477?" alt="Click Here!"&gt;&lt;/a&gt;&lt;br&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="1" height="5" border="0"&gt;&lt;br&gt;&lt;!-- newsletter here --&gt;
+&lt;TABLE bgcolor="#336699" border=0 cellPadding=0 cellSpacing=0 width="120"&gt;
+  &lt;TR&gt;
+	&lt;td colspan="3"&gt;&lt;img align="Center" src="https://alistapart.com/images/Tech_120x54.gif" width="120" height="54" border="0"&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="5" height="5" border="0"&gt;&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;
+	&lt;td&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="5" height="1" border="0" &gt;&lt;/td&gt;
+	&lt;td&gt;&lt;font class="intext"&gt;Your email address:&lt;/font&gt;&lt;br&gt;
+	&lt;input type="text" name="txtemail" size="12" value=""&gt;&lt;br&gt;
+	&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="5" height="10" border="0"&gt;&lt;br&gt;
+	&lt;font class="intext"&gt;Pick your favorites:&lt;/font&gt;&lt;br&gt;
+	&lt;input type="checkbox" name="check1" value="techflash" checked&gt;&lt;font class="inchecktxt"&gt;Tech Flash&lt;/font&gt;&lt;br&gt;
+	&lt;input type="checkbox" name="check2" value="downloads" checked&gt;&lt;font class="inchecktxt"&gt;Downloads Galore&lt;/font&gt;&lt;br&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="5" height="5" border="0"&gt;&lt;br&gt;
+	&lt;font class="intext"&gt;Preferred format:&lt;/font&gt;&lt;br&gt;
+	&lt;input type="radio" name="radiohtml" value="HTM" checked&gt;&lt;font class="intext"&gt;HTML (graphical)&lt;/font&gt;&lt;br&gt;
+	&lt;input type="radio" name="radiohtml" value="TXT"&gt;&lt;font class="intext"&gt;Plain Text&lt;/font&gt;&lt;br&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" border="0" width="1" height="5"&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td colspan="3"&gt;
+		&lt;TABLE border="0" cellPadding="0" cellSpacing="0" width="118"&gt;&lt;tr&gt;&lt;td rowspan="2" height="25" valign="bottom"&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="10" height="1" border="0"&gt;&lt;a class="abttextlnk" title="Learn More About Our Newsletters" href="https://alistapart.com/newsletter/about.asp"&gt;Learn more&lt;/a&gt;&lt;/td&gt;
+	&lt;td valign="top" height="20"&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" border="0" width="1" height="5"&gt;&lt;input type="image" name="go" title="Click to Sign Up" style="cursor:Hand;" onclick="javascript:callinsite();return false;" onmouseover="javascript:this.src='/images/go_roll.gif';" onmouseout="javascript:this.src='/images/go.gif';" align="Center" src="https://alistapart.com/images/go.gif"  border="0" width="18" height="18"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="5" height="5" border="0" &gt;&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td colspan="3" bgcolor="#003366"&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="5" height="5" border="0" &gt;&lt;/td&gt;
+	&lt;/form&gt;
+ &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/TD&gt;&lt;/TR&gt;
+&lt;tr&gt;&lt;td height="8"&gt;&lt;img align="Center" src="https://alistapart.com/images/spacer01.gif" width="5" height="8" border="0" &gt;&lt;/td&gt;&lt;/tr&gt;
+ &lt;/TABLE&gt;&lt;!--  include file="inc_AdRightCol.asp" --&gt;&lt;/TD&gt;&lt;/TR&gt;
+			     &lt;TR&gt;
+				   &lt;TD Height=10 bgcolor=#CCCC33 valign=top&gt;&lt;img src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;
+			     &lt;/TR&gt;
+				 &lt;TR&gt;
+				   &lt;TD Height=6 bgcolor=#336699 valign=bottom&gt;&lt;img src="https://alistapart.com/images/corner8_out.gif"  align=right  hspace=0 vspace=0 width=5 height=5&gt;&lt;/TD&gt;
+				 &lt;/TR&gt;
+	&lt;/table&gt;
+	&lt;TABLE WIDTH=120 cellpadding=0 cellspacing=0&gt;
+				 &lt;TR bgcolor=#ffffff&gt;&lt;TD&gt;
+&lt;TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="120"&gt;	
+  &lt;TR&gt;&lt;TD&gt;&lt;img height="8" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;	
+  
+    &lt;TR&gt;&lt;TD&gt;&lt;FONT class=subHead2&gt;&lt;b&gt;Sponsored Link&lt;/b&gt;&lt;/font&gt;&lt;/TD&gt;&lt;/TR&gt;	   
+  &lt;TR&gt;&lt;TD&gt;&lt;a class="content2" href="http://go.msn.com/RES/2/2.asp?target=http://www.surveyrouter.com/msntechgadgets1"&gt;&lt;font color"#000000"&gt;Your $1,000 idea is here!  Take a survey for a chance to win!&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;	          
+  
+&lt;TR&gt;&lt;TD&gt;&lt;hr size="1" color="#003366"&gt;&lt;/TD&gt;&lt;/TR&gt; 
+  
+&lt;TR&gt;&lt;TD&gt;&lt;FONT class=subHead2&gt;&lt;b&gt;Tech Gear&lt;/b&gt;&lt;/font&gt;&lt;/TD&gt;&lt;/TR&gt;	   
+  &lt;TR&gt;&lt;TD&gt;&lt;font color"#000000"&gt;
+    &lt;a class="content2" href="http://go.msn.com/a4/e/1.asp?target=http://chkpt.zdnet.com/chkpt/hud00255dl/msnzdnetshopper.cnet.com/shopping/0-7075-1410-0-0.html?tag=pt.msn.tgdl..sh_7075" &gt;Top 10 desktops&lt;/a&gt;&lt;/font&gt;&lt;/TD&gt;&lt;/TR&gt;	          
+  &lt;TR&gt;&lt;TD&gt;&lt;FONT color"#000000"&gt;
+    &lt;a class="content2" href="http://go.msn.com/a4/e/1.asp?target=http://chkpt.zdnet.com/chkpt/hud00255dl/msnzdnetshopper.cnet.com/shopping/0-8407-1410-0-0.html?tag=pt.msn.tgdl..sh_8407" &gt;Top 10 digital cameras&lt;/a&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;	         
+  &lt;TR&gt;&lt;TD&gt;&lt;FONT color"#000000"&gt;
+    &lt;a class="content2" href="http://go.msn.com/a4/e/1.asp?target=http://chkpt.zdnet.com/chkpt/hud00255dl/msnzdnetshopper.cnet.com/shopping/0-11014-1410-0-0.html?tag=pt.msn.tgdl..sh_11014" &gt;Top 10 MP3 players&lt;/a&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;	         
+   
+&lt;TR&gt;&lt;TD&gt;&lt;hr size="1" color="#003366"&gt;&lt;/TD&gt;&lt;/TR&gt; 
+
+&lt;!--TR&gt;&lt;TD&gt;&lt;img height="8" src="https://alistapart.com/images/spacer01.gif"&gt;&lt;/TD&gt;&lt;/TR--&gt;	
+  &lt;TR&gt;&lt;TD&gt;&lt;FONT class=subHead2&gt;&lt;b&gt;Download Fun&lt;/b&gt;&lt;/font&gt;&lt;/TD&gt;&lt;/TR&gt;	 
+  &lt;TR&gt;&lt;TD &gt;&lt;a class="content2" href="https://alistapart.com/fdl/msndl11.asp"&gt;&lt;font color"#000000"&gt;&lt;B&gt;Protect your PC&lt;/B&gt;&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;	  
+  &lt;TR&gt;&lt;TD &gt;&lt;a class="content2" href="https://alistapart.com/fdl/msndl12.asp"&gt;&lt;font color"#000000"&gt;Puppies and kittens&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;	          
+  &lt;TR&gt;&lt;TD &gt;&lt;a class="content2" href="https://alistapart.com/fdl/msndl6.asp"&gt;&lt;FONT color"#000000"&gt;Free fitness helpers&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;	         
+  &lt;!--TR&gt;&lt;TD &gt;&lt;a class="content2" href="http://go.msn.com/a4/e/1.asp?target=http://chkpt.zdnet.com/chkpt/hud000255mn/msn.zdnet.com/framer/hud00025A0/computershopper.zdnet.com/texis/supercenters/listdet.html?catid=C0000122%26pid=P0515977%26review_tab=yes%26cobrand=30" &gt;&lt;FONT color"#000000"&gt;Sony Network Walkman&lt;/FONT&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR--&gt;	         
+
+
+
+&lt;/TABLE&gt;
+
+&lt;!--   Tech Gear  --&gt;&lt;/TD&gt;&lt;/TR&gt;
+				 &lt;TR&gt;&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="1" height="10"&gt;&lt;/td&gt;&lt;/TR&gt;
+				 &lt;TR bgcolor=#ffffff&gt;&lt;TD&gt;&lt;TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="120" bgcolor="#E7E7E7"&gt;	
+&lt;tr&gt;&lt;td colspan="2" bgcolor="#003366" height="15" align="center" WIDTH="114"&gt;&lt;FONT color=#FFFF00 face=verdana 
+style="FONT-SIZE: 10px"&gt;&lt;B&gt;Top Picks&lt;/B&gt;&lt;/font&gt;&lt;/td&gt;
+&lt;td  bgcolor="#003366" align="right" valign="top"&gt;&lt;img src="https://alistapart.com/images/corner-blue.gif"&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="5" height="1"&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;table BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="110" bgcolor="#E7E7E7"&gt;
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;1&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,57636,.html" class="content2"&gt;ZoneAlarm&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;2&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,44239,.html" class="content2"&gt;Webshots Desktop&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;3&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,24629,.html" class="content2"&gt;GoZilla Free&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;4&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,18640,.html" class="content2"&gt;WebFerret&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;5&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,39327,.html" class="content2"&gt;123 Free Solitaire&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;6&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,55416,.html" class="content2"&gt;CNET CatchUp&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;7&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,54862,.html" class="content2"&gt;Download Accelerator&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;8&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,30323,.html" class="content2"&gt;Cowon Jet-Audio&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="right" valign="top"&gt;&lt;b&gt;9&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,15088,.html" class="content2"&gt;Adobe Acrobat Reader (32-bit)&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="content2" align="left" valign="top"&gt;&lt;b&gt;10&lt;/b&gt;&lt;/td&gt;
+&lt;td width="10"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="10" height="1"&gt;&lt;/td&gt;
+&lt;td align="left" width="95"&gt;&lt;a href="http://go.msn.com/a4/e/2.asp?target=http://chkpt.zdnet.com/chkpt/hud00025dl6/www.zdnet.com/feeds/cgi/framer/hud0002500/www.zdnet.com/downloads/stories/info/0,10615,23283,.html" class="content2"&gt;RegClean&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width="10" colspan="3"&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="1" height="10"&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;img src="https://alistapart.com/images/spacer01.gif" width="5" height="1"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/TABLE&gt;
+
+&lt;!--  Download --&gt;  &lt;/TD&gt;&lt;/TR&gt;
+				 &lt;TR bgcolor=#ffffff&gt;&lt;TD class=content2&gt;&lt;!-- PlaceHolder--&gt;&lt;!--  Placeholder  --&gt;&lt;/TD&gt;&lt;/TR&gt;
+		     &lt;/TABLE&gt;
+		 &lt;/TD&gt;
+
+		&lt;/TR&gt;
+ &lt;/TR&gt;
+
+&lt;/TABLE&gt;
+
+    &lt;table border="0" cellpadding="0" width="608" cellspacing="0" class="msnB"&gt;
+	&lt;tr&gt;
+		&lt;td valign="top"&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0"&gt;
+	&lt;tr&gt;
+		&lt;td colspan="3" valign="top"&gt;
+			&lt;IMG BORDER="0" SRC="https://alistapart.com/i/ds/c/spacer.gif" WIDTH="1" HEIGHT="10"&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+
+	&lt;tr&gt;
+		&lt;td valign="bottom" align=right ROWSPAN="2"&gt;
+&lt;SCRIPT language="Javascript"&gt;
+	if( mblnWebTV) {
+		document.write('&lt;a href="wtv-tricks:/home"&gt;');
+	}
+	else {
+		document.write('&lt;A HREF="http://go.msn.com/A4/1/"&gt;');
+	}
+&lt;/SCRIPT&gt;
+
+&lt;IMG src="https://alistapart.com/i/ds/c/mi3/logo_min.gif" BORDER=0 ALT="go to MSN.com" height="40" width="118"&gt;&lt;/A&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+
+	&lt;tr&gt;
+		&lt;td class="msnLT" valign="bottom"&gt;More Useful Everyday
+			&lt;div&gt;&lt;IMG BORDER="0" SRC="https://alistapart.com/i/ds/c/spacer.gif" WIDTH="1" HEIGHT="4"&gt;&lt;/div&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;div class="dMSNME_1"&gt;
+&lt;SCRIPT LANGUAGE="JavaScript"&gt;
+	if ( mblnWebTV == false) {
+		document.write('&lt;div class="msnH"&gt;&nbsp;&lt;a href="http://go.msn.com/A4/0/" CLASS="msnHL"&gt;MSN Home&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/11/" CLASS="msnHL"&gt;&lt;b&gt;My MSN&lt;/b&gt;&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/8/" CLASS="msnHL"&gt;Hotmail&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/A/" CLASS="msnHL"&gt;Search&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/9/" CLASS="msnHL"&gt;Shopping&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/C/" CLASS="msnHL"&gt;Money&lt;/a&gt;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&lt;a href="http://go.msn.com/A4/B/" CLASS="msnHL"&gt;People &amp; Chat&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;IMG BORDER="0" SRC="https://alistapart.com/i/ds/c/spacer.gif" WIDTH="1" HEIGHT="10"&gt;&lt;/div&gt;');
+	}
+&lt;/script&gt;
+&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;script Language='JavaScript' src='http://popup.msn.com/popupad.asp?PG=COMPOP&MSID=233953CE96814FA6801037C0BD4A6910'&gt;&lt;/script&gt;	&lt;!--Network Template Footer//--&gt;
+	&lt;table cellpadding=0 cellspacing=0 border=0 width=608 class="msnFB"&gt;
+		&lt;tr&gt;
+			&lt;td height=44&gt;&lt;font class="msnF"&gt;&lt;font  class="msnF"&gt;&nbsp;©2001 Microsoft Corporation. All rights reserved. &lt;/font&gt;
+				&lt;a href="http://go.msn.com/A4/4/" class="msnFL"&gt;Terms of Use&lt;/a&gt;
+				&lt;a href="http://go.msn.com/A4/5/" class="msnFL"&gt;Advertise&lt;/a&gt;
+				&lt;a href="http://go.msn.com/A4/6/" class="msnFL"&gt;TRUSTe Approved Privacy Statement&lt;/a&gt;
+				&lt;a href="http://go.msn.com/A4/10/" class="msnFL"&gt;GetNetWise&lt;/a&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/table&gt;
+&lt;/TD&gt;
+
+&lt;!--Network Template Sidebar Column//--&gt;
+
+&lt;script language="javascript"&gt;
+
+	showSideBarCol();
+	showHideSidebar();
+
+
+function showSideBarCol() {
+	var mstrSideBarCol;
+	var mstrExtend;
+
+	mstrSideBarCol = '&lt;div id=sidecol&gt;&lt;table cellpadding="0" cellspacing="0" border="0" width="160" height="92" class="msnB"&gt;&lt;tr&gt;&lt;td width="14" rowspan="3"&gt;&lt;img src="https://alistapart.com/i/ds/c/spacer.gif" width="14" height="1"&gt;&lt;/td&gt;';
+
+	if (navigator.appName == "Netscape") {
+		mstrExtend = '&lt;td ID="tdsidebar" width="160" HEIGHT="100%" valign="top" class="dMSNME_1"&gt;' + mstrSideBarCol + '&lt;td align="right" colspan="2" valign="top"&gt;&lt;img src="https://alistapart.com/i/ds/c/mi3/upp.gif" width="9" height="9"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="128" HEIGHT="35" valign="bottom" colspan="2"&gt;&lt;div class="msnS"&gt;&lt;b&gt;Search the Web&lt;/b&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;form action="http://go.msn.com/A13/2/searchsubmit.asp" method="get" id=form1 name=form1&gt;&lt;tr&gt;&lt;td valign="top" CLASS="msnTD"&gt;&lt;input type="hidden" name="FORM" value="A13"&gt;&lt;input id="msnST" type="text" name="q" size="12" maxlength="150"&gt;&lt;/td&gt;&lt;td valign="top"&gt;&lt;input type="submit" value="Go" id=submit1 name=submit1&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/form&gt;&lt;/table&gt;&lt;/div&gt;&lt;a href="http://arc1.msn.com/Clicker/ADSClicker31.dll?Redirect?PG=PROCOM?AN=1.0"&gt;&lt;img src="http://arc1.msn.com/ADSAdClient31.dll?GetImage?PG=PROCOM?SC=D1?AN=1.0" width=160 height=600 border=0&gt;&lt;/a&gt;';
+		mstrExtend += '&lt;div id=divExtend&gt;&lt;table cellpadding="0" cellspacing="0" border="0" width="160" height="100%" class="msnB"&gt;';
+		mstrExtend += '&lt;tr&gt;&lt;td valign="top" HEIGHT="100%"&gt;&lt;img src="https://alistapart.com/i/ds/c/spacer.gif" border="0" width="1" height="100%"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;';
+
+		document.write( mstrExtend);
+	}
+	else {
+		if( mblnWebTV) {
+			document.write( '&lt;td ID="tdsidebar" valign="top" class="dMSNME_1"&gt;');
+		}
+		else {
+			mstrExtend = '&lt;td ID="tdsidebar" valign="top" height="100%" class="dMSNME_1"&gt;' + mstrSideBarCol + '&lt;td align="right" valign="top"&gt;';
+			mstrExtend += '&lt;img src="https://alistapart.com/i/ds/c/mi3/upp.gif" width="9" height="9"&gt;&lt;/td&gt;&lt;/tr&gt;';
+			mstrExtend += '&lt;tr&gt;&lt;td width="128" HEIGHT="35" valign="bottom"&gt;&lt;div class="msnS"&gt;&lt;b&gt;Search the Web&lt;/b&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;';
+			mstrExtend += '&lt;form action="http://go.msn.com/A13/2/searchsubmit.asp" method="get" id=form1 name=form1&gt;';
+			mstrExtend += '&lt;tr&gt;&lt;td valign=top&gt;&lt;input type="hidden" name="FORM" value="A4"&gt;&lt;input id="msnST" type="text" name="q" maxlength="150" STYLE="width:99px;"&gt;&lt;input id="msnSB" type="image" alt="Begin your Web search" src="https://alistapart.com/i/ds/c/mi3/sea.gif"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/form&gt;&lt;/table&gt;&lt;/div&gt;';
+			mstrExtend += '&lt;iframe id=sidebar style="display: none" src="http://arc1.msn.com/ADSAdClient31.dll?GetAd?PG=PROCOM?SC=D1" border=0 frameborder=0 scrolling=no marginheight=0 marginwidth=0 width=160 height=600&gt;&lt;/iframe&gt;';
+			mstrExtend += '&lt;div id=divExtend&gt;&lt;table cellpadding="0" cellspacing="0" border="0" width="160" height="100%" class="msnB"&gt;';
+			mstrExtend += '&lt;tr&gt;&lt;td valign="top" HEIGHT="100%"&gt;&lt;img src="https://alistapart.com/i/ds/c/spacer.gif" border="0" width="1" height="100%"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;';
+
+			document.write( mstrExtend);
+		}
+	}
+}
+
+
+function showHideSidebar() {
+	if( document.body) {
+		var mColTags;
+
+		mColTags = document.all;
+
+		if( mColTags) {
+			var mintWidth;
+
+			mintWidth = document.body.clientWidth;
+
+			mColTags.sidecol.style.display = ( mintWidth &gt; 753 ? '' : 'none');
+			mColTags.sidebar.style.display = ( mintWidth &gt; 753 ? '' : 'none');
+			mColTags.divExtend.style.display = ( mintWidth &gt; 753 ? '' : 'none');
+		}
+	}
+}
+
+
+function errortrap( msg,url,line){
+    return true;
+}
+&lt;/script&gt;
+
+&lt;script language="javascript" type="text/javascript" for="window" event="onresize"&gt;
+	showHideSidebar();
+
+	onerror = errortrap;
+&lt;/script&gt;
+
+&lt;!--Network Template table bottom //--&gt;
+		&lt;/TD&gt;
+ 	&lt;/TR&gt;
+&lt;/TABLE&gt;
+		&lt;/TD&gt;
+ 	&lt;/TR&gt;
+&lt;/TABLE&gt;
+	&lt;!--  Place Holder --&gt;
+	&lt;!--  Place Holder --&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</pre>
+</html>

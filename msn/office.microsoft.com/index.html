@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN"><html>
+<title>Source of office.microsoft.com/index.html</title>
+<pre>
+
+
+
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;meta name="postinfo" content="https://alistapart.com/scripts/postinfo.asp"&gt;
+&lt;TITLE&gt;Microsoft Office Tools on the Web&lt;/TITLE&gt;
+&lt;META NAME="MS.LOCALE" CONTENT="EN-US"&gt;
+&lt;META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1"&gt;
+&lt;META HTTP-EQUIV="Pragma" CONTENT="no-cache"&gt;
+&lt;META HTTP-EQUIV="Expires" CONTENT="0"&gt;
+&lt;META NAME="DESCRIPTION" CONTENT="The entry page to the Microsoft Office Web site. Find updates, downloads, assistance, and more for your Office programs."&gt;
+&lt;META NAME="PRODUCT" CONTENT="Word Excel Outlook Powerpoint Access Publisher Project FrontPage PhotoDraw"&gt;
+&lt;META NAME="VERSION" CONTENT="97 98 2000 2002"&gt;
+&lt;META NAME="SITE" CONTENT=""&gt;
+&lt;META NAME="KEYWORDS" CONTENT="Microsoft, Office"&gt;
+
+&lt;link rel="stylesheet" href="https://alistapart.com/common/en-us/includes/officexp.css"&gt;
+
+&lt;style TYPE="text/css"&gt;
+.AnnounceTbl
+{
+	border-color:#FF9900;
+	border-style:solid;
+	border-width:1px;
+}
+.GetToWorkTbl
+{
+	padding-left:9px;
+	padding-right:9px;
+}
+.UpdateOfficeTbl
+{
+	padding-left:9px;
+	padding-right:9px;
+}
+.BorderTbl2
+{
+	border-color:#6699CC;
+	border-style:solid;
+	border-width:1px;
+}
+&lt;/style&gt;
+&lt;script language="javascript"&gt;
+
+var searchFor = "Search for:";	// need to be localized
+var noInput= "Please input the word or phrase to search for.";	 // need to be localized
+var searchlocale = "";	// need to be reset for non-English page. For example: change it to "https://alistapart.com/Japan" for Japan
+var isV5 = false;
+var isIE = false;
+if (parseInt(navigator.appVersion) &gt;= 5) isV5 = true;
+if (navigator.appVersion.indexOf("MSIE") != -1) isIE = true;
+
+//KWHITT: fix for NS4 -- in NS4 you can't reference by ID, only NAME
+function GetControl(sName) {
+	for (i = 0; i &lt; document.SearchForm.length; i++) {
+
+		if (sName == document.SearchForm[i].name) 
+			return (document.SearchForm[i]);
+	}
+	return null;
+}
+function OpenFeedBack(varSite, varLocale) {
+	var fbUrl = "";
+	var conWWWurl;
+	if (isIE || isV5)
+		conWWWurl = document.SearchForm.top_WWWurl;
+	else
+		conWWWurl = GetControl("top:WWWurl");
+
+	if (conWWWurl.value != "  ")	//2spaces, NS4 hack
+		fbUrl += conWWWurl.value;
+
+	varLocale = ("https://alistapart.com/" + varLocale).toLowerCase();
+	if (varLocale != "https://alistapart.com/en-us")
+		fbUrl += varLocale;
+
+	fbUrl += ("https://alistapart.com/feedback/default.aspx?site=" + varSite);
+	window.open(fbUrl, "FeedBack", "width=530,height=370,left=110,top=120,scrollbars=1,alwaysRaised=1,status=1", false );
+}
+function ResetSearch() {
+	var conSearchText;
+	if (isIE || isV5) 
+		conSearchText = document.SearchForm.mnu_SearchText;
+	else
+		conSearchText = GetControl("mnu:SearchText");
+
+	if (conSearchText.value != searchFor)
+		conSearchText.select();
+	else
+		conSearchText.value = "";
+
+}
+function MouseOutMenu(Item) {
+	if (isV5) {
+		var MenuItem = document.getElementById(Item);
+		MenuItem.setAttribute("style", "");
+	}
+	eval(Item + ".style.borderColor = '#E7E7E7';");	
+}
+function MouseOverMenu(Item) {
+	if (isV5) {
+		var MenuItem = document.getElementById(Item);
+		MenuItem.setAttribute("style", "border-width:2px;border-style:solid;border-color:#6699CC;");
+	}
+	eval(Item + ".style.borderColor = '#6699CC';");
+}
+function SearchFor() {
+	var SearchURL = "";
+	var conSearchText;
+	var conSSurl;
+	var conhSITE; 
+	var conhPRODUCT;
+	var conhVERSION;
+	if (isIE || isV5) 
+		{
+		conSearchText = document.SearchForm.mnu_SearchText;
+		conSSurl = document.SearchForm.top_SSurl;
+		conhSITE = document.SearchForm.Search_hSITE;
+		conhPRODUCT = document.SearchForm.Search_hPRODUCT;
+		conhVERSION = document.SearchForm.Search_hVERSION;
+		}
+	else
+		{
+		conSearchText = GetControl("mnu:SearchText");
+		conSSurl = GetControl("top:SSurl");
+		conhSITE = GetControl("Search:hSITE");
+		conhPRODUCT = GetControl("Search:hPRODUCT");
+		conhVERSION = GetControl("Search:HVERSION");
+		}
+
+	var SearchQU = conSearchText.value;
+	if (SearchQU != "") {
+		if (conSSurl.value != "  ")	//2spaces, NS4 hack
+			SearchURL += conSSurl.value;
+			
+		if (searchlocale != "")
+			SearchURL += searchlocale;
+			
+		SearchURL += ("https://alistapart.com/result.aspx?qu=" + escape(SearchQU));
+		if (conhSITE != null) SearchURL += "&ca=" + escape(conhSITE.value);
+		if (conhPRODUCT != null) SearchURL += "&pr=" + escape(conhPRODUCT.value);
+		if (conhVERSION != null) SearchURL += "&ve=" + escape(conhVERSION.value);
+		document.location.href = SearchURL;
+	}
+	else
+		alert(noInput);
+
+}
+&lt;/script&gt;
+
+&lt;/HEAD&gt;
+
+&lt;BODY id="_body" TOPMARGIN="0" LEFTMARGIN="0" RIGHTMARGIN="0" BOTTOMMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0"&gt;
+
+&lt;!-- top section: begin --&gt;
+&lt;table id="top__topTable" cellspacing="0" cellpadding="0" border="0" height="48" width="780"&gt;
+	&lt;tr&gt;
+		&lt;td bgcolor="White" height="45" width="162"&gt;
+			
+			&lt;form id="SearchForm" name="SearchForm" method="post" onsubmit="SearchFor();return false;"&gt;
+				&lt;a name="top"&gt;&lt;/a&gt;
+				&lt;a id="top_LogoUrl" href="https://alistapart.com/default.aspx"&gt;&lt;img id="top_LogoImg" title="Microsoft Office" src="https://alistapart.com/common/en-us/images/Officelogo.gif" alt="Microsoft Office" align="Middle" border="0" height="45" /&gt;&lt;/a&gt;
+		&lt;/td&gt;&lt;td bgcolor="White" height="45" width="442"&gt;
+			
+			&nbsp;&nbsp;
+			&lt;input name="top:WWWurl" id="top_WWWurl" type="hidden" /&gt;&lt;input name="top:SSurl" id="top_SSurl" type="hidden" value="http://search.office.microsoft.com" /&gt;&lt;img id="top_SiteBanner" title="Tools on the Web" src="https://alistapart.com/common/en-us/images/tools_banner.gif" alt="Tools on the Web" align="Middle" border="0" height="45" /&gt;
+		&lt;/td&gt;&lt;td id="top_FeedBackUrl" align="Right" valign="Bottom" bgcolor="White" height="45" width="170"&gt;
+			&lt;a class='Top' href="javascript:OpenFeedBack('00', 'en-us')"&gt;&lt;img border='0' src='/common/en-us/images/Feedback.gif' title='Feedback' alt='Feedback' hspace='4'&gt;Feedback&lt;/a&gt;
+		&lt;/td&gt;&lt;td id="top_PassportUrl" align="Center" valign="Bottom" bgcolor="White" height="45" width="6"&gt;
+			
+		&lt;/td&gt;
+	&lt;/tr&gt;&lt;tr&gt;
+		&lt;td colspan="4" bgcolor="#336699" height="3" style="Font-Size:1pt"&gt;
+			&lt;span id="top_TopError"&gt;
+				&lt;font point-size="1"&gt;&nbsp;&lt;/font&gt;
+			&lt;/span&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+
+
+	
+&lt;!-- top section: end --&gt;
+
+&lt;!-- middle section: begin --&gt;
+&lt;table id="_midTable" cellspacing="0" cellpadding="0" border="0" height="550" width="780"&gt;
+	&lt;tr&gt;
+		&lt;td bgcolor="#6699CC" width="3" style="Height:100%"&gt;&lt;font size="1"&gt;
+			&lt;font point-size="1"&gt;&nbsp;&lt;/font&gt;
+		&lt;/font&gt;&lt;/td&gt;&lt;td id="_left" align="Left" valign="Top" bgcolor="#E7E7E7" width="158" style="Height:100%"&gt;
+			&lt;table id="mnu_SearchTable" cellspacing="0" cellpadding="0" border="0" bgcolor="#6699CC" width="158"&gt;
+				&lt;tr&gt;
+					&lt;td bgcolor="#6699CC" height="50" width="158"&gt;&lt;font color="#003366"&gt;
+						
+			&lt;label for="SearchText" class="Font8pt"&gt;&lt;b&gt;Search for:&lt;/b&gt;
+				&lt;input name="mnu:SearchText" id="mnu_SearchText" type="text" Class="Font8pt" maxlength="50" size="11" Align="AbsBottom" onfocus="javascript:ResetSearch()" style="width:120px;" /&gt;&nbsp;
+			&lt;/label&gt;
+			&lt;a id="mnu_GoUrl" href="javascript:SearchFor();"&gt;&lt;img id="mnu_GoImage" title="Go" src="https://alistapart.com/common/en-us/images/go.gif" alt="Go" align="AbsBottom" border="0" /&gt;&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+&lt;table id="mnu_LeftTable" cellspacing="1" cellpadding="0" border="0" bgcolor="#E7E7E7" width="158"&gt;
+				&lt;tr&gt;
+					&lt;td id="mnu_ID00" class="Font8pt" bgcolor="#FFFFFF" height="21" style="border-width:1px;border-style:solid;border-color:#6699CC;"&gt;&lt;font color="#666666"&gt;&lt;b&gt;
+						&nbsp;&lt;a class='Menu' href='/default.aspx'&gt;&lt;img border='0' align='absbottom' alt='Office Home' title='Office Home' src='/common/en-us/images/homeicon_selected.gif'&gt;&nbsp;Office Home&lt;/a&gt;
+					&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td id="mnu_ID1" class="Font8pt" valign="Bottom" bgcolor="#E7E7E7" height="24"&gt;&lt;font color="#666666"&gt;&lt;b&gt;
+						&nbsp;&nbsp;Get to Work
+					&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td id="mnu_ID11" class="Font8pt" onmouseout="javascript:MouseOutMenu('mnu_ID11')" onmouseover="javascript:MouseOverMenu('mnu_ID11')" bgcolor="#E7E7E7" height="21" style="border-width:1px;border-style:solid;border-color:#E7E7E7;"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class='Menu' href='/DesignGallery/default.aspx'&gt;Design Gallery Live&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td id="mnu_ID10" class="Font8pt" onmouseout="javascript:MouseOutMenu('mnu_ID10')" onmouseover="javascript:MouseOverMenu('mnu_ID10')" bgcolor="#E7E7E7" height="21" style="border-width:1px;border-style:solid;border-color:#E7E7E7;"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class='Menu' href='/TemplateGallery/default.aspx'&gt;Template Gallery&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td id="mnu_ID12" class="Font8pt" onmouseout="javascript:MouseOutMenu('mnu_ID12')" onmouseover="javascript:MouseOverMenu('mnu_ID12')" bgcolor="#E7E7E7" height="21" style="border-width:1px;border-style:solid;border-color:#E7E7E7;"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class='Menu' href='/Assistance/default.aspx'&gt;Assistance Center&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td id="mnu_ID13" class="Font8pt" onmouseout="javascript:MouseOutMenu('mnu_ID13')" onmouseover="javascript:MouseOverMenu('mnu_ID13')" bgcolor="#E7E7E7" height="21" style="border-width:1px;border-style:solid;border-color:#E7E7E7;"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class='Menu' href='/Services/default.aspx'&gt;Office eServices&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td id="mnu_ID2" class="Font8pt" valign="Bottom" bgcolor="#E7E7E7" height="24"&gt;&lt;font color="#666666"&gt;&lt;b&gt;
+						&nbsp;&nbsp;Office Update
+					&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td id="mnu_ID22" class="Font8pt" onmouseout="javascript:MouseOutMenu('mnu_ID22')" onmouseover="javascript:MouseOverMenu('mnu_ID22')" bgcolor="#E7E7E7" height="21" style="border-width:1px;border-style:solid;border-color:#E7E7E7;"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class='Menu' href='/ProductUpdates/default.aspx'&gt;Product Updates&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td id="mnu_ID21" class="Font8pt" onmouseout="javascript:MouseOutMenu('mnu_ID21')" onmouseover="javascript:MouseOverMenu('mnu_ID21')" bgcolor="#E7E7E7" height="21" style="border-width:1px;border-style:solid;border-color:#E7E7E7;"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class='Menu' href='/Downloads/default.aspx'&gt;Download Center&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td class="Font8pt" valign="Bottom" bgcolor="#E7E7E7" height="96"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;Related Sites
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td class="Font8pt" bgcolor="#E7E7E7" height="16"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;img align='absmiddle' src='/common/en-us/images/bullet.gif' alt='*'&gt;&nbsp;&lt;a href='/WorldWide/Default.aspx'&gt;Office Worldwide 
+                  &lt;img border="0" src="https://alistapart.com/common/en-us/images/globe.gif" alt="globe" /&gt;&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td class="Font8pt" bgcolor="#E7E7E7" height="16"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;img align='absmiddle' src='/common/en-us/images/bullet.gif' alt='*'&gt;&nbsp;&lt;a href='http://office.microsoft.com/OfficeXPSpecialOffers.aspx'&gt;Try Office XP&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td class="Font8pt" bgcolor="#E7E7E7" height="16"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;img align='absmiddle' src='/common/en-us/images/bullet.gif' alt='*'&gt;&nbsp;&lt;a target='_blank' href='http://windowsupdate.microsoft.com/'&gt;Windows Update&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td class="Font8pt" bgcolor="#E7E7E7" height="16"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;img align='absmiddle' src='/common/en-us/images/bullet.gif' alt='*'&gt;&nbsp;&lt;a target='_blank' href='http://www.msn.com/'&gt;MSN&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td class="Font8pt" bgcolor="#E7E7E7" height="16"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;img align='absmiddle' src='/common/en-us/images/bullet.gif' alt='*'&gt;&nbsp;&lt;a target='_blank' href='http://www.microsoft.com/'&gt;Microsoft.com&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td class="Font8pt" bgcolor="#E7E7E7" height="16"&gt;&lt;font color="#666666"&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;img align='absmiddle' src='/common/en-us/images/bullet.gif' alt='*'&gt;&nbsp;&lt;a target='_blank' href='http://www.bcentral.com/'&gt;bCentral&lt;/a&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+&lt;span id="mnu_EndOfForm"&gt;&lt;/form&gt;&lt;/span&gt;
+&lt;span id="mnu_LeftError"&gt;&lt;/span&gt;
+
+		&lt;/td&gt;&lt;td id="_content" align="Left" valign="Top" width="618"&gt;&lt;font face="Verdana"&gt;
+			&lt;table cellspacing="10" cellpadding="0" border="0"&gt;
+				&lt;tr&gt;
+					&lt;td align="Left" valign="Top" width="618"&gt;&lt;font face="Verdana"&gt;
+						&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;&lt;root&gt;&lt;table width="594px" cellpadding="0" cellspacing="0" border="0" class="AnnounceTbl"&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td&gt;&lt;a target="_blank" href="http://www.microsoft.com/office/evaluation/default.htm"&gt;&lt;img border="0" vspace="1" hspace="1" align="absbottom" src="https://alistapart.com/common/en-us/images/seeit.gif" alt="Buy Office"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/td&gt;&lt;td width="10"&gt;&lt;img src="https://alistapart.com/common/en-us/images/1ptrans.gif" width="10" /&gt;&lt;/td&gt;&lt;td valign="middle"&gt;&lt;a target="_blank" href="http://www.microsoft.com/office/evaluation/default.htm"&gt;&lt;b&gt;Find Out What's New in Office XP&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;font class="Font8pt"&gt;See how new features like smart tags, task panes, and document recovery can help you simplify your productivity, collaborate more effectively, and take Office beyond the desktop. &lt;a target="_blank" href="http://www.microsoft.com/office/evaluation/default.htm"&gt;Get all the details&lt;/a&gt;.&lt;/font&gt;&lt;/br&gt;&lt;/td&gt;&lt;td width="10"&gt;&lt;img src="https://alistapart.com/common/en-us/images/1ptrans.gif" width="10" /&gt;&lt;/td&gt;&lt;td&gt;&lt;a target="_blank" href="https://alistapart.com/common/en-us/privacy.aspx"&gt;&lt;img border="0" vspace="1" hspace="1" align="absbottom" src="https://alistapart.com/common/en-us/images/ad2.gif" alt="Timesaving Tip"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/td&gt;&lt;td width="10"&gt;&lt;img src="https://alistapart.com/common/en-us/images/1ptrans.gif" width="10" /&gt;&lt;/td&gt;&lt;td valign="middle"&gt;&lt;a target="_blank" href="https://alistapart.com/common/en-us/privacy.aspx"&gt;&lt;b&gt;Protecting Your Privacy&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;font class="Font8pt"&gt;See our updated privacy statement.&lt;/font&gt;&lt;/br&gt;&lt;/td&gt;&lt;td width="10"&gt;&lt;img src="https://alistapart.com/common/en-us/images/1ptrans.gif" width="10" /&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/root&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td align="Left" valign="Top" width="618"&gt;&lt;font face="Verdana"&gt;
+						&lt;table cellspacing="0" cellpadding="0" border="0"&gt;
+							&lt;tr&gt;
+								&lt;td align="Left" valign="Top" Class="BorderTbl2" width="384"&gt;&lt;font face="Verdana"&gt;
+									&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;&lt;root&gt;&lt;table height="19" bgcolor="#6699CC" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td width="11" style="font-size:1px"&gt;Ý&lt;/td&gt;&lt;td width="373"&gt;&lt;font class="Font8pt" color="white"&gt;&lt;b&gt;Get to Work&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;table cellpadding="0" cellspacing="2" border="0" class="GetToWorkTbl"&gt;&lt;tr&gt;&lt;td height="5" style="font-size:5px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="font8pt"&gt;&lt;b&gt;&lt;a href="https://alistapart.com/DesignGallery/default.aspx"&gt;Be Creative With Pictures&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table height="1" width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td height="1" bgcolor="#6699cc" style="font-size:1px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="Font8pt"&gt;People love to see pictures! Make sure your readers focus on your work by including photos, clip art, and animations from&lt;a href="http://dgl.microsoft.com/"&gt; Design Gallery Live&lt;/a&gt;. Computer clip art, sports photos, and Web animations are our featured August downloads.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:1px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="font8pt"&gt;&lt;b&gt;&lt;a href="https://alistapart.com/TemplateGallery/default.aspx"&gt;Stroll Through Template Gallery&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table height="1" width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td height="1" bgcolor="#6699cc" style="font-size:1px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="Font8pt"&gt;Instead of starting from scratch, use a &lt;a href="https://alistapart.com/templategallery/default.aspx"&gt;template&lt;/a&gt; to get you started on all your tasks.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:1px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellpadding="0" cellspacing="2" border="0"&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="http://officeupdate.microsoft.com/TemplateGallery/redir.asp?TID=1086"&gt;Monthly and weekly planning calendar&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="http://officeupdate.microsoft.com/TemplateGallery/redir.asp?TID=1100"&gt;2-page newsletter&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="font-size:6px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="font8pt"&gt;&lt;b&gt;&lt;a href="https://alistapart.com/Assistance/default.aspx"&gt;Get Help Using Office Products&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table height="1" width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td height="1" bgcolor="#6699cc" style="font-size:1px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="Font8pt"&gt;Articles, tips, and a monthly spotlight to the rescue! No more scratching your head over printing or macros.  &lt;a href="https://alistapart.com/assistance/default.aspx"&gt;  Help is here.&lt;/a&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:1px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellpadding="0" cellspacing="2" border="0"&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="http://search.office.microsoft.com/assistance/spotlight.aspx"&gt;At  home with Office XP&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="assistance/2002/articles/olOrganizeInfoInOutlook.aspx"&gt;Organize your information in Outlook&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="font-size:6px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="font8pt"&gt;&lt;b&gt;&lt;a href="https://alistapart.com/services"&gt;Connect with eServices&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table height="1" width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td height="1" bgcolor="#6699cc" style="font-size:1px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="Font8pt"&gt;Web services help you make the most of Office.  Whether it's file storage or e-mail, &lt;a href="https://alistapart.com/services"&gt;eServices&lt;/a&gt; has something for you.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:1px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellpadding="0" cellspacing="2" border="0"&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_1.htm"&gt;Get Office Supplies&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_2.htm"&gt;Find an Office Expert&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_3.htm"&gt;Upgrade Your PC&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_4.htm"&gt;Translate Your Docs&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_5.htm"&gt;Get Office Training Online&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_6.htm"&gt;Print Postage Online&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_7.htm"&gt;Send Direct Mail&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_8.htm"&gt;Store Files Online&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_9.htm"&gt;Find the Latest Software&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_10.htm"&gt;Get Smart Tags&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_11.htm"&gt;Find an E-Mail Address&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_12.htm"&gt;Use the White Pages&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/services/home/redir/ql_13.htm"&gt;Get Maps &amp; Directions&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="font-size:6px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/root&gt;
+								&lt;/font&gt;&lt;/td&gt;&lt;td align="Left" valign="Top" width="10"&gt;&lt;font face="Verdana"&gt;
+									
+									&nbsp;
+								
+								&lt;/font&gt;&lt;/td&gt;&lt;td align="Left" valign="Top" Class="BorderTbl2" width="196"&gt;&lt;font face="Verdana"&gt;
+									&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;&lt;root&gt;&lt;table height="19" bgcolor="#6699CC" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td width="11" style="font-size:1px"&gt;Ý&lt;/td&gt;&lt;td width="185"&gt;&lt;font class="Font8pt" color="white"&gt;&lt;b&gt;Office Update&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;table cellpadding="0" cellspacing="2" border="0" class="GetToWorkTbl"&gt;&lt;tr&gt;&lt;td height="5" style="font-size:5px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="font8pt"&gt;&lt;b&gt;&lt;a href="https://alistapart.com/ProductUpdates/default.aspx"&gt;Update Your Software&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table height="1" width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td height="1" bgcolor="#6699cc" style="font-size:1px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="Font8pt"&gt;Office XP Updates now available for Outlook, Word, and Publisher! &lt;a href="https://alistapart.com/ProductUpdates/default.aspx"&gt;Microsoft Office Product Updates center&lt;/a&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:1px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="font8pt"&gt;&lt;b&gt;&lt;a href="https://alistapart.com/downloads/"&gt;Find a Download&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table height="1" width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td height="1" bgcolor="#6699cc" style="font-size:1px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;font class="Font8pt"&gt;Looking for converters, add-ins, and viewers? &lt;a href="https://alistapart.com/downloads/"&gt;This is the place for you&lt;/a&gt;.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:1px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellpadding="0" cellspacing="2" border="0"&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/downloads/2002/Msnsq.aspx"&gt;Excel 2002 Stock Quotes Add-in&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td width="22" height="1" style="font-size:13px"&gt;Ý&lt;/td&gt;&lt;td&gt;&lt;a href="https://alistapart.com/downloads/2002/momm.aspx"&gt;Mobile Manager for Outlook 2002/2000&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="font-size:6px"&gt;Ý&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/root&gt;
+								&lt;/font&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;&lt;tr&gt;
+					&lt;td align="Center" valign="Top" width="618"&gt;&lt;font face="Verdana"&gt;
+						&lt;font class="Font8pt" color="#666666"&gt;&#169; 2001 Microsoft Corporation. All rights reserved. &lt;/font&gt;
+&lt;font class="Font8pt" color="#666666"&gt;&lt;a target="_blank" href="http://www.microsoft.com/info/cpyright.htm"&gt;Terms of use&lt;/a&gt;.&lt;/font&gt;
+&lt;font class="Font8pt" color="#666666"&gt;&lt;a target="_blank" href="http://office.microsoft.com/common/en-us/disclaimer.aspx"&gt;Disclaimer&lt;/a&gt;.&lt;/font&gt;
+&lt;font class="Font8pt" color="#666666"&gt;&lt;a target="_blank" href="http://office.microsoft.com/common/en-us/privacy.aspx"&gt;Privacy Statement&lt;/a&gt;.&lt;/font&gt;
+					&lt;/font&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+		&lt;/font&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- middle section: end --&gt;
+&lt;/BODY&gt;
+
+
+
+&lt;/HTML&gt;
+</pre>
+</html>

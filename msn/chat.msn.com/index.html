@@ -1,0 +1,764 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN"><html>
+<title>Source of chat.msn.com/index.html</title>
+<pre>
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD W3 HTML//EN"&gt;	
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;META NAME="keywords" CONTENT="chat, IRC, category, guest events, community, communities, MSN, Microsoft Network"&gt;
+&lt;META HTTP-EQUIV="PICS-Label" CONTENT='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" L COMMENT "RSACi North America Server" BY "inet@microsoft.com" R (N 0 S 0 V 0 L 0))'&gt;	
+&lt;META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"&gt;
+&lt;TITLE&gt;MSN Chat - Home&lt;/TITLE&gt;
+
+&lt;script language="JavaScript" src="translate.js"&gt;&lt;/script&gt;
+&lt;script language="JavaScript" src="server_browser_sniff.js"&gt;&lt;/script&gt;
+&lt;script language="JavaScript" src="helppane_ndd.js"&gt;&lt;/script&gt;
+
+
+&lt;script language="javascript"&gt;
+
+if (!IsCookieEnabled())
+{
+	top.location.href = "nocookies.msnw";
+}
+
+	SetCookie("uid", "");
+
+function GetCookie(name) 
+{
+	var result = null;
+	var myCookie = " " + document.cookie + ";";
+	var searchName = " " + name + "=";
+	var startOfCookie = myCookie.indexOf(searchName);
+	var endOfCookie;
+	if (startOfCookie != -1) 
+	{
+		startOfCookie += searchName.length; 
+		endOfCookie = myCookie.indexOf(";", startOfCookie);
+		result = unescape(myCookie.substring(startOfCookie, endOfCookie));
+	}
+	return result;
+}
+
+function SetCookie(name, value) 
+{
+	if (name)
+	{	
+		var never = new Date();
+
+		if (value)
+		{
+			never.setDate (31); 
+			never.setMonth (12); 
+			never.setYear (2037);
+		}
+		else 
+			never.setTime(never.getTime() - 1);
+
+		var expString = "; expires=" + never.toGMTString();
+		document.cookie = name + "=" + escape(value) + expString + "; path=/";
+	}
+}
+
+function IsCookieEnabled() 
+{
+	SetCookie("testKey", "1");
+
+	if (GetCookie("testKey") == "1")
+		return 1;
+
+	return 0;
+}
+
+&lt;/script&gt;
+
+&lt;script language="JavaScript"&gt;
+L_H_TEXT = "";
+H_FILTER = "";
+H_BRAND = "";
+L_H_APP = "MSN Chat";
+H_CONFIG = "chatv15.ini";
+H_URL_BASE = "http://help.msn.com/en_us";
+bScreen = true;
+H_TOPIC="";
+bSearch=false;
+H_BURL = "/PaneHelpFrame.msnw";
+
+H_TOPIC="ORG_ChatHomePage.htm"
+bSearch=false
+
+var catNames = new Array();
+var hexNames = new Array();
+var room = new Array();
+
+var cookie = GetCookie("mychat");
+
+function GetChatList(maxrooms)
+{
+	var i = 0;
+
+	if (maxrooms == 0)
+		maxrooms = 6;
+
+	if (cookie)
+	{
+		var len = cookie.length;
+		var pos = 1;
+		//while (pos&gt;0 && i&lt;len && cookie.length&gt;1)
+		while (pos&gt;0 && i&lt;maxrooms && cookie.length&gt;1)
+		{
+			//createdBy[i] = cookie.substring(0,1);
+
+			cookie = cookie.substring(1,cookie.length);
+
+			pos = cookie.indexOf("\"");
+			if (pos &gt; 0)
+				s = cookie.substring(0,pos);
+			else
+				s = cookie.substring(pos+1,cookie.length);
+
+			//get cat name and hex name
+			catPos = s.indexOf("|");
+			if (catPos != -1)
+			{
+				room[i] = s.substring(0, catPos);
+				hexPos = s.indexOf("|", catPos+1);
+				if (hexPos == -1)
+					hexPos = cookie.length;
+
+				catNames[i] = s.substring(catPos+1,hexPos);
+				hexNames[i] = s.substring(hexPos+1,s.length);
+			}
+			else
+			{
+				room[i] = s;
+			}
+
+			i++;
+			cookie = cookie.substring(pos+1,cookie.length);
+		};
+	}
+
+	return i;
+}
+&lt;/script&gt;
+
+&lt;LINK HREF="chat.css" REL="stylesheet" TYPE="text/css"&gt;
+
+&lt;/HEAD&gt;
+&lt;BODY TOPMARGIN=0 LEFTMARGIN=0&gt;
+&lt;TABLE border=0 cellPadding=0 cellSpacing=0&gt;
+&lt;TR&gt;&lt;TD vAlign=top width=610&gt;
+
+&lt;TABLE border=0 cellpadding=0 cellspacing=0 width=610 bgcolor=#336699&gt;
+    &lt;TR&gt;&lt;TD height=2 colspan=15&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TD&gt;&lt;/TR&gt;
+    &lt;TR&gt; 
+        &lt;TH width=1&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TH&gt; 
+					&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/AD/7/" class=MSNHeaderLink target=_top&gt;MSN Home&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            									&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/AD/8/" class=MSNHeaderLink target=_top&gt;Hotmail&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            							&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/AD/A/" class=MSNHeaderLink target=_top&gt;Search&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            							&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/AD/9/" class=MSNHeaderLink target=_top&gt;Shopping&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            							&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/A3/C/" class=MSNHeaderLink target=_top&gt;Money&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            							&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/A2/B/" class=MSNHeaderLink target=_top&gt;People &amp; Chat&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            		        &lt;TH width=77&gt;&lt;A HREF="http://chat.msn.com/default.msnw?msppchlg=1&mspplogin=http://login.passport.com/login.srf%3Flc%3D1033%26id%3D1%26ru%3Dhttp%253A%252F%252Fchat%252Emsn%252Ecom%252Fdefault%252Emsnw%26tw%3D43200%26kv%3D2%26ct%3D1004480913%26ems%3D1%26kpp%3D3%26ver%3D2.0.0248.1%26tpf%3D431e6f83df9cc3d4413ac77bdd4f44f1"&gt;&lt;IMG SRC="http://www.passportimages.com/1033/signin.gif" CLASS="PassportSignIn" BORDER="0" ALT="Sign in with your Passport."/&gt;&lt;/A&gt;		&lt;/TH&gt;
+        &lt;TH width=1&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TH&gt; 
+    &lt;/TR&gt; 
+    &lt;TR&gt;&lt;TD height=2 colspan=15&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;TABLE border=0 cellspacing=0 cellpadding=0 width=610 bgcolor=#336699&gt;
+    &lt;TR&gt;
+        &lt;TD width=140&gt;&lt;A href="http://www.msn.com" target=_top&gt;&lt;IMG src="images//partnerlogos//logo.gif" width=140 height=60 border=0 alt="Go to MSN.com"&gt;&lt;/A&gt;&lt;/TD&gt;
+        &lt;TD&gt;&lt;A HREF="http://ads.msn.com/ads/redirect.dll/CID=00117f67dd66bc2300000000/AREA=WBCCMI?image=http://global.msads.net/ads/WBCCMI/003771440120_LG.gif" TARGET="_top"&gt;&lt;IMG SRC="http://global.msads.net/ads/WBCCMI/003771440120_LG.gif" ALT="Click Here!" BORDER=0 WIDTH=468 HEIGHT=60&gt;&lt;/A&gt;		&lt;/TD&gt;
+    &lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;TABLE border=0 cellPadding=0 cellSpacing=0 width=610 bgcolor=#336699&gt;
+    &lt;TR bgcolor=#336699&gt;&lt;TD valign=bottom width=110&gt;&lt;A href="default.msnw" title="Go to the MSN Chat home page."&gt;&lt;IMG width=110 height=32 align=absmiddle src="images/chatlogo.gif" border=0&gt;&lt;/A&gt;&lt;/TD&gt;&lt;TD valign=bottom align=left width=51&gt;&lt;IMG src="images/sharkfin.gif" width=51 height=32&gt;&lt;/TD&gt;&lt;TD valign=top bgcolor=#2288BB width=100%&gt;&lt;TABLE border=0 cellpadding=0 cellspacing=0 width=100%&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG border=0 height=7 width=100% src="images/top_line.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD&gt;&lt;font class=sharkbartitle&gt;&lt;span id='sharkbartitle'&gt;&nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+    &lt;TR bgcolor=#2288BB&gt;&lt;TD colspan=2&gt;&lt;IMG border=0 width=161 height=6 src="images/left_top_line.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TD&gt;
+    &lt;/TR&gt;
+    &lt;TR bgcolor=#2288BB&gt;&lt;TD colspan=3&gt;&lt;TABLE border=0 cellPadding=2 cellSpacing=0&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG border=0 width=5 height=1 src="images/c.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;A class="HeaderLink" href="default.msnw" title="Go to the MSN Chat home page."&gt;Chat Home&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;A class="HeaderLink" href="/create.msnw" title="Create your own private chat room."&gt;Create a Room&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;A class="HeaderLink" href="/join.msnw" title="Join a specific chat room or get started in one of our featured rooms."&gt;Join a Chat&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;A class="HeaderLink" href="/friend.msnw" title="Find out if a friend is chatting right now."&gt;Find a Friend&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;                    &lt;TD&gt;&lt;A class="HeaderLink" href="feature.msnw?id=MSNLiveHome" title="Chat with special guests in our Event chat room."&gt;Celebrity Chats&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;                    &lt;TD&gt;&lt;A class="HeaderLink" href="javascript:DoHelp(); void('');" title="Get instructions and tips for using MSN Chat."&gt;Help&lt;/A&gt;&lt;/TD&gt;                &lt;/TR&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+    &lt;TR bgcolor=#336699 height=1&gt;&lt;TD colspan=3&gt;&lt;IMG border=0 height=1 width=100% src="images/c.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;table border=0 cellpadding=0 cellspacing=0 width=610&gt;
+&lt;tr valign=top&gt;
+  &lt;td width=10 bgColor="#ffffcc"&gt;&lt;IMG height=1 width=10 src="images/pixel1x1.gif" border=0 ALT=""&gt;&lt;img width=1 height=1 border=0 alt="" src="http://c.msn.com/c.gif?PI=11890&DI=341&NC=9519&NA=1148&PS=9468"&gt;&lt;/TD&gt;
+  &lt;td bgcolor="#ffffcc"&gt;
+	&lt;table border=0 cellspacing=0 cellpadding=0 width=145&gt;
+	&lt;tr&gt;
+		&lt;td bgColor="#ffffcc"&gt;&lt;IMG height=1 width=10 src="images/pixel1x1.gif" border=0 ALT=""&gt;&lt;/TD&gt;
+		&lt;td valign=top&gt;
+	
+				 &lt;table border=0 cellspacing=0 cellpadding=0 width=131 valign=top&gt;
+		  &lt;tr&gt;
+			&lt;td height=5&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td class=lefttext&gt;&lt;A href="profile.msnw?edit=1"&gt;Edit My Profile&lt;/A&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td height=2&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td class=lefttext&gt;&lt;A href="changenick.msnw"&gt;Change My Nickname&lt;/A&gt;&lt;/td&gt;
+		  &lt;/tr&gt;	  
+		  &lt;tr&gt;
+			&lt;td height=2&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td class=lefttext&gt;&lt;A href="settings.msnw"&gt;My Settings&lt;/A&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td height=2&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td class=lefttext&gt;&lt;A href="conduct.msnw"&gt;Code of Conduct&lt;/A&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td class=lefttitle&gt;
+				&lt;img SRC="images/pixel1x1.gif" width=1 height=3 ALT=""&gt;&lt;br&gt;
+				My Chats
+			&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td&gt;&lt;img src="images/blueline.jpg" width=134 height=1 ALT=""&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td height=2&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td colspan=2&gt;
+				&lt;table width=130 border=0 cellpadding=0 cellspacing=0 valign=middle&gt;
+				&lt;tr&gt;
+					&lt;td height=2&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;&lt;img src="images/ftl.jpg" width=4 height=4 ALT=""&gt;&lt;/td&gt;
+					&lt;td background="images/ftm.jpg" width='100%'&gt;&lt;img SRC="images/pixel1x1.gif" width="100%" height=4 ALT=""&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;img src="images/ftr.jpg" width=4 height=4 ALT=""&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td background="images/fl.jpg"&gt;&lt;img SRC="images/pixel1x1.gif" width=4 height="100%" ALT=""&gt;&lt;/td&gt;
+					&lt;td bgcolor="#ffffff" class=favdesc&gt;
+					&lt;script language=JavaScript&gt;
+				
+				var chatList = '';
+				if (cookie)
+				{	
+					var NumRooms = GetChatList(6);
+
+					chatList = '';
+
+					if (NumRooms)
+					{
+						var strEncodedURL = '';
+						for (var i=0; i&lt;NumRooms; i++)
+						{
+							strEncodedURL = '';
+							if (room[i])
+							{
+								s = unescape(room[i]);
+								s = (s.length&gt;20 ? s.substring(0, 20)+"..." : s);
+								psignPos = s.indexOf("%23");
+								if (psignPos &gt;= 0)
+									s = s.substring(psignPos+3, s.length);
+
+								strEncodedURL = escape(room[i]);
+								if (strEncodedURL.indexOf("%u") != -1)
+									strEncodedURL = escape(strEncodedURL);
+							}
+							else
+							{
+								if (hexNames[i])
+								{
+									s = DecodeHexName(hexNames[i]);
+
+									if (s)
+									{
+										if (s.substring(0, 2) == '%#')
+											s = s.substring(2, s.length);
+									}
+								}
+							}
+
+							chatList += "&lt;a href='chatroom.msnw?";
+
+							var c = '';
+							if (strEncodedURL)
+							{
+								chatList += "rm="+strEncodedURL;
+								c = '&';
+							}
+
+							if (catNames[i])
+							{
+								chatList += (c + "cat=" + catNames[i]);
+								c = '&';
+							}
+
+							if (hexNames[i])
+								chatList += (c + "rhx=" + hexNames[i]);
+
+							chatList += "'&gt;"+s+"&lt;/a&gt;&lt;br&gt;";
+						};
+					}
+
+					chatList += '&lt;br&gt;';
+					chatList += "&lt;A href='/mychats.msnw'&gt;&lt;b&gt;View and Edit list ...&lt;/b&gt;&lt;/A&gt;";
+					chatList += '';
+				}
+				else
+				{
+					chatList += "List your favorite chats here. Go to the chat room and click 'Add to My Chats'";
+				}
+				document.write(chatList);
+				&lt;/script&gt;
+					
+					&lt;/td&gt;
+					&lt;td background="images/fr.jpg"&gt;&lt;img SRC="images/pixel1x1.gif" width=4 height="100%" ALT=""&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;&lt;img src="images/fbl.jpg" width=4 height=4 ALT=""&gt;&lt;/td&gt;
+					&lt;td background="images/fbm.jpg" width='100%'&gt;&lt;img SRC="images/pixel1x1.gif" width="100%" height=4 ALT=""&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;img src="images/fbr.jpg" width=4 height=4 ALT=""&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td height=2&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/td&gt;
+		  &lt;/tr&gt;
+		  
+		  &lt;script language="javascript"&gt;
+&lt;!--
+
+function GotoNewsletters( nNID )
+{
+	var strURL;
+	var strPARAMS;
+
+	//alert(document.Newsform.show);
+	if (document.Newsform.show[0].checked)
+		nNID = "5";
+	else
+		nNID = "4";
+		
+	//alert(nNID);
+	strURL = "http://newsletters.msn.com/home.asp?NID=" + nNID;
+	strPARAMS = "left=100,top=50,height=400,width=680" +
+				"resizable=yes,toolbar=yes,status=yes," +
+				"menubar=yes,location=yes,scrollbars=yes";
+				
+	window.open( strURL, null, strPARAMS );
+} 
+
+//--&gt;
+&lt;/script&gt;
+ 
+		  		  &lt;tr&gt;
+			&lt;td class="lefttitle"&gt;
+				&lt;IMG height=13 alt="" src="images/pixel1x1.gif" width=1&gt;&lt;br&gt;
+				Also On MSN &lt;/TD&gt;&lt;/TR&gt;
+  		  &lt;tr&gt;
+			&lt;td height="6"&gt;&lt;IMG height=1 alt="" src="images/blueline.jpg" width=134&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td class="lefttext"&gt;&lt;A href="http://go.msn.com/ZZM/A0/56.asp?target=http://messenger.msn.com"&gt;MSN Messenger&lt;/A&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td height="2"&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td class="lefttext"&gt;&lt;A href="http://go.msn.com/intg/222.asp?target=http://go.msn.com/ZZM/A0/57.asp?target=http://communities.msn.com/photoalbums"&gt;My Photo Center&lt;/A&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td class="lefttext"&gt;&lt;A href="http://go.msn.com/intg/225.asp?target=http://go.msn.com/ZZM/A0/57.asp?target=http://music.msn.com/"&gt;Hear Music&lt;/A&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td height="2"&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+ &lt;tr&gt;
+			&lt;td class="lefttext"&gt;&lt;A href="http://go.msn.com/intg/226.asp?target=http://go.msn.com/ZZM/A0/58.asp?target=http://tech.msn.com/"&gt;Tech &amp; Gadgets&lt;/A&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		  &lt;tr&gt;
+			&lt;td height="12"&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+		 
+	&lt;tr&gt;
+			&lt;td class="lefttitle"&gt;
+				&lt;IMG height=3 alt="" src="images/pixel1x1.gif" width=1&gt;&lt;br&gt;
+				Hot Buys
+			&lt;/td&gt;
+		  &lt;/tr&gt;
+  		  &lt;tr&gt;
+			&lt;td height="6"&gt;&lt;IMG height=1 alt="" src="images/blueline.jpg" width=134&gt;&lt;/td&gt;
+		  &lt;/tr&gt;	  
+
+&lt;tr&gt;&lt;td valign="top"&gt;
+&lt;table cellpadding=0 cellspacing=0 border=0 width=125&gt;&lt;br&gt;
+	&lt;tr&gt;&lt;td valign=top align=middle&gt;&lt;SCRIPT language = "JavaScript"&gt;
+&lt;!-- //
+var EshopOfferHTML = '';
+// --&gt;
+&lt;/SCRIPT&gt;
+&lt;SCRIPT language = "JavaScript" src="http://xml.eshop.msn.com/xmlbuddy/eShopOffer.aspx?formatType=0&ptnrId=5&ptnrData=0&catId=629&pmpType=2"&gt;
+&lt;/SCRIPT&gt;
+&lt;SCRIPT language = "JavaScript"&gt;
+&lt;!-- //
+if (EshopOfferHTML != '') 
+document.write(EshopOfferHTML); 
+else 
+document.write('&lt;A href="http://eshop.msn.com"&gt;&lt;FONT size="1" family="Verdana"&gt;MSN Shopping&lt;/FONT&gt;&lt;/A&gt;'); 
+// --&gt;
+&lt;/SCRIPT&gt;
+&lt;/td&gt;&lt;/tr&gt;
+	
+	
+&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;
+ 
+		 &lt;/table&gt;
+	
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+  &lt;/td&gt;
+  &lt;td width=7 bgColor=#ffffcc&gt;&lt;IMG height="100%" width=7 src="images/pixel1x1.gif" border=0 ALT=""&gt;&lt;/TD&gt; 
+  &lt;td width=4 bgColor=#efeec0&gt;&lt;IMG height="100%" width=4 src="images/pixel1x1.gif" border=0 ALT=""&gt;&lt;/TD&gt;
+  &lt;td vAlign=top width=435&gt;
+			&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;
+&lt;HTML&gt;&lt;HEAD&gt;
+&lt;META http-equiv=Content-Type content="text/html; charset=unicode"&gt; 
+&lt;LINK href="features/features.css" type=text/css rel=stylesheet&gt;
+&lt;META content="MSHTML 6.00.2600.0" name=GENERATOR&gt;&lt;/HEAD&gt;
+&lt;BODY&gt; 
+&lt;table border=0 cellspacing=0 cellpadding=0 width=443&gt;
+	
+	&lt;tr&gt;
+		&lt;td&gt;
+			&lt;table cellpadding=0 cellspacing=0 bgcolor=#3399cc width=437&gt;
+				
+				&lt;tr&gt;
+					
+					&lt;td colspan=2&gt;&lt;!--  default_MainHighlight_content  --&gt;
+&lt;table cellpadding=3 cellspacing=0 border=0 valign="top" class="featureBackground" width=438&gt;
+	&lt;tr&gt;
+		&lt;td width=90&gt;&lt;A href="http://go.msn.com/ZZM/A0/1.asp?target=http://chat.msn.com/chatroom.msnw?rm=Windows+XP"&gt;&lt;IMG align=right height=70 width=90 SRC="http://chat.msn.com/features/images/90x70/windowXP_90x70.gif" ALT="Windows XP" border 
+      =0&gt;&lt;/A&gt;&lt;/td&gt;
+		&lt;td class="livecomment" width=120&gt;What are people saying about the new Windows XP? &lt;A href="http://go.msn.com/ZZM/A0/1.asp?target=http://chat.msn.com/chatroom.msnw?rm=Windows+XP"&gt;Find out!&lt;/A&gt;&lt;/td&gt;
+		&lt;td&gt;
+								&lt;IMG height=73 src="features/images/featuresbar.jpg" width=1&gt;
+							&lt;/td&gt;
+		&lt;td&gt;
+			&lt;table&gt;
+				&lt;tr&gt;
+					&lt;td width=65&gt;&lt;A href="http://go.msn.com/ZZM/A0/2.asp?target=http://chat.msn.com/msnlive_feature.msnw?id=artist/sylviabrowne_oct2001" 
+                       &gt;&lt;IMG SRC="http://chat.msn.com/features/images/65x60/sylviabrowne_b_65x60.gif" valign="top" width=65 height=60 border=0 ALT="Sylvia Browne" style  ="WIDTH: 65px"&gt;&lt;/A&gt;&lt;/td&gt;
+					&lt;td class="livecomment" width=120&gt;Ask psychic &lt;A href="http://go.msn.com/ZZM/A0/2.asp?target=http://chat.msn.com/msnlive_feature.msnw?id=artist/sylviabrowne_oct2001" 
+                       &gt;Sylvia Browne&lt;/A&gt; about your future 
+                        Tuesday night 9pm ET. 
+              &lt;/FONT&gt;&lt;/td&gt;
+				&lt;/tr&gt;						
+			&lt;/table&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;&lt;!-- / default_MainHighlight_content  --&gt;
+						
+					&lt;/td&gt;
+					&lt;td width=6 background="features/images/featurer.gif"&gt;&lt;IMG src="features/images/spacer.gif"&gt;&lt;/td&gt;					
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;&lt;IMG height=6 alt="" src="features/images/featurebl.gif" width=6&gt;&lt;/td&gt;
+					&lt;td height=1 background="features/images/featurebm.gif"&gt;&lt;IMG src="features/images/spacer.gif"&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;IMG height=6 alt="" src="features/images/featurebr.gif" width=6&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+			&lt;table cellpadding=0 cellspacing=0 width=438&gt;
+				&lt;tr&gt;
+					&lt;td&gt;&lt;!--  default_CategoryList_content--&gt;
+
+&lt;table cellpadding=0 cellspacing=0 width=438&gt;
+	&lt;tr&gt;
+		&lt;td rowspan=8 width=4&gt;&lt;/td&gt;
+		&lt;td height=5 colspan=2&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr valign=bottom&gt;
+		&lt;td&gt;&lt;span class="dirtitle"&gt;&lt;A href="http://go.msn.com/ZZM/A0/3.asp?target=http://chat.msn.com/chatroom.msnw?rm=TheLobby&amp;cat=GN" &gt;Start Chatting Here!&lt;/A&gt;&lt;/span&gt;&lt;/td&gt;
+		&lt;td align=right&gt;&lt;span class="bodytextsmallhighlight"&gt;&lt;IMG height=10 alt="" src="features/images/Popleft.gif" width=7 border=0&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;IMG height=10 alt="" src="features/images/Popright.gif" width=7 border=0&gt;&lt;/span&gt;&lt;span class="dirpopular"&gt; = popular chat rooms&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+
+	&lt;tr valign=top&gt;
+		&lt;td colspan=2&gt;&lt;span class="dirblurb"&gt;Click any of the rooms below.&lt;/span&gt;&lt;/td&gt;
+		
+	&lt;/tr&gt;
+	&lt;tr valign=bottom&gt;
+		&lt;td height=5 colspan=2&gt;&lt;hr&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td colspan=2&gt;&lt;span class="dirfeaturedlabel"&gt;Featured rooms:&lt;/span&gt;
+					  &lt;span class="dirsubcategory"&gt;&nbsp;&nbsp;&lt;IMG src="features/images/orangebullet.gif"&gt;&nbsp;&nbsp;
+							&lt;A href="http://go.msn.com/ZZM/A0/4.asp?target=http://chat.msn.com/chatroom.msnw?rm=TheLobby&amp;cat=GN"&gt;The Lobby&lt;/A&gt;
+					  &nbsp;&nbsp;&lt;IMG src="features/images/orangebullet.gif"&gt;&nbsp;&nbsp;
+							&lt;A href="http://go.msn.com/ZZM/A0/5.asp?target=http://chat.msn.com/chatroom.msnw?rm=TV" 
+                 &gt;Television&lt;/A&gt;
+					  &nbsp;&nbsp;&lt;IMG src="features/images/orangebullet.gif"&gt;&nbsp;&nbsp;
+							&lt;A class=bodytextsmallhighlight href="http://go.msn.com/ZZM/A0/6.asp?target=http://chat.msn.com/chatroom.msnw?rm=Headlines" &gt;&lt;IMG height=10 alt="" src="features/images/Popleft.gif" width=7 border=0&gt;Latest News&lt;IMG height=10 alt="" src="features/images/Popright.gif" width=7 border=0&gt;&lt;/A&gt; &nbsp;&nbsp;&lt;!--&lt;IMG src="features/images/orangebullet.gif"&gt;&nbsp;&nbsp;
+							&lt;A href="http://go.msn.com/ZZM/A0/7.asp?target=http://chat.msn.com/chatroom.msnw?rm=DiscoDaze&amp;cat=mu" &gt;Disco Daze&lt;/A&gt;--&gt;
+					  &lt;/span&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td colspan=2 height=5&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr valign=top&gt;
+		&lt;td&gt;
+			&lt;table cellpadding=0 cellspacing=0 border=0&gt;
+				&lt;tr&gt;
+					&lt;td valign=top&gt;
+					&lt;span class="dircategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/8.asp?target=http://Chat.msn.com/feature.msnw?id=categories/romance%26nsb=1"&gt;Romance&lt;/A&gt;&lt;/span&gt;&lt;br&gt;
+					&lt;span class="dirsubcategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/9.asp?target=http://chat.msn.com/chatroom.msnw?rm=AfterHours&amp;cat=RM" &gt;After Hours&lt;/A&gt;,
+					&lt;A class=bodytextsmallhighlight href="http://go.msn.com/ZZM/A0/10.asp?target=http://chat.msn.com/chatroom.msnw?rm=BlindDate&amp;cat=RM" &gt;&lt;IMG height=10 alt="" src="features/images/Popleft.gif" width=7 border=0&gt;Blind Date&lt;IMG height=10 alt="" src="features/images/Popright.gif" width=7 border=0&gt;&lt;/A&gt;, 
+					&lt;A href="http://go.msn.com/ZZM/A0/11.asp?target=http://chat.msn.com/chatroom.msnw?rm=LoveShack&amp;cat=RM"&gt;Love Shack,&lt;/A&gt; 
+					&lt;A href="http://go.msn.com/ZZM/A0/12.asp?target=http://chat.msn.com/chatroom.msnw?rm=Rendezvous&amp;cat=RM" &gt;Rendezvous&lt;/A&gt;,&lt;/span&gt; 
+					&lt;span class="dirsubcategorymore"&gt;&lt;A href="http://go.msn.com/ZZM/A0/13.asp?target=http://chat.msn.com/find.msnw?cat=RM"&gt;more...&lt;/span&gt;&lt;/A&gt;&lt;br&gt;&lt;br&gt;
+					&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td valign=top&gt;
+					&lt;span class="dircategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/14.asp?target=http://Chat.msn.com/feature.msnw?id=categories/teen%26nsb=1"&gt;Teen&lt;/A&gt;&lt;/span&gt;&lt;br&gt;
+					&lt;span class="dirsubcategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/15.asp?target=http://chat.msn.com/chatroom.msnw?rm=Teens&amp;cat=TN"&gt;Teens&lt;/A&gt;, 
+					&lt;A href="http://go.msn.com/ZZM/A0/16.asp?target=http://chat.msn.com/chatroom.msnw?rm=TeenKickbackCafe&amp;cat=TN" &gt;Kickback Cafe&lt;/A&gt;, 
+					&lt;A href="http://go.msn.com/ZZM/A0/17.asp?target=http://chat.msn.com/chatroom.msnw?rm=TeenMusic&amp;cat=TN" &gt;Teen Music&lt;/A&gt;,&lt;br&gt;
+					&lt;A class=bodytextsmallhighlight href="http://go.msn.com/ZZM/A0/18.asp?target=http://chat.msn.com/chatroom.msnw?rm=TeenParty&amp;cat=TN" &gt;&lt;IMG height=10 alt="" src="features/images/Popleft.gif" width=7 border=0&gt;Teen Party&lt;IMG height=10 alt="" src="features/images/Popright.gif" width=7 border=0&gt;&lt;/A&gt;&lt;/span&gt;, 
+					&lt;span class="dirsubcategorymore"&gt;&lt;A href="http://go.msn.com/ZZM/A0/19.asp?target=http://chat.msn.com/find.msnw?cat=TN"&gt;more...&lt;/span&gt;&lt;/A&gt;&lt;br&gt;&lt;br&gt;
+					&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td valign=top&gt;
+					&lt;span class="dircategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/20.asp?target=http://Chat.msn.com/feature.msnw?id=categories/lifestyles%26nsb=1"&gt;Lifestyles&lt;/A&gt;&lt;/span&gt;&lt;br&gt;
+					&lt;span class="dirsubcategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/21.asp?target=http://chat.msn.com/chatroom.msnw?rm=Kalahari&amp;cat=LF" &gt;African American&lt;/A&gt;, 
+					&lt;A href="http://go.msn.com/ZZM/A0/24.asp?target=http://chat.msn.com/chatroom.msnw?rm=HispanicAmerican&amp;cat=LF" &gt;Hispanic&lt;/A&gt;,
+					&lt;A href="http://go.msn.com/ZZM/A0/22.asp?target=http://chat.msn.com/chatroom.msnw?rm=AsianAmerican&amp;cat=LF" &gt;Asian&lt;/A&gt;, 
+					&lt;A href="http://go.msn.com/ZZM/A0/23.asp?target=http://chat.msn.com/chatroom.msnw?rm=Men4Men&amp;cat=LF" &gt;Gay&lt;/A&gt;&lt;/span&gt;, 
+					&lt;span class="dirsubcategorymore"&gt;&lt;A href="http://go.msn.com/ZZM/A0/25.asp?target=http://chat.msn.com/find.msnw?cat=LF"&gt;more...&lt;/span&gt;&lt;/A&gt;&lt;br&gt;&lt;br&gt;
+					&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+					
+		&lt;/td&gt;
+		&lt;td&gt;
+								&lt;table cellpadding=0 cellspacing=0 border=0&gt;
+									&lt;tr&gt;
+										&lt;td valign=top&gt;
+								&lt;span class="dircategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/26.asp?target=http://Chat.msn.com/feature.msnw?id=categories/citychat%26nsb=1"&gt;City Chats&lt;/A&gt;&lt;/span&gt;&lt;br&gt;
+								&lt;span class="dirsubcategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/27.asp?target=http://chat.msn.com/chatroom.msnw?rm=ChatWashingtonDC&amp;cat=GE" &gt;Washington D.C.&lt;/A&gt;, 
+								&lt;A href="http://go.msn.com/ZZM/A0/28.asp?target=http://chat.msn.com/chatroom.msnw?rm=ChatChicago&amp;cat=GE" &gt;Chicago&lt;/A&gt;, 
+								&lt;A class=bodytextsmallhighlight href="http://go.msn.com/ZZM/A0/29.asp?target=http://chat.msn.com/chatroom.msnw?rm=ChatNewYork&amp;cat=GE" &gt;&lt;IMG height=10 alt="" src="features/images/Popleft.gif" width=7 border=0&gt;New York&lt;IMG height=10 alt="" src="features/images/Popright.gif" width=7 border=0&gt;&lt;/A&gt;, 
+								&lt;A href="http://go.msn.com/ZZM/A0/30.asp?target=http://chat.msn.com/chatroom.msnw?rm=ChatLasVegas&amp;cat=GE" &gt;Las Vegas&lt;/A&gt;, 
+								&lt;A href="http://go.msn.com/ZZM/A0/31.asp?target=http://chat.msn.com/chatroom.msnw?rm=ChatSeattle&amp;cat=GE" &gt;Seattle&lt;/A&gt;&lt;/span&gt;, 
+								&lt;span class="dirsubcategorymore"&gt;&lt;A href="http://go.msn.com/ZZM/A0/32.asp?target=http://chat.msn.com/find.msnw?cat=GE"&gt;more...&lt;/span&gt;&lt;/A&gt;&lt;br&gt;&lt;br&gt;
+								&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td valign=top&gt;
+								&lt;span class="dircategory"&gt;&lt;A 
+            href="http://go.msn.com/ZZM/A0/40.asp?target=http://Chat.msn.com/feature.msnw?id=categories/peers%26nsb=1"&gt;Peers&lt;/A&gt;&lt;/span&gt;&lt;BR&gt;&lt;SPAN 
+            class=dirsubcategory&gt;&lt;A  
+            href="http://go.msn.com/ZZM/A0/41.asp?target=http://chat.msn.com/chatroom.msnw?rm=20s&amp;cat=PR"&gt;20's Plus&lt;/A&gt;, &lt;A 
+            href="http://go.msn.com/ZZM/A0/42.asp?target=http://chat.msn.com/chatroom.msnw?rm=30s&amp;cat=PR"&gt;30's 
+            Plus&lt;/A&gt;, &lt;A class=bodytextsmallhighlight
+            
+                        href="http://go.msn.com/ZZM/A0/43.asp?target=http://chat.msn.com/chatroom.msnw?rm=40s&amp;cat=PR" 
+                       &gt;&lt;IMG 
+            height=10 alt="" src="features/images/Popleft.gif" width=7 
+            border=0&gt;40's 
+            Plus&lt;IMG height=10 alt="" 
+            src="features/images/Popright.gif" width=7 border=0&gt;&lt;/A&gt;, &lt;BR&gt;&lt;A 
+            href="http://go.msn.com/ZZM/A0/44.asp?target=http://chat.msn.com/chatroom.msnw?rm=50s&amp;cat=PR"&gt;50's 
+            Plus&lt;/A&gt;, &lt;A 
+            href="http://go.msn.com/ZZM/A0/45.asp?target=http://chat.msn.com/chatroom.msnw?rm=60sPlus&amp;cat=PR"&gt;60's 
+            Plus&lt;/A&gt;&lt;/SPAN&gt;, &lt;SPAN class=dirsubcategorymore&gt;&lt;A 
+            href="http://go.msn.com/ZZM/A0/46.asp?target=http://chat.msn.com/find.msnw?cat=PR"&gt;more...&lt;/SPAN&gt;&lt;/A&gt;&lt;BR&gt;&lt;/SPAN&gt;&lt;br&gt;
+								&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;td valign=top&gt;
+								&lt;span class="dircategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/40.asp?target=http://chat.msn.com/find.msnw?cat=SP"&gt;Sports&lt;/A&gt;&lt;/span&gt;&lt;br&gt;
+								&lt;span class="dirsubcategory"&gt;&lt;A href="http://go.msn.com/ZZM/A0/41.asp?target=http://chat.msn.com/chatroom.msnw?&amp;rm=baseball" 
+                       &gt;Baseball&lt;/A&gt;, 
+								&lt;A class=bodytextsmallhighlight href="http://go.msn.com/ZZM/A0/42.asp?target=http://chat.msn.com/chatroom.msnw?&amp;rm=profootball" 
+                       &gt;&lt;IMG height=10 alt="" src="features/images/Popleft.gif" width=7 border=0&gt;Football&lt;IMG height=10 alt="" src="features/images/Popright.gif" width=7 border=0&gt;&lt;/A&gt;, 
+								&lt;A href="http://go.msn.com/ZZM/A0/43.asp?target=http://chat.msn.com/chatroom.msnw?&amp;rm=basketball" 
+                       &gt;Basketball&lt;/A&gt;, &lt;br&gt;&lt;A href="http://go.msn.com/ZZM/A0/44.asp?target=http://chat.msn.com/chatroom.msnw?&amp;rm=soccer" 
+                       &gt;Soccer&lt;/A&gt;,
+								&lt;A href="http://go.msn.com/ZZM/A0/45.asp?target=http://chat.msn.com/chatroom.msnw?&amp;rm=hockey" 
+                       &gt;Hockey&lt;/A&gt;&lt;/span&gt;, &lt;span class="dirsubcategorymore"&gt;&lt;A href="http://go.msn.com/ZZM/A0/46.asp?target=http://chat.msn.com/find.msnw?cat=SP"&gt;more...&lt;/span&gt;&lt;/A&gt;&lt;br&gt;&lt;br&gt;
+								&lt;/td&gt;&lt;/tr&gt;
+
+
+&lt;/table&gt;
+							&lt;/td&gt;
+						&lt;/tr&gt;
+						&lt;tr&gt;
+							&lt;td colspan=2 class="dirmc"&gt;
+								
+								&lt;span class="dirmclabel"&gt;More Categories:&lt;/span&gt; 
+								&lt;span class="dirmcorange"&gt;&lt;A href="http://go.msn.com/ZZM/A0/47.asp?target=http://chat.msn.com/find.msnw?cat=CP"&gt;Computing&lt;/A&gt;&lt;/span&gt;,
+								&lt;A href="http://go.msn.com/ZZM/A0/48.asp?target=http://chat.msn.com/find.msnw?cat=EA"&gt;Entertainment&lt;/A&gt;, 
+								&lt;span class="dirmcgreen"&gt;&lt;A href="http://go.msn.com/ZZM/A0/49.asp?target=http://chat.msn.com/find.msnw?cat=GN"&gt;General&lt;/A&gt;&lt;/span&gt;,
+								&lt;A href="http://go.msn.com/ZZM/A0/50.asp?target=http://chat.msn.com/find.msnw?cat=II"&gt;Interests&lt;/A&gt;,
+								&lt;span class="dirmcbrown"&gt;&lt;A href="http://go.msn.com/ZZM/A0/51.asp?target=http://chat.msn.com/find.msnw?cat=NW"&gt;News&lt;/A&gt;&lt;/span&gt;, 
+								&lt;A href="http://go.msn.com/ZZM/A0/52.asp?target=http://chat.msn.com/find.msnw?cat=RL"&gt;Religion&lt;/A&gt;, &lt;/SPAN&gt;					 
+								&lt;span class="dirmcgreen"&gt;&lt;A href="http://go.msn.com/ZZM/A0/47.asp?target=http://chat.msn.com/find.msnw?cat=MU"&gt;Music&lt;/A&gt;&lt;/span&gt;
+								
+								&lt;br&gt;&lt;br&gt;
+							&lt;/td&gt;
+						&lt;/tr&gt;
+ &lt;/table&gt;&lt;!--  /default_CategoryList_content--&gt;
+					&lt;/td&gt;
+				&lt;/tr&gt;
+
+				&lt;tr&gt;
+					&lt;td&gt;&lt;!--default_createChatroom_content--&gt;
+					&lt;table cellpadding=0 cellspacing=0 width=438 bgcolor=#f4f4f4&gt;
+							&lt;tr&gt;
+								&lt;td colspan=2 height=10&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td rowspan=2 width=70 align=middle&gt;&lt;IMG height=44 alt="It's easy to create your own chat room!" src ="features/images/123.gif" width=57 &gt;&lt;/td&gt;
+								&lt;td&gt;&lt;span class="dirtitle"&gt;
+									&lt;a href="http://go.msn.com/ZZM/A0/59.asp?target=http://chat.msn.com/create.msnw"&gt;Create Your Own Chat Room&lt;/a&gt;&lt;/span&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td class=promotext&gt;
+									Want to a 
+									place to chat with friends? It's as easy as 1-2-3 to create your own chat room! &lt;font class=promosubtitle&gt;&lt;A href="http://go.msn.com/ZZM/A0/60.asp?target=http://chat.msn.com/create.msnw" title="It's easy to create your own chat room!"&gt;Click here&lt;/A&gt;&lt;/font&gt;      to get started.
+								&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td colspan=2 height=10&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;&lt;!--/default_createChatroom_content--&gt;
+					&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;&lt;!--default_bottompromo_content--&gt;&lt;scriptlanguage="JAVASCRIPT"&gt;
+ 
+
+&lt;table cellpadding=3 cellspacing=0 border=0 width=438&gt;
+	&lt;tr&gt;
+		&lt;td height=49 width=63&gt;&lt;IMG height=49 alt="Hot Chats" src="features/images/hot_chat.jpg" width=61 &gt;&lt;/td&gt;
+		&lt;td height=49 class=promotitle width=147&gt;Hot Chats&lt;/td&gt;
+		&lt;td height=49 width=8 rowspan=3 valign=center align=left&gt;&lt;IMG src="features/images/vert_rule.gif"&gt;&lt;/td&gt;
+		&lt;td height=49 width=45&gt;&lt;IMG alt="Newsletter sign-up" src ="features/images/signup.gif" border=0 &gt;&lt;/td&gt;
+		&lt;td width=65 valign=center class=promotitle&gt;&nbsp;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td colspan=2 class=promotext width=210 valign=top&gt;
+			&lt;font class=promosubtitle&gt;&lt;A href="http://go.msn.com/ZZM/A0/54.asp?target=http://chat.msn.com/chatroom.msnw?rm=TheLobby"&gt;New to Chat?&lt;/A&gt;&lt;/font&gt;&lt;br&gt;
+			Check out The 
+			Lobby. It's a great  place to start making new friends online.&lt;/td&gt;
+		&lt;td colspan=2 class="promotext" valign=top&gt;&lt;form method="post" action="http://www.listbot.com/cgi-bin/subscriber" id=Newsform name=Newsform&gt;
+			&lt;input type="hidden" name="show" value="WC" CHECKED&gt;
+			&lt;input type="hidden" name="show" value="UW"&gt;
+			&lt;font class=promosubtitle&gt;&lt;A href="http://chat.msn.com/newsletters/about.htm"&gt;Never miss a celebrity chat.&lt;/A&gt;&lt;/font&gt;
+			Get advance listings of upcoming events delivered to your inbox.&lt;/td&gt;&lt;/FORM&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td colspan=2 class=promotext width=210 valign=top&gt;
+			&lt;font class=promosubtitle&gt;&lt;A href="http://go.msn.com/ZZM/A0/55.asp?target=http://chat.msn.com/chatroom.msnw?rm=helpdesk"&gt;Need Help?&lt;/A&gt;&lt;/font&gt;&lt;br&gt;
+			Live support for MSN chat issues is a click away in Help Desk.&lt;/td&gt;
+		&lt;td colspan=2 class=promotext valign=top&gt;			&lt;form method="post" action="http://www.listbot.com/cgi-bin/subscriber" id=Newsform2 name=Newsform2&gt;
+			&lt;input type="hidden" name="show" value="WC"&gt;
+			&lt;input type="hidden" name="show" value="UW" CHECKED&gt;
+			&lt;font class=promosubtitle&gt;&lt;A href="http://chat.msn.com/newsletters/about.htm"&gt;Explore MSN Communities.&lt;/A&gt;&lt;/font&gt;
+			Meet people who share your passions.&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;&lt;/FORM&gt;&lt;!--/default_bottompromo_content--&gt;
+					 
+ 					&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/table&gt;
+		&lt;/td&gt;
+	  &lt;/tr&gt;
+	  &lt;/table&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+		&lt;/TD&gt;		
+  &lt;td width=9&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td colspan=4 bgColor=#efeec0&gt;&lt;IMG height=4 width="100%" src="images/pixel1x1.gif" border=0 ALT=""&gt;&lt;img src="/popupad/adGUID.asp" width=1 height=1 border=0&gt;&lt;/TD&gt;
+	&lt;td colspan=2 height=3&gt;&lt;/TD&gt;  
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td colspan=6 height=3 bgColor=#ffffff&gt;&lt;/TD&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td colspan=6&gt;
+	&lt;TABLE border=0 cellPadding=0 cellSpacing=0 width=610&gt;
+    &lt;TR bgcolor=#336699&gt;&lt;TD colspan=4&gt;&lt;TABLE border=0 cellPadding=2 cellSpacing=0&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG border=0 width=5 height=1 src="images/c.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;A class="HeaderLink" href="default.msnw" title="Go to the MSN Chat home page."&gt;Chat Home&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;A class="HeaderLink" href="create.msnw" title="Create your own private chat room."&gt;Create a Room&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;A class="HeaderLink" href="join.msnw" title="Join a specific chat room or get started in one of our featured rooms."&gt;Join a Chat&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;&lt;TD&gt;&lt;A class="HeaderLink" href="friend.msnw" title="Find out if a friend is chatting right now."&gt;Find a Friend&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;				    &lt;TD&gt;&lt;A class="HeaderLink" href="feature.msnw?id=MSNLiveHome" title="Chat with special guests in our Event chat room."&gt;Celebrity Chats&lt;/A&gt;&lt;/TD&gt;&lt;TD align=center width=10&gt;&lt;IMG height=15 width=1 src="images/y1x1.gif"&gt;&lt;/TD&gt;                    &lt;TD&gt;&lt;A class="HeaderLink" href="javascript:DoHelp(); void('');" title="Get instructions and tips for using MSN Chat."&gt;Help&lt;/A&gt;&lt;/TD&gt;                &lt;/TR&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;TABLE border=0 cellspacing=0 cellpadding=0 width=610 bgcolor=#4377AB&gt;
+    &lt;TR&gt;&lt;TD bgcolor=#4377AB colspan=13 align=left&gt;
+        &lt;A href="http://www.msn.com" target=_top&gt;&lt;IMG src="images//partnerlogos//logo_min.gif" width=118 height=40 border=0 alt="Go to MSN.com"&gt;&lt;/A&gt;&lt;FONT class=MakeHome&gt;Make It Your Home&lt;/FONT&gt;
+    &lt;/TD&gt;&lt;/TR&gt;
+    &lt;TR&gt;&lt;TD bgcolor=#4377AB colspan=13 height=10 bgcolor=#4377AB&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TD&gt;&lt;/TR&gt;
+    &lt;TR&gt;
+        &lt;TH width=1&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TH&gt;
+					&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/AD/7/" class=MSNHeaderLink target=_top&gt;MSN Home&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            		        					&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/AD/8/" class=MSNHeaderLink target=_top&gt;Hotmail&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            							&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/AD/A/" class=MSNHeaderLink target=_top&gt;Search&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            							&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/AD/9/" class=MSNHeaderLink target=_top&gt;Shopping&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            							&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/A3/C/" class=MSNHeaderLink target=_top&gt;Money&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            			&lt;TH width=1&gt;&lt;img src="/images/separator.gif" width=2 height=13&gt;&lt;/TH&gt;
+            							&lt;TH&gt;&lt;FONT class=MSNHeaderLink&gt;&lt;A href="http://go.msn.com/A2/B/" class=MSNHeaderLink target=_top&gt;People &amp; Chat&lt;/A&gt;&lt;/FONT&gt;&lt;/TH&gt; 
+            		        &lt;TH width=77&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TH&gt;
+    &lt;/TR&gt;
+    &lt;TR&gt;&lt;TD bgcolor=#4377AB colspan=13 height=10 bgcolor=#4377AB&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=610 HEIGHT=40&gt;
+    &lt;TR&gt;
+        &lt;TD bgColor=#2288BB height=25&gt;&lt;FONT color=#FFFFFF face="Tahoma" style="font-size:8pt"&gt;&nbsp;&nbsp;&lt;/FONT&gt;&lt;/TD&gt;
+        &lt;TD bgColor=#2288BB height=25&gt;&lt;FONT color=#FFFFFF face="Tahoma" style="font-size:8pt"&gt;&copy;2001 Microsoft Corporation. All rights reserved.&lt;/FONT&gt;&lt;/TD&gt;
+        &lt;TD bgColor=#2288BB height=25&gt;&lt;FONT color=#FFFFFF face="Tahoma" style="font-size:8pt"&gt;&nbsp;&nbsp;&lt;/FONT&gt;&lt;/TD&gt;
+        &lt;TD bgColor=#2288BB height=25&gt;&lt;A class=FooterLink target=_top href="http://go.msn.com/A3/4/"&gt;Terms of Use&lt;/A&gt;&lt;/TD&gt;
+        &lt;TD bgColor=#2288BB height=25&gt;&nbsp;&nbsp;&lt;/TD&gt;
+        &lt;TD bgColor=#2288BB height=25&gt;&lt;A class=FooterLink target=_top href="http://go.msn.com/A3/5/"&gt;Advertise&lt;/A&gt;&lt;/TD&gt;
+        &lt;TD bgColor=#2288BB height=25&gt;&nbsp;&nbsp;&lt;/TD&gt;
+        &lt;TD bgColor=#2288BB height=25&gt;&lt;A class=FooterLink target=_top href="http://go.msn.com/A3/6/"&gt;TRUSTe&nbsp;Approved&nbsp;Privacy&nbsp;Statement&lt;/A&gt;&lt;/TD&gt;
+    &lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/TD&gt;
+	&lt;TD valign=top&gt;
+        &lt;table border=0 cellspacing=0 cellpadding=0 width=160 style="padding-left:7px" bgcolor=#336699&gt;
+        &lt;tr&gt;&lt;td height=30&gt;&lt;IMG height=1 width=1 src="images/pixel1x1.gif" border=0&gt;&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;font class="MSNHeaderLink"&gt;Search the Web&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td height=47 valign=top&gt;
+
+                    &lt;div style="position:absolute"&gt;
+                        &lt;form method="GET" name="websearch" action="http://go.msn.com/AD/2/searchsubmit.asp" style="margin-bottom:0px;margin-bottom:0px;"&gt;
+                            &lt;input type="Hidden" name="RS" value="CHECKED"&gt; 
+                            &lt;input type="Hidden" name="Form" value="AD"&gt; 
+                            &lt;input type="Hidden" name="v" value=1&gt;
+                            &lt;input type="hidden" name="cp" value="1252" /&gt;
+                            &lt;input type="text" name="q" size=13 accesskey="S" style="width:120px;"&gt;
+                            &lt;input type="image" vspace=0 hspace=0 src="/images/searchgo.gif" border=0 alt="Begin your Web search" style="position:absolute;left:90;top:-2"&gt;                            
+                        &lt;/form&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+    &lt;/table&gt;
+	&lt;iframe bgcolor=#336699 id=sidebar src="http://arc1.msn.com/ADSAdClient31.dll?GetAd?PG=PROCHT?SC=D1" border=0 frameborder=0 scrolling=no marginheight=0 marginwidth=0 width=160 height=600&gt; &lt;a href="http://arc1.msn.com/Clicker/ADSClicker31.dll?Redirect?PG=PROCHT?AN=1.0"&gt;&lt;img src="http://arc1.msn.com/ADSAdClient31.dll?GetImage?PG=PROCHT?AN=1.0" width=160 height=600 border=0&gt;&lt;/a&gt;&lt;/iframe&gt;
+	&lt;/td&gt;
+
+&lt;/TR&gt;&lt;/TABLE&gt;
+
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+</html>
