@@ -1,0 +1,321 @@
+<h1 id="accessible_data_visualization_with_web_standards">Accessible Data Visualization with Web Standards</h1>
+
+<p>We&#8217;ve been talking about Web 2.0 for so long now it&#8217;s already passé to argue about what it means and what it doesn&#8217;t. But one thing&#8217;s for sure, there&#8217;s a lot of data out there on the web these days. And as web designers, we&#8217;re designing a lot of data-driven sites. </p>
+
+<p>There are plenty of options out there for data visualization, too. Google&#8217;s recently-announced Charts API (link) is a great example, but there are a number of tools and services for creating charts and graphs as images and for making interactive visualizations with Flash.</p>
+
+<p>But what if we want to include data visualization as an integral part of the site, not just an isolated figure or an interactive chart? When we&#8217;re designing interfaces for browsing data-driven sites, it&#8217;s valuable to be able to create navigation tools that are also visualization tools. We can keep the user informed as they explore, so they can make better decisions about what they&#8217;re looking at and what they&#8217;re clicking on.</p>
+
+<p>We could build that type of navigation with Flash, or generate static images every time the data changes, but that can be a big tradeoff in terms of accessibility and maintainability. If we&#8217;re building a data-driven site with good old HTML and CSS, what can we do with the web standards we&#8217;re already using? </p>
+
+<p>I&#8217;m going to cover three basic techniques for incorporating some simple data visualization into standards-based navigation patterns. All of them start with the building block of HTML navigation: an unordered list of links. We&#8217;re going to tweak the markup a bit and add in some data points and a few hooks for styling, but in each case the basic pattern is the same familiar one. And since we&#8217;re using HTML and CSS, we can use <code>em</code>-based measurements throughout to make sure the charts adapt as the user scales the text size.</p>
+
+<h2 id="horizontal_bar_charts">Horizontal bar charts</h2>
+
+<p>This simple technique just adds bars to a list of items behind the text (check out the <a href="example-barchart.html">finished example</a> for an idea of what we&#8217;re shooting for). It works for lists of any length. Longer lists benefit from being sorted by count since the relative values of the bars are easier to read when they are sequential. In this example, we&#8217;re going to display the count for each item in the list, but you can leave that out if the value is less important on it&#8217;s own and you just want to show the relative values for comparison.</p>
+
+<p>Let&#8217;s start with a basic unordered list of links.</p>
+
+<pre><code>&lt;ul class="chartlist"&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/apples/"&gt;Apples&lt;/a&gt; 
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/bananas/"&gt;Bananas&lt;/a&gt; 
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/cherries/"&gt;Cherries&lt;/a&gt; 
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/dates/"&gt;Dates&lt;/a&gt; 
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>The first thing to do is add the values for each item in the list. I&#8217;ll wrap them in their own span outside the links so we can style them separately.</p>
+
+<pre><code>&lt;ul class="chartlist"&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/apples/"&gt;Apples&lt;/a&gt; 
+    &lt;span class="count"&gt;420&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/bananas/"&gt;Bananas&lt;/a&gt; 
+    &lt;span class="count"&gt;280&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/cherries/"&gt;Cherries&lt;/a&gt; 
+    &lt;span class="count"&gt;200&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/dates/"&gt;Dates&lt;/a&gt; 
+    &lt;span class="count"&gt;100&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>In order to create the bars, we need to style the list items as block elements so they take up the full width, and set them to use relative positioning so we can position the bars relative to each item. Since the main purpose of this list is navigation, I&#8217;ll set <code>display: block</code> on the link elements so the click target fills up the full width of the list as well.</p>
+
+<pre><code>.chartlist li { 
+  position: relative;
+  display: block; 
+}
+</code></pre>
+
+<p>I&#8217;ll also add in some styles to offset the counts to the right of the list for easy scanning. I&#8217;ll use absolute positioning instead of a float so the links and the chart bars can all overlap in the full width of the chart without running into each other.</p>
+
+<pre><code>.chartlist .count { 
+  display: block; 
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  margin: 0 0.3em; 
+  text-align: right; 
+  color: #999; 
+  font-weight: bold; 
+  font-size: 0.875em; 
+}
+</code></pre>
+
+<p>Since we used absolute positioning for the counts, I&#8217;ll add some padding to the links to make sure there is room for the numbers to fit next to the link text without overlapping. I&#8217;ll also need to add a couple of styles to the links to make sure they always appear above the bars we&#8217;re going to position below them. I&#8217;ll set their <code>position</code> to <code>relative</code> so they will accept a <code>z-index</code> value, and then set their <code>z-index</code> to something above zero so they&#8217;ll stay at the top of the chart.</p>
+
+<pre><code>.chartlist li a { 
+  display: block; 
+  padding: 0.4em 4.5em 0.4em 0.5em;
+  position: relative; 
+  z-index: 2; 
+}
+</code></pre>
+
+<p>Before I style the bars, I need to add an element to the markup for each item to store the information that the bars will convey. In this case we want to show the relative value of each item in the list compared to the total count for the whole list. So the information we&#8217;ll be communicating with the bars will be a percentage calculated from those two values. I&#8217;ll add an element to the markup and give it an appropriate class so we can pick it up in the styles. I&#8217;ll use a class of <code>index</code> to represent the ratios represented by the chart bars.</p>
+
+<pre><code>&lt;ul class="chartlist"&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/apples/"&gt;Apples&lt;/a&gt; 
+    &lt;span class="count"&gt;420&lt;/span&gt;
+    &lt;span class="index"&gt;(42%)&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/bananas/"&gt;Bananas&lt;/a&gt; 
+    &lt;span class="count"&gt;280&lt;/span&gt;
+    &lt;span class="index"&gt;(28%)&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/cherries/"&gt;Cherries&lt;/a&gt; 
+    &lt;span class="count"&gt;200&lt;/span&gt;
+    &lt;span class="index"&gt;(20%)&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/dates/"&gt;Dates&lt;/a&gt; 
+    &lt;span class="count"&gt;100&lt;/span&gt;
+    &lt;span class="index"&gt;(10%)&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h3 id="a_note_about_the_data">A note about the data</h3>
+
+<p>In this example chart we&#8217;re showing each item as a percentage of the whole (similar to a pie chart) but you can use the same technique to show percentages relative to the highest value in the list so there is always at least one 100% bar and everything else is a percentage of that maximum value. You can also calculate the percentages relative to a baseline value that you set at a fixed percentage (say, 50%) and all the other percentages will be higher or lower based on their deviation from the baseline. This is similar to how performance data is often displayed for new computer chips, for example.</p>
+
+<p>The math to accomplish all of this is outside the scope of this article, but the point is that you can use the same markup and style techniques to chart different types of data. Just be sure to use clear titles and descriptions for your charts so the values themselves make sense in context.</p>
+
+<p>Obviously in these examples I&#8217;m using made-up data, but there are a variety of ways to calculate the percentages on a real site. You can calculate them on the backend and display them in a template (I&#8217;m a big fan of the Django framework&#8217;s <code>widthratio</code> template tag, which makes calculating ratios between two variables very easy). You could also use Javascript to extract the percentage value from the markup and apply it as a width style to the bars. For the purposes of these examples, I&#8217;m assuming that all the necessary math is already done, so I&#8217;ll use hand-coded inline styles to represent the widths of the bars as percentages.</p>
+
+<pre><code>&lt;ul class="chartlist"&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/apples/"&gt;Apples&lt;/a&gt; 
+    &lt;span class="count"&gt;420&lt;/span&gt;
+    &lt;span class="index" style="width: 42%"&gt;(42%)&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/bananas/"&gt;Bananas&lt;/a&gt; 
+    &lt;span class="count"&gt;280&lt;/span&gt;
+    &lt;span class="index" style="width: 28%"&gt;(28%)&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/cherries/"&gt;Cherries&lt;/a&gt; 
+    &lt;span class="count"&gt;200&lt;/span&gt;
+    &lt;span class="index" style="width: 20%"&gt;(20%)&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/fruits/dates/"&gt;Dates&lt;/a&gt; 
+    &lt;span class="count"&gt;100&lt;/span&gt;
+    &lt;span class="index" style="width: 10%"&gt;(10%)&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h3 id="finishing_up_the_bar_chart">Finishing up the bar chart</h3>
+
+<p>The final step for this chart is to add the styling for the bars. I&#8217;m going to hide the actual percentage (using the text-indent trick from Mike Rundle&#8217;s trusty image replacement technique) since the precise value isn&#8217;t as important as the relative scale and the bar will do nicely for on its own. If you need to show the percentage, you can choose to display the percentage within the bar or use separate elements for the bar and the percentage.</p>
+
+<p>I&#8217;ll set the height of the bars to 100% and since we&#8217;ll be setting the actual width later, I&#8217;ll set a default width of 0 so the bars won&#8217;t show up at all if we don&#8217;t give them an explicit value. I&#8217;ve chosen a light blue for the bar backgrounds, so the link text will be readable when it overlaps the bar, but the bars will still be easily visible.</p>
+
+<pre><code>.chartlist .index { 
+  display: block; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  height: 100%; 
+  background: #B8E4F5; 
+  text-indent: -9999px; 
+  overflow: hidden; 
+}
+</code></pre>
+
+<p>I&#8217;ll add in some hover styles for the chart rows and some borders and padding for readability, and we&#8217;ve got ourselve a chart (<a href="example-barchart.html">see the finished example</a>). One thing to note is how it looks with styles turned off. Because we made sure to put the percentages in the markup, the information we&#8217;re conveying with a fancy chart is still accessible when that presentation degrades.</p>
+
+<h2 id="timeline_charts">Timeline charts</h2>
+
+<p>Once you&#8217;ve established the basic recipe of good old semantic navigation with a sprinkling of data and some CSS to turn the data into a chart, there are lots of variations you can apply to different types of data. One easy trick is to turn the chart on its side to make a timeline (see the second chart in the <a href="example-timeline.html">finished example</a>).</p>
+
+<p>I&#8217;ll start out with markup that&#8217;s very similar to the first chart. In this case it&#8217;s a list of days, with a value for each day. Since I have limited space in the horizontal format to show labels for each bar, I&#8217;m just going to show the day of the month in the label and use a header above the list to indicate the month. Since this is meant to be navigation and the chart will convey the relative values which is what we&#8217;re after, it&#8217;s okay that we&#8217;re not showing all the information here. As an extra convenience, I&#8217;ll add a title to the links with the full date and the count for that day, so that detail will show up in a tooltip for each bar.</p>
+
+<pre><code>&lt;ul class="timeline"&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/2007/dec/1/" title="December 1, 2007: 40"&gt;
+      &lt;span class="label"&gt;1&lt;/span&gt;
+      &lt;span class="count"&gt;(40)&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="http://www.example.com/2007/dec/2/" title="December 2, 2007: 100"&gt;
+      &lt;span class="label"&gt;2&lt;/span&gt;
+      &lt;span class="count"&gt;(100)&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  …
+&lt;/ul&gt;
+</code></pre>
+
+<p>Repeat as necessary. In this example, I&#8217;ve created a 30-day chart with a bar for each day, but you could obviously make the chart any length and size you need. If you&#8217;re making a chart with fewer bars you can obviously make them larger and make room for longer labels underneath.</p>
+
+<p>In order to make sure the labels fit in the space underneath the bars, I&#8217;m going to size the entire chart using <code>ems</code> so it will flex up and down with the text size. To make things simpler, I&#8217;ll go ahead and set the text size I want to use for the labels on the main <code>.timeline</code> element, so I can size everything relative to that. I&#8217;ll set the <code>height</code> of the whole chart to <code>10 ems</code>, which leaves <code>8 ems</code> for the bars and <code>2 ems</code> for the labels with a little padding.</p>
+
+<pre><code>.timeline { 
+  font-size: 0.75em; 
+  height: 10em;
+}
+.timeline li { 
+  height: 8em;
+}
+</code></pre>
+
+<p>As before I&#8217;ll set the list items to use relative positioning, since I&#8217;ll be using absolute positioning to pin the bars to the bottom of each one. (If I didn&#8217;t use absolute positioning relative to each list item, the bars would just dangle from the top, which isn&#8217;t quite the look we&#8217;re going for.) I&#8217;ll float the list items to the left so the bars will line up next to each other horizontally. I&#8217;ll set the width of each bar to <code>1.5em</code> and the height to <code>8em</code> to give us enough room for the two-digit labels below, and put just a little padding on either side to separate the bars from each other. I&#8217;m using <code>ems</code> for all these dimensions so the bars and the labels will scale up together when the text size changes.</p>
+
+<pre><code>.timeline li { 
+  height: 8em;
+  position: relative;
+  float: left;
+  width: 1.5em; 
+  margin: 0 0.1em;
+}
+</code></pre>
+
+<p>Since I want the entire area of the bar and label to be clickable, I&#8217;ll set the links to <code>display: block</code> and <code>height: 100%</code> so they fill the available space we&#8217;ve created for the list items.</p>
+
+<pre><code>.timeline li a { 
+   display: block;
+   height: 100%;  
+}
+</code></pre>
+
+<p>I want the labels to display below the bars, but since I want both the bars and the labels to be clickable, I&#8217;ve placed them both inside the <code>a</code> tag. In order to move the labels out of the way, I&#8217;ll use absolute positioning with a negative <code>bottom</code> value. Since the bars have a <code>height</code> of <code>8em</code> and the chart is <code>10em</code> I&#8217;ll move the labels down from the bottom of the bars by <code>-2em</code>. I&#8217;ll give them a <code>line-height</code> of <code>2em</code> as well, so no matter what the text size they&#8217;ll have plenty of room right in the middle of that vertical space. We&#8217;ll pin them to the left side of the bars and set them to take up the full width with the text aligned in the center.</p>
+
+<pre><code>.timeline li .label { 
+  display: block; 
+  position: absolute; 
+  bottom: -2em; 
+  line-height: 2em;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+</code></pre>
+
+<p>Since we&#8217;re not going to be displaying the counts in this chart, I&#8217;ll just use the <code>count</code> element to display the bar, using the same combination of <code>text-indent</code> and <code>overflow</code> to hide the text. I&#8217;ll give the bars a solid background and position them from the bottom left of the list item. Reversing what we did for the horizontal bar chart, I&#8217;ll set the width of the bars to <code>100%</code> and the height to zero.</p>
+
+<pre><code>.timeline li a .count { 
+  display: block; 
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  text-indent: -9999px; 
+  overflow: hidden;
+  width: 100%; 
+  height: 0;
+  background: #AAA; 
+}
+</code></pre>
+
+<p>For this chart I don&#8217;t want the each bar to represent a percentage of the total for the whole chart, since there are so many items and the bars would all be tiny. Instead I want the day with the highest count to be the tallest bar, so I&#8217;ll set the height on that to 100% and calculate the heights of all the percentages of that highest day&#8217;s count. You can see results (with fake data but real math) in the <a href="example-timeline.html">finished example</a>. I&#8217;ve also added a hover style to highlight the bar, label and the background area so it&#8217;s clear which item is about to be clicked on.</p>
+
+<h2 id="sparklines">Sparklines</h2>
+
+<p>Now that we&#8217;ve tipped our chart on its side to make a timeline, we can shrink it down to make a sparkline - a handy way to show a snippet of data inline with text (see the <a href="example-sparklines.html">finished example</a>). You can see from the example that we&#8217;ll basically just be shrinking the timeline chart. With bars instead of lines, it won&#8217;t be a true sparkline, but it fits the spirit of packing a lot of information in a simple, word-sized chart.</p>
+
+<p>The starting markup is a little different this time. Since we&#8217;re creating multiple charts, we&#8217;ll still start with an unordered list, but each list item will contain a full chart. Since sparklines are meant as an unobtrusive way to display information inline with text, we can try to reflect that even in the unstyled markup by using inline elements for each of the data points. What we&#8217;re shooting for is something that reads reasonably clearly even without the CSS applied. Take a look at this <a href="example-sparklines-unstyled.html">example with the styles removed</a> to get a better idea.</p>
+
+<p>I&#8217;ll start with a <code>span</code> as the container for the chart, and use another span with a class of <code>index</code> as the container for each bar. Each number in the series is wrapped in it&#8217;s own <code>span</code> with the <code>count</code> class. This is what we&#8217;ll use to style the bar. Since I&#8217;ll be hiding all the text within the inner <code>span.count</code> tag anyway, I&#8217;ve gone ahead and added commas between each one and parentheses around the whole set to make the unstyled content a little clearer. </p>
+
+<pre><code>&lt;span class="sparkline"&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;(60, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;220, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;140, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;80, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;110, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;90, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;180, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;140, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;120, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;160, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;175, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;225, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;175, &lt;/span&gt;&lt;/span&gt;
+  &lt;span class="index"&gt;&lt;span class="count"&gt;125)&lt;/span&gt;&lt;/span&gt;
+&lt;/span&gt;
+</code></pre>
+
+<p>I&#8217;ll float the whole chart to the left to set it next to the text. Using a float here is a bit of a cheat since sparklines are supposed to be able to appear directly inline with text, but until we get more consistent support for the <code>inline-block</code> display property (which is the effect we really want) a simple float will have to do. Since we want the chart to be the same size as the text, I&#8217;ll give it a <code>height</code> of <code>1em</code> and a little margin on either side to give it some breathing room.</p>
+
+<pre><code>.sparkline { 
+  float: left; 
+  height: 1em;
+  margin: 0 0.5em;
+}
+</code></pre>
+
+<p>Since the <code>.index</code> elements are the bar containers this time around, we&#8217;ll set <code>position: relative</code> on them, and float them to the left. I&#8217;ll make the bars <code>2px</code> in width, since <code>1px</code> is a little too small to really register. We want them to take up the full height of the chart just like in the timeline, so we&#8217;ll set the <code>height</code> to <code>100%</code>.</p>
+
+<pre><code>.sparkline .index { 
+    position: relative;
+  float: left; 
+  width: 2px; 
+  height: 1em; 
+}
+</code></pre>
+
+<p>For the bars themselves, we&#8217;ll follow almost exactly the same pattern as we did for the timeline, and apply the text-hiding trick.</p>
+
+<pre><code>.sparkline .index .count { 
+  display: block; 
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 0; 
+  background: #AAA;
+  overflow: hidden; 
+  text-indent: -9999px;
+}
+</code></pre>
+
+<p>I&#8217;ll also add some basic styles and padding to the unordered list containing our sparkline set. You can see the results in the <a href="example-sparklines.html">finished sparklines example</a>.</p>
+
+<h2 id="don8217t_underestimate_the_force">Don&#8217;t underestimate the Force</h2>
+
+<p>You can see all the charts together in the <a href="example-final.html">final example</a>. Try adjusting the text size and see how the charts adapt with the rest of the page, or check out the <a href="example-unstyled.html">unstyled example</a> to see how the markup degrades for machine readers or environments without full CSS support.</p>
+
+<p>Obviously, these charts are pretty simple, and there are plenty of data visualizations that just aren&#8217;t possible without using custom tools. But you can start to see how these basic pattern can be the building blocks for more complex techniques.</p>
+
+<p>So, when you want to build some simple visualizations that are integrated with the structure of a data-driven site, remember: you can go a long way with accessible, standards-based markup and some simple CSS.</p>

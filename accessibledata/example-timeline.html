@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Timeline / Accessible Data Examples</title>
+  <style type="text/css" media="screen">
+    /* SETUP */
+    * { 
+      margin: 0; 
+      padding: 0; 
+      list-style-type: none;
+    }
+    body { 
+      font-family: Helvetica, Arial, sans-serif; 
+      color: #333; 
+    }
+    a { 
+      color: #2D7BB2; 
+      text-decoration: none; 
+      font-weight: bold; 
+    }
+    a:hover { 
+      color: #333; 
+    }
+    h2, h3, h4 { 
+      clear: both; 
+      margin: 0 0 0.6em 0;
+    }
+    h3 { 
+      color: #666; 
+    }
+    .section { 
+      float: left;
+      clear: left;
+      padding: 1em 2em;
+    }
+    
+    /* TIMELINE CHARTS */
+    .timeline { 
+      font-size: 0.75em; 
+      height: 10em; 
+      width: 53em;
+    }
+    .timeline li { 
+      position: relative;
+      float: left;
+      width: 1.5em; 
+      margin: 0 0.1em;
+      height: 8em; 
+    }
+    .timeline li a { 
+      display: block;
+      height: 100%;  
+    }
+    .timeline li .label { 
+      display: block; 
+      position: absolute; 
+      bottom: -2em; 
+      left: 0; 
+      background: #fff; 
+      width: 100%; 
+      height: 2em; 
+      line-height: 2em; 
+      text-align: center;
+    }
+    .timeline li a .count { 
+      display: block; 
+      position: absolute; 
+      bottom: 0; 
+      left: 0; 
+      height: 0; 
+      width: 100%; 
+      background: #AAA; 
+      text-indent: -9999px; 
+      overflow: hidden; 
+    }
+    .timeline li:hover { 
+      background: #EFEFEF; 
+    }
+    .timeline li a:hover .count { 
+      background: #2D7BB2; 
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h2>Timeline chart</h2>
+
+    <h3>Fruits eaten over time</h3>
+
+    <h4>December 2007</h4>
+
+    <ul class="timeline">
+      <li>
+        <a href="http://www.example.com/2007/dec/1/" title="December 1, 2007: 40">
+          <span class="label">1</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/2/" title="December 2, 2007: 100">
+          <span class="label">2</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/3/" title="December 3, 2007: 150">
+          <span class="label">3</span>
+          <span class="count" style="height: 75%">(150)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/4/" title="December 4, 2007: 40">
+          <span class="label">4</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/5/" title="December 5, 2007: 100">
+          <span class="label">5</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/6/" title="December 6, 2007: 40">
+          <span class="label">6</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/7/" title="December 7, 2007: 40">
+          <span class="label">7</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/8/" title="December 8, 2007: 100">
+          <span class="label">8</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/9/" title="December 9, 2007: 150">
+          <span class="label">9</span>
+          <span class="count" style="height: 75%">(150)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/10/" title="December 10, 2007: 40">
+          <span class="label">10</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/11/" title="December 11, 2007: 100">
+          <span class="label">11</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/12/" title="December 12, 2007: 40">
+          <span class="label">12</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/13/" title="December 13, 2007: 150">
+          <span class="label">13</span>
+          <span class="count" style="height: 75%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/14/" title="December 14, 2007: 100">
+          <span class="label">14</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/15/" title="December 15, 2007: 200">
+          <span class="label">15</span>
+          <span class="count" style="height: 100%">(150)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/16/" title="December 16, 2007: 40">
+          <span class="label">16</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/17/" title="December 17, 2007: 100">
+          <span class="label">17</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/18/" title="December 18, 2007: 150">
+          <span class="label">18</span>
+          <span class="count" style="height: 75%">(150)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/19/" title="December 19, 2007: 200">
+          <span class="label">19</span>
+          <span class="count" style="height: 100%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/20/" title="December 20, 2007: 100">
+          <span class="label">20</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/21/" title="December 21, 2007: 200">
+          <span class="label">21</span>
+          <span class="count" style="height: 100%">(150)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/22/" title="December 22, 2007: 40">
+          <span class="label">22</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/23/" title="December 23, 2007: 100">
+          <span class="label">23</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/24/" title="December 24, 2007: 150">
+          <span class="label">24</span>
+          <span class="count" style="height: 75%">(150)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/25/" title="December 25, 2007: 150">
+          <span class="label">25</span>
+          <span class="count" style="height: 75%">(150)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/26/" title="December 26, 2007: 40">
+          <span class="label">26</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/27/" title="December 27, 2007: 100">
+          <span class="label">27</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/28/" title="December 28, 2007: 150">
+          <span class="label">28</span>
+          <span class="count" style="height: 75%">(150)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/29/" title="December 29, 2007: 40">
+          <span class="label">29</span>
+          <span class="count" style="height: 20%">(40)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/30/" title="December 30, 2007: 100">
+          <span class="label">30</span>
+          <span class="count" style="height: 50%">(100)</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.example.com/2007/dec/31/" title="December 31, 2007: 150">
+          <span class="label">31</span>
+          <span class="count" style="height: 75%">(150)</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
