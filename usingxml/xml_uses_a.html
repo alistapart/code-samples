@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>A List Apart: Using XML : Sample XML Document</title>
+
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<script language="javascript" type="text/javascript" 
+src="http://www.alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="http://www.alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<meta name="description" content="This file contains
+a sample XML document that describes nutrition facts." />
+
+<meta name="keywords" content="xml, xslt, transformations, css, stylesheets, batik, xalan, Relax NG, validation, fop, xsl-fo, formatting objects" />
+
+<style type="text/css" media="screen">
+<!--
+body {
+	background-color: #ffc;
+}
+-->
+</style>
+
+</head>
+
+<body onload="preloadImages();window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<div id="mast">
+<a href="https://alistapart.com/"><img 
+src="http://www.alistapart.com/masthead.gif" alt="A List Apart: for 
+people who make websites" width="430" height="32" border="0" 
+/></a>
+</div>
+
+<div id="content">
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/usingxml/"><img class="vs0" src="https://alistapart.com/stories/usingxml/usingxml.gif" width="300" height="150" border="0" alt="Using XML." title="Using XML." /></a></h1>
+
+<h3>Sample XML File</h3>
+
+<p class="vs0">If you want to try these examples, copy and paste this
+code into a file called <code>nutrition.xml</code> in the
+<code>nutrition</code> directory. (See <a
+href="https://alistapart.com/stories/usingxml/linux_setup.html">Linux</a> and <a
+href="https://alistapart.com/stories/usingxml/windows_setup.html">Windows</a> setup
+instructions.)</p>
+
+<hr />
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;?xml-stylesheet type="text/css" href="nutrition.css"?&gt;
+&lt;nutrition&gt;
+
+&lt;daily-values&gt;
+	&lt;total-fat units="g"&gt;65&lt;/total-fat&gt;
+	&lt;saturated-fat units="g"&gt;20&lt;/saturated-fat&gt;
+	&lt;cholesterol units="mg"&gt;300&lt;/cholesterol&gt;
+	&lt;sodium units="mg"&gt;2400&lt;/sodium&gt;
+	&lt;carb units="g"&gt;300&lt;/carb&gt;
+	&lt;fiber units="g"&gt;25&lt;/fiber&gt;
+	&lt;protein units="g"&gt;50&lt;/protein&gt;
+&lt;/daily-values&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Avocado Dip&lt;/name&gt;
+	&lt;mfr&gt;Sunnydale&lt;/mfr&gt;
+	&lt;serving units="g"&gt;29&lt;/serving&gt;
+	&lt;calories total="110" fat="100"https://alistapart.com/&gt;
+	&lt;total-fat&gt;11&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;3&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;5&lt;/cholesterol&gt;
+	&lt;sodium&gt;210&lt;/sodium&gt;
+	&lt;carb&gt;2&lt;/carb&gt;
+	&lt;fiber&gt;0&lt;/fiber&gt;
+	&lt;protein&gt;1&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;0&lt;/a&gt;
+		&lt;c&gt;0&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;0&lt;/ca&gt;
+		&lt;fe&gt;0&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Bagels, New York Style &lt;/name&gt;
+	&lt;mfr&gt;Thompson&lt;/mfr&gt;
+	&lt;serving units="g"&gt;104&lt;/serving&gt;
+	&lt;calories total="300" fat="35"https://alistapart.com/&gt;
+	&lt;total-fat&gt;4&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;1&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;0&lt;/cholesterol&gt;
+	&lt;sodium&gt;510&lt;/sodium&gt;
+	&lt;carb&gt;54&lt;/carb&gt;
+	&lt;fiber&gt;3&lt;/fiber&gt;
+	&lt;protein&gt;11&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;0&lt;/a&gt;
+		&lt;c&gt;0&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;8&lt;/ca&gt;
+		&lt;fe&gt;20&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Beef Frankfurter, Quarter Pound &lt;/name&gt;
+	&lt;mfr&gt;Armitage&lt;/mfr&gt;
+	&lt;serving units="g"&gt;115&lt;/serving&gt;
+	&lt;calories total="370" fat="290"https://alistapart.com/&gt;
+	&lt;total-fat&gt;32&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;15&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;65&lt;/cholesterol&gt;
+	&lt;sodium&gt;1100&lt;/sodium&gt;
+	&lt;carb&gt;8&lt;/carb&gt;
+	&lt;fiber&gt;0&lt;/fiber&gt;
+	&lt;protein&gt;13&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;0&lt;/a&gt;
+		&lt;c&gt;2&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;1&lt;/ca&gt;
+		&lt;fe&gt;6&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Chicken Pot Pie&lt;/name&gt;
+	&lt;mfr&gt;Lakeson&lt;/mfr&gt;
+	&lt;serving units="g"&gt;198&lt;/serving&gt;
+	&lt;calories total="410" fat="200"https://alistapart.com/&gt;
+	&lt;total-fat&gt;22&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;9&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;25&lt;/cholesterol&gt;
+	&lt;sodium&gt;810&lt;/sodium&gt;
+	&lt;carb&gt;42&lt;/carb&gt;
+	&lt;fiber&gt;2&lt;/fiber&gt;
+	&lt;protein&gt;10&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;20&lt;/a&gt;
+		&lt;c&gt;2&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;2&lt;/ca&gt;
+		&lt;fe&gt;10&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Cole Slaw&lt;/name&gt;
+	&lt;mfr&gt;Fresh Quick&lt;/mfr&gt;
+	&lt;serving units=" cup"&gt;1.5&lt;/serving&gt;
+	&lt;calories total="20" fat="0"https://alistapart.com/&gt;
+	&lt;total-fat&gt;0&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;0&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;0&lt;/cholesterol&gt;
+	&lt;sodium&gt;15&lt;/sodium&gt;
+	&lt;carb&gt;5&lt;/carb&gt;
+	&lt;fiber&gt;2&lt;/fiber&gt;
+	&lt;protein&gt;1&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;30&lt;/a&gt;
+		&lt;c&gt;45&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;4&lt;/ca&gt;
+		&lt;fe&gt;2&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Eggs&lt;/name&gt;
+	&lt;mfr&gt;Goodpath&lt;/mfr&gt;
+	&lt;serving units="g"&gt;50&lt;/serving&gt;
+	&lt;calories total="70" fat="40"https://alistapart.com/&gt;
+	&lt;total-fat&gt;4.5&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;1.5&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;215&lt;/cholesterol&gt;
+	&lt;sodium&gt;65&lt;/sodium&gt;
+	&lt;carb&gt;1&lt;/carb&gt;
+	&lt;fiber&gt;0&lt;/fiber&gt;
+	&lt;protein&gt;6&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;6&lt;/a&gt;
+		&lt;c&gt;0&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;2&lt;/ca&gt;
+		&lt;fe&gt;4&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Hazelnut Spread&lt;/name&gt;
+	&lt;mfr&gt;Ferreira&lt;/mfr&gt;
+	&lt;serving units="tbsp"&gt;2&lt;/serving&gt;
+	&lt;calories total="200" fat="90"https://alistapart.com/&gt;
+	&lt;total-fat&gt;10&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;2&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;0&lt;/cholesterol&gt;
+	&lt;sodium&gt;20&lt;/sodium&gt;
+	&lt;carb&gt;23&lt;/carb&gt;
+	&lt;fiber&gt;2&lt;/fiber&gt;
+	&lt;protein&gt;3&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;0&lt;/a&gt;
+		&lt;c&gt;0&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;6&lt;/ca&gt;
+		&lt;fe&gt;4&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Potato Chips&lt;/name&gt;
+	&lt;mfr&gt;Lees&lt;/mfr&gt;
+	&lt;serving units="g"&gt;28&lt;/serving&gt;
+	&lt;calories total="150" fat="90"https://alistapart.com/&gt;
+	&lt;total-fat&gt;10&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;3&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;0&lt;/cholesterol&gt;
+	&lt;sodium&gt;180&lt;/sodium&gt;
+	&lt;carb&gt;15&lt;/carb&gt;
+	&lt;fiber&gt;1&lt;/fiber&gt;
+	&lt;protein&gt;2&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;0&lt;/a&gt;
+		&lt;c&gt;10&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;0&lt;/ca&gt;
+		&lt;fe&gt;0&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Soy Patties, Grilled&lt;/name&gt;
+	&lt;mfr&gt;Gardenproducts&lt;/mfr&gt;
+	&lt;serving units="g"&gt;96&lt;/serving&gt;
+	&lt;calories total="160" fat="45"https://alistapart.com/&gt;
+	&lt;total-fat&gt;5&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;0&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;0&lt;/cholesterol&gt;
+	&lt;sodium&gt;420&lt;/sodium&gt;
+	&lt;carb&gt;10&lt;/carb&gt;
+	&lt;fiber&gt;4&lt;/fiber&gt;
+	&lt;protein&gt;9&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;0&lt;/a&gt;
+		&lt;c&gt;0&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;0&lt;/ca&gt;
+		&lt;fe&gt;0&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;food&gt;
+	&lt;name&gt;Truffles, Dark Chocolate&lt;/name&gt;
+	&lt;mfr&gt;Lyndon's&lt;/mfr&gt;
+	&lt;serving units="g"&gt;39&lt;/serving&gt;
+	&lt;calories total="220" fat="170"https://alistapart.com/&gt;
+	&lt;total-fat&gt;19&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;14&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;25&lt;/cholesterol&gt;
+	&lt;sodium&gt;10&lt;/sodium&gt;
+	&lt;carb&gt;16&lt;/carb&gt;
+	&lt;fiber&gt;1&lt;/fiber&gt;
+	&lt;protein&gt;1&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;0&lt;/a&gt;
+		&lt;c&gt;0&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;0&lt;/ca&gt;
+		&lt;fe&gt;0&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+
+&lt;/nutrition&gt;
+
+&lt;!--
+&lt;food&gt;
+	&lt;name&gt;&lt;/name&gt;
+	&lt;mfr&gt;&lt;/mfr&gt;
+	&lt;serving units="g"&gt;&lt;/serving&gt;
+	&lt;calories total="" fat=""https://alistapart.com/&gt;
+	&lt;total-fat&gt;&lt;/total-fat&gt;
+	&lt;saturated-fat&gt;&lt;/saturated-fat&gt;
+	&lt;cholesterol&gt;&lt;/cholesterol&gt;
+	&lt;sodium&gt;&lt;/sodium&gt;
+	&lt;carb&gt;&lt;/carb&gt;
+	&lt;fiber&gt;&lt;/fiber&gt;
+	&lt;protein&gt;&lt;/protein&gt;
+	&lt;vitamins&gt;
+		&lt;a&gt;&lt;/a&gt;
+		&lt;c&gt;&lt;/c&gt;
+	&lt;/vitamins&gt;
+	&lt;minerals&gt;
+		&lt;ca&gt;&lt;/ca&gt;
+		&lt;fe&gt;&lt;/fe&gt;
+	&lt;/minerals&gt;
+&lt;/food&gt;
+--&gt;
+</pre>
+
+</div>
+
+</body>
+</html>
+	

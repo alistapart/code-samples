@@ -1,0 +1,95 @@
+/* 
+	Stylesheet for Nutrition XML file.
+	Written by J. David Eisenberg
+*/
+
+* {
+	display: block;
+}
+
+nutrition {
+	margin: 0.75em;
+}
+
+nutrition:before {
+	font-size: 24pt;
+	text-align: center;
+	font-weight: bold;
+	content: "Nutrition Summary";
+}
+
+daily-values {
+	margin: 1em;
+	padding: 0.5em;
+	border: 2px dotted blue;
+}
+
+daily-values:before {
+	font-size: 18pt;
+	content: "Daily Maximum Values";
+}
+
+daily-values > * {
+	margin-left: 1em;
+}
+
+total-fat:before {
+	content: "Total fat: ";
+}
+
+saturated-fat:before {
+	content: "Saturated fat: ";
+}
+
+total-fat, saturated-fat { display: inline; }
+
+food {
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid black;
+}
+
+food>fat {
+	margin-left: 0.5em;
+}
+
+name {	
+	font-size: 20pt;
+	font-weight: bold;
+	display:inline;
+}
+
+mfr {
+	display:inline;
+	font-size: 16pt;
+	font-style: italic;
+}
+
+serving:before { margin-left: 0.5em; content: "Serving size: "; }
+mfr:before { content: "("; }
+mfr:after { content: ")"; }
+
+cholesterol:before { margin-left: 0.5em; content: "Cholesterol: "; }
+sodium:before { margin-left: 0.5em; content: "Sodium: "; }
+carb:before { margin-left: 0.5em; content: "Carbohydrates: "; }
+fiber:before { margin-left: 0.5em; content: "Fiber: "; }
+protein:before { margin-left: 0.5em; content: "Protein: ";}
+
+vitamins:before {
+	font-size: 18pt;
+	font-weight: bold;
+	content: "Vitamins";
+}
+
+vitamins>a:before { margin-left: 0.5em; content: "Vitamin A: ";}
+vitamins>c:before { margin-left: 0.5em; content: "Vitamin C: ";}
+vitamins>*:after { content: "%"; }
+
+minerals:before {
+	font-size: 18pt;
+	font-weight: bold;
+	content: "Minerals";
+}
+minerals>ca:before { margin-left: 0.5em; content: "Calcium: ";}
+minerals>fe:before { margin-left: 0.5em; content: "Iron: ";}
+minerals>*:after { content: "%"; }

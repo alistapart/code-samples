@@ -1,0 +1,12 @@
+Name	Manufacturer	Serving Size	Serving Units	Total Calories	Calories from Fat	Total Fat	Saturated Fat	Cholesterol	Sodium	Carbohydrates	Fiber	Protein	Vitamin A	Vitamin C	Calcium	Iron
+Daily Values	N/A	N/A	N/A	N/A	N/A	 65 	 20 	 300 	 2400 	 300 	 25 	 50 	100	100	100	100
+Avocado Dip	Sunnydale	 29 	g	110	100	 11 	 3 	 5 	 210 	 2 	 0 	 1 	 0 	 0 	 0 	 0 
+Bagels, New York Style 	Thompson	104	g	300	35	4	1	0	510	54	3	11	0	0	8	20
+Beef Frankfurter, Quarter Pound 	Armitage	115	g	370	290	32	15	65	1100	8	0	13	0	2	1	6
+Chicken Pot Pie	Lakeson	198	g	410	200	22	9	25	810	42	2	10	20	2	2	10
+Cole Slaw	Fresh Quick	1.5	 cup	20	0	0	0	0	15	5	2	1	30	45	4	2
+Eggs	Goodpath	50	g	70	40	4.5	1.5	215	65	1	0	6	6	0	2	4
+Hazelnut Spread	Ferreira	2	tbsp	200	90	10	2	0	20	23	2	3	0	0	6	4
+Potato Chips	Lees	28	g	150	90	10	3	0	180	15	1	2	0	10	0	0
+Soy Patties, Grilled	Gardenproducts	96	g	160	45	5	0	0	420	10	4	9	0	0	0	0
+Truffles, Dark Chocolate	Lyndon's	39	g	220	170	19	14	25	10	16	1	1	0	0	0	0

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>A List Apart: Using XML : Stylesheet</title>
+
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<script language="javascript" type="text/javascript" 
+src="http://www.alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="http://www.alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<meta name="description" content="This file contains
+a sample CSS stylesheet for displaying nutrition markup documents." />
+
+<meta name="keywords" content="xml, xslt, transformations, css, stylesheets, batik, xalan, Relax NG, validation, fop, xsl-fo, formatting objects" />
+
+<style type="text/css" media="screen">
+<!--
+body {
+	background-color: #ffc;
+}
+-->
+</style>
+
+</head>
+
+<body onload="preloadImages();window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<div id="mast">
+<a href="https://alistapart.com/"><img 
+src="http://www.alistapart.com/masthead.gif" alt="A List Apart: for 
+people who make websites" width="430" height="32" border="0" 
+/></a>
+</div>
+
+<div id="content">
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/usingxml/"><img class="vs0" src="https://alistapart.com/stories/usingxml/usingxml.gif" width="300" height="150" border="0" alt="Using XML." title="Using XML." /></a></h1>
+
+<h3>Sample Stylesheet</h3>
+
+<p>If you want to display the sample XML file in a modern
+standards-compliant browser, copy and paste this code into a file
+called <code>nutrition.css</code> in the <code>nutrition</code>
+directory. (See <a href="https://alistapart.com/stories/usingxml/linux_setup.html">Linux</a>
+and <a href="https://alistapart.com/stories/usingxml/windows_setup.html">Windows</a> setup instructions.)</p>
+
+<hr />
+<pre>
+
+* {
+	display: block;
+}
+
+nutrition {
+	margin: 0.75em;
+}
+
+nutrition:before {
+	font-size: 24pt;
+	text-align: center;
+	font-weight: bold;
+	content: "Nutrition Summary";
+}
+
+daily-values {
+	margin: 1em;
+	padding: 0.5em;
+	border: 2px dotted blue;
+}
+
+daily-values:before {
+	font-size: 18pt;
+	content: "Daily Maximum Values";
+}
+
+daily-values &gt; * {
+	margin-left: 1em;
+}
+
+total-fat:before {
+	content: "Total fat: ";
+}
+
+saturated-fat:before {
+	content: "Saturated fat: ";
+}
+
+total-fat, saturated-fat { display: inline; }
+
+food {
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid black;
+}
+
+food&gt;fat {
+	margin-left: 0.5em;
+}
+
+name {	
+	font-size: 20pt;
+	font-weight: bold;
+	display:inline;
+}
+
+mfr {
+	display:inline;
+	font-size: 16pt;
+	font-style: italic;
+}
+
+serving:before { margin-left: 0.5em; content: "Serving size: "; }
+mfr:before { content: "("; }
+mfr:after { content: ")"; }
+
+cholesterol:before { margin-left: 0.5em; content: "Cholesterol: "; }
+sodium:before { margin-left: 0.5em; content: "Sodium: "; }
+carb:before { margin-left: 0.5em; content: "Carbohydrates: "; }
+fiber:before { margin-left: 0.5em; content: "Fiber: "; }
+protein:before { margin-left: 0.5em; content: "Protein: ";}
+
+vitamins:before {
+	font-size: 18pt;
+	font-weight: bold;
+	content: "Vitamins";
+}
+
+vitamins&gt;a:before { margin-left: 0.5em; content: "Vitamin A: ";}
+vitamins&gt;c:before { margin-left: 0.5em; content: "Vitamin C: ";}
+vitamins&gt;*:after { content: "%"; }
+
+minerals:before {
+	font-size: 18pt;
+	font-weight: bold;
+	content: "Minerals";
+}
+minerals&gt;ca:before { margin-left: 0.5em; content: "Calcium: ";}
+minerals&gt;fe:before { margin-left: 0.5em; content: "Iron: ";}
+minerals&gt;*:after { content: "%"; }
+</pre>
+
+</div>
+
+</body>
+</html>
+	

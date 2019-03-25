@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>A List Apart: Using XML : Convert to Fancy HTML</title>
+
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<script language="javascript" type="text/javascript" 
+src="http://www.alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="http://www.alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<meta name="description" content="This file converts
+a sample XML document that describes nutrition facts to fancy HTML." />
+
+<meta name="keywords" content="xml, xslt, transformations, css, stylesheets, batik, xalan, Relax NG, validation, fop, xsl-fo, formatting objects" />
+
+<style type="text/css" media="screen">
+<!--
+body {
+	background-color: #ffc;
+}
+-->
+</style>
+
+</head>
+
+<body onload="preloadImages();window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<div id="mast">
+<a href="https://alistapart.com/"><img 
+src="http://www.alistapart.com/masthead.gif" alt="A List Apart: for 
+people who make websites" width="430" height="32" border="0" 
+/></a>
+</div>
+
+<div id="content">
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/usingxml/"><img class="vs0" src="https://alistapart.com/stories/usingxml/usingxml.gif" width="300" height="150" border="0" alt="Using XML." title="Using XML." /></a></h1>
+
+<h3>XSLT Conversion from XML to Fancy HTML File</h3>
+
+<p class="vs0">If you want to try this file, copy and paste the code
+into a file called <code>nutrition_fancy.xslt</code> in the
+<code>nutrition</code> directory. (See <a
+href="https://alistapart.com/stories/usingxml/linux_setup.html">Linux</a> and <a
+href="https://alistapart.com/stories/usingxml/windows_setup.html">Windows</a> setup
+instructions.)</p>
+<hr />
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	version="1.0"&gt;
+
+&lt;xsl:output method="html" indent="yes"https://alistapart.com/&gt;
+
+&lt;xsl:template match="nutrition"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style type="text/css"&gt;
+h2 { font-size: 200%; }
+h3 {
+	font-size: 150%;
+}
+h3.title {
+	font-style: italic;
+	text-align: right;
+	margin-top: 0.5em;
+	border-top: 2px solid navy;
+	padding-top: 0.5em;
+}
+
+.bargraph {
+	position: relative;
+	width: 101px;
+	height: 15px;
+	border: 1px solid black;
+}
+
+.colorbar {
+	position: relative;
+	left: 1px;
+	top: 1px;
+	height: 13px;
+}
+
+&lt;/style&gt;
+
+&lt;title&gt;How Healthy Is It?&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2 align="center"&gt;How Healthy Is It?&lt;/h2&gt;
+
+&lt;h3 class="title"&gt;Healthy: Fitness gurus love you.&lt;/h3&gt;
+&lt;xsl:apply-templates select="food[calories/@fat div calories/@total &amp;lt; 0.33]"&gt;
+	&lt;xsl:sort select="calories/@fat div calories/@total"https://alistapart.com/&gt;
+&lt;/xsl:apply-templates&gt;
+
+&lt;h3 class="title"&gt;Medium: You could do worse than eat it.&lt;/h3&gt;
+
+&lt;xsl:apply-templates select="food[calories/@fat div calories/@total &amp;gt; 0.33 and calories/@fat div calories/@total &amp;lt; 0.66]"&gt;
+	&lt;xsl:sort select="calories/@fat div calories/@total"https://alistapart.com/&gt;
+&lt;/xsl:apply-templates&gt;
+
+&lt;h3 class="title"&gt;Unhealthy: I am become Death, Destroyer of Worlds.&lt;/h3&gt;
+
+&lt;xsl:apply-templates select="food[calories/@fat div calories/@total &amp;gt; 0.66]"&gt;
+	&lt;xsl:sort select="calories/@fat div calories/@total"https://alistapart.com/&gt;
+&lt;/xsl:apply-templates&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="food"&gt;
+&lt;xsl:variable name="pct" select="calories/@fat div calories/@total"https://alistapart.com/&gt;
+&lt;h3&gt;&lt;xsl:value-of select="name"https://alistapart.com/&gt;&lt;xsl:text&gt; from &lt;/xsl:text&gt;
+	&lt;xsl:value-of select="mfr"https://alistapart.com/&gt;&lt;/h3&gt;
+&lt;p&gt;In each serving of &lt;xsl:value-of select="serving"https://alistapart.com/&gt;
+&lt;xsl:text&gt; &lt;/xsl:text&gt;&lt;xsl:value-of select="serving/@units"https://alistapart.com/&gt;,
+&lt;span&gt;
+	&lt;xsl:if test="$pct &amp;gt; 0.66"&gt;
+		&lt;xsl:attribute name="style"&gt;color: red;&lt;/xsl:attribute&gt;
+	&lt;/xsl:if&gt;
+	&lt;xsl:value-of select="format-number($pct, '###%')"https://alistapart.com/&gt;
+&lt;/span&gt; of the &lt;xsl:value-of select="calories/@total"https://alistapart.com/&gt; calories 
+come from fat.&lt;/p&gt;
+
+&lt;table border="0"&gt;
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Total Fat&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="total-fat"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Saturated Fat&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="saturated-fat"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Cholesterol&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="cholesterol"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Sodium&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="sodium"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+&lt;/table&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template name="info-row"&gt;
+&lt;xsl:param name="msg"https://alistapart.com/&gt;
+&lt;xsl:param name="node"https://alistapart.com/&gt;
+&lt;xsl:variable name="pct" select="round(100 * $node div /nutrition/daily-values/*[name(.)=name($node)])"https://alistapart.com/&gt;
+&lt;tr&gt;&lt;td align="right"&gt;&lt;b&gt;&lt;xsl:value-of select="$msg"https://alistapart.com/&gt;&lt;/b&gt;&lt;/td&gt;
+&lt;td align="right"&gt;
+&lt;b&gt;&lt;xsl:value-of select="$node"https://alistapart.com/&gt;&lt;xsl:value-of select="https://alistapart.com/nutrition/daily-values/*[name(.)=name($node)]/@units"https://alistapart.com/&gt;&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;div class="bargraph"&gt;
+	&lt;div class="colorbar"&gt;
+		&lt;xsl:choose&gt;
+		&lt;xsl:when test="$pct &amp;lt; 50"&gt;
+			&lt;xsl:attribute name="style"&gt;background-color:green; width:&lt;xsl:value-of select="$pct"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+		&lt;/xsl:when&gt;
+		&lt;xsl:otherwise&gt;
+			&lt;xsl:attribute name="style"&gt;background-color:red; width:&lt;xsl:value-of select="$pct"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+		&lt;/xsl:otherwise&gt;
+		&lt;/xsl:choose&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td align="right"&gt;
+&lt;xsl:text&gt; &lt;/xsl:text&gt;&lt;xsl:value-of select="$pct"https://alistapart.com/&gt;&lt;xsl:text&gt;%&lt;/xsl:text&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+</pre>
+
+</body>
+</html>
+	

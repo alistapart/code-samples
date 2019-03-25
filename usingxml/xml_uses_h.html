@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>A List Apart: Using XML : Convert to SVG</title>
+
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<script language="javascript" type="text/javascript" 
+src="http://www.alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="http://www.alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<meta name="description" content="This file contains
+a sample XSLT transformation that transforms nutrition markup to Scalable Vector Graphics." />
+
+<meta name="keywords" content="xml, xslt, transformations, css, stylesheets, batik, xalan, Relax NG, validation, fop, xsl-fo, formatting objects" />
+
+<style type="text/css" media="screen">
+<!--
+body {
+	background-color: #ffc;
+}
+-->
+</style>
+
+</head>
+
+<body onload="preloadImages();window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<div id="mast">
+<a href="https://alistapart.com/"><img 
+src="http://www.alistapart.com/masthead.gif" alt="A List Apart: for 
+people who make websites" width="430" height="32" border="0" 
+/></a>
+</div>
+
+<div id="content">
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/usingxml/"><img class="vs0" src="https://alistapart.com/stories/usingxml/usingxml.gif" width="300" height="150" border="0" alt="Using XML." title="Using XML." /></a></h1>
+
+<h3>XSLT Conversion to Scalable Vector Graphics</h3>
+<p class="vs0">If you want to try this file, copy and paste the code
+into a file called <code>nutrition_svg.xslt</code> in the
+<code>nutrition</code> directory. (See <a
+href="https://alistapart.com/stories/usingxml/linux_setup.html">Linux</a> and <a
+href="https://alistapart.com/stories/usingxml/windows_setup.html">Windows</a> setup
+instructions.)</p>
+
+<hr />
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+&lt;xsl:output method="xml" indent="yes"
+	doctype-public="-//W3C//DTD SVG 1.0//EN"
+	doctype-system="http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"https://alistapart.com/&gt;
+&lt;xsl:key name="category" match="nutrition/daily-values/*"
+	use="local-name()"https://alistapart.com/&gt;
+
+&lt;xsl:template match="nutrition"&gt;
+&lt;xsl:variable name="n"&gt;
+	&lt;xsl:choose&gt;
+	&lt;xsl:when test="count(food)*25+40 &amp;lt; 400"&gt;400&lt;/xsl:when&gt;
+	&lt;xsl:otherwise&gt;
+		&lt;xsl:value-of select="count(food)*25 + 40"https://alistapart.com/&gt;
+	&lt;/xsl:otherwise&gt;
+	&lt;/xsl:choose&gt;
+&lt;/xsl:variable&gt;
+&lt;svg width="600" height="{$n}"
+	viewBox="0 0 600 0 {$n}"&gt;
+
+&lt;script type="text/ecmascript"&gt;
+&lt;![CDATA[
+var currId = "0";
+
+function show( id )
+{
+	var obj;
+	if (id != currId)
+	{
+		obj = document.getElementById( "graph" + currId );
+		obj.setAttribute( "visibility", "hidden");
+		if (currId != 0)
+		{
+			obj = document.getElementById( "rect" + currId );
+			obj.setAttribute( "fill", "#eeeeff" );
+		}
+		obj = document.getElementById( "graph" + id );
+		obj.setAttribute( "visibility", "visible");
+		obj = document.getElementById( "rect" + id );
+		obj.setAttribute( "fill", "#ffff00");
+		currId = id;
+	}
+}
+// ]]&gt;
+&lt;/script&gt;
+
+&lt;xsl:comment&gt;Draw axes&lt;/xsl:comment&gt;
+&lt;g transform="translate(40,20)"&gt;
+&lt;path d="M0 0 L0 200 200 200 
+	M -3 0 h6 M -3 20 h6 M -3 40 h6 M -3 60 h6
+	M -3 80 h6 M -3 100 h6 M -3 120 h6 M -3 140 h6
+	M -3 160 h6 M -3 180 h6" style="stroke:black; fill:none;"https://alistapart.com/&gt;
+	&lt;g style="font-size: 8pt; text-anchor:end"&gt;
+	&lt;text x="-5" y="5"&gt;100%&lt;/text&gt;
+	&lt;text x="-5" y="45"&gt;80%&lt;/text&gt;
+	&lt;text x="-5" y="85"&gt;60%&lt;/text&gt;
+	&lt;text x="-5" y="125"&gt;40%&lt;/text&gt;
+	&lt;text x="-5" y="165"&gt;20%&lt;/text&gt;
+	&lt;text x="-5" y="205"&gt;0%&lt;/text&gt;
+	&lt;/g&gt;
+	&lt;g style="font-size: 8pt; writing-mode: tb;"&gt;
+	&lt;text x="25" y="205"&gt;Total Fat&lt;/text&gt;
+	&lt;text x="75" y="205"&gt;Sat. Fat&lt;/text&gt;
+	&lt;text x="125" y="205"&gt;Cholesterol&lt;/text&gt;
+	&lt;text x="175" y="205"&gt;Sodium&lt;/text&gt;
+	&lt;/g&gt;
+&lt;/g&gt;
+
+&lt;xsl:comment&gt;Preliminary instructions&lt;/xsl:comment&gt;
+&lt;g transform="translate(40,20)" id="graph0"&gt;
+	&lt;text x="50" y="50"&gt;Click a food to see
+		&lt;tspan x="50" y="70"&gt;its data.&lt;/tspan&gt;&lt;/text&gt;
+&lt;/g&gt;
+
+&lt;xsl:apply-templates select="food"https://alistapart.com/&gt;
+
+&lt;/svg&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="food"&gt;
+	&lt;xsl:comment&gt;Display the name of the food&lt;/xsl:comment&gt;
+	&lt;g onclick="show({position()})"&gt;
+	&lt;rect id="rect{position()}"
+		x="300" width="250" height="20" fill="#eeeeff"
+		style="stroke:black;"&gt;
+		&lt;xsl:attribute name="y"&gt;&lt;xsl:value-of
+			select="(position() * 25) - 15"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+	&lt;/rect&gt;
+	&lt;text x="425" style="font-size: 10pt; text-anchor:middle;"&gt;
+		&lt;xsl:attribute name="y"&gt;&lt;xsl:value-of
+			select="(position() * 25) - 15 + 14"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+		&lt;xsl:value-of select="name"https://alistapart.com/&gt;
+   	&lt;/text&gt;
+	&lt;/g&gt;
+	
+	&lt;xsl:comment&gt;Create a hidden graph for that food&lt;/xsl:comment&gt;
+	&lt;g id="graph{position()}" visibility="hidden"
+		transform="translate(40,20)"&gt;
+	&lt;xsl:call-template name="draw-bar"&gt;
+		&lt;xsl:with-param name="number" select="0"https://alistapart.com/&gt;
+		&lt;xsl:with-param name="node" select="total-fat"https://alistapart.com/&gt;
+	&lt;/xsl:call-template&gt;
+
+	&lt;xsl:call-template name="draw-bar"&gt;
+		&lt;xsl:with-param name="number" select="1"https://alistapart.com/&gt;
+		&lt;xsl:with-param name="node" select="saturated-fat"https://alistapart.com/&gt;
+	&lt;/xsl:call-template&gt;
+
+	&lt;xsl:call-template name="draw-bar"&gt;
+		&lt;xsl:with-param name="number" select="2"https://alistapart.com/&gt;
+		&lt;xsl:with-param name="node" select="cholesterol"https://alistapart.com/&gt;
+	&lt;/xsl:call-template&gt;
+
+	&lt;xsl:call-template name="draw-bar"&gt;
+		&lt;xsl:with-param name="number" select="3"https://alistapart.com/&gt;
+		&lt;xsl:with-param name="node" select="sodium"https://alistapart.com/&gt;
+	&lt;/xsl:call-template&gt;
+	&lt;/g&gt;	
+&lt;/xsl:template&gt;
+
+&lt;xsl:template name="draw-bar"&gt;
+&lt;xsl:param name="number"https://alistapart.com/&gt;
+&lt;xsl:param name="node"https://alistapart.com/&gt;
+
+&lt;xsl:variable name="pct"&gt;
+	&lt;xsl:value-of
+	select="round(100 * $node div key('category',name($node)))"https://alistapart.com/&gt;
+&lt;/xsl:variable&gt;
+
+&lt;rect width="25"&gt;
+	&lt;xsl:attribute name="x"&gt;&lt;xsl:value-of
+		select="12.5 + $number*50"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+	&lt;xsl:attribute name="y"&gt;&lt;xsl:value-of
+		select="200 - $pct*2"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+	&lt;xsl:attribute name="height"&gt;&lt;xsl:value-of
+		select="$pct * 2"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+	&lt;xsl:choose&gt;
+	&lt;xsl:when test="$pct &amp;lt;= 50"&gt;
+		&lt;xsl:attribute name="style"&gt;fill:green;&lt;/xsl:attribute&gt;
+	&lt;/xsl:when&gt;
+	&lt;xsl:otherwise&gt;
+		&lt;xsl:attribute name="style"&gt;fill:red;&lt;/xsl:attribute&gt;
+	&lt;/xsl:otherwise&gt;
+	&lt;/xsl:choose&gt;
+&lt;/rect&gt;
+	
+&lt;text style="font-size:8pt; text-anchor: middle;"&gt;
+	&lt;xsl:attribute name="x"&gt;&lt;xsl:value-of
+		select="25 + $number * 50"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+	&lt;xsl:attribute name="y"&gt;&lt;xsl:value-of
+		select="195 - $pct*2"https://alistapart.com/&gt;&lt;/xsl:attribute&gt;
+	&lt;xsl:value-of select="$pct"https://alistapart.com/&gt;&lt;xsl:text&gt;%&lt;/xsl:text&gt;
+&lt;/text&gt;
+
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+</pre>
+
+</body>
+</html>
+	

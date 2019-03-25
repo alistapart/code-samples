@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>A List Apart: Using XML : Convert to XSL-FO</title>
+
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<script language="javascript" type="text/javascript" 
+src="http://www.alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="http://www.alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<meta name="description" content="This file contains
+a sample XSLT transformation that transforms nutrition markup to XSL Formatting Objects." />
+
+<meta name="keywords" content="xml, xslt, transformations, css, stylesheets, batik, xalan, Relax NG, validation, fop, xsl-fo, formatting objects" />
+
+<style type="text/css" media="screen">
+<!--
+body {
+	background-color: #ffc;
+}
+-->
+</style>
+
+</head>
+
+<body onload="preloadImages();window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<div id="mast">
+<a href="https://alistapart.com/"><img 
+src="http://www.alistapart.com/masthead.gif" alt="A List Apart: for 
+people who make websites" width="430" height="32" border="0" 
+/></a>
+</div>
+
+<div id="content">
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/usingxml/"><img class="vs0" src="https://alistapart.com/stories/usingxml/usingxml.gif" width="300" height="150" border="0" alt="Using XML." title="Using XML." /></a></h1>
+
+<h3>XSLT Conversion from XML to Formatting Objects</h3>
+
+<p>If you want to try this file, which is part of the conversion
+from XML to PDF, copy and paste the code into a file
+called <code>nutrition_fo.xslt</code> in the <code>nutrition</code>
+directory. (See <a href="https://alistapart.com/stories/usingxml/linux_setup.html">Linux</a>
+and <a href="https://alistapart.com/stories/usingxml/windows_setup.html">Windows</a> setup instructions.)</p>
+
+<hr />
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;
+
+&lt;xsl:output method="xml" indent="yes"https://alistapart.com/&gt;
+&lt;xsl:key name="category" match="nutrition/daily-values/*"
+	use="local-name()"https://alistapart.com/&gt;
+&lt;xsl:template match="nutrition"&gt;
+&lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;
+
+    &lt;fo:layout-master-set&gt;
+		&lt;fo:simple-page-master master-name="cover"
+            page-height="10cm"
+            page-width="8cm"
+            margin-top="0.25cm"
+            margin-bottom="0.25cm"
+            margin-left="0.5cm"
+            margin-right="0.25cm"&gt;
+            &lt;fo:region-body
+                margin-top="0.3cm" /&gt;
+		&lt;/fo:simple-page-master&gt;
+
+       &lt;fo:simple-page-master master-name="leftPage"
+            page-height="10cm"
+            page-width="8cm"
+            margin-left="0.25cm"
+            margin-right="0.5cm"
+            margin-top="0.25cm"
+            margin-bottom="0.25cm"&gt;
+            &lt;fo:region-after extent="0.5cm"https://alistapart.com/&gt;
+            &lt;fo:region-body
+                margin-top="0.25cm"
+                margin-bottom="0.25cm" /&gt;
+        &lt;/fo:simple-page-master&gt;
+
+        &lt;fo:simple-page-master master-name="rightPage"
+            page-height="10cm"
+            page-width="8cm"
+            margin-left="0.5cm"
+            margin-right="0.25cm"
+            margin-top="0.25cm"
+            margin-bottom="0.25cm"&gt;
+            &lt;fo:region-after extent="0.5cm"https://alistapart.com/&gt;
+            &lt;fo:region-body
+                margin-top="0.25cm"
+                margin-bottom="0.25cm" /&gt;
+        &lt;/fo:simple-page-master&gt;
+
+        &lt;xsl:comment&gt;Set up the sequence of pages&lt;/xsl:comment&gt;
+        &lt;fo:page-sequence-master master-name="contents"&gt;
+            &lt;fo:repeatable-page-master-alternatives&gt;
+                &lt;fo:conditional-page-master-reference
+                    master-reference="leftPage"
+                    odd-or-even="even"https://alistapart.com/&gt;
+                &lt;fo:conditional-page-master-reference
+                    master-reference="rightPage"
+                    odd-or-even="odd"https://alistapart.com/&gt;
+            &lt;/fo:repeatable-page-master-alternatives&gt;
+        &lt;/fo:page-sequence-master&gt;
+    &lt;/fo:layout-master-set&gt;
+
+    &lt;fo:page-sequence master-reference="cover"&gt;
+    &lt;fo:flow flow-name="xsl-region-body"&gt;
+        &lt;fo:block font-family="Helvetica" font-size="18pt"
+            text-align="end" space-before="2cm"&gt; 
+            Nutrition Facts
+        &lt;/fo:block&gt;
+        &lt;fo:block font-family="Helvetica" font-size="12pt"
+            text-align="end"&gt;
+            for Selected Foods
+        &lt;/fo:block&gt;
+		&lt;xsl:comment&gt;Inside front cover is blank&lt;/xsl:comment&gt;
+		&lt;fo:block break-before="page"&gt; &lt;/fo:block&gt;
+    &lt;/fo:flow&gt;
+    &lt;/fo:page-sequence&gt;
+
+    &lt;fo:page-sequence master-reference="contents"
+		initial-page-number="1"&gt;
+
+    &lt;fo:static-content flow-name="xsl-region-after"&gt;
+        &lt;fo:block font-family="Helvetica" font-size="9pt"
+            text-align="center"&gt;
+            - &lt;fo:page-number /&gt; -
+        &lt;/fo:block&gt;
+    &lt;/fo:static-content&gt;
+
+    &lt;fo:flow flow-name="xsl-region-body"&gt;
+		&lt;fo:block font-family="Helvetica" font-size="9pt"&gt;
+    		&lt;xsl:apply-templates select="food"https://alistapart.com/&gt;
+		&lt;/fo:block&gt;
+
+		&lt;fo:block break-before="page"
+			font-size="12pt" text-align="center"&gt;Notes&lt;/fo:block&gt;
+    &lt;/fo:flow&gt;
+    &lt;/fo:page-sequence&gt;
+&lt;/fo:root&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="food"&gt;
+	&lt;fo:block font-size="12pt" font-weight="bold"&gt;
+	   &lt;xsl:value-of select="mfr"https://alistapart.com/&gt;&lt;xsl:text&gt; &lt;/xsl:text&gt;
+	   &lt;xsl:value-of select="name"https://alistapart.com/&gt;
+	&lt;/fo:block&gt;
+   
+	&lt;fo:block&gt;
+		Serving size: &lt;xsl:value-of select="serving"https://alistapart.com/&gt;
+		&lt;xsl:text&gt; &lt;/xsl:text&gt;
+		&lt;xsl:value-of select="serving/@units"https://alistapart.com/&gt;
+	&lt;/fo:block&gt;
+	
+   	&lt;xsl:call-template name="thick-line"https://alistapart.com/&gt;
+
+	&lt;fo:block font-weight="bold"&gt;Amount/Serving&lt;/fo:block&gt;
+	
+	&lt;fo:block&gt;
+		Calories: &lt;xsl:value-of select="calories/@total"https://alistapart.com/&gt;
+		&amp;#183;
+		Fat Calories: &lt;xsl:value-of select="calories/@fat"https://alistapart.com/&gt;
+	&lt;/fo:block&gt;
+   	
+	&lt;xsl:call-template name="thick-line"https://alistapart.com/&gt;
+	
+	&lt;fo:table table-layout="fixed"
+		inline-progression-dimension.maximum="100%"&gt;
+		&lt;fo:table-column width="5cm"https://alistapart.com/&gt;
+		&lt;fo:table-column width="1cm"https://alistapart.com/&gt;
+
+		&lt;fo:table-body&gt;
+			&lt;fo:table-row&gt;
+				&lt;fo:table-cell padding-top="1pt" padding-bottom="1pt"
+					border-bottom-style="solid"
+					border-bottom-width="1px"&gt;
+					&lt;fo:block&gt; &lt;/fo:block&gt;
+				&lt;/fo:table-cell&gt;
+				&lt;fo:table-cell padding-top="1pt" padding-bottom="1pt"
+					border-bottom-style="solid"
+					border-bottom-width="1px"&gt;
+					&lt;fo:block text-align="end"&gt;% Daily Value&lt;/fo:block&gt;
+				&lt;/fo:table-cell&gt;
+			&lt;/fo:table-row&gt;
+
+			&lt;xsl:call-template name="info-row"&gt;
+				&lt;xsl:with-param name="msg"&gt;Total Fat&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="node" select="total-fat"https://alistapart.com/&gt;
+			&lt;/xsl:call-template&gt;
+
+			&lt;xsl:call-template name="info-row"&gt;
+				&lt;xsl:with-param
+					name="msg"&gt; Saturated Fat&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="node" select="saturated-fat"https://alistapart.com/&gt;
+			&lt;/xsl:call-template&gt;
+
+			&lt;xsl:call-template name="info-row"&gt;
+				&lt;xsl:with-param name="msg"&gt;Cholesterol&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="node" select="cholesterol"https://alistapart.com/&gt;
+			&lt;/xsl:call-template&gt;
+
+			&lt;xsl:call-template name="info-row"&gt;
+				&lt;xsl:with-param name="msg"&gt;Sodium&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="node" select="sodium"https://alistapart.com/&gt;
+			&lt;/xsl:call-template&gt;
+
+			&lt;xsl:call-template name="info-row"&gt;
+				&lt;xsl:with-param
+					name="msg"&gt;Total Carbohydrates&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="node" select="carb"https://alistapart.com/&gt;
+			&lt;/xsl:call-template&gt;
+
+			&lt;xsl:call-template name="info-row"&gt;
+				&lt;xsl:with-param
+					name="msg"&gt;Dietary Fiber&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="node" select="fiber"https://alistapart.com/&gt;
+			&lt;/xsl:call-template&gt;
+
+			&lt;xsl:call-template name="info-row"&gt;
+				&lt;xsl:with-param name="msg"&gt;Protein&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="node" select="protein"https://alistapart.com/&gt;
+			&lt;/xsl:call-template&gt;
+		&lt;/fo:table-body&gt;
+	&lt;/fo:table&gt;
+
+	&lt;fo:block space-before="6pt" text-align="center"&gt;
+		Vitamin A &lt;xsl:value-of select="vitamins/a"https://alistapart.com/&gt;%
+		&lt;xsl:text disable-output-escaping="yes"&gt;&amp;#183;&lt;/xsl:text&gt;
+		Vitamin C &lt;xsl:value-of select="vitamins/c"https://alistapart.com/&gt;%
+	&lt;/fo:block&gt;
+	&lt;fo:block text-align="center"&gt;
+		&lt;xsl:if test="position()!=last()"&gt;
+			&lt;xsl:attribute  name="break-after"&gt;page&lt;/xsl:attribute&gt;
+		&lt;/xsl:if&gt;
+		Calcium &lt;xsl:value-of select="minerals/ca"https://alistapart.com/&gt;%
+		&lt;xsl:text disable-output-escaping="yes"&gt;&amp;#183;&lt;/xsl:text&gt;
+		Iron &lt;xsl:value-of select="minerals/fe"https://alistapart.com/&gt;%
+	&lt;/fo:block&gt;
+	
+&lt;/xsl:template&gt;
+
+&lt;xsl:template name="thick-line"&gt;
+	&lt;fo:block space-before="0px"&gt;
+   		&lt;fo:leader leader-pattern="rule"
+			leader-length="100%"
+			rule-style="solid"
+			rule-thickness="0.1cm"https://alistapart.com/&gt;
+	&lt;/fo:block&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template name="info-row"&gt;
+&lt;xsl:param name="msg"https://alistapart.com/&gt;
+&lt;xsl:param name="node"https://alistapart.com/&gt;
+&lt;fo:table-row&gt;
+	&lt;fo:table-cell&gt;
+		&lt;fo:block padding-top="1pt" padding-bottom="1pt"
+			border-bottom-style="solid"
+			border-bottom-width="1px"&gt;
+			&lt;xsl:value-of select="$msg"https://alistapart.com/&gt;
+			&lt;xsl:text&gt; &lt;/xsl:text&gt;
+			&lt;xsl:value-of select="$node"https://alistapart.com/&gt;
+			&lt;xsl:value-of select="key('category',name($node))/@units"https://alistapart.com/&gt;
+		&lt;/fo:block&gt;
+	&lt;/fo:table-cell&gt;
+	&lt;fo:table-cell&gt;
+		&lt;fo:block text-align="end"
+			padding-top="1pt" padding-bottom="1pt"
+			border-bottom-style="solid"
+			border-bottom-width="1px"&gt;
+			&lt;xsl:value-of select="round(100 * $node div
+				key('category',name($node)))"https://alistapart.com/&gt;
+			&lt;xsl:text&gt;%&lt;/xsl:text&gt;
+		&lt;/fo:block&gt;
+	&lt;/fo:table-cell&gt;
+&lt;/fo:table-row&gt;
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+</pre>
+
+</body>
+</html>
+	

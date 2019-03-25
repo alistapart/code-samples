@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>A List Apart: Using XML : Relax NG File</title>
+
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<script language="javascript" type="text/javascript" 
+src="http://www.alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="http://www.alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<meta name="description" content="This file contains
+a sample Relax NG file for validating nutrition markup documents." />
+
+<meta name="keywords" content="xml, xslt, transformations, css, stylesheets, batik, xalan, Relax NG, validation, fop, xsl-fo, formatting objects" />
+
+<style type="text/css" media="screen">
+<!--
+body {
+	background-color: #ffc;
+}
+-->
+</style>
+
+</head>
+
+<body onload="preloadImages();window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<div id="mast">
+<a href="https://alistapart.com/"><img 
+src="http://www.alistapart.com/masthead.gif" alt="A List Apart: for 
+people who make websites" width="430" height="32" border="0" 
+/></a>
+</div>
+
+<div id="content">
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/usingxml/"><img class="vs0" src="https://alistapart.com/stories/usingxml/usingxml.gif" width="300" height="150" border="0" alt="Using XML." title="Using XML." /></a></h1>
+
+<h3>Sample Relax NG File</h3>
+
+<p class="vs0">If you want to try this file to validate the sample XML
+document, copy and paste this code into a file called
+<code>nutrition.rng</code> in the <code>nutrition</code> directory.
+(See <a href="https://alistapart.com/stories/usingxml/linux_setup.html">Linux</a> and <a
+href="https://alistapart.com/stories/usingxml/windows_setup.html">Windows</a> setup
+instructions.)</p>
+
+<hr />
+
+<pre>
+&lt;grammar datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+  xmlns="http://relaxng.org/ns/structure/1.0"&gt;
+
+&lt;start&gt;
+&lt;element name="nutrition"&gt;
+	&lt;ref name="daily-values-defn"https://alistapart.com/&gt;
+	&lt;oneOrMore&gt;
+		&lt;ref name="food-defn"https://alistapart.com/&gt;
+	&lt;/oneOrMore&gt;
+&lt;/element&gt;
+&lt;/start&gt;
+
+&lt;define name="daily-values-defn"&gt;
+	&lt;element name="daily-values"&gt;
+		&lt;element name="total-fat"&gt;
+			&lt;ref name="decimal-units-defn"https://alistapart.com/&gt;
+		&lt;/element&gt;
+		&lt;element name="saturated-fat"&gt;
+			&lt;ref name="decimal-units-defn"https://alistapart.com/&gt;
+		&lt;/element&gt;
+		&lt;element name="cholesterol"&gt;
+			&lt;ref name="decimal-units-defn"https://alistapart.com/&gt;
+		&lt;/element&gt;
+		&lt;element name="sodium"&gt;
+			&lt;ref name="decimal-units-defn"https://alistapart.com/&gt;
+		&lt;/element&gt;
+		&lt;element name="carb"&gt;
+			&lt;ref name="decimal-units-defn"https://alistapart.com/&gt;
+		&lt;/element&gt;
+		&lt;element name="fiber"&gt;
+			&lt;ref name="decimal-units-defn"https://alistapart.com/&gt;
+		&lt;/element&gt;
+		&lt;element name="protein"&gt;
+			&lt;ref name="decimal-units-defn"https://alistapart.com/&gt;
+		&lt;/element&gt;
+	&lt;/element&gt;
+&lt;/define&gt;
+
+&lt;define name="decimal-units-defn"&gt;
+	&lt;data type="decimal"https://alistapart.com/&gt;
+	&lt;attribute name="units"&gt;&lt;text/&gt;&lt;/attribute&gt;
+&lt;/define&gt;
+
+&lt;define name="food-defn"&gt;
+	&lt;element name="food"&gt;
+		&lt;element name="name"&gt;&lt;text/&gt;&lt;/element&gt;
+		&lt;element name="mfr"&gt;&lt;text/&gt;&lt;/element&gt;
+		&lt;element name="serving"&gt;
+			&lt;ref name="decimal-units-defn"https://alistapart.com/&gt;
+		&lt;/element&gt;
+		&lt;element name="calories"&gt;
+			&lt;empty/&gt;
+			&lt;attribute name="total"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/attribute&gt;
+			&lt;attribute name="fat"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/attribute&gt;
+		&lt;/element&gt;
+		&lt;element name="total-fat"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;element name="saturated-fat"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;element name="cholesterol"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;element name="sodium"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;element name="carb"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;element name="fiber"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;element name="protein"&gt;&lt;data type="decimal"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;element name="vitamins"&gt;
+			&lt;element name="a"&gt;&lt;ref name="percent-defn"https://alistapart.com/&gt;&lt;/element&gt;
+			&lt;element name="c"&gt;&lt;ref name="percent-defn"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;/element&gt;
+		&lt;element name="minerals"&gt;
+			&lt;element name="ca"&gt;&lt;ref name="percent-defn"https://alistapart.com/&gt;&lt;/element&gt;
+			&lt;element name="fe"&gt;&lt;ref name="percent-defn"https://alistapart.com/&gt;&lt;/element&gt;
+		&lt;/element&gt;
+	&lt;/element&gt;
+&lt;/define&gt;
+
+&lt;define name="percent-defn"&gt;
+	&lt;data type="decimal"&gt;
+		&lt;param name="minInclusive"&gt;0&lt;/param&gt;
+		&lt;param name="maxInclusive"&gt;100&lt;/param&gt;
+	&lt;/data&gt;
+&lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+
+</div>
+
+</body>
+</html>
+	

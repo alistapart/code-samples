@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>A List Apart: Using XML : Setting up XML Tools for Windows</title>
+
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<script language="javascript" type="text/javascript" 
+src="http://www.alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="http://www.alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<meta name="description" content="This file contains
+instructions for installing XML manipulation tools on Windows in conjunction with the article at http://www.alistapart.com/stories/usingxml" />
+
+<meta name="keywords" content="xml, xslt, transformations, css, stylesheets, batik, xalan, Relax NG, validation, fop, xsl-fo, formatting objects" />
+
+<style type="text/css" media="screen">
+<!--
+body {
+	background-color: #ffc;
+}
+-->
+</style>
+
+</head>
+
+<body onload="preloadImages();window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<div id="mast">
+<a href="https://alistapart.com/"><img 
+src="http://www.alistapart.com/masthead.gif" alt="A List Apart: for 
+people who make websites" width="430" height="32" border="0" 
+/></a>
+</div>
+
+<div id="content">
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/usingxml/"><img class="vs0" src="https://alistapart.com/stories/usingxml/usingxml.gif" width="300" height="150" border="0" alt="Using XML." title="Using XML." /></a></h1>
+
+<h2>Setting up Windows XML Tools</h2>
+<h3>Java &#8482;</h3> <p class="vs0">All the tools we will use in this
+article are written in Java, so you will need a Java Runtime
+Environment (<dfn>JRE</dfn>). You may obtain this at <code><a
+href="http://java.sun.com/j2se/1.4/download.html" title="Java Download Page">http://java.sun.com/j2se/1.4/download.html</a></code>.
+You don&#8217;t need the Software Development Kit (<dfn>SDK</dfn>)
+unless you plan on writing Java programs of your own. Follow the
+instructions that come with the JRE and install it on your system.</p>
+
+<h3>Creating Directories</h3>
+<p class="vs0">Create a directory named <code>xmlapps</code> on your
+<code>C:</code> drive.  This is where all the tools will go.</p>
+<p>Create a directory named <code>nutrition</code> on your
+<code>C:</code> drive. That is where you will save all the XML
+files from this article.</p>
+
+<h3>The Multi-Schema Validator</h3>
+<p class="vs0">You may download the Multi-Schema Validator (<dfn>MSV</dfn>)
+from <a href="https://msv.dev.java.net/" title="Multi-Schema Validator download page">https://msv.dev.java.net/</a>.
+Unzip the file into the <code>xmlapps</code> directory that you
+created above. It will create a directory which you may rename to
+<code>msv</code> (if it is not already named that).</p>
+
+<p>Now create a file named <code>msvalidate.bat</code> in your
+<code>nutrition</code> directory, and paste the following text into
+it:</p>
+
+<hr /><pre>java -jar c:\xmlapps\msv\msv.jar %1 %2</pre><hr />
+
+<h3>Xalan</h3>
+<p class="vs0">You may download Xalan, a tool which is used to transform XML
+from one form to another, at <a href="http://xml.apache.org/xalan-j/index.html" title="The Apache Software Foundation Xalan Project">http://xml.apache.org/xalan-j/index.html</a></p>
+
+<p>Again, you will unzip the file into the <code>xmlapps</code>
+directory. It will create a directory of the form
+<code>xalan-j_2_<i>x</i>_<i>y</i></code> where the <i>x</i>
+and <i>y</i> are numbers that 
+depend upon which version you have downloaded. To make our
+lives easier, just rename that directory to <code>xalan-j</code></p>
+
+<p>Now create a file named <code>transform.bat</code> in your
+<code>nutrition</code> directory, and paste the following text
+into it.</p>
+
+<hr />
+<pre>java -cp c:\xmlapps\xalan-j\bin\xml-apis.jar;c:\xmlapps\xalan-j\bin\xercesImpl.jar;c:\xmlapps\xalan-j\bin\xalan.jar org.apache.xalan.xslt.Process -IN %1 -XSL %2 -OUT %3</pre>
+<hr />
+
+<h3>FOP</h3>
+<p class="vs0"><dfn>FOP</dfn> is a tool that takes documents written in 
+the XSL-FO (Extensible Stylesheet Language&#8211;Formatting Objects) markup
+language, and converts them to PDF files.
+You download it at 
+<a href="http://xml.apache.org/fop/index.html" title="The Apache Software Foundation FOP Project"> http://xml.apache.org/fop/index.html</a>. Again, you unzip it into
+the <code>xmlapps</code> directory. It will create a directory with
+a name like <code>fop-0.20.4</code> (or whatever the current version
+number is).  To make things easier, rename that directory to
+<code>fop</code>.</p>
+
+<p>Now copy the file <code>fop.bat</code> from the
+<code>fop</code> directory to your
+<code>nutrition</code> directory. You will have to change
+all the paths in the command.  Thus, where it says:
+
+<div class="inset bordered">
+<pre>build\fop.jar;lib\batik.jar;</code>
+</div>
+
+<p>(etc.) you will have to add the prefix to where
+the XML apps are:</p>
+
+<div class="inset bordered">
+<pre><b>c:\xmlapps\fop\</b>build\fop.jar;<b>c:\xmlapps\fop\</b>lib\batik.jar;</code>
+</div>
+
+
+<h3>Batik</h3>
+<p class="vs0">Batik is a toolkit that lets you manipulate documents written
+in the Scalable Vector Graphics (<dfn>SVG</dfn>) markup language.
+You may download it at
+<a href="http://xml.apache.org/batik/" title="The Apache Software Foundation Batik Project">http://xml.apache.org/batik/</a>. Be sure
+to get version 1.5 or greater (as of this writing, that is a beta version,
+but that&#8217;s OK).</p>
+
+<p>Again, download it and unzip it into the <code>xmlapps</code>
+directory. Rename the directory that it creates to
+<code>batik</code>. Then, create a file named <code>batik.bat</code> in the
+<code>nutrition</code> directory, and paste the following text into it.</p>
+
+<hr />
+<pre>java -jar c:\xmlapps\batik\batik-svgbrowser.jar %1</pre>
+<hr />
+
+</body>
+</html>
+	

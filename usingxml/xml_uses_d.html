@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>A List Apart: Using XML : Convert to Plain HTML</title>
+
+<base href="http://www.alistapart.com/" />
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css" media="all">@import "https://alistapart.com/nucss2.css";</style>
+<link rel="alternate stylesheet" type="text/css" media="screen" title="bigtype" href="https://alistapart.com/nucss3.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="friendly fonts" href="https://alistapart.com/friendly.css" />
+<link rel="stylesheet" type="text/css" media="print" href="https://alistapart.com/print.css" />
+
+<script language="javascript" type="text/javascript" 
+src="http://www.alistapart.com/tightmen.js"></script>
+
+<script type="text/javascript" src="http://www.alistapart.com/styleswitcher.js"></script> 
+
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv= "pragma" content="no-cache" />
+<meta name="author" content="Jeffrey Zeldman" />
+<meta name="robots" content="all" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+
+<meta name="description" content="This file contains
+a sample XSLT transformation that transforms nutrition markup to plain HTML." />
+
+<meta name="keywords" content="xml, xslt, transformations, css, stylesheets, batik, xalan, Relax NG, validation, fop, xsl-fo, formatting objects" />
+
+<style type="text/css" media="screen">
+<!--
+body {
+	background-color: #ffc;
+}
+-->
+</style>
+
+</head>
+
+<body onload="preloadImages();window.defaultStatus='A List Apart, for people who make websites.'" bgcolor="#ffffcc" text="#000000">
+
+<div id="mast">
+<a href="https://alistapart.com/"><img 
+src="http://www.alistapart.com/masthead.gif" alt="A List Apart: for 
+people who make websites" width="430" height="32" border="0" 
+/></a>
+</div>
+
+<div id="content">
+
+<h1 class="vs0"><a href="https://alistapart.com/stories/usingxml/"><img class="vs0" src="https://alistapart.com/stories/usingxml/usingxml.gif" width="300" height="150" border="0" alt="Using XML." title="Using XML." /></a></h1>
+
+
+<h3>XSLT Conversion from XML to Plain HTML File</h3>
+
+<p>If you want to try this file, copy and paste the code into a file
+called <code>nutrition_plain.xslt</code> in the <code>nutrition</code>
+directory. (See <a href="https://alistapart.com/stories/usingxml/linux_setup.html">Linux</a>
+and <a href="https://alistapart.com/stories/usingxml/windows_setup.html">Windows</a> setup instructions.)</p>
+
+<hr />
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	version="1.0"&gt;
+
+&lt;xsl:output method="html" indent="yes"https://alistapart.com/&gt;
+
+&lt;xsl:template match="nutrition"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Nutrition Facts Summary&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2 align="center"&gt;Nutrition Facts Summary&lt;/h2&gt;
+&lt;p&gt;Here are summaries of nutrition facts for several foods.
+They are based on these daily values:&lt;/p&gt;
+&lt;xsl:apply-templates select="daily-values"https://alistapart.com/&gt;
+&lt;hr width="80%" /&gt;
+&lt;xsl:apply-templates select="food"https://alistapart.com/&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="daily-values"&gt;
+&lt;ul&gt;
+&lt;li&gt;Fat
+	&lt;ul&gt;
+	&lt;li&gt;Total: &lt;xsl:value-of select="total-fat"https://alistapart.com/&gt;&lt;xsl:value-of select="total-fat/@units"https://alistapart.com/&gt;&lt;/li&gt;
+	&lt;li&gt;Saturated: &lt;xsl:value-of select="saturated-fat"https://alistapart.com/&gt;&lt;xsl:value-of select="saturated-fat/@units"https://alistapart.com/&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cholesterol: &lt;xsl:value-of select="cholesterol"https://alistapart.com/&gt;&lt;xsl:value-of select="cholesterol/@units"https://alistapart.com/&gt;&lt;/li&gt;
+&lt;li&gt;Sodium: &lt;xsl:value-of select="sodium"https://alistapart.com/&gt;&lt;xsl:value-of select="sodium/@units"https://alistapart.com/&gt;&lt;/li&gt;
+&lt;li&gt;Carbohydrates: &lt;xsl:value-of select="carb"https://alistapart.com/&gt;&lt;xsl:value-of select="carb/@units"https://alistapart.com/&gt;&lt;/li&gt;
+&lt;li&gt;Fiber: &lt;xsl:value-of select="fiber"https://alistapart.com/&gt;&lt;xsl:value-of select="fiber/@units"https://alistapart.com/&gt;&lt;/li&gt;
+&lt;li&gt;Protein: &lt;xsl:value-of select="protein"https://alistapart.com/&gt;&lt;xsl:value-of select="protein/@units"https://alistapart.com/&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="food"&gt;
+&lt;h2&gt;&lt;xsl:value-of select="name"https://alistapart.com/&gt;&lt;xsl:text&gt; &lt;/xsl:text&gt;
+	&lt;i style="font-size:80%"&gt;(&lt;xsl:value-of select="mfr"https://alistapart.com/&gt;)&lt;/i&gt;&lt;/h2&gt;
+&lt;p&gt;Serving size: &lt;xsl:value-of select="serving"https://alistapart.com/&gt;&lt;xsl:value-of select="serving/@units"https://alistapart.com/&gt;&lt;br /&gt;
+Calories: &lt;xsl:value-of select="calories/@total"https://alistapart.com/&gt; /
+Calories from fat: &lt;xsl:value-of select="calories/@fat"https://alistapart.com/&gt;&lt;/p&gt;
+&lt;table border="1"&gt;
+&lt;tr&gt;&lt;th&gt;Amount/Serving&lt;/th&gt;&lt;th&gt;%Daily Value&lt;/th&gt;&lt;/tr&gt;
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Total Fat&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="total-fat"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Saturated Fat&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="saturated-fat"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Cholesterol&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="cholesterol"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Sodium&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="sodium"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Total Carbohydrates&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="carb"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Dietary Fiber&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="fiber"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;xsl:call-template name="info-row"&gt;
+	&lt;xsl:with-param name="msg"&gt;Protein&lt;/xsl:with-param&gt;
+	&lt;xsl:with-param name="node" select="protein"https://alistapart.com/&gt;
+&lt;/xsl:call-template&gt;
+&lt;/table&gt;
+&lt;p align="center"&gt;
+Vitamin A &lt;xsl:value-of select="vitamins/a"https://alistapart.com/&gt;%
+&lt;xsl:text disable-output-escaping="yes"&gt;&amp;amp;middot;&lt;/xsl:text&gt;
+Vitamin C &lt;xsl:value-of select="vitamins/c"https://alistapart.com/&gt;%
+&lt;xsl:text disable-output-escaping="yes"&gt;&amp;amp;middot;&lt;/xsl:text&gt;
+Calcium &lt;xsl:value-of select="minerals/ca"https://alistapart.com/&gt;%
+&lt;xsl:text disable-output-escaping="yes"&gt;&amp;amp;middot;&lt;/xsl:text&gt;
+Iron &lt;xsl:value-of select="minerals/fe"https://alistapart.com/&gt;%
+&lt;/p&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template name="info-row"&gt;
+&lt;xsl:param name="msg"https://alistapart.com/&gt;
+&lt;xsl:param name="node"https://alistapart.com/&gt;
+&lt;tr&gt;&lt;td&gt;&lt;b&gt;&lt;xsl:value-of select="$msg"https://alistapart.com/&gt;&lt;xsl:text&gt; &lt;/xsl:text&gt;
+&lt;xsl:value-of select="$node"https://alistapart.com/&gt;&lt;xsl:value-of select="https://alistapart.com/nutrition/daily-values/*[name(.)=name($node)]/@units"https://alistapart.com/&gt;&lt;/b&gt;
+&lt;/td&gt;
+&lt;td align="right"&gt;
+&lt;xsl:value-of select="round(100 * $node div /nutrition/daily-values/*[name(.)=name($node)])"https://alistapart.com/&gt;&lt;xsl:text&gt;%&lt;/xsl:text&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+</pre>
+
+</body>
+</html>
+	
