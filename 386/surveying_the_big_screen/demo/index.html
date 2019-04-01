@@ -1,0 +1,358 @@
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!-- the "no-js" class is for Modernizr. --> 
+
+<head id="www-sitename-com" data-template-set="html5-reset">
+
+	<meta charset="utf-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<title>Surveying the Big Screen · An A List Apart Demo</title>
+	
+	<!--  Mobile Viewport Fix
+	http://j.mp/mobileviewport & http://davidbcalhoun.com/2010/viewport-metatag
+	device-width : Occupy full width of the screen in its current orientation
+	initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+	maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width
+	-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+	<!-- Iconifier might be helpful for generating favicons and touch icons: http://iconifier.net -->
+	
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,300,700italic,400italic,300italic' rel='stylesheet' type='text/css'>
+	
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,400italic,300,300italic,700italic' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" href="_/css/reset.css" />
+	<link rel="stylesheet" href="_/css/style.css" />
+	
+	<script src="_/js/modernizr-2.6.2.custom.js"></script>
+	
+	<!-- Windows 8 -->
+	<meta name="application-name" content="" /> 
+	<meta name="msapplication-TileColor" content="" /> 
+	<meta name="msapplication-TileImage" content="" />
+	<!-- Twitter -->
+	<meta name="twitter:card" content="">
+	<meta name="twitter:site" content="">
+	<meta name="twitter:title" content="">
+	<meta name="twitter:description" content="">
+	<meta name="twitter:url" content="">
+	<!-- Facebook -->
+	<meta property="og:title" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:image" content="" />
+
+</head>
+
+<body>
+
+	<header class="logo-holder">
+		<h1 class="killer-logo"><a href="http://alistapart.com/"><img src="http://d.alistapart.com/_repo/site_assets/img/ala-logo-big.png" alt="A List Apart"></a></h1>	
+	</header>
+
+	<article>
+	
+		<header class="entry-header">
+		
+			<figure class="wide-hero" data-picture data-alt="">
+				<div data-src="http://d.alistapart.com/_made/d/ALA386_bigscreen_300_480_242_60.jpg"></div>
+				<div data-src="http://d.alistapart.com/_made/d/ALA386_bigscreen_300_960_483_60.jpg" data-media="(min-width: 600px)"></div>
+				<div data-src="http://d.alistapart.com/_made/d/ALA386_bigscreen_300_1920_966_10.jpg" data-media="(min-width: 600px) and (min-device-pixel-ratio: 2.0)"></div>
+		
+				<!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
+				<noscript><img src="http://d.alistapart.com/_made/d/ALA386_bigscreen_300_960_483_10.jpg" alt=""></noscript>
+				
+				<a href="http://alistapart.com/issue/386" class="issue-number"><span>Issue №</span> 386</a>
+			</figure>
+				
+			<h1 class="entry-title">Surveying the Big Screen</h1>
+			
+			<p class="entry-details">by <a class="author" href="http://alistapart.com/author/mikepick">Mike Pick</a>
+				
+				<time class="pubdate updated" datetime="2013-10-15T08:00:36-05:00">October 15, 2013</time>
+				
+				<span class="optional-break">Published in <a href="http://alistapart.com/topic/layout-grids">Layout & Grids</a>, <a href="http://alistapart.com/topic/mobile-multidevice">Mobile/Multidevice</a>, <a href="http://alistapart.com/topic/responsive-design">Responsive Design</a></span>
+			</p>
+		
+		</header>		
+			
+		<p class="lede">With over three years of <a href="http://alistapart.com/article/responsive-web-design">responsive web design</a> in our collective portfolios, we now have a solid set of design patterns for making websites work on small devices. But what about larger screens?</p>
+		
+		<p class="editors-note"><b>Editors note:</b> This article is an experimental layout of <a href="http://alistapart.com/article/surveying-the-big-screen/">Surveying the Big Screen</a>, originally published as part of A List Apart Issue 386. To view this demo to best effect, a screen resolution of 1680x1050 is recommended, as well as a browser that supports CSS3 columns.</p>
+		
+		<aside class="content-minutiae">
+			<h1 class="share-tools">Share This:</h1>
+			<ul class="share-tools">
+				<li><a href="http://twitter.com/intent/tweet?url=http://alistapart.com/article/surveying-the-big-screen&text=Surveying+the+Big+Screen&via=alistapart">Twitter</a></li>
+				<li><a href="http://www.facebook.com/sharer.php?u=http://alistapart.com/article/surveying-the-big-screen&t=Surveying+the+Big+Screen">Facebook</a></li>
+				<li><a href="https://plus.google.com/share?url=http://alistapart.com/article/surveying-the-big-screen">Google+</a></li>
+			</ul>				
+		</aside>
+		
+		<section class="closeSection">			
+		
+			<p>It’s become common for sites to employ a liquid design for smaller breakpoints, which allows the content to expand and contract as necessary to make the most of the available screen width. At the opposite end of the spectrum, however, many of those same sites have a maximum width of 960 pixels or so, which can leave a lot of unused pixels on a contemporary desktop display.</p>
+			
+			<p>Designing for the big screen can be complicated—negative space, scale, density, and layout devices such as grids, modules, and columns can be factors in managing hierarchy and emphasis.</p>
+			
+			<p>Large screens are also generally shaped in a wide landscape orientation, a poor fit for the traditional vertically scrolled webpage. As with smaller screens, there are a wide variety of screen sizes and resolutions—but in the case of larger screens, the differences are often magnified, ranging from ultra-light 11-inch laptops to 30-inch desktop monitors.</p>
+			
+			<p>Given these conditions, it’s not surprising that many desktop layouts (like this one) are designed to suit a 1024x768 resolution. It’s a leftover from an earlier era, when designs were constrained to the screen resolution that was most prevalent amongst users. Today, with the <a href="http://gs.statcounter.com/%23resolution-ww-monthly-201209-201309">majority of desktop users</a> on screens that are wider than 1024 pixels, a maximized browser window can turn that carefully considered 960-pixel layout into a <a href="http://www.tcm.com/mediaroom/video/474162/2001-A-Space-Odyssey-Movie-Clip-Monolith.html">monolith</a> in a field of whitespace.</p>
+			
+			<p>More people are <a href="http://gs.statcounter.com/%23mobile_vs_desktop-ww-monthly-201209-201309">accessing the internet with a mobile device</a> every year, and so it makes sense to concentrate budgets and timelines on creating good user experiences for smaller screens. Mobile layouts can be perfectly usable on larger devices, but the same cannot always be said for desktop layouts viewed on small screens.</p>
+			
+			<p>But by embracing large screens, designers have the opportunity to work within a larger fold, presenting the user with more content simultaneously, lessen scrolling on longer pages, and create a richer, more expansive user experience. And by using the same practices we developed to adapt layouts to smaller screens and identifying some common patterns for large screens, we need not necessarily introduce extra cost or time to our projects.</p>
+			
+		</section>
+		
+		
+		<h2>Content challenges</h2>
+		
+		<section class="closeSection">
+
+			<p>As with any design, the first consideration when approaching larger breakpoints is content. Long- and short-form writing, photography, ecommerce, video, or web applications may benefit from different approaches in different ways.</p>
+
+			<p>Photography, search results, and other content presented in grid format are easy candidates for wide screens. Showing as much content as the screen can accommodate allows a user to quickly scan and compare results.</p>
+			
+			<p>On the other hand, long-form reading is a challenge for wider breakpoints. Long line lengths can make it difficult to follow the text from line to line, while short line lengths can introduce a sense of jumpiness or acceleration, breaking a reader’s rhythm and pacing.</p>
+			
+			<p>To make reading more comfortable, a designer needs to balance the width of the text column (the <a href="http://en.wikipedia.org/wiki/Measure_(typography)">measure</a>) against the size and line-height (leading) of each line of text. Classically, an appropriate count for a single column of text is seven to 10 words (<a href="http://www.amazon.com/Systems-Graphic-Systeme-Visuele-Gestaltung/dp/3721201450">Josef Muller-Brockmann</a>) or 45 to 75 characters (<a href="http://www.amazon.com/Elements-Typographic-Style-Version-Anniversary/dp/0881792128/">Robert Bringhurst</a>). Taken another way, Bringhurst also notes that the measure of a conventional book column is about 30 times that of the type size used, but that this number may also range from 20 to 40 times the size of the type.</p>
+			
+			<p>Wider columns can use more line-height to make it easier to follow the text from line to line, but too much line-height can cause lines to drift apart, resembling a college research paper. Similarly, as the text size in a column grows larger, the number of lines that can be presented vertically on the screen grows smaller, increasing the need for scrolling and breaking the reader’s immersion. Simply scaling the text for larger breakpoints is a limited solution.</p>
+
+		</section>
+		
+		<h2>Working With Long Reads</h2>
+		
+		<section class="figureGroup">
+		
+			<figure class="left">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_great-discontent.jpg" alt="The Great Discontent">
+				<figcaption>
+					<h1>Long Reads:</h1>
+					<p>The Great Discontent uses bold feature art at the top of each article to fill the viewport.</p>
+				</figcaption>
+			</figure>
+			
+			<figure class="right">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_medium.jpg" alt="Medium">
+				<figcaption>
+					<h1>Long Reads:</h1>
+					<p>Medium places comments contextually, in the extended right margin.</p>
+				</figcaption>
+			</figure>
+			
+		</section>
+			
+		<section class="closeSection">
+			
+			<p><a href="http://thegreatdiscontent.com/">The Great Discontent</a> demonstrates how a site can use art direction to adapt to larger screens without necessarily filling every single pixel in the browser window. Each article expands its feature art at the top to fill the viewport, resulting in a striking full-bleed effect upon first viewing. The main content of each article is set in a relatively narrow main column, but sidebars, pull quotes, and inline art expand beyond the central column. Breaking the content out of the main column creates an asymmetrical shape which complements the full-width artwork at the top—creating the illusion of a full-window experience without compromising legibility. Large images like these can come at a cost, though, as a balance between image quality and the overall <a href="http://alistapart.com/article/improving-ux-through-front-end-performance">page weight</a> needs to be considered.</p>
+				
+			<p>The recently relaunched Roger Ebert site deals with large breakpoints by simply scaling up the maximum width of the page and the page elements proportionately. In theory this might work, but the execution is not entirely successful. Elements such as headers scale up vertically as well as horizontally, meaning the amount of content displayed within the fold is drastically reduced.</p> 
+						
+			<figure class="rightAlign">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_roger-ebert.jpg" alt="The Roger Ebert site">
+				<figcaption>
+					<h1>Long Reads:</h1>
+					<p>The Roger Ebert site scales up most page elements, reducing the visible content.</p>
+				</figcaption>
+			</figure>
+			
+			<p>Inexplicably, main body copy on the more text-heavy pages does not scale up in proportion to the other page elements, so it seems dwarfed in comparison, in addition to being set in a size that is too small for the main column measure.</p>
+						
+			<p>Using the extended margins of larger screens for related or tangential content, such as <a href="https://medium.com/thoughts-on-creativity/bad7c34842a2">Medium’s</a> comments layout, is another idea that seems well suited for long-form publishing. When the main content column is maximized on smaller screens, it moves aside to reveal the comments area; on larger screens, the comments are revealed in the available margin space.</p>
+
+			<p>I’ve also always liked <a href="http://www.grantland.com/story/_/id/9973203/the-colorado-avalanche-edmonton-oilers-rebuilds">Grantland</a>'s use of the lower right column for footnotes, which takes advantage of wider screens while maintaining focus on a readable central column. Photographs, figures, asides, quotes, and other related content can be extended out into the margins of wider viewports. This allows a designer to extend the vertical grid outward to create variety while preserving the flow of the main text.</p>
+			
+			<p>Newer CSS features like <a href="http://dev.w3.org/csswg/css-multicol/">columns</a> and <a href="http://html.adobe.com/webplatform/layout/regions/">regions</a> could be useful tools to enhance long-form reading on wider screens. CSS-based columns are now supported across most new browsers, and could be deployed within sections of an article to maximize screen usage while maintaining a good measure for text readability, as in this layout.</p>
+			
+			<p>As a progressive enhancement measure, older browsers that do not support these features could be restricted to a single column of appropriate measure.</p>
+			
+		</section>
+		
+		
+		<h2>Chunking content on large screens</h2>
+
+		<section>
+		
+			<p>Breaking content into chunks allows users to quickly and efficiently process information on content-heavy pages, and it’s a natural fit for responsive designs, because it allows content to be easily stacked hierarchically or arranged in columns for different breakpoints.</p>
+
+			<p>The advantage of this technique for large screens is that each chunk or band of content can use a different layout to optimize for legibility or impact. A good example of this approach is the <a href="http://www.manchester.gov.uk">Manchester City Council</a> site, which uses different groups of modules in restricted widths together with a full-width photography chunk to create impact and emotion. The layout adapts fluidly to different viewports while retaining an appropriate width and layout for the content of each chunk.</p>
+			
+			<p><a href="http://www.julianabicycles.com">Juliana Bicycles</a> uses a more visual approach to content chunking, combining horizontal bands with flexible tiles to create a rich and compelling responsive site that also scales to large screen widths. Navigation is recast as a full-window carousel with rich background photographs. Content is presented in modular blocks, and gutters that appear between tiles are removed in tablet and mobile screen sizes. A paper texture background fills in empty tile spaces and also helps fill out the screen at the largest breakpoint. Using image-based modules in this way can be expensive from a bandwidth perspective, but is a great way to get the user to navigate quickly by showing rather than telling.</p>
+		
+		</section>
+		
+		<section class="figureGroup closeSection">
+			
+			<figure class="left">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_manchester.jpg" alt="Manchester City Council site">
+				<figcaption>
+					<h1>Content Chunks:</h1>
+					<p>Manchester City Council and content chunks.</p>
+				</figcaption>
+			</figure>
+			
+			<figure class="right">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_juliana.jpg" alt="Juliana Bicycles">
+				<figcaption>
+					<h1>Content Chunks:</h1>
+					<p>Juliana Bicycles treats content chunks more visually.</p>
+				</figcaption>
+			</figure>
+			
+		</section>
+		
+		<h2>Tiling modular content</h2>		
+		
+		<section>
+		
+			<p>The obvious advantage of a big screen is the ability to see a lot of content at one time.</p>
+			
+			<p>With collection-based content such as photos, tiling can be an effective way to to fill large screens. We see this every day when <a href="http://www.google.com/search?q=responsive&amp;um=1&amp;ie=UTF-8&amp;hl=en&amp;tbm=isch&amp;source=og&amp;sa=N&amp;tab=wi">searching Google Images</a>—the results spread out to fill the viewport, presenting a large variety to choose from in a single scan.</p>
+			
+			<figure class="rightAlign">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_google-images.jpg" alt="Google Images">
+				<figcaption>
+					<h1>Tiling Content:</h1>
+					<p>Google Images shows as many images as possible in the viewport.</p>
+				</figcaption>
+			</figure>
+			
+			<p><a href="http://www.pinterest.com/itscolossal/colossal/">Pinterest</a> also uses a tiling layout for images, with the addition of text and whitespace to mitigate what could be an overly busy layout. On larger screens the image preview modules seem to tile indefinitely. For a collection site, where the user experience is about quickly collecting and marking favorites, filling the viewport with thumbnails makes it easier to scan and creates a satisfying sense of fullness.</p>
+			
+			<p><a href="http://uniqlo.com">Uniqlo</a> uses a wide, tiled-image layout that also looks well-designed and spacious. Items are chunked together with large headers acting as bumpers between sets to add breathing room. Tiling the products across a wide area allows shoppers to quickly compare items visually. At the same time, the whitespace, model photos, and variety in scale add refinement to the overall look and feel and help reinforce the point that design is an important differentiator in Uniqlo’s product line.</p>
+
+			<p>Neither Pinterest nor Google Images are responsive or adaptive sites—they both employ a separate site for mobile users. Uniqlo is also only adaptive to larger screens; small screens get the narrowest desktop layout. While these sites may not be complete models for responsive design, we can look at them as examples for expanding this type of content.</p>
+		
+		</section>
+		
+		<section class="figureGroup closeSection">
+			
+			<figure class="left">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_uniqlo.jpg" />
+				<figcaption>
+					<h1>Tiling Content:</h1>
+					<p>Uniqlo's wide view allows shoppers to compare items visually.</p>
+				</figcaption>
+			</figure>
+			
+			<figure class="right">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_pinterest.jpg" />
+				<figcaption>
+					<h1>Tiling Content:</h1>
+					<p>Pinterest’s tiled pages play to the scrapbooking or collector metaphor.</p>
+				</figcaption>
+			</figure>
+			
+		</section>
+		
+		<h2>Graphic techniques</h2>
+
+		<section>
+
+			<p>Another interesting technique for larger screens is based more on classic print design, rather than restructuring or manipulating content to fill the browser.</p>
+
+			<p><a href="http://choiseul.info">Institut Choiseul</a> confines the content of each page to a structured grid in the center of the window, but effectively stakes out a large screen presence by extending a field of color from the logo and main page content outward toward the left edge of the viewport. The Back to Top link appears in the lower left corner of the viewport when the page is scrolled, a small touch that stakes out the entire window for the page. The strong grid and large fields of color give the site a sober, logical tone that evokes the <a href="http://en.wikipedia.org/wiki/International_Typographic_Style">International Design</a> style of the 1950s and 1960s.</p>
+			
+			<p><a href="http://lintjes.nl">Kanselarij der Nederlandse Orden</a> has a similar style, with asymmetrical bands of color that provide the background to a centered flexible grid. Because the grid expands as a percentage of the total window width, the content also plays a part in filling the screen, but the boxy color fields add a level of sophistication to what is otherwise a fairly ordinary layout.</p>
+			
+			<p>Small effects such as a color tone or texture in the background, or removing boxy lines from the edges of a layout, can go a long way toward creating a sense of completeness in the maximized window. Creative use of asymmetry instead of skinny, tower-like layouts can also keep readers from drowning in white margins.</p>
+		
+		</section>
+		
+		<section class="figureGroup closeSection">
+			
+			<figure class="left">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_choiseul.jpg" />
+				<figcaption>
+					<h1>Graphic techniques:</h1>
+					<p>Elements in the grid extend to edges of the window at Institut Choiseul.</p>
+				</figcaption>
+			</figure>
+			
+			<figure class="right">
+				<img src="https://alistapart.github.io/code-samples/386/surveying_the_big_screen/img/screen_lintjes.jpg" />
+				<figcaption>
+					<h1>Graphic techniques:</h1>
+					<p>Kanselarij der Nederlandse Orden frames a flexible central grid in asymmetrical bands of color.</p>
+				</figcaption>
+			</figure>
+			
+		</section>
+		
+		<h2>Finally</h2>
+		
+		<section class="endArticle">
+
+			<p>By simply extending common techniques for adapting content to smaller breakpoints, we can see plenty of opportunities for larger breakpoints as well. Sites that use a strong grid will have an easier time of it, as a well-structured grid should have no problem expanding into a wider space.</p>
+
+			<p>Obviously the most important consideration in any design is the content, and so that must be the basis for any effort to expand a design to fill a wide screen. For long reads, it’s more important to create a good rhythm and flow so that the text can be read without distraction. For photographs or graphics, space and scale contribute directly to impact. Government and service-oriented sites must provide easy access to tasks and information. Ecommerce sites need to make it easy for consumers to evaluate and purchase products. A layout’s density should reflect the site’s tone—more density for a more active experience, less for a slower, more thoughtful tone. Much like framing a photograph, filling out the viewport can make a design seem bigger and bolder, just as framing a design in generous whitespace can make it seem more elegant or precious.</p>
+			
+			<p>It may be true that desktop users have the luxury of resizing the browser window if all that whitespace makes them uncomfortable, unlike users of smaller devices. It may be also be true that not all desktop users browse with large or full-screen windows. But as with mobile, we shouldn’t make assumptions about which devices are used to view our content now, and especially in the future. Large screens, in some cases, can provide both enhanced usability for users and a richer palette for designers. It’s up to us to take advantage of these expanded borders.</p>
+		
+		</section>
+		
+		<footer class="entry-footer">
+											
+			<h1>About the Author</h1>
+		
+			<div class="byline author vcard">
+			
+				<a class="photo" href="/author/mikepick"><img src="http://d.alistapart.com/_made/pix/authors/uploads/photo_128813_120_120_c1.jpg" alt=""></a>					
+		
+				<h2><a class="fn" href="http://alistapart.com/author/mikepick">Mike Pick</a></h2>
+				
+				<div class="author-bio"><p>Mike approaches web design from the perspective of both art director and front-end developer. He primarily creates clean and concise design systems for websites, but is also known to get his hands dirty with HTML/CSS and JavaScript development.</p>
+
+				<p>Over the years he has worked as a cog in a large agency, an in-house art director, and a humble freelancer, and has picked up a few awards along the way. He holds a BD in Communication Design from NSCAD in Halifax, Nova Scotia.</p></div>								
+
+			</div>
+			
+			<h1>About this Demo</h1>
+			
+			<p>This article is an experimental layout of <a href="http://alistapart.com/article/surveying-the-big-screen/">Surveying the Big Screen</a>, originally published as part of A List Apart Issue 386. To comment on this article or read more from this issue, please return to the <a href="http://alistapart.com/article/surveying-the-big-screen/">original article.</a></p>
+			
+			<p>To view this demo to best effect, a screen resolution of 1680x1050 is recommended, as well as a browser that supports CSS3 columns, such as Safari, Chrome, Firefox, or Internet Explorer 10.</p>
+			
+		</footer>
+		
+	</article>
+
+
+<!-- scripts! -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src='_/js/jquery-1.9.1.min.js'>\x3C/script>")</script>
+
+<script src="_/js/functions.js"></script>
+
+<script src="http://d.alistapart.com/_repo/site_assets/js/libs/picturefill.js"></script>
+
+<!-- Asynchronous google analytics; this is the official snippet.
+	 Replace UA-XXXXXX-XX with your site's ID and uncomment to enable.
+	 
+<script>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-XXXXXX-XX']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+-->
+  
+</body>
+</html>

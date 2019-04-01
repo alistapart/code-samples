@@ -1,0 +1,376 @@
+html {-webkit-text-size-adjust: 100%;}
+
+body {font-family: Merriweather, serif; font-weight: 400; font-size: 16px; color: #222; line-height: 1.6em;}
+		
+a {text-decoration: none; color:#2455c3;}
+
+a:hover, a:active {text-decoration: underline;}
+
+.killer-logo,
+.deadly-subtitle {
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.killer-logo > a {
+	margin-left: -25%;
+}
+
+.killer-logo {
+	overflow: hidden;
+}
+
+.killer-logo > a {
+	display: inline-block;
+	width: 960px;
+	height: 120px;
+	background-image: url(http://d.alistapart.com/_repo/site_assets/img/logo_a-list-apart.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-top: -24px;
+	
+	-webkit-print-color-adjust: exact;
+	
+	-webkit-transition: -webkit-transform 4000ms ease-out;
+	-moz-transition: -moz-transform 4000ms ease-out;
+	-o-transition: -o-transform 4000ms ease-out;
+	-ms-transition: -ms-transform 4000ms ease-out;
+	transition: transform 4000ms ease-out;
+}
+
+.no-svg .killer-logo > a {
+	background-image: url(http://d.alistapart.com/_repo/site_assets/img/logo_a-list-apart.png);
+}
+
+.killer-logo img {
+	display: none;
+	width: 960px;
+	max-width: 960px;
+}
+
+.no-touch .logo-holder .killer-logo a.yeeeeeeaahhh {
+	-webkit-transform: translate(0,10px) rotate(.4deg);
+	-moz-transform: translate(0,10px) rotate(.4deg);
+	-o-transform: translate(0,10px) rotate(.4deg);
+	-ms-transform: translate(0,10px) rotate(.4deg);
+	transform: translate(0,10px) rotate(.4deg);
+}
+
+.deadly-subtitle {
+	display: block;
+	width: 100%;
+	height: 50px;
+	top: auto;
+	bottom: 0;
+	background: url(http://d.alistapart.com/_repo/site_assets/img/bg_for-people-who.svg) no-repeat top center;
+	text-indent: 100%;
+	color: transparent;
+	overflow: hidden;
+	white-space: nowrap;
+	-webkit-print-color-adjust: exact;
+}
+
+.no-svg .deadly-subtitle {
+	background-image:  url(http://d.alistapart.com/_repo/site_assets/img/bg_for-people-who.png);
+}
+
+.deadly-subtitle img {
+	display: none;
+}
+
+.entry-header .issue-number, .wide-hero .issue-number, .tall-hero .issue-number {
+	color: #bb3825;
+	padding: 0;
+	font-size: 1em;
+}
+
+.entry-header .entry-details {
+	font-style: italic;
+	font-weight: normal;
+	margin-bottom: 3em;
+	font-size: 1em;
+	line-height: 1.5em;
+	text-align: center;
+}
+
+.entry-header time:before, footer a.author + time:before, footer a.aside-author+time:before {content: " ∙ ";}
+
+.optional-break {display: block;}
+
+.entry-header .entry-details a.author {font-family: Roboto, sans-serif; font-weight: 700; font-style: normal; text-transform: uppercase; }
+
+.editors-note {background: #ffe; color: #444; font-size: 0.75em; line-height: 1.75em; padding: 1em; border-radius: 0.5em;}
+
+.content-minutiae {
+	float: right;
+	width: 6.75em;
+	margin: 0 0 1.5em 1.5em;
+	clear: right;
+	border-top: 3px solid #222;
+	padding-top: 0.25em;
+}
+
+.content-minutiae h1, .content-minutiae li {
+	font-family: Roboto, sans-serif;
+	font-size: 0.75em;
+	text-align: left;
+	line-height: 2em;
+	margin: 0;
+	padding: 0 0.25em;
+}
+
+article {margin: 8em 1em;}
+
+section {margin-bottom: 4em; position: relative;}
+
+section.closeSection {margin-bottom: 4em;}
+		
+h1 {font-family: Roboto, sans-serif; font-weight: 700; font-size: 2em; line-height: 1.2em; margin-bottom: 0.25em; text-align: center;}
+
+h2 {font-family: Roboto, sans-serif; font-weight:400; color: #bb3825; font-size: 1.5em; margin: 1em auto;}
+
+p.dek {font-family: Roboto, sans-serif; font-size: 1.25em; font-style: italic; line-height: 1.5em; margin-bottom: 0.5em;  text-align: center;}
+
+p {margin-bottom: 1.5em;}
+
+figure {position: relative; text-align: center; margin: 2em auto;}
+
+figure.wide-hero {margin: 0 auto;}
+
+figcaption {margin-top: 0.5em;}
+
+figcaption h1, figcaption p {text-align: left; font-size: 0.75em; font-style: italic; line-height: 1.75em; padding: 0 1em;}
+		
+figcaption h1 {margin-bottom: 0; text-transform: uppercase}
+
+.entry-footer p {font-size: 0.8em; line-height: 1.66em; margin-bottom: 1.66em;}
+
+.entry-footer h1, .entry-footer h2 {text-align: left; font-size: 1.25em;}
+
+.entry-footer h1 {margin-bottom: 1em;}
+
+.entry-footer h2 {width: auto; margin-bottom: 0.25em;}
+
+.entry-footer .photo {float: left; margin: 0 1em 1em 0;}
+
+@media screen and (min-width: 36em) {
+
+	.killer-logo > a {
+		margin-left: -10%;
+	}
+
+	.content-minutiae {
+		float: left;
+		width: 6.75em;
+		margin: 0.5em 1.5em 1.5em 0;
+		clear: left;
+	}
+
+	article {margin: 8em 4em;}
+	
+	h1 {font-size: 3em;}
+	
+	p.dek {font-size: 1.5em}
+	
+	p.lede {font-size: 1.5em; line-height: 1.66em;}
+	
+	section figure.rightAlign {float: right; width: 50%; margin:0 0 2em 2em;}
+		
+}
+
+@media screen and (min-width: 51.5em) {
+
+	.killer-logo > a {
+		margin-left: 0;
+	}
+	
+	.entry-header .issue-number,
+	.wide-hero .issue-number,
+	.tall-hero .issue-number,
+	.issue-page .logo-holder + .issue-number {
+		position: absolute;
+		bottom: -1em;
+		left: -1em;
+		width: 120px;
+		height: 120px;
+		padding: 1.15em 0 0 0;
+		color: #fff;
+		font-family: "Roboto", sans-serif;
+		font-size: 3em;
+		letter-spacing: -.025em;
+		font-weight: bold;
+		text-align: center;
+		font-style: normal;
+		background: transparent url(http://d.alistapart.com/_repo/site_assets/img/bg_issue-badge_4.svg) no-repeat;
+	}
+	
+	.entry-header > .issue-number:first-child,
+	.issue-page .logo-holder + .issue-number {
+		z-index: 1000;
+		bottom: auto;
+		top: 72px;
+		left: 50%;
+		margin-left: -516px;
+	}
+	
+	.no-svg .entry-header .issue-number,
+	.no-svg .wide-hero .issue-number,
+	.no-svg .tall-hero .issue-number,
+	html[data-useragent*='MSIE'] .entry-header .issue-number,
+	html[data-useragent*='MSIE'] .wide-hero .issue-number,
+	html[data-useragent*='MSIE'] .tall-hero .issue-number {
+		background-image: url(../img/issue-badge.png);
+	}
+	
+	.issue-number:hover {
+		text-decoration: none;
+	}
+	
+	.entry-header .issue-number span,
+	.wide-hero .issue-number span,
+	.tall-hero .issue-number span,
+	.issue-page .logo-holder + .issue-number span {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 120px;
+		height: 120px;
+		padding-top: 24px;
+		color: #fff;
+		text-align: center;
+		font-family: "Merriweather", serif;
+		font-size: 16px;
+		line-height: 22px;
+		letter-spacing: 0;
+		font-weight: normal;
+		font-style: italic;
+	}
+
+	
+	section, .entry-footer {width: 43.5em; margin-left: auto; margin-right: auto;}
+	
+	section p {font-size: 1.125em; line-height: 1.667em; margin-bottom: 1.667em;}
+	
+	figcaption h1, figcaption p {font-size: 0.75em; line-height: 1.75em; }
+	
+	h2 {width: 29em;}
+
+}
+
+@media screen and (min-width: 62em) {
+	
+	
+	article {margin: 8em auto;}
+	
+	.editors-note {max-width: 78em; margin: 1em auto 3em;}
+	
+	.content-minutiae {
+		position: absolute;
+		left: 50%;
+		width: 6.75em;
+		margin: 0.5em 1.5em 1.5em -30em;
+		clear: left;
+	}
+	
+	p.lede {font-size: 1.5em;}
+	
+	p.lede {max-width: 40em; margin-left: auto; margin-right: auto;}
+	
+	.wide-hero {width: 56em; margin: 0 auto;}
+	
+	h2 {font-size: 2em; width: 21.75em; line-height: 1.3em;}
+	
+	section.figureGroup {width: 96%; -webkit-column-count: 2; -webkit-column-gap: 2em; -moz-column-count: 2; -moz-column-gap: 2em; column-count: 2; column-gap: 2em; overflow: visible;}
+	
+	section.figureGroup figure {margin: 0; max-width: 100%; text-align: center; display: inline-block;}
+	
+	section.figureGroup figure:first-child {margin: 0; padding-top: 8em; }
+	
+	section.figureGroup figure img {max-width: 100%; max-height: 100%;}
+	
+	section.figureGroup figcaption {position: absolute; bottom: -4em; right: 2em; text-align: right;}
+	
+		section.figureGroup figure:first-child figcaption {text-align: left; top: 4em; left: 2em; right: auto;}
+	
+		section.figureGroup figcaption h1 {text-align: right;}
+		
+		section.figureGroup figure:first-child figcaption h1 {text-align: left;}
+	
+		section.figureGroup figcaption h1, figcaption p {font-size: 0.75em; font-style: italic; line-height: 1.75em;}
+		
+		section.figureGroup figcaption h1 {margin-bottom: 0;}
+	
+
+}
+
+@media screen and (min-width: 100em) and (min-height: 54em) {
+	
+	.killer-logo > a {width: 1536px; height: 192px;}
+	
+	.wide-hero {width: 64em;}
+	
+	.entry-header .issue-number,
+	.wide-hero .issue-number,
+	.tall-hero .issue-number,
+	.issue-page .logo-holder + .issue-number {
+		left: -0.5em;
+	}
+	
+	.entry-details {width: 60em; margin-left: auto; margin-right: auto;}
+	
+	article {width: 96em; margin-top: 8em;}
+	
+	.editors-note {max-width: 86em;}
+	
+	.content-minutiae {
+		margin-left: -41.75em;
+	}
+	
+	p.lede {max-width: none; width: 44em;}
+	
+	h2 {width: 22em; font-size: 3em; font-weight: 300; margin: 0 auto 2.25em; text-align: center;}
+	
+	section.closeSection {margin-bottom: 12em;}
+	
+	section.closeSection:after {display: block; position: absolute; bottom: -3.5em; left: 0; width: 100%; text-align: center; content:"\2756"; font-size: 2em; color: #bb3825; }
+	
+	section.figureSolo img {-webkit-column-break-after:always; -moz-column-break-after:always; column-break-after:always; break-after:column;}
+	
+	section.figureSolo figcaption {-webkit-column-break-before:always; -moz-column-break-before:always; column-break-before:always; break-before: column; padding-top: 2em;}
+	
+	section.figureGroup {margin-bottom: 4em;}
+	
+	section.figureGroup.closeSection {margin-bottom: 12em;}
+	
+	section, .entry-footer {width: 66em; -webkit-column-count: 2; -webkit-column-gap: 2em; -moz-column-count: 2; -moz-column-gap: 2em; column-count: 2; column-gap: 2em; margin-bottom: 6em; vertical-align: top;}
+	
+	section figure, section figure.rightAlign, section figure img {float: none; width: auto; max-width: 100%; margin: 0; text-align: center; vertical-align: top;}
+	
+	section figure.rightAlign {-webkit-column-break-after:always; -moz-column-break-after:always; column-break-after:always; break-after: column;}
+	
+	section figure {padding: 1em 0; min-height: 26em;}
+	
+	section figure img {margin-bottom: 0;  vertical-align: top;}
+	
+	section figcaption {position: static; width: auto; margin: 0;}
+	
+	.entry-footer .vcard {-webkit-column-break-after: always; -moz-column-break-after:always; column-break-after:always; break-after: column;}
+	
+}
+
+@media screen and (min-width: 100em) and (min-height: 72em) {
+
+	.wide-hero {width: 84em;}
+	
+	.entry-header .issue-number,
+	.wide-hero .issue-number,
+	.tall-hero .issue-number,
+	.issue-page .logo-holder + .issue-number {
+		left: 0em;
+	}
+
+}
+
