@@ -1,0 +1,379 @@
+
+	/* A List Apart 3.0 layout for handhelds - alistapart.com */
+
+/* Import standard ala rules; this style sheet will simply modify
+   that base to suit handhelds (and resized-narrow windows). */
+@import "/c/ala.css";
+
+/* The px -> em translation was done by using this chart:
+	 2px	0.15em
+	 5px	0.38em
+	 9px	0.69em	xx-small
+	10px	0.83em	x-small
+	11px	0.90em
+	12px	0.92
+	13px	1.0em	small
+	16px	1.2em
+	25px	1.6em
+  (based off the 13px == 1em == small equivalence, since ALA uses
+   "small" as its paragraph-size font)
+  and tweaking the result a bit (e.g. shifting 0.85em font sizes to 0.90
+  and 0.77em font sizes to 0.83em) */
+
+	/*  General rules */
+
+/* Shrink images to fit within viewport; some phones
+   can't scroll horizontally. */
+img	{
+	max-width: 100%;
+	}
+
+	/*  Establish general layout parameters */
+
+/* Reduce margin slightly
+   Drop border (it looks redundant when the spacing is small)
+   Specify only generic font family, not specific screen font,
+    because the handheld is likely to set a more readable default */
+body	{
+	border-top: none;
+	font-family: sans-serif;
+	padding-bottom: 5px;
+	}
+
+/* Reduce margin and border sizes slightly
+   Use keyword for border-width above 3px
+   Relax width to 'auto' and set max-width instead */
+#wrapper	{
+	margin: 3px auto;
+	border: 1px solid #566;
+	border-top: medium solid #566;
+	width: auto;
+	max-width: 597px;;
+	}
+
+/* Limit the amount of vertical room the banner takes up: it shouldn't
+    take up most of the screen! We care about physical size here, not
+    screen resolution.
+   Most of this image can be cut off without a problem, so also
+   release the max-width and clip the overflow. */
+#header img	{
+	max-height: 1.5cm;
+	max-width: none;
+	}
+#header {
+	overflow: hidden;
+	}
+
+/* Linearize menu */
+#menu ul li {
+	float: none;
+	}
+
+/* Release width restriction,
+   reduce height/line-height,
+   close right end of border box
+   and adjust margin */
+#menu ul li a {
+	width: auto;
+	height: 1.5em;
+	border: 1px solid #ccc;
+	margin: 1px 0;
+	line-height: 1.5em;
+	}
+#menu ul li#five a	{
+	width: auto;
+	}
+
+/* Turn off float -> one-column layout
+   Reduce padding to a percentage (scales well)
+   Relax width to 'auto' and set max-width instead */
+#maincontent	{
+	float: none;
+	padding: 2%;
+	width: auto;
+	max-width: 597px;
+	}
+
+.fussytable td, .fussytable th	{
+	font-size: 0.90em;
+	}
+
+/* Reduce horizontal margins/padding; percentages scale well */
+#maincontent ol, #maincontent ul	{
+	padding-left: 1%;
+	margin-left: 1%;
+	}
+
+/* Vertical margins should be given either as small pixel values
+    (a few pixels for a bit of graphical breathing room) or as
+    ems (relative to the font size) so it scales with the font.
+    10px is close to font size, so it fits under the latter
+    category --> 0.8em
+   Switch 5px margin/padding to percentages */
+#maincontent li	{
+	line-height: 1.4;
+	margin-bottom: 0.83em;
+	padding-left: 1%;
+	margin-left: 1%;
+	}
+
+/* Vertical margin -> em, as above*/
+#maincontent ul ul li {
+	margin-top: 0.83em;
+	}
+
+/* Horizontal spacing on inline elements
+    should be given in em, not pixels, so
+    that it scales with the font size */
+#maincontent .inlinelist li	{
+	padding: 0 0.4em 0 0;
+	}
+
+/* Set paddings, margins, and height for linear layout */
+#sidebar	{
+	padding: 2%;
+	margin: 0;
+	height: auto;
+	}
+
+/* Switch from pixels to ems in footer margins/padding */
+#footer {
+	padding: 0.5em 0.7em 0.7em 0.7em;
+	}
+#footer p	{
+	margin: 1em 0;
+	}
+#footer ul	{
+	margin: 1em 0 0 0;
+	}
+#footer li	{
+	padding: 0 1.5em 0 0;
+	}
+
+/* Switch from pixels to ems in sidebar navigation margins/padding */
+#subnav	{
+	margin: 0 0 1.6em 0;
+	padding: 0.4em;
+	}
+#subnav dd 	{
+	margin: 0.15em 0 0.83em 0;
+	}
+
+/* Specify generic, not specific, fonts in font-family */
+code, pre	{
+	font-family: monospace;
+	}
+
+/* Allow preformatted lines to break */
+pre {
+	white-space: -pre-wrap; /* Opera 6 CSS Extension */
+	white-space: pre-wrap; /* CSS2.1 Addition */
+	}
+
+	/*  Typography */
+
+/* Specific fonts are ok for headlines, so leave font-family alone
+   Adjust top margin from px to em and reduce it a bit (the 2px on the
+    bottom margin is small enough to be left alone)
+   Reduce line height to 1em; headings frequently break into multiple
+    lines on such small screen, and we don't want spacing /within/ the
+    heading, only around it. */
+h1, h2, h3, h4, h5, h6	{
+	line-height: 1em;
+	margin-top: 1.3em;
+	}
+
+/* Don't use keyword sizes based on small as default; we don't know the
+    readability scale of the handheld's default font. (Even if we specify
+    a font we won't know; handhelds rarely have much choice.)
+   If you use keywords, base them off medium, or, as here, use relative
+    sizes in 'em's for non-nesting cases. */
+#pagebody h1	{
+	font-size: 1.38em;
+	}
+#pagebody h2	{
+	font-size: 1.38em;
+	margin-top: 1.5em;
+	}
+
+/* Avoid specifying font sizes in px: use 'em' (if non-nesting) or keywords.
+   More margin px -> em adjustments */
+#sidebar h2	{
+	font-size: 1.23em;
+	margin: 0.3em 0 0 0 ;
+	}
+
+h3 {
+	font-size: 1.23em;
+	}
+#sidebar h3	{
+	font-size: 1em;
+	}
+h3.byline 	{
+	font-size: 0.92em;
+	margin: 0.5em 0;
+	}
+
+h4 {
+	font-size: 1em;
+	}
+
+h4.addtlbyline	{
+	font-size: 1em;
+	margin: 0.5em 0;
+	}
+#sidebar h4	{
+	margin: 0 0 1.2em 0;
+	}
+h4.pubdate 	{
+	margin: 0 0 0.83em 0;
+	font-size: 0.90em;
+	}
+h5 {
+	font-size: 0.83em;
+	}
+h6 {
+	margin: 0 0 2.5em 0;
+	font-size: 0.83em;
+	}
+
+
+/* Use the default font size, because the device knows what's a good size for
+   its screen and we don't. */
+#pagebody, #pagebody div, #pagebody p, #pagebody th, #pagebody td, #pagebody li, #pagebody dd, #pagebody dt {
+	font-size: 1em;
+	}
+
+#pagebody p.fineprint	{
+	font-size: 0.90em;
+	}
+
+#pagebody .trans	{
+	margin: 1.6em 0;
+	padding-top: 0;
+	}
+
+#pagebody .trans dt  {
+	font-size: 1.38em;
+	margin-bottom: 0.4em;
+	}
+
+#sidebar p	{
+	font-size: 0.90em;
+	}
+
+#sidebar .pullquote	{
+	font-size: 1em;
+	}
+
+#authorbio, .additionalauthorbox, .callbox	{
+	padding: 0.83em 0;
+	margin: 1.15em 0 0.83em 0;
+	}
+
+#outdated	{
+	font-size: 0.90em;
+	padding: 0.91em 0;
+	margin: 2.27em 0 0.91em 0;
+	}
+
+#maincontent dl	{
+	line-height: 1.4em;
+	margin-top: 0;
+	padding-top: 0;
+	}
+
+#maincontent dd	{
+	margin-bottom: 0.4em;
+	padding-left: 0.4em;
+	margin-left: 0.4em;
+	}
+
+.trans	{
+	margin-top: 5.7em;
+	}
+
+	/*  Forms */
+
+/* Make sure inputs stay inside the content area */
+input, textarea, select {
+	max-width: 100%;
+	}
+
+#formarea label	{
+	font-size: 0.90em;
+	margin-top: 0.4em;
+	}
+
+.postdata 	{
+	background: #fff;
+	color: #999;
+	font-size: 0.83em;
+	margin: 0.83em 0 0.4em 0;
+	border: 0;
+	border-bottom: 1px dotted #ccc;
+	border-top: 1px solid #f3f3f3
+	}
+
+.postdata p  	{
+	margin: 0.83em 0;
+	}
+
+.postbody	{
+	margin: 0 0 1.6em 0;
+	line-height: 1.4;
+	}
+
+	/*  Helpers */
+
+.linewrap {
+	font-size: medium;
+	}
+
+.floatleft	{
+	margin: 0 1.15em 0 0;
+	}
+
+.vs0	{
+	margin-top: 0;
+	}
+
+.vs3	{
+	margin-top: 0.23em;
+	}
+
+.vs5	{
+	margin-top: 0.38em;
+	}
+
+.vs7	{
+	margin-top: 0.54em;
+	}
+
+.vs10	{
+	margin-top: 0.83em;
+	}
+
+.vs15	{
+	margin-top: 0.15em;
+	}
+
+.vs25	{
+	margin-top: 1.6em;
+	}
+
+	/*  Frankencheese */
+
+.form {
+	font-size: x-small;
+	}
+
+.form-button {
+	font-size: x-small;
+	}
+
+	/* Search */
+
+#sidebar label	{
+	font-size: x-small;
+	}

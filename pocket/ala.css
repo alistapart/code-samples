@@ -1,0 +1,728 @@
+
+	/* A List Apart 3.0 layout - alistapart.com */
+	/* You may adapt elements of this CSS in your own projects, but the unique combination of images, colors, sizes, typography, and positioning ("the design") is copyright 2003 Happy Cog Studios and may not be reproduced. */ 
+	
+
+	/*  General rules */
+	
+img	{
+	display: block;
+	border: 0;
+	}
+
+#sidebar img {
+	margin: 5px 0;
+	border: 1px solid #333;
+	}
+
+#footer img {
+	vertical-align: middle;
+	border: 0;
+	}
+		
+#homebutt	{
+	margin: -5px 10px 0 -60px;
+	padding: 0;
+	float: left;
+	}
+	
+#homebutt img	{
+	border: 0;
+	padding: 0;
+	margin: 0;
+	}
+	
+	
+
+	/*  Establish general layout parameters */
+
+body	{
+	background: #9aa url(/d/i/btgrdk.gif) bottom left fixed repeat-x;
+	color: #333;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-top: 5px solid #566;
+	text-align: center;
+	font-family: "Trebuchet MS", "Bitstream Vera Sans", verdana, lucida, arial, helvetica, sans-serif;
+	padding-bottom: 25px;
+	}
+	
+#wrapper	{
+	background: #fff url(/i/pgbg4.gif) repeat;
+	color: #333;
+	margin: 10px auto;
+	padding: 0;
+	border: 1px solid #566;
+	border-top: 5px solid #566;
+	width: 599px;  /* bmh */	
+	voice-family: "\"}\""; 
+	voice-family:inherit;
+	width: 597px;	 
+	}
+
+html>#wrapper	{
+	width: 597px;
+	} 
+
+#header	{
+	background: #fff;
+	color: #333;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	}
+
+#header img	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	}
+
+#pagebody	{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	text-align: left;
+	color: #444;
+	background: transparent;
+	clear: both;
+	}
+
+#maincontent	{
+	float: left;
+	margin: 0;
+	padding: 10px;
+	width: 410px;  /* box model hack */	
+	voice-family: "\"}\""; 
+	voice-family:inherit;
+	width: 390px;	 
+	}
+
+html>#maincontent 	{
+	width: 390px;
+	} 
+
+th	{
+	font-weight: bold;
+	}
+
+.fussytable td, .fussytable th	{
+	font-size: 11px;
+	text-align: center;
+	padding: 2px;
+	margin: 2px;
+	border: 1px solid #ccc;
+	}
+
+#maincontent ol, #maincontent ul	{
+	margin: .5em 0;
+	padding-left: 10px;
+	margin-left: 10px;
+	}
+	
+#maincontent li	{
+	line-height: 1.4;
+	margin-bottom: 10px;
+	padding-left: 5px;
+	margin-left: 5px;
+	list-style: disc url(/i/listblack.gif) inside;
+	vertical-align: top;
+	}
+	
+#maincontent ul ul li {
+	margin-top: 10px;
+	list-style: disc url(/i/innerlistblack.gif) inside;
+	vertical-align: top;
+	}
+
+#maincontent ul.inlinelist	{
+	padding: 0;
+	margin: 0;
+	}
+
+#maincontent .inlinelist li	{
+	display: inline;
+	padding: 0 5px 0 0;
+	margin: 0;
+	border: 0;
+	}	
+	
+#sidebar	{
+	padding: 2px 10px 10px 0;
+	margin: 0 0 0 420px;
+	color: #666;
+	background: transparent; 
+	/* compensates for IE Win bungling */
+	height: 100%;
+	}	
+
+#footer {
+	border: 0;
+	border-top: 1px solid #ccc;
+	color: #666;
+	background: #eee;
+	padding: 5px 7px 7px 10px;
+	text-align: left;
+	clear: both;
+	font-size: xx-small;
+	voice-family: "\"}\""; 
+	voice-family:inherit;
+	font-size: x-small;	
+	}
+
+html>#footer	{
+	font-size: x-small;
+	} 
+
+#footer p	{
+	margin: 10px 0;
+	padding: 0;
+	}
+
+#footer ul	{
+	margin: 10px 0 0 0;
+	padding: 0;
+	}
+	
+#footer li	{
+	display: inline;
+	margin: 0;
+	padding: 0 15px 0 0;
+	text-align: left;
+	border: 0;
+	}	
+
+#subnav	{
+	margin: 0 0 25px 0;
+	padding: 5px;
+	border: 0;
+	}
+
+#subnav ul	{
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	border: 0;
+	}
+	
+#subnav ul li	{
+	list-style: disc url(/i/listmark.gif) inside;
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+        font-size:    xx-small;      
+        voice-family: "\"}\"";   
+        voice-family: inherit;   
+        font-size:    x-small;      
+	}	
+
+html>#subnav ul li	{
+	font-size: x-small;
+	} 
+
+#subnav ul li a {
+	font-weight: normal;
+	}
+
+#subnav dl	{
+	margin: 0;
+	padding: 0;
+	}
+	
+#subnav dt 	{
+	font-weight: normal;
+	font-size:    x-small;      
+	voice-family: "\"}\"";   
+	voice-family: inherit;   
+	font-size:    small;  
+	}   
+	
+html>#subnav dt 	{
+	font-size: small;
+	} 
+
+#subnav dd 	{
+	padding: 0;
+	margin: 2px 0 10px 0;
+	}   	
+
+code, pre	{
+	font-family: "Bitstream Vera Sans Mono", monaco, "Courier New", courier, monospace;
+	font-weight: normal;
+	background: inherit;
+	color: #333;
+	}
+
+
+	/*  Work around IE/Win code size bug - courtesy Jesper, waffle.wootest.net  */
+
+* html code	{
+	font-size : 105%; 
+	}
+
+
+	/*  Typography */
+	
+h1, h2, h3, h4, h5, h6	{
+	font-family: Myriad, "Gill Sans", "Century Gothic", "Trebuchet MS", "Bitstream Vera Sans", verdana, lucida, arial, helvetica, sans-serif;
+	font-weight: normal;
+	margin-top: 25px;
+	margin-bottom: 2px;
+	letter-spacing: 1px;
+	}
+	
+#pagebody h1	{
+    margin-top: 0;
+    font-size:    medium;      
+    voice-family: "\"}\"";   
+    voice-family: inherit;   
+    font-size:  large;       
+    }
+
+html>#pagebody h1 	{
+	font-size:  large;  
+	} 
+
+#pagebody h2	{
+    margin-top: 35px; 
+    font-size:    medium;     
+    voice-family: "\"}\"";   
+    voice-family: inherit;   
+    font-size:    large;       
+    }
+
+html>#pagebody h2 	{
+	font-size:  large;  
+	} 
+
+#sidebar h2	{
+	font-size: 16px;
+	margin: 5px 0 0 0 ;
+	}
+
+h3	{ 
+	font-size: small;      
+	voice-family: "\"}\"";   
+	voice-family: inherit;   
+	font-size: medium;  
+	}
+
+html>h3 	{
+	font-size:  medium;  
+	} 
+
+#sidebar h3	{
+	font-size: 13px;
+	margin: 0;
+	}
+	
+h3.byline 	{
+	font-size: 12px;
+	padding: 0;
+	margin: 7px 0;
+	text-transform: uppercase;
+	}
+		
+h4	{
+	font-weight: normal;
+   	font-size: x-small;      
+	voice-family: "\"}\"";   
+	voice-family: inherit;   
+	font-size: small;  
+	}
+
+html>h4 	{
+	font-size: small;  
+	} 	
+
+h4.addtlbyline	{
+	font-size: 12px;
+	padding: 0;
+	margin: 7px 0;
+	text-transform: uppercase;
+	}
+
+#sidebar h4	{
+	margin: 0 0 15px 0;
+	}
+
+h4.pubdate 	{
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-weight: bold;
+	font-size: 11px;
+	font-weight: normal;
+	color: #666;
+	background: transparent;
+	}
+
+h5	{
+     font-size:    xx-small;      
+     voice-family: "\"}\"";   
+     voice-family: inherit;   
+     font-size:    x-small;  
+	}
+	
+html>h5 	{
+	font-size:  x-small;  
+	} 
+
+h6	{
+	margin: 0 0 25px 0;
+	padding: 0;
+	background: transparent;
+	color: #333;
+	text-transform: uppercase;
+	font-family: "Trebuchet MS", "Bitstream Vera Sans", verdana, lucida, arial, helvetica, sans-serif;
+	font-weight: normal;
+	font-size:    9px;      
+	voice-family: "\"}\"";   
+	voice-family: inherit;   
+  	font-size: xx-small;
+	}
+
+html>h6 	{
+	font-size:  xx-small;  
+	} 
+
+p	{
+	line-height: 140%;
+	text-align: left;
+	margin-top: 0;
+	margin-bottom: 1em;
+	}
+	
+#pagebody, #pagebody div, #pagebody p, #pagebody th, #pagebody td, #pagebody li, #pagebody dd, #pagebody dt    {
+     font-size:    x-small;      
+             /* Tantek again */
+    voice-family: "\"}\"";   
+    voice-family: inherit;   
+    font-size:    small;         
+    }
+
+html>#pagebody, html>#pagebody div, html>#pagebody p, html>#pagebody th, 
+html>#pagebody td, html>#pagebody li, html>#pagebody dd, html>#pagebody dt    {
+    font-size:  small;
+    }
+
+#pagebody p.fineprint	{
+	font-size: 11px;
+	}
+
+#pagebody .trans		{
+	margin: 25px 0;
+	padding-top: 0;
+	}
+	
+#pagebody .trans dt  {
+	font-weight: normal;
+	font-style: italic;
+	margin-bottom: 5px;
+	padding-bottom: 0;
+	font-size:  medium;      
+	voice-family: "\"}\"";   
+	voice-family: inherit;   
+	font-size:  large;  
+	}
+
+html>#pagebody .trans dt  {
+	font-size: large;
+	} 
+
+#sidebar p	{
+	font-size: 11px;
+	text-align: left;
+	}
+
+#sidebar .pullquote	{
+	font-size: 13px;
+	}
+
+#authorbio, .additionalauthorbox, .callbox	{
+	padding: 10px 0;
+	border: 0;
+	border-top: 1px dotted #ccc;
+	border-bottom: 1px dotted #ccc;
+	margin: 15px 0 10px 0;
+	}
+
+#outdated	{
+	font-size: 11px;
+	font-weight: bold;
+	padding: 10px 0;
+	border: 0;
+	border-top: 1px dotted #ccc;
+	border-bottom: 1px dotted #ccc;
+	margin: 25px 0 10px 0;
+	}
+
+#maincontent dl	{
+	line-height: 1.4em;
+	margin-top: 0;
+	padding-top: 0;
+	}
+
+#maincontent dd	{
+	margin-bottom: 5px;
+	padding-left: 5px;
+	margin-left: 5px;
+	}
+
+.trans	{
+	margin-top: 75px;
+	padding-top: 0;
+	}
+	
+.trans dt  {
+	font-weight: normal;
+	font-style: italic;
+	font-size:  large;      
+	voice-family: "\"}\"";   
+	voice-family: inherit;   
+	font-size:  x-large;  
+	}
+	
+html>.trans dt  {
+	font-size:  x-large;  
+	} 
+
+
+	/* General linkology */
+	
+a:link, a:visited {
+	font-weight : bold; 
+	text-decoration : none;
+	color: #c30;
+	background: transparent; 
+	}
+
+a:hover {
+	font-weight : bold; 
+	text-decoration : underline;
+	color: #999;
+	background: transparent; 
+	}
+
+a:active {
+	font-weight : bold; 
+	text-decoration : none;
+	color: #526968;
+	background: transparent;  
+	}
+
+
+	/*  Horizontal nav */
+
+#menu {
+	margin: 0;
+	padding: 0;
+	}
+
+#menu ul {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+	clear: left;
+	}
+
+#menu ul li {
+	display: block;
+	float: left;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	}
+
+#menu ul li a {
+	background: #fff;
+	width: 118px;
+	height: 2em;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-right: none;
+	padding: 0;
+	margin: 0 0 10px 0;
+	color: #c30;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	font-weight: normal;
+	letter-spacing: 1px;
+	line-height: 2em;
+	font-size:    xx-small;      
+	voice-family: "\"}\"";   
+	voice-family: inherit;   
+	font-size:    x-small;   
+	}
+
+html>#menu ul li a  {
+	font-size: x-small;   
+	} 
+
+#menu ul li#five a	{
+	width: 119px;
+	}
+
+#resources a:link, #resources a:visited {
+	border-right: 1px solid #ccc;
+	}
+
+#menu ul li a:hover {
+	color: #000;
+	background: #ccc;
+	}
+
+#menu a:active	{
+	background: #c60;
+	color: #fff;
+	}
+
+body#sectionone #menu li#one a, 
+body#sectiontwo #menu li#two a,
+body#sectionthree #menu li#three a,
+body#sectionfour #menu li#four a,
+body#sectionfive #menu li#five a {
+	background: #c30;
+	border: 1px solid #c30;
+	color: #fff;
+	font-weight: bold;
+	}
+
+	/*  Forms */
+
+#formarea	{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	text-align: left;
+	}
+	
+#formarea label	{
+	font-size: 11px;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	margin-top: 5px;
+	display: block;
+	}
+
+.postdata 	{
+	background: #fff;
+	color: #999;
+	font-size: 10px;
+	margin: 10px 0 5px 0;
+	border: 0;
+	border-bottom: 1px dotted #ccc;
+	border-top: 1px solid #f3f3f3
+	}
+
+.postdata p  	{
+	margin: 10px 0;
+	padding: 0;
+	}	
+
+.postbody	{
+	margin: 0 0 25px 0;
+	padding: 0;
+	overflow: hidden;
+	line-height: 1.4;
+	}
+
+	/*  Hidey-ho */
+
+.hide {
+	height: 0;
+	width: 0;
+	overflow: hidden;
+	position: absolute;  /* for the benefit of IE5 Mac */
+	}
+
+	/*  Helpers */
+	
+	
+.linewrap {
+	font-weight: bold; 
+	color: #c60; 
+	font-size: 13px;
+	}
+	
+.floatleft	{
+	float: left;
+	padding: 0;
+	margin: 0 15px 0 0;
+	}
+	
+.vs0	{
+	margin-top: 0;
+	}
+	
+.vs3	{
+	margin-top: 3px;
+	}		
+
+.vs5	{
+	margin-top: 5px;
+	}	
+
+.vs7	{
+	margin-top: 7px;
+	}
+
+.vs10	{
+	margin-top: 10px;
+	}	
+
+.vs15	{
+	margin-top: 15px;
+	}	
+	
+.vs25	{
+	margin-top: 25px;
+	}
+		
+	/*  Frankencheese */
+
+.form {
+	color: #000;
+	border: 1px solid #666;
+	font-family: "Trebuchet MS", "Bitstream Vera Sans", verdana, lucida, arial, helvetica, sans-serif;
+	padding: 1px;
+	margin: 0;
+	font-size: xx-small;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	font-size: x-small;
+	}
+
+html>.form {
+	font-size: x-small;
+	} 
+
+.form-button {
+	color: #000;
+	background-color: #fff;
+	border: 1px solid #666;
+	font-family: "Trebuchet MS", "Bitstream Vera Sans", verdana, lucida, arial, helvetica, sans-serif;
+	font-weight: bold;
+	padding-left: 1px;
+	padding-right: 1px;
+	margin: 0;
+	font-size: xx-small;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	font-size: x-small;
+	}
+
+html>.form-button  {
+	font-size: x-small;
+	} 
+	
+	/* Search */
+	
+#sidebar label	{
+	font-size: x-small;
+	}
