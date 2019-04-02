@@ -1,0 +1,11 @@
+# Enable mod_rewrite
+RewriteEngine on
+
+# Tell Apache to redirect all request that match our predefined URL pattern to mail.php
+RewriteRule ^.*contact/([A-Za-z0-9._%-]*)\+([A-Za-z0-9._%-]*)\+([A-Za-z.]{2,4})$ /your-home-folder/geo/mail.php?n=$1&d=$2&t=$3 [L]
+
+# Make sure that PHP code inside pages with extension .htm(l) is parsed by PHP (necessary for prepending)
+AddType application/x-httpd-php .php .htm .html
+
+# Whenever PHP parses a page, prepend it with this file (500 bytes) to initiate the GEO script
+php_value auto_prepend_file /your-home-folder/geo/geo.prepend.php
