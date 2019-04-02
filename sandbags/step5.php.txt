@@ -1,0 +1,95 @@
+<style type="text/css">
+		
+	.sandbag-image span {
+		display: none;
+	}
+	
+	.sandbag-right {
+		border: 0; 
+		padding: 0;
+		font-size: 0;
+		margin: 0 0 0 35px;
+		float: right; 
+		clear: right;
+	}
+	
+	.first-sandbag {
+		margin-top: 20px;
+	}
+	
+	.last-sandbag {
+		margin-bottom: 5px;
+	}
+	
+</style>
+   
+<?php
+
+function alignedImage($imageName, $alt = '', $sandbagHeight = 10) {
+
+    if ($sandbagHeight < 2) {$sandbagHeight = 2;}
+
+    $image = imagecreatefrompng($imageName);
+    $width = imagesx($image);
+    $height = imagesy($image);
+
+    for ($y=0; $y<$height; $y++) {
+        $imagemap[$y] = 0;
+
+        for ($x=0; $x<$width; $x++) {
+            $colorBreakdown = imagecolorsforindex($image, (imagecolorat($image, $x, $y)));
+            if ($colorBreakdown['alpha'] < 127) {
+                break;
+            } else {
+                $imagemap[$y]++;
+            }
+        }
+    }
+
+    for($i=0;$i < count($imagemap); $i = $i+$sandbagHeight) {
+        for($x=0;$x < $sandbagHeight; $x++) {
+            $b = $x + $i;
+            if(isset($imagemap[$b])) {
+                $section[$b] = $imagemap[$b];
+            }
+        }
+        $sandbag[] = min($section); 
+        $finalSectionSize = count($section); // We only care about the final cluster, but that's the last to get set anyway.
+        unset($section);
+    }
+
+    $sandbagTemplate = '<div class="sandbag-right" style="background: url(%s) -%dpx -%dpx no-repeat; width: %dpx; height: %dpx;"></div>';
+    
+    // This surrounding div allows us to add a pseudo alt and title tag
+    // If no alt tag is specified then it won't be displayed
+    
+    if($alt != '') {
+        echo '<div class="sandbag-image" title="' . $alt . '"><span>' . $alt . '</span>';
+    } else {
+        echo '<div class="sandbag-image">';
+    }
+    
+    foreach ($sandbag as $position => $blankPixels) {
+
+        $sandbagWidth = $width-$blankPixels;
+        $yPos = $position*$sandbagHeight; 
+        $xPos = $blankPixels; 
+    
+        if ($position == 0) {
+            $sandbagClass .= ' first-sandbag'; 
+        } elseif ($position == count($sandbag)-1) {
+            $sandbagClass .= ' last-sandbag';  
+            $sandbagHeight = $finalSectionSize; // as the final sandbag, this may get a special size!
+        }
+
+        printf($sandbagTemplate,$imageName,$xPos,$yPos,$sandbagWidth,$sandbagHeight);
+        
+    }
+    
+    echo '</div>';
+}
+
+// We incorporate the ALT tag into our function call
+alignedImage('an_image.png', 'A right aligned blob', 15);
+
+?>

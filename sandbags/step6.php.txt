@@ -1,0 +1,144 @@
+<style type="text/css">
+
+	.sandbag-image span {
+		display: none;
+	}
+	
+	.sandbag-right {
+		border: 0; 
+		padding: 0;
+		font-size: 0;
+		margin: 0 0 0 35px;
+		float: right; 
+		clear: right;
+	}
+	
+	.sandbag-left {
+		border: 0; 
+		padding: 0;
+		font-size: 0;
+		margin: 0 35px 0 0;
+		float: left; 
+		clear: left;
+	}
+	
+	.first-sandbag {
+		margin-top: 20px;
+	}
+	
+	.last-sandbag {
+		margin-bottom: 5px;
+	}        
+
+</style>
+        
+<?php
+
+function alignedImage($imageName, $align = 'right', $alt = '', $sandbagHeight = 10) {
+
+    // We create our image, and only execute 
+    // the rest of the code if it works
+    
+    $image = @imagecreatefrompng($imageName);
+
+    if($image){
+        
+        if ($sandbagHeight < 2) {$sandbagHeight = 2;}
+        $width = imagesx($image);
+        $height = imagesy($image);
+
+        // The first loop generates $imagemap, which is our array of
+        // empty space we have detected in order to generate
+        // our 'perfect' sandbags.
+        
+        for ($y=0; $y<$height; $y++) {
+            $imagemap[$y] = 0;
+
+            if($align == 'right') {
+
+                for ($x=0; $x<$width; $x++) {
+                    $colorBreakdown = imagecolorsforindex($image, (imagecolorat($image, $x, $y)));
+                    if ($colorBreakdown['alpha'] < 127) {
+                        break;
+                    } else {
+                        $imagemap[$y]++;
+                    }
+                }
+
+            } else {
+
+                for ($x=($width-1); $x>0; $x--) {
+                    $colorBreakdown = imagecolorsforindex($image, (imagecolorat($image, $x, $y)));
+                    if ($colorBreakdown['alpha'] < 127) {
+                        break;
+                    } else {
+                        $imagemap[$y]++;
+                    }
+                }
+            }
+        }
+
+        // This second loop generates $sandbag, which is a less perfect
+        // array of the empty space we have detected, and is 
+        // based on our specified sandbag height.
+                
+        for($i=0;$i < count($imagemap); $i = $i+$sandbagHeight) {
+            for($x=0;$x < $sandbagHeight; $x++) {
+                $b = $x + $i;
+                if(isset($imagemap[$b])) {
+                    $section[$b] = $imagemap[$b];
+                }
+            }
+            $sandbag[] = min($section);
+            $finalSectionSize = count($section);
+            unset($section);
+        }
+     
+        // Here we specify the template for our sandbags
+        
+        $sandbagTemplate = '<div class="%s" style="background: url(%s) -%dpx -%dpx no-repeat; width: %dpx; height: %dpx;"></div>';
+        
+        // This final loop generates each of our sandbags
+        
+        if($alt != '') {
+            echo '<div class="sandbag-image" title="' . $alt . '"><span>' . $alt .'</span>';
+        } else {
+            echo '<div class="sandbag-image">';
+        }
+        
+        foreach ($sandbag as $position => $blankPixels) {   
+            
+            $sandbagWidth = $width-$blankPixels; 
+            $yPos = $position*$sandbagHeight;
+            
+            if($align == 'right') {
+                $xPos = $blankPixels;
+                $sandbagClass = 'sandbag-right';
+            } else {
+                $sandbagClass = 'sandbag-left';
+                $xPos = 0;
+            }
+
+            if ($position == 0) {
+                $sandbagClass .= ' first-sandbag';
+            } elseif ($position == count($sandbag)-1) {
+                $sandbagClass .= ' last-sandbag';
+                $sandbagHeight = $finalSectionSize;
+            }                      
+            
+            printf($sandbagTemplate,$sandbagClass,$imageName,$xPos,$yPos, $sandbagWidth, $sandbagHeight);
+            
+        }
+   
+        echo '</div>';
+   
+    } else {
+        
+        echo $alt;
+    
+    }
+}
+
+alignedImage('an_image.png', 'right', 'A right aligned blob',30);
+
+?>

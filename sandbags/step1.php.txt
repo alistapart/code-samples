@@ -1,0 +1,43 @@
+<style type="text/css">  
+
+	.sandbag-right {
+		border: 0; 
+		padding: 0;
+		font-size: 0;
+		height: 2px;
+		margin: 0 0 -1px 35px;
+		float: right; 
+		clear: right;
+		background: red;
+	}   
+
+</style>        
+
+<?php
+
+$image = imagecreatefrompng('an_image.png');
+$width = imagesx($image);
+$height = imagesy($image);
+
+for ($y=0; $y<$height; $y++) {
+    $imagemap[$y] = 0;
+
+    for ($x=0; $x<$width; $x++) {
+        $colorBreakdown = imagecolorsforindex($image, (imagecolorat($image, $x, $y)));
+        if ($colorBreakdown['alpha'] < 127) {
+            break;
+        } else {
+            $imagemap[$y]++;
+        }
+    }
+}
+
+// We specify the template for our sandbag here
+$sandbagTemplate = '<div class="sandbag-right" style="width: %dpx;"></div>';
+
+foreach ($imagemap as $position => $blankPixels) {
+    $sandbagWidth = $width-$blankPixels;
+    printf($sandbagTemplate,$sandbagWidth);
+}
+
+?>

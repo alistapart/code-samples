@@ -1,0 +1,81 @@
+<style type="text/css">
+
+	.sandbag-right {
+		border: 0; 
+		padding: 0;
+		font-size: 0;
+		margin: 0 0 0 35px;
+		float: right; 
+		clear: right;
+		background: no-repeat;
+	}
+	
+	.first-sandbag {
+		margin-top: 20px;
+	}
+	
+	.last-sandbag {
+		margin-bottom: 5px;
+	}
+
+</style>
+
+<?php
+
+function alignedImage($imageName,$sandbagHeight = 10) {
+
+    if ($sandbagHeight < 2) {$sandbagHeight = 2;}
+
+    $image = imagecreatefrompng($imageName);
+    $width = imagesx($image);
+    $height = imagesy($image);
+
+    for ($y=0; $y<$height; $y++) {
+        $imagemap[$y] = 0;
+
+        for ($x=0; $x<$width; $x++) {
+            $colorBreakdown = imagecolorsforindex($image, (imagecolorat($image, $x, $y)));
+            if ($colorBreakdown['alpha'] < 127) {
+                break;
+            } else {
+                $imagemap[$y]++;
+            }
+        }
+    }
+
+    for($i=0;$i < count($imagemap); $i = $i+$sandbagHeight) {
+        for($x=0;$x < $sandbagHeight; $x++) {
+            $b = $x + $i;
+            if(isset($imagemap[$b])) {
+                $section[$b] = $imagemap[$b];
+            }
+        }
+        $sandbag[] = min($section); 
+        unset($section);
+    }
+
+    // We add all of our background properties to the template, nothing above here has been updated
+    $sandbagTemplate = '<div class="sandbag-right" style="background: url(%s) -%dpx -%dpx no-repeat; width: %dpx; height: %dpx;"></div>';
+
+    // Here we actually create the sandbags
+    foreach ($sandbag as $position => $blankPixels) {
+
+        $sandbagWidth = $width-$blankPixels;
+        $yPos = $position*$sandbagHeight; // the Y position of the background image
+        $xPos = $blankPixels; // the X position of the background image
+    
+        if ($position == 0) {
+            $sandbagClass .= ' first-sandbag';  // this gives the sandbag an extra class if it's the first
+        } elseif ($position == count($sandbag)-1) {
+            $sandbagClass .= ' last-sandbag';  // alternatively gives it an extra class if it's the last
+        }
+
+        printf($sandbagTemplate,$imageName,$xPos,$yPos,$sandbagWidth,$sandbagHeight);
+        
+    }
+}
+
+// As we've now created a function we need to call that function
+alignedImage('an_image.png', 15);
+
+?>
